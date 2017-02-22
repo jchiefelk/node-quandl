@@ -1,0 +1,30 @@
+'use strict';
+let Promise = require('bluebird');
+let api_key = 'hp2sm_6zVAoffDrYgzBi';
+let quandl_url = 'https://www.quandl.com/api/v3/datasets/';
+// let quandl_url = 'https://www.quandl.com/api/v3/datasets/XNYS/ETP_UADJ.json?api_key='+api_key;
+let Actions = require('../actions/actions');
+
+function Quandl(){
+		this.date = 0;
+};
+
+Quandl.prototype.getIntraDayTicket = function(params){
+	console.log('Grab Intradayticket');
+	let url = quandl_url+params.db+'/'+params.market+'_'+params.code+'.json?api_key='+params.apiKey;
+	// console.log(url);
+
+	return fetch(url, {
+			  method: 'GET',
+			  mode: 'cors',
+			})
+			.then((response) => typeof response == 'object' ? response.json() : {} )
+			.then( ( responseJson ) => {
+				  Actions.saveIntradDayData(responseJson); 	
+			})
+			.catch( ( error ) => {
+				  console.log(error);
+			});
+};
+
+module.exports = new Quandl();
