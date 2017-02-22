@@ -1,6 +1,7 @@
 'use strict';
 let Promise = require('bluebird');
-let api_key = 'hp2sm_6zVAoffDrYgzBi';
+let config = require('./config');
+let api_key = config.key;
 let quandl_url = 'https://www.quandl.com/api/v3/datasets/';
 // let quandl_url = 'https://www.quandl.com/api/v3/datasets/XNYS/ETP_UADJ.json?api_key='+api_key;
 let Actions = require('../actions/actions');
