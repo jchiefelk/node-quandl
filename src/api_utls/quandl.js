@@ -12,8 +12,17 @@ function Quandl(){
 
 Quandl.prototype.getIntraDayTicket = function(params){
 	console.log('Grab Intradayticket');
-	let url = quandl_url+params.db+'/'+params.market+'_'+params.code+'.json?api_key='+params.apiKey;
-	// console.log(url);
+	console.log(params);
+	let url;
+
+	if( params.startDate==null || params.endDate==null) {
+		url = quandl_url+params.db+'/'+params.market+'_'+params.code+'.json?api_key='+params.apiKey;
+	} else {
+		url = quandl_url+params.db+'/'+params.market+'_'+params.code+'.json?start_date='+params.startDate+'&end_date='+params.endDate+'&api_key='+params.apiKey;
+	}
+
+
+	console.log(url);
 
 	return fetch(url, {
 			  method: 'GET',

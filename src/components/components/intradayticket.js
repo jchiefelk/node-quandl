@@ -5,6 +5,9 @@ import Chart from 'chart.js';
 import {Line,Bar} from 'react-chartjs-2';
 var StockDataStore = require('../../stores/stockdatastore');
 var Loading = require('react-loading');
+var Datetime = require('react-datetime');
+var moment = require('moment');
+require('../../css/react-datetime.css');
 
 export default class IntraDayTicket extends Component {
 
@@ -14,7 +17,10 @@ export default class IntraDayTicket extends Component {
 					data: null,
 					intraday: [],
 					intraDayView: null,
-					companyName: null
+					companyName: null,
+					startDate: null,
+					endDate: null, 
+					rangeSelected: false
 				};
 			}
 
@@ -28,8 +34,12 @@ export default class IntraDayTicket extends Component {
 					code: code[0],
 					market: 'NYSE',
 					db: 'GOOG',
-					apiKey: 'hp2sm_6zVAoffDrYgzBi'
+					apiKey: 'hp2sm_6zVAoffDrYgzBi',
+					startDate: this.state.startDate,
+					endDate: this.state.endDate
+
 				};
+				console.log(params);
 				Quandl.getIntraDayTicket(params);
 				this.setState({
 					intraDayView: (
@@ -40,14 +50,57 @@ export default class IntraDayTicket extends Component {
 				});
 			}
 
+			componentDidUpdate(){
+
+
+				if(this.state.rangeSelected==true) {
+
+						this.setState({rangeSelected: false});
+						this.sendRequest();
+				}
+
+
+			}
+
 			componentDidMount(){
 				StockDataStore.addChangeListener(this._onChange.bind(this));
-				this.companyInput = (
-					<div style={{display: 'flex',  justifyContent: 'center', marginTop: 100, flexDirection: 'column' }}>
+				this.datePicker = (
+					<div style={{display: 'flex',position: 'absolute', right: window.innerWidth*(0.1),alignItems:'center', justifyContent:'center' }}>
+								<div style={{width: 130}}>
+									<p style={{fontSize: 12,marginBottom: 10, color: 'white',fontFamily: 'Courier New'}}>Start Date</p>
+												<Datetime
+													style={{width: 100}}
+													onBlur={(selectedDate)=> this.setStartDate(selectedDate)}
+													dateFormat="YYYY-MM-DD" timeFormat={false}
+												/>
+								</div>
 
-						<h2 style={{fontStyle: 14, fontWeight: '400', fontFamily: 'Courier New'}}>Enter in stock letter code for any company listed on the NYSE.</h2>
-						<h2 style={{fontStyle: 14, fontWeight: '400', fontFamily: 'Courier New'}}>For example; DB, for Deutsche Bank.</h2>
+								<div style={{marginLeft: 40, width: 130}}>
+									<p style={{fontSize: 12,marginBottom: 10, color: 'white',fontFamily: 'Courier New'}}>End Date</p>
+												<Datetime
+													style={{width: 100}}
+													onBlur={(selectedDate)=> this.setEndDate(selectedDate)}
+													dateFormat="YYYY-MM-DD" timeFormat={false}
+												/>
+								</div>
+
+							<img src="https://s3-us-west-1.amazonaws.com/cointelmob/icons/enter_icon.png" style={{backgroundColor: 'white',width: 30, height: 30, marginLeft: 10, marginTop: 25, cursor: 'pointer'}} onClick={()=> this.setState({rangeSelected: true}) }/>
+
+					</div>
+				);
+
+
+
+
+
+				this.companyInput = (
+					<div style={{display: 'flex', alignItems:'center', justifyContent: 'center', marginTop: 100, flexDirection: 'column' }}>
 						
+						<div style={{display: 'flex',justifyContent: 'center',alignItems:'center', flexDirection: 'column'}}>
+							<h2 style={{fontStyle: 14, fontWeight: '400', fontFamily: 'Courier New'}}>Enter in stock letter code for any company listed on the NYSE.</h2>
+							<h2 style={{fontStyle: 14, fontWeight: '400', fontFamily: 'Courier New'}}>For example; DB, for Deutsche Bank.</h2>
+						</div>
+
 						<div style={{display: 'flex', justifyContent: 'center', marginTop: 10}}>
 							<input style={{fontSize: 18, fontWeight: '700',fontFamily: 'Courier New',height:30, width: 150}} onChange={(e) => this.companyName(e) } />
 							<img src="https://s3-us-west-1.amazonaws.com/cointelmob/icons/enter_icon.png" style={{width: 30, height: 30, marginLeft: 10, cursor: 'pointer'}} onClick={()=> this.sendRequest() }/>
@@ -63,7 +116,25 @@ export default class IntraDayTicket extends Component {
 				StockDataStore.removeChangeListener(this._onChange.bind(this));
 			}
 
+			setStartDate(selectedDate){
+				this.setState({
+					startDate: moment(selectedDate._d).format('YYYY-MM-DD')
+				});
+				console.log(this.state.startDate)
+			}
+
+			setEndDate(selectedDate){
+				this.setState({
+					endDate: moment(selectedDate._d).format('YYYY-MM-DD')
+				});
+				console.log(this.state.endDate);
+			}
+
+
 			_onChange(){
+
+
+
 
 				let dates=[],
 					close=[],
@@ -76,6 +147,7 @@ export default class IntraDayTicket extends Component {
 				};
 				this.data = {
 				  labels: dates,
+				  animation: false,
 				  datasets: [
 				    { 
 				      fill: true,
@@ -115,6 +187,7 @@ export default class IntraDayTicket extends Component {
 			      },
 				  scales: {
 				    yAxes: [{
+
 				    	 display: true,
 					     scaleLabel: {
 					     	fontSize: 14,
@@ -123,9 +196,10 @@ export default class IntraDayTicket extends Component {
 					        display: true
 					     },
 	  					 ticks: {
-	  					 	fontSize: 14, 
+	  					 	fontSize: 20, 
 	  					 	fontColor: 'red',
 	  					 	fontFamily: 'Courier New',
+
 
 	  					 },
 	  					 gridLines: {
@@ -134,17 +208,26 @@ export default class IntraDayTicket extends Component {
 	               		 }
 				    }],
 		            xAxes: [{
-		                display: false, 
+		                display: true, 
 		                type: 'time',
+     					unit: 'quarter',
+
 					    ticks: {
 							fontFamily: 'Courier New',
-					    	fontSize: 18, 
-					    	fontColor: 'red'
+					    	fontSize: 12, 
+					    	fontColor: 'red',
+					    	maxRotaion: 180,
+					         min: 0,
+					         max: 10,
+					       
 					    },
 		                time: {
 		                    displayFormats: {
-		                        quarter: 'MMM YYYY'
-		                    }
+		                        quarter: 'MMM YYYY',
+  								maxRotaion: 0,
+		                    },
+		                    maxRotaion: 0,
+		                 	unitStepSize: 5,
 		                },
 
 		                gridLines: {
@@ -157,7 +240,8 @@ export default class IntraDayTicket extends Component {
 					     	fontColor: 'red',
 					     	fontFamily: 'Courier New',
 					        display: true,
-					        labelString: 'Date Year'
+					        // labelString: 'Date Year',
+					        maxRotaion: 0,
 					     },
 
 		            }]
@@ -178,7 +262,7 @@ export default class IntraDayTicket extends Component {
 				  ]
 				};
 
-				let baroptions = {
+				this.baroptions = {
 					fullWidth: false,
 
 				    legend: {
@@ -188,7 +272,7 @@ export default class IntraDayTicket extends Component {
 				    scales: {
  							
 				            xAxes: [{
-				                display: true, 
+				                display: false, 
 				                barThickness: 2,
 				                type: 'time',
 							    ticks: {
@@ -213,6 +297,7 @@ export default class IntraDayTicket extends Component {
 
 						    yAxes: [{
 							     display: true,
+							     valueFormatString: "E+0",
 							     scaleLabel: {
 							     	fontSize: 10,
 							     	fontColor: 'red',
@@ -222,7 +307,7 @@ export default class IntraDayTicket extends Component {
 							        maxRotation: 180
 							     },
 			  					 ticks: {
-			  					 	fontSize: 8, 
+			  					 	fontSize: 10, 
 			  					 	fontColor: 'red',
 			  					 	fontFamily: 'Courier New'
 			  					 },
@@ -239,11 +324,15 @@ export default class IntraDayTicket extends Component {
 				this.setState({
 					intraDayView: (
 						<div style={{display: 'flex',flexDirection: 'column', backgroundColor: '#414a4c', alignItems: 'center'}}>
-							
+								{this.datePicker}
+							<div>
+								<Line data={this.data} options={this.options} width={window.innerWidth*(0.93)} height={window.innerWidth*(0.43)} />
+							</div>
 
+							<div style={{marginLeft: -2}}>
+								<Bar data={bardata} options={this.baroptions} width={window.innerWidth*(0.9)} height={window.innerHeight*(0.14)}/>
+    						</div>
 
-							<Line data={this.data} options={this.options}  width={window.innerWidth*(0.4)} height={window.innerHeight*(0.27)}/>
-							<Bar data={bardata} options={baroptions} width={window.innerWidth*(0.7)} height={window.innerHeight*(0.2)} />
     					</div>
     				)
 				});
