@@ -188,19 +188,19 @@ export default class IntraDayTicket extends Component {
 				  scales: {
 				    yAxes: [{
 
-				    	 display: true,
+		
 					     scaleLabel: {
-					     	fontSize: 14,
+					     	fontSize: 24,
 					     	fontColor: 'red',
 					     	fontFamily: 'Courier New',
-					        display: true
+					        display: true,
+					        labelString: 'Price (USD)'
 					     },
 	  					 ticks: {
-	  					 	fontSize: 20, 
+	  					 	fontSize: 18, 
 	  					 	fontColor: 'red',
 	  					 	fontFamily: 'Courier New',
-
-
+	  					 	display: true,
 	  					 },
 	  					 gridLines: {
 	  					 		display: false,
@@ -217,8 +217,8 @@ export default class IntraDayTicket extends Component {
 					    	fontSize: 12, 
 					    	fontColor: 'red',
 					    	maxRotaion: 180,
-					         min: 0,
-					         max: 10,
+							autoSkip: true,
+        					maxTicksLimit: 10,
 					       
 					    },
 		                time: {
@@ -296,21 +296,27 @@ export default class IntraDayTicket extends Component {
 				            }],
 
 						    yAxes: [{
-							     display: true,
-							     valueFormatString: "E+0",
+							     // display: true,
+
 							     scaleLabel: {
-							     	fontSize: 10,
+							     	fontSize: 16,
 							     	fontColor: 'red',
 							     	fontFamily: 'Courier New',
 							        display: true,
 							        labelString: 'Volume',
-							        maxRotation: 180
+							        maxRotation: 90
 							     },
 			  					 ticks: {
-			  					 	fontSize: 10, 
+			  					 	fontSize: 8, 
 			  					 	fontColor: 'red',
-			  					 	fontFamily: 'Courier New'
+			  					 	fontFamily: 'Courier New',
+			  					 	stepSize: Math.max(volume),
+			  					 	maxRotation: 90,
+			  					 	autoSkip: true,
+        							maxTicksLimit: 1,
+        							display: false
 			  					 },
+			  			
 			  					 gridLines: {
 			  					 		display: false,
 			                   			color: "rgba(0, 0, 0, 0)"
@@ -326,11 +332,11 @@ export default class IntraDayTicket extends Component {
 						<div style={{display: 'flex',flexDirection: 'column', backgroundColor: '#414a4c', alignItems: 'center'}}>
 								{this.datePicker}
 							<div>
-								<Line data={this.data} options={this.options} width={window.innerWidth*(0.93)} height={window.innerWidth*(0.43)} />
+								<Line data={this.data} options={this.options} width={window.innerWidth*(0.95)} height={window.innerWidth*(0.46)} />
 							</div>
 
-							<div style={{marginLeft: -2}}>
-								<Bar data={bardata} options={this.baroptions} width={window.innerWidth*(0.9)} height={window.innerHeight*(0.14)}/>
+							<div>
+								<Bar data={bardata} options={this.baroptions} width={window.innerWidth*(0.91)} height={window.innerHeight*(0.14)}/>
     						</div>
 
     					</div>
