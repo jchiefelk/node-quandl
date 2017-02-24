@@ -6,6 +6,9 @@ import {Line,Bar} from 'react-chartjs-2';
 var StockDataStore = require('../../stores/stockdatastore');
 var Loading = require('react-loading');
 var Datetime = require('react-datetime');
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import MarketPicker from './marketpicker';
+
 var moment = require('moment');
 require('../../css/react-datetime.css');
 
@@ -20,7 +23,8 @@ export default class IntraDayTicket extends Component {
 					companyName: null,
 					startDate: null,
 					endDate: null, 
-					rangeSelected: false
+					rangeSelected: false,
+					market: null
 				};
 			}
 
@@ -32,7 +36,7 @@ export default class IntraDayTicket extends Component {
 				let code = this.state.companyName.split(' ');
 				let params = {
 					code: code[0],
-					market: 'NYSE',
+					market: this.state.market,
 					db: 'GOOG',
 					apiKey: 'hp2sm_6zVAoffDrYgzBi',
 					startDate: this.state.startDate,
@@ -52,14 +56,43 @@ export default class IntraDayTicket extends Component {
 
 			componentDidUpdate(){
 
+				this.companyInput = (
+					<div style={{display: 'flex', alignItems:'center', justifyContent: 'center', marginTop: 100, flexDirection: 'column' }}>
+						
+						<div style={{display: 'flex',justifyContent: 'center',alignItems:'center', flexDirection: 'column'}}>
+							<h2 style={{fontStyle: 14, fontWeight: '400', fontFamily: 'Courier New'}}>Enter in stock letter code for any company listed on the NYSE.</h2>
+							<h2 style={{fontStyle: 14, fontWeight: '400', fontFamily: 'Courier New'}}>For example; DB, for Deutsche Bank.</h2>
+						</div>
+
+						<div style={{display: 'flex', justifyContent: 'center', marginTop: 10}}>
+							<input style={{fontSize: 18, fontWeight: '700',fontFamily: 'Courier New',height:30, width: 150}} onChange={(e) => this.companyName(e) } />
+							<img src="https://s3-us-west-1.amazonaws.com/cointelmob/icons/enter_icon.png" style={{width: 30, height: 30, marginLeft: 10, cursor: 'pointer'}} onClick={()=> this.sendRequest() }/>
+							
+							<MarketPicker  />
+						</div>
+					</div>
+				);
+
 
 				if(this.state.rangeSelected==true) {
-
 						this.setState({rangeSelected: false});
 						this.sendRequest();
 				}
 
-
+				if(this.state.marketSelected==true) {
+					this.setState({
+						marketSelected: false,
+						intraDayView: this.companyInput
+					});
+				}
+				
+				if(this.state.marketData.data.length>0){
+					this.setState({
+						marketData: null,
+						intraDayView: this.setGraphView()
+					});
+				}
+				
 			}
 
 			componentDidMount(){
@@ -89,10 +122,6 @@ export default class IntraDayTicket extends Component {
 					</div>
 				);
 
-
-
-
-
 				this.companyInput = (
 					<div style={{display: 'flex', alignItems:'center', justifyContent: 'center', marginTop: 100, flexDirection: 'column' }}>
 						
@@ -104,9 +133,14 @@ export default class IntraDayTicket extends Component {
 						<div style={{display: 'flex', justifyContent: 'center', marginTop: 10}}>
 							<input style={{fontSize: 18, fontWeight: '700',fontFamily: 'Courier New',height:30, width: 150}} onChange={(e) => this.companyName(e) } />
 							<img src="https://s3-us-west-1.amazonaws.com/cointelmob/icons/enter_icon.png" style={{width: 30, height: 30, marginLeft: 10, cursor: 'pointer'}} onClick={()=> this.sendRequest() }/>
+							
+
+							<MarketPicker  />
+						
 						</div>
 					</div>
 				);
+
 				this.setState({
 					intraDayView: this.companyInput
 				});
@@ -120,22 +154,27 @@ export default class IntraDayTicket extends Component {
 				this.setState({
 					startDate: moment(selectedDate._d).format('YYYY-MM-DD')
 				});
-				console.log(this.state.startDate)
 			}
 
 			setEndDate(selectedDate){
 				this.setState({
 					endDate: moment(selectedDate._d).format('YYYY-MM-DD')
 				});
-				console.log(this.state.endDate);
 			}
 
 
 			_onChange(){
 
+				this.setState({
+					market: StockDataStore.getMarket(),
+					marketSelected: true, 
+					marketData: StockDataStore.getInradayTicketData()
+				});
+				console.log(this.state.market);
+			}
 
 
-
+			setGraphView(){
 				let dates=[],
 					close=[],
 					volume=[]
@@ -187,8 +226,6 @@ export default class IntraDayTicket extends Component {
 			      },
 				  scales: {
 				    yAxes: [{
-
-		
 					     scaleLabel: {
 					     	fontSize: 24,
 					     	fontColor: 'red',
@@ -211,7 +248,6 @@ export default class IntraDayTicket extends Component {
 		                display: true, 
 		                type: 'time',
      					unit: 'quarter',
-
 					    ticks: {
 							fontFamily: 'Courier New',
 					    	fontSize: 12, 
@@ -229,12 +265,10 @@ export default class IntraDayTicket extends Component {
 		                    maxRotaion: 0,
 		                 	unitStepSize: 5,
 		                },
-
 		                gridLines: {
 		                	 display: false,
                    			 color: "rgba(0, 0, 0, 0)"
                		 	},
-
                		 	scaleLabel: {
 					     	fontSize: 20,
 					     	fontColor: 'red',
@@ -281,7 +315,7 @@ export default class IntraDayTicket extends Component {
 							    	fontSize: 12,
 							    	maxRotation: 90 // angle in degrees
 							    },
-							
+		
 				                time: {
 				                    displayFormats: {
 				                        quarter: 'MMM YYYY'
@@ -291,13 +325,9 @@ export default class IntraDayTicket extends Component {
 				                gridLines: {
 				                	 display: false,
 		               		 	},
-
-
 				            }],
 
 						    yAxes: [{
-							     // display: true,
-
 							     scaleLabel: {
 							     	fontSize: 16,
 							     	fontColor: 'red',
@@ -316,19 +346,15 @@ export default class IntraDayTicket extends Component {
         							maxTicksLimit: 1,
         							display: false
 			  					 },
-			  			
 			  					 gridLines: {
 			  					 		display: false,
 			                   			color: "rgba(0, 0, 0, 0)"
 			               		 }
-
 						    }]
 				    	}
 				};
 
-
-				this.setState({
-					intraDayView: (
+				return (
 						<div style={{display: 'flex',flexDirection: 'column', backgroundColor: '#414a4c', alignItems: 'center'}}>
 								{this.datePicker}
 							<div>
@@ -340,9 +366,11 @@ export default class IntraDayTicket extends Component {
     						</div>
 
     					</div>
-    				)
-				});
+    				);
+
 			}
+
+
 
 			render(){
 				return(this.state.intraDayView);

@@ -6,7 +6,7 @@ var appConstants = {
   SUBJECTS: "SUBJECTS",
   ABSTRACT: "ABSTRACT",
   ARTICLE: "ARTICLE",
-  INTRADAYTICKET: "INTRADAYTICKET"
-
+  INTRADAYTICKET: "INTRADAYTICKET",
+  MARKET: "MARKET"
 };
 module.exports = appConstants;

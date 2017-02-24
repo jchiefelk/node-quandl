@@ -63,6 +63,13 @@ var makePOSTRequest = function(){
 
 var Actions = {
 
+  updateMarket: function(item){
+    
+    AppDispatcher.handleAction({
+      actionType: appConstants.MARKET,
+      data: item
+    });
+  },
 
   saveIntradDayData: function(item){
     // console.log(item)

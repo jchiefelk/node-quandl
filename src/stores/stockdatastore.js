@@ -13,7 +13,8 @@ var _store = {
 function StockData(){
     this.IntraDay = {
         name: null,
-        data: []
+        data: [],
+        market: null
     };
 };
 
@@ -37,6 +38,11 @@ StockData.prototype.updateIntradayTicket = function(item){
   StockDataStore.emit(CHANGE_EVENT);
 };
 
+
+StockData.prototype.updateMarket = function(item){
+  this.IntraDay.market = item;
+};
+
 var Stocks = new StockData();
 
 var StockDataStore = objectAssign({}, EventEmitter.prototype, {
@@ -51,12 +57,20 @@ var StockDataStore = objectAssign({}, EventEmitter.prototype, {
   },
   getInradayTicketData: function() {
     return Stocks.IntraDay;
+  },
+  getMarket: function(){
+    return Stocks.IntraDay.market;
   }
+
 });
 
 AppDispatcher.register(function(payload){
   var action = payload.action;
   switch(action.actionType){
+    case appConstants.MARKET:
+      Stocks.updateMarket(action.data);
+      StockDataStore.emitChange(CHANGE_EVENT);
+      break;
     case appConstants.INTRADAYTICKET:
       Stocks.updateIntradayTicket(action.data);
      //  console.log(Stocks.IntraDay);
