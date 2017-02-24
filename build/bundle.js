@@ -27006,18 +27006,18 @@
 					scales: {
 						yAxes: [{
 
-							display: true,
 							scaleLabel: {
-								fontSize: 14,
+								fontSize: 24,
+								fontColor: 'red',
+								fontFamily: 'Courier New',
+								display: true,
+								labelString: 'Price (USD)'
+							},
+							ticks: {
+								fontSize: 18,
 								fontColor: 'red',
 								fontFamily: 'Courier New',
 								display: true
-							},
-							ticks: {
-								fontSize: 20,
-								fontColor: 'red',
-								fontFamily: 'Courier New'
-
 							},
 							gridLines: {
 								display: false,
@@ -27034,8 +27034,8 @@
 								fontSize: 12,
 								fontColor: 'red',
 								maxRotaion: 180,
-								min: 0,
-								max: 10
+								autoSkip: true,
+								maxTicksLimit: 10
 
 							},
 							time: {
@@ -27110,21 +27110,27 @@
 						}],
 
 						yAxes: [{
-							display: true,
-							valueFormatString: "E+0",
+							// display: true,
+
 							scaleLabel: {
-								fontSize: 10,
+								fontSize: 16,
 								fontColor: 'red',
 								fontFamily: 'Courier New',
 								display: true,
 								labelString: 'Volume',
-								maxRotation: 180
+								maxRotation: 90
 							},
 							ticks: {
-								fontSize: 10,
+								fontSize: 8,
 								fontColor: 'red',
-								fontFamily: 'Courier New'
+								fontFamily: 'Courier New',
+								stepSize: Math.max(volume),
+								maxRotation: 90,
+								autoSkip: true,
+								maxTicksLimit: 1,
+								display: false
 							},
+
 							gridLines: {
 								display: false,
 								color: "rgba(0, 0, 0, 0)"
@@ -27142,12 +27148,12 @@
 						_react2.default.createElement(
 							'div',
 							null,
-							_react2.default.createElement(_reactChartjs.Line, { data: this.data, options: this.options, width: window.innerWidth * 0.93, height: window.innerWidth * 0.43 })
+							_react2.default.createElement(_reactChartjs.Line, { data: this.data, options: this.options, width: window.innerWidth * 0.95, height: window.innerWidth * 0.46 })
 						),
 						_react2.default.createElement(
 							'div',
-							{ style: { marginLeft: -2 } },
-							_react2.default.createElement(_reactChartjs.Bar, { data: bardata, options: this.baroptions, width: window.innerWidth * 0.9, height: window.innerHeight * 0.14 })
+							null,
+							_react2.default.createElement(_reactChartjs.Bar, { data: bardata, options: this.baroptions, width: window.innerWidth * 0.91, height: window.innerHeight * 0.14 })
 						)
 					)
 				});
