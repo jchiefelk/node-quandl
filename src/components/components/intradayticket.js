@@ -1,6 +1,5 @@
 'use strict';
 import React, {Component} from 'react';
-var Quandl = require('../../api_utls/quandl');
 import Chart from 'chart.js';
 import {Line,Bar} from 'react-chartjs-2';
 var StockDataStore = require('../../stores/stockdatastore');
@@ -44,7 +43,7 @@ export default class IntraDayTicket extends Component {
 
 				};
 				console.log(params);
-				Quandl.getIntraDayTicket(params);
+
 				this.setState({
 					intraDayView: (
 						<div style={{display: 'flex',  justifyContent: 'center', marginTop: 100 }}>
@@ -97,6 +96,8 @@ export default class IntraDayTicket extends Component {
 
 			componentDidMount(){
 				StockDataStore.addChangeListener(this._onChange.bind(this));
+				
+
 				this.datePicker = (
 					<div style={{display: 'flex',position: 'absolute', right: window.innerWidth*(0.1),alignItems:'center', justifyContent:'center' }}>
 								<div style={{width: 130}}>

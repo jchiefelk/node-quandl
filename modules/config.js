@@ -1,13 +1,8 @@
-var path = require('path');
+'use strict';
+
 var config = {
-	development: {
-        expectedPassword: '',
-		database: {
-			host: '',
-			user: '',
-			password: '',
-			database: ''
-		}
-	}
+		
+	key: 'hp2sm_6zVAoffDrYgzBi'
 };
+
 module.exports = config;
