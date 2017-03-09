@@ -7,10 +7,10 @@ var router = express.Router();
 // ETF
 //
 router.get('/etf', function(req,res){
-        console.log('Quandl ETF Time'); 
+
         Quandl.getETFData()
             .then(function(value) {
-                 res.json(value);  
+                 res.json({etf: value});  
             })
             .catch(function(error){
             	console.log(error);
@@ -21,10 +21,10 @@ router.get('/etf', function(req,res){
 
 
 router.get('/markets', function(req,res){
-	console.log('Quandl Market Time');
+	
 	Quandl.getMarketData()
 		   .then(function(value) {
-                 res.json(value);  
+                 res.json({market: value});  
             })
             .catch(function(error){
             	console.log(error);

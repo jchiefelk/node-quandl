@@ -59839,8 +59839,7 @@
 	var _ = __webpack_require__(419);
 	var _store = null;
 
-	var _makeFrontEndRequest = function _makeFrontEndRequest() {
-	  console.log('Get Engage');
+	var makeETFRequest = function makeETFRequest() {
 
 	  fetch('http://localhost:3000/etf', {
 	    method: 'get',
@@ -59858,11 +59857,29 @@
 	  });
 	};
 
+	var makeMarketRequest = function makeMarketRequest() {
+
+	  fetch('http://localhost:3000/markets', {
+	    method: 'get',
+	    accept: 'application/json'
+	  }).then(function (response) {
+	    if (response.status != undefined) {
+	      Actions.setStatus(response.status);
+	    }
+	    return response.json();
+	  }).then(function (data) {
+	    console.log(data);
+	  }).catch(function (error) {
+	    console.log(error);
+	  });
+	};
+
 	var Actions = {
 
 	  makeFrontEndRequest: function makeFrontEndRequest(item) {
 	    _store = item;
-	    _makeFrontEndRequest();
+	    makeETFRequest();
+	    makeMarketRequest();
 	  },
 
 	  updateMarket: function updateMarket(item) {
