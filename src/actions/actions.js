@@ -45,14 +45,46 @@ var makeMarketRequest = function() {
 
 };
 
+//
+// averages of major indexes 
+//
+var makeGeneralRequest = function() {
+       console.log('Get Engage');
+       console.log(_store);
+
+
+       fetch('http://localhost:3000/general', {
+            method: 'post',
+            headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(_store)
+           
+          }).then(function(response) {
+            if(response.status!=undefined){
+              Actions.setStatus(response.status);
+            }
+            return response.json();
+          }).then(function(data) {
+             console.log(data.general);
+             Actions.updateIntradDayData(data.general);
+ 
+          }).catch(function(error) {
+              console.log(error);
+          }); 
+};
+
 
 
 var Actions = {
+
 
   makeFrontEndRequest: function(item){
       _store = item;
      //  makeETFRequest();
       // makeMarketRequest();
+      makeGeneralRequest();
   },
 
   updateMarket: function(item){

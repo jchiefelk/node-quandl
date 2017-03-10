@@ -1,0 +1,21 @@
+
+.market-picker {
+	margin-left: 3em;
+}
+
+
+.market-picker-item {
+
+	display: flex; 
+	cursor: pointer; 
+	font-family: 'Courier New';
+	font-size: 18;
+
+}
+
+
+.dropdown-arrow {
+	width: 1.5em; 
+	height: 1.5em;
+	cursor: pointer;
+}

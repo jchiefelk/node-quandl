@@ -25,27 +25,7 @@ app.use(express.static(path.resolve(__dirname, '..', 'build')));
 // Set RESTFUL Routes
 //
 var routes = require('./routes');
-
 app.use('/', routes);
-
-//
-// GET Requests
-//
-/**
-app.get('/api', (req, res, next) => {
-        console.log('Quandl Time');	
-        Quandl.getMarketData()
-            .then(function(value) {
-                 console.log(value);
-                 res.json(value); 
-            })
-            .catch(function(error){
-                res.json({error: error});
-                next(error);
-            });
-});
-***/
-//
 // 
 //
 // Always return the main index.html, so react-router render the route in the client

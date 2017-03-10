@@ -7,6 +7,7 @@ var Loading = require('react-loading');
 var Datetime = require('react-datetime');
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import MarketPicker from './marketpicker';
+var Actions = require('../../actions/actions');
 
 var moment = require('moment');
 require('../../css/react-datetime.css');
@@ -42,8 +43,8 @@ export default class IntraDayTicket extends Component {
 					endDate: this.state.endDate
 
 				};
-				console.log(params);
-
+				// console.log(params);
+				Actions.makeFrontEndRequest(params);
 				this.setState({
 					intraDayView: (
 						<div style={{display: 'flex',  justifyContent: 'center', marginTop: 100 }}>
@@ -54,6 +55,8 @@ export default class IntraDayTicket extends Component {
 			}
 
 			componentDidUpdate(){
+
+
 
 				this.companyInput = (
 					<div style={{display: 'flex', alignItems:'center', justifyContent: 'center', marginTop: 100, flexDirection: 'column' }}>
@@ -171,7 +174,9 @@ export default class IntraDayTicket extends Component {
 					marketSelected: true, 
 					marketData: StockDataStore.getInradayTicketData()
 				});
-				console.log(this.state.market);
+
+			
+			
 			}
 
 

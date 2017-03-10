@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 var StockDataStore = require('../../stores/stockdatastore');
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 let Actions = require('../../actions/actions');
+require('../../css/marketpicker.css');
 
 
 export default class MarketPicker extends Component {
@@ -27,9 +28,9 @@ export default class MarketPicker extends Component {
 	render(){
 		if(this.state.selecting==false){
 			this.items = (
-					<div key={0} style={{marginLeft: 35,display: 'flex', cursor: 'pointer', fontFamily: 'Courier New',fontSize: 18}} onClick={()=> this.setState({selecting: true}) }>
+					<div key={0} className="market-picker-item" onClick={()=> this.setState({selecting: true}) }>
 						{this.state.selectedMarket}
-						<img src="https://s3-us-west-1.amazonaws.com/node-quandl/downarrow.png" style={{width: 20, height: 20}} />
+						<img src="https://s3-us-west-1.amazonaws.com/node-quandl/downarrow.png" className="dropdown-arrow" />
 					</div>
 			);
 
@@ -37,17 +38,17 @@ export default class MarketPicker extends Component {
 		} else {
 			this.items = null;
 			this.items = this.state.markets.map((item,i)=> (
-					<div key={item} style={{marginLeft: 35, cursor: 'pointer',fontFamily: 'Courier New', fontSize: 18}}   onClick={()=> this.marketPicked(i) }>
+					<div key={item} className="market-picker-item"   onClick={()=> this.marketPicked(i) }>
 						{item}
 					</div>
 			));
 		}
 
 		return(
-			<div>
+			<div className="market-picker">
 				  <ReactCSSTransitionGroup 
           				transitionName="example"
-          				transitionEnterTimeout={1000}
+          				transitionEnterTimeout={1}
           				transitionLeaveTimeout={1}>
 		       			
 		       			{this.items}

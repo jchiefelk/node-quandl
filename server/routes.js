@@ -36,4 +36,26 @@ router.get('/markets', function(req,res){
 
 });
 
+
+
+router.post('/general', function(req,res){
+
+
+
+    Quandl.getIntraDayTicket(req.body)
+           .then(function(value) {
+                 res.json({general: value});  
+            })
+            .catch(function(error){
+                console.log(error);
+                res.json({error: error});
+                next(error);
+            }); 
+
+
+
+});
+
+
+
 module.exports = router;
