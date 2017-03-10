@@ -26,6 +26,38 @@ app.use(express.static(path.resolve(__dirname, '..', 'build')));
 //
 var routes = require('./routes');
 app.use('/', routes);
+
+
+app.post('/general', function(req,res){
+
+
+
+    Quandl.getIntraDayTicket(req.body)
+           .then(function(value) {
+                 res.json({general: value});  
+            })
+            .catch(function(error){
+                console.log(error);
+                res.json({error: error});
+                next(error);
+            }); 
+
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
 // 
 //
 // Always return the main index.html, so react-router render the route in the client
