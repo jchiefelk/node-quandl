@@ -28,7 +28,7 @@ var routes = require('./routes');
 app.use('/', routes);
 
 
-app.post('/general', function(req,res){
+app.post('/api', function(req,res){
 
 
 
