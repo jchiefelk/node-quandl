@@ -50,7 +50,7 @@ var makeMarketRequest = function() {
 //
 var makeGeneralRequest = function() {
        console.log('Get Engage');
-       console.log(_store);
+      // console.log(_store);
 
 
        fetch('/api', {
@@ -67,7 +67,7 @@ var makeGeneralRequest = function() {
             }
             return response.json();
           }).then(function(data) {
-             console.log(data.general);
+           //  console.log(data.general);
              Actions.updateIntradDayData(data.general);
  
           }).catch(function(error) {
@@ -118,6 +118,42 @@ var Actions = {
       data: event
     });
   },
+
+
+  setStartDate: function(item){
+    AppDispatcher.handleAction({
+      actionType: appConstants,
+      data: item
+
+    });
+
+  },
+
+  setEndDate: function(item){
+    AppDispatcher.handleAction({
+      actionType: appConstants,
+      data: item
+    });
+
+  },
+
+  updatesendRequest: function(item){
+
+    AppDispatcher.handleAction({
+      actionType: appConstants.SEND_REQUEST,  
+      data: event
+    });
+
+  },
+
+  updateCompanyCode: function(item) {
+      AppDispatcher.handleAction({
+          actionType: appConstants.COMPANY_CODE,
+          data: item
+      });
+  }
+
+
 
 };
 module.exports = Actions;

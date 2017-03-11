@@ -27,10 +27,38 @@ app.use(express.static(path.resolve(__dirname, '..', 'build')));
 var routes = require('./routes');
 app.use('/', routes);
 
+app.get('/etf', function(req,res){
+
+        Quandl.getETFData()
+            .then(function(value) {
+                 res.json({etf: value});  
+            })
+            .catch(function(error){
+              console.log(error);
+                res.json({error: error});
+                next(error);
+            });             
+});
+
+
+app.get('/markets', function(req,res){
+  
+  Quandl.getMarketData()
+       .then(function(value) {
+                 res.json({market: value});  
+            })
+            .catch(function(error){
+              console.log(error);
+                res.json({error: error});
+                next(error);
+            }); 
+
+
+
+});
+
 
 app.post('/api', function(req,res){
-
-
 
     Quandl.getIntraDayTicket(req.body)
            .then(function(value) {
@@ -42,20 +70,7 @@ app.post('/api', function(req,res){
                 next(error);
             }); 
 
-
-
 });
-
-
-
-
-
-
-
-
-
-
-
 
 
 // 

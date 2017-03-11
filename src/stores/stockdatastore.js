@@ -6,15 +6,17 @@ var EventEmitter = require('events').EventEmitter;
 var CHANGE_EVENT = 'change';
 var moment = require('moment');
 
-var _store = {
-  intradaydata: []
-};
+
 
 function StockData(){
     this.IntraDay = {
         name: null,
         data: [],
-        market: null
+        market: null,
+        startDate: null,
+        endDate: null,
+        companyCode: null,
+        sendRequestStatus: false
     };
 };
 
@@ -43,6 +45,21 @@ StockData.prototype.updateMarket = function(item){
   this.IntraDay.market = item;
 };
 
+
+StockData.prototype.updateStartDate = function(item){
+  this.IntraDay.startDate = item;
+};
+
+
+StockData.prototype.updateEndDate = function(item){
+  this.IntraDay.endDate = item;
+};
+
+
+StockData.prototype.updateCompanyCode = function(item) {
+  this.IntraDay.companyCode = item;
+};
+
 var Stocks = new StockData();
 
 var StockDataStore = objectAssign({}, EventEmitter.prototype, {
@@ -60,6 +77,18 @@ var StockDataStore = objectAssign({}, EventEmitter.prototype, {
   },
   getMarket: function(){
     return Stocks.IntraDay.market;
+  },
+  getStartDate: function(){
+    return Stocks.IntraDay.startDate;
+  },
+  getEndDate: function(){
+    return Stocks.IntraDay.endDate;
+  },
+  getCompanyCode: function(){
+    return Stocks.IntraDay.companyCode;
+  },
+  getRequestSendStatus: function(){
+    return Stocks.IntraDay.sendRequestStatus;
   }
 
 });
@@ -73,7 +102,26 @@ AppDispatcher.register(function(payload){
       break;
     case appConstants.INTRADAYTICKET:
       Stocks.updateIntradayTicket(action.data);
-     //  console.log(Stocks.IntraDay);
+      break;
+    case appConstants.STARTDATE:
+      Stocks.updateStartDate(action.data);
+      StockDataStore.emitChange(CHANGE_EVENT);
+      break;
+    case appConstants.ENDDATE:
+      Stocks.updateEndDate(action.data);
+      StockDataStore.emitChange(CHANGE_EVENT);
+      break;
+    case appConstants.COMPANY_CODE: 
+      Stocks.updateCompanyCode(action.data);
+      StockDataStore.emitChange(CHANGE_EVENT);
+      break;
+    case appConstants.SEND_REQUEST:
+      if(Stocks.IntraDay.sendRequestStatus==false){
+          Stocks.IntraDay.sendRequestStatus = true;
+      } else {
+          Stocks.IntraDay.sendRequestStatus = false;
+      }
+      StockDataStore.emitChange(CHANGE_EVENT);
       break;
     default:
       return true;
