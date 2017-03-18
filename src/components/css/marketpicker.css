@@ -3,7 +3,6 @@
 	margin-left: 3em;
 }
 
-
 .market-picker-item {
 
 	display: flex; 
@@ -13,9 +12,68 @@
 
 }
 
-
 .dropdown-arrow {
 	width: 1.5em; 
 	height: 1.5em;
 	cursor: pointer;
 }
+
+
+.market-date-picker-container {
+	display: flex;
+	position: absolute; 
+	right: 1em;
+	align-items: center;
+	justify-content: center;
+	align-text: center; 
+
+}
+
+.date-input {
+	width: 10em;
+	margin: 1em;
+}
+
+.submit-button {
+	background-color: white;
+	width: 2.4em;
+	height: 2.4em;
+	margin-top: 1.5em; 
+	margin-left: 1em;
+	cursor: pointer;
+}
+
+.date-text {
+	margin-left: 1.1em;
+	font-size: 12;
+	margin-bottom: 10; 
+	color: white;
+	font-family: 'Courier New';
+}
+
+.linegraph {
+
+	margin-top: 10em;
+	width: 75em;
+	height: 20em;
+	background-color: #414a4c;
+}
+
+.bargraph {
+	display: flex;
+	margin-top: 17em;
+	margin-right: 2em;
+	width: 77em; 
+	background-color: #414a4c;
+}
+
+
+.graph-page {
+	display: flex;
+    background-color: #414a4c;
+    align-items: center; 
+    flex-direction: column;
+    margin-bottom: 20em;
+
+}
+

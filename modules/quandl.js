@@ -36,8 +36,7 @@ Quandl.prototype.fetchETFData = function(){
 
 		return this.ETFrecursion()
 			.then( ( responseJson ) => {
-						
-					   	this.quandlETFResults.push(responseJson);
+					 	this.quandlETFResults.push(responseJson);
 					 	if(this.etfiterator < this.etfpromiseArray.length){  
 					 		return this.fetchETFData();
 					 	} else {
@@ -118,11 +117,12 @@ Quandl.prototype.getMarketData = function(item){
 
 
 Quandl.prototype.getIntraDayTicket = function(params){
-
-
 	let url;
+	let startDate, endDate;
+	startDate =  moment(new Date().setFullYear(2016)).format('YYYY-MM-DD'),
+	endDate =  moment().format('YYYY-MM-DD');
 	if( params.startDate==null || params.endDate==null) {
-		url = quandl_url+params.db+'/'+params.market+'_'+params.code+'.json?api_key='+params.apiKey;
+		url = quandl_url+params.db+'/'+params.market+'_'+params.code+'.json?start_date='+startDate+'&end_date='+endDate+'&api_key='+params.apiKey;
 	} else {
 		url = quandl_url+params.db+'/'+params.market+'_'+params.code+'.json?start_date='+params.startDate+'&end_date='+params.endDate+'&api_key='+params.apiKey;
 	}

@@ -26623,7 +26623,7 @@
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
-					{ style: { alignItems: 'center' } },
+					{ style: { display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: '#414a4c' } },
 					_react2.default.createElement(_header2.default, null),
 					_react2.default.createElement(_stockviewpage2.default, null)
 				);
@@ -26865,7 +26865,6 @@
 					sendRequestStatus: StockDataStore.getRequestSendStatus()
 				});
 
-				console.log(this.state.sendRequestStatus, this.state.marketData.data.length);
 				if (this.state.sendRequestStatus == true && this.state.marketData.data.length == 0) {
 					this.sendRequest();
 				}
@@ -59793,6 +59792,7 @@
 
 
 	__webpack_require__(433);
+	__webpack_require__(421);
 
 	var MarketGraph = function () {
 		function MarketGraph() {
@@ -59812,6 +59812,7 @@
 			//
 			//
 			this.baroptions = {
+
 				fullWidth: false,
 
 				legend: {
@@ -59821,14 +59822,17 @@
 				scales: {
 
 					xAxes: [{
-						display: false,
+
 						barThickness: 2,
 						type: 'time',
 						ticks: {
 							fontFamily: 'Courier New',
 							fontColor: 'red',
 							fontSize: 12,
-							maxRotation: 90 // angle in degrees
+							maxRotation: 90, // angle in degrees
+							display: true,
+							maxTicksLimit: 10,
+							autoSkip: true
 						},
 
 						time: {
@@ -59844,7 +59848,7 @@
 
 					yAxes: [{
 						scaleLabel: {
-							fontSize: 16,
+							fontSize: 24,
 							fontColor: 'red',
 							fontFamily: 'Courier New',
 							display: true,
@@ -59852,7 +59856,7 @@
 							maxRotation: 90
 						},
 						ticks: {
-							fontSize: 8,
+							fontSize: 18,
 							fontColor: 'red',
 							fontFamily: 'Courier New',
 							stepSize: 0,
@@ -59872,6 +59876,7 @@
 			//
 
 			this.lineoptions = {
+
 				title: {
 					display: true,
 					text: '',
@@ -59915,7 +59920,8 @@
 							fontColor: 'red',
 							maxRotaion: 180,
 							autoSkip: true,
-							maxTicksLimit: 10
+							maxTicksLimit: 10,
+							display: false
 
 						},
 						time: {
@@ -59991,28 +59997,26 @@
 					this.close.push(data[x].close);
 					this.volume.push(data[x].volume);
 				};
-
 				this.linedata.datasets.data = this.close;
 				this.linedata.labels = this.dates;
 				this.lineoptions.title.text = name;
-
 				this.bardata.datasets.data = this.volume;
 				this.bardata.labels = this.dates;
 				this.baroptions.scales.yAxes[0].ticks.stepSize = Math.max(this.volume);
 
 				return _react2.default.createElement(
 					'div',
-					{ style: { display: 'flex', flexDirection: 'column', backgroundColor: '#414a4c', alignItems: 'center' } },
+					{ className: 'graph-page' },
 					this.setDatePicker(),
 					_react2.default.createElement(
 						'div',
-						null,
-						_react2.default.createElement(_reactChartjs.Line, { data: this.linedata, options: this.lineoptions, width: window.innerWidth * 0.95, height: window.innerWidth * 0.46 })
+						{ className: 'linegraph' },
+						_react2.default.createElement(_reactChartjs.Line, { data: this.linedata, options: this.lineoptions })
 					),
 					_react2.default.createElement(
 						'div',
-						null,
-						_react2.default.createElement(_reactChartjs.Bar, { data: this.bardata, options: this.baroptions, width: window.innerWidth * 0.91, height: window.innerHeight * 0.14 })
+						{ className: 'bargraph' },
+						_react2.default.createElement(_reactChartjs.Bar, { data: this.bardata, options: this.baroptions, height: 50 })
 					)
 				);
 			}
@@ -60023,17 +60027,17 @@
 
 				this.datePicker = _react2.default.createElement(
 					'div',
-					{ style: { display: 'flex', position: 'absolute', right: window.innerWidth * 0.1, alignItems: 'center', justifyContent: 'center' } },
+					{ className: 'market-date-picker-container' },
 					_react2.default.createElement(
 						'div',
-						{ style: { width: 130 } },
+						{ className: 'date-input' },
 						_react2.default.createElement(
 							'p',
-							{ style: { fontSize: 12, marginBottom: 10, color: 'white', fontFamily: 'Courier New' } },
+							{ className: 'date-text' },
 							'Start Date'
 						),
 						_react2.default.createElement(Datetime, {
-							style: { width: 100 },
+							className: 'date-input',
 							onBlur: function onBlur(selectedDate) {
 								return _this.setStartDate(selectedDate);
 							},
@@ -60042,23 +60046,23 @@
 					),
 					_react2.default.createElement(
 						'div',
-						{ style: { marginLeft: 40, width: 130 } },
+						{ className: 'date-input' },
 						_react2.default.createElement(
 							'p',
-							{ style: { fontSize: 12, marginBottom: 10, color: 'white', fontFamily: 'Courier New' } },
+							{ className: 'date-text' },
 							'End Date'
 						),
 						_react2.default.createElement(Datetime, {
-							style: { width: 100 },
+							className: 'date-input',
 							onBlur: function onBlur(selectedDate) {
 								return _this.setEndDate(selectedDate);
 							},
 							dateFormat: 'YYYY-MM-DD', timeFormat: false
 						})
 					),
-					_react2.default.createElement('img', { src: 'https://s3-us-west-1.amazonaws.com/cointelmob/icons/enter_icon.png', style: { backgroundColor: 'white', width: 30, height: 30, marginLeft: 10, marginTop: 25, cursor: 'pointer' }, onClick: function onClick() {
+					_react2.default.createElement('img', { src: 'https://s3-us-west-1.amazonaws.com/cointelmob/icons/enter_icon.png', onClick: function onClick() {
 							return Actions.updatesendRequest();
-						} })
+						}, className: 'submit-button' })
 				);
 				return this.datePicker;
 			}
@@ -77182,7 +77186,7 @@
 
 
 	// module
-	exports.push([module.id, "\n.market-picker {\n\tmargin-left: 3em;\n}\n\n\n.market-picker-item {\n\n\tdisplay: flex; \n\tcursor: pointer; \n\tfont-family: 'Courier New';\n\tfont-size: 18;\n\n}\n\n\n.dropdown-arrow {\n\twidth: 1.5em; \n\theight: 1.5em;\n\tcursor: pointer;\n}", ""]);
+	exports.push([module.id, "\n.market-picker {\n\tmargin-left: 3em;\n}\n\n.market-picker-item {\n\n\tdisplay: flex; \n\tcursor: pointer; \n\tfont-family: 'Courier New';\n\tfont-size: 18;\n\n}\n\n.dropdown-arrow {\n\twidth: 1.5em; \n\theight: 1.5em;\n\tcursor: pointer;\n}\n\n\n.market-date-picker-container {\n\tdisplay: flex;\n\tposition: absolute; \n\tright: 1em;\n\talign-items: center;\n\tjustify-content: center;\n\talign-text: center; \n\n}\n\n.date-input {\n\twidth: 10em;\n\tmargin: 1em;\n}\n\n.submit-button {\n\tbackground-color: white;\n\twidth: 2.4em;\n\theight: 2.4em;\n\tmargin-top: 1.5em; \n\tmargin-left: 1em;\n\tcursor: pointer;\n}\n\n.date-text {\n\tmargin-left: 1.1em;\n\tfont-size: 12;\n\tmargin-bottom: 10; \n\tcolor: white;\n\tfont-family: 'Courier New';\n}\n\n.linegraph {\n\n\tmargin-top: 10em;\n\twidth: 75em;\n\theight: 20em;\n\tbackground-color: #414a4c;\n}\n\n.bargraph {\n\tdisplay: flex;\n\tmargin-top: 17em;\n\tmargin-right: 2em;\n\twidth: 77em; \n\tbackground-color: #414a4c;\n}\n\n\n.graph-page {\n\tdisplay: flex;\n    background-color: #414a4c;\n    align-items: center; \n    flex-direction: column;\n    margin-bottom: 20em;\n\n}\n\n", ""]);
 
 	// exports
 
