@@ -10,7 +10,7 @@ class App extends Component {
 
 	  render() {
 	        return(
-	        	<div style={{alignItems: 'center'}}> 
+	        	<div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: '#414a4c'	}}> 
 	        		<Header/>
 	        		<StockviewPage />
 	        	</div>

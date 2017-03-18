@@ -8,6 +8,7 @@ var Loading = require('react-loading');
 import MarketPicker from '../components/marketpicker';
 
 require('../css/react-datetime.css');
+require('../css/marketpicker.css');
 
 class MarketGraph {
 
@@ -26,6 +27,8 @@ class MarketGraph {
 				//
 				//
 				this.baroptions = {
+
+
 									fullWidth: false,
 
 								    legend: {
@@ -35,14 +38,17 @@ class MarketGraph {
 								    scales: {
 				 							
 								            xAxes: [{
-								                display: false, 
+								               
 								                barThickness: 2,
 								                type: 'time',
 											    ticks: {
 											    	fontFamily: 'Courier New',
 											    	fontColor: 'red',
 											    	fontSize: 12,
-											    	maxRotation: 90 // angle in degrees
+											    	maxRotation: 90, // angle in degrees
+											    	display: true,
+											    	maxTicksLimit: 10, 
+											    	autoSkip: true
 											    },
 						
 								                time: {
@@ -58,7 +64,7 @@ class MarketGraph {
 
 										    yAxes: [{
 											     scaleLabel: {
-											     	fontSize: 16,
+											     	fontSize: 24,
 											     	fontColor: 'red',
 											     	fontFamily: 'Courier New',
 											        display: true,
@@ -66,7 +72,7 @@ class MarketGraph {
 											        maxRotation: 90
 											     },
 							  					 ticks: {
-							  					 	fontSize: 8, 
+							  					 	fontSize: 18, 
 							  					 	fontColor: 'red',
 							  					 	fontFamily: 'Courier New',
 							  					 	stepSize: 0,
@@ -86,6 +92,8 @@ class MarketGraph {
 								//
 
 				this.lineoptions = {
+
+	
 					      title: {
 					            display: true,
 					            text: '',
@@ -130,6 +138,7 @@ class MarketGraph {
 							    	maxRotaion: 180,
 									autoSkip: true,
 		        					maxTicksLimit: 10,
+		        					display: false
 							       
 							    },
 				                time: {
@@ -211,32 +220,27 @@ class MarketGraph {
 					this.close.push(data[x].close);
 					this.volume.push(data[x].volume);
 				};
-
 				this.linedata.datasets.data = this.close;
 				this.linedata.labels = this.dates;
 				this.lineoptions.title.text = name;
-
 				this.bardata.datasets.data = this.volume;
 				this.bardata.labels = this.dates;
 				this.baroptions.scales.yAxes[0].ticks.stepSize = Math.max(this.volume);
 
 		
-
-			
 				return (
-						<div style={{display: 'flex',flexDirection: 'column', backgroundColor: '#414a4c', alignItems: 'center'}}>
+						<div className="graph-page">
+								
 								{this.setDatePicker()}
+								
+								<div className="linegraph">
+									<Line data={this.linedata} options={this.lineoptions}  />
+						
+								</div>
 							
-							<div>
-								<Line data={this.linedata} options={this.lineoptions} width={window.innerWidth*(0.95)} height={window.innerWidth*(0.46)} />
-							</div>
-
-
-							<div>
-								<Bar data={this.bardata} options={this.baroptions} width={window.innerWidth*(0.91)} height={window.innerHeight*(0.14)}/>
-    						</div>
-
-
+								<div className="bargraph">
+									<Bar data={this.bardata} options={this.baroptions} height={50}/>
+    							</div>
 
     					</div>
     				);
@@ -245,27 +249,29 @@ class MarketGraph {
 
 
 	setDatePicker(){
+
 		this.datePicker = (
-					<div style={{display: 'flex',position: 'absolute', right: window.innerWidth*(0.1),alignItems:'center', justifyContent:'center' }}>
-								<div style={{width: 130}}>
-									<p style={{fontSize: 12,marginBottom: 10, color: 'white',fontFamily: 'Courier New'}}>Start Date</p>
-												<Datetime
-													style={{width: 100}}
+					<div className="market-date-picker-container">
+
+								<div className="date-input">
+									<p className="date-text">Start Date</p>
+											<Datetime
+													className="date-input"
 													onBlur={(selectedDate)=> this.setStartDate(selectedDate)}
 													dateFormat="YYYY-MM-DD" timeFormat={false}
-												/>
+										/>
 								</div>
 
-								<div style={{marginLeft: 40, width: 130}}>
-									<p style={{fontSize: 12,marginBottom: 10, color: 'white',fontFamily: 'Courier New'}}>End Date</p>
+								<div className="date-input">
+									<p className="date-text">End Date</p>
 												<Datetime
-													style={{width: 100}}
+													className="date-input"
 													onBlur={(selectedDate)=> this.setEndDate(selectedDate)}
 													dateFormat="YYYY-MM-DD" timeFormat={false}
 												/>
 								</div>
 
-							<img src="https://s3-us-west-1.amazonaws.com/cointelmob/icons/enter_icon.png" style={{backgroundColor: 'white',width: 30, height: 30, marginLeft: 10, marginTop: 25, cursor: 'pointer'}} onClick={()=> Actions.updatesendRequest() }	/>
+							<img src="https://s3-us-west-1.amazonaws.com/cointelmob/icons/enter_icon.png" onClick={()=> Actions.updatesendRequest() }	className="submit-button"/>
 
 					</div>
 		);

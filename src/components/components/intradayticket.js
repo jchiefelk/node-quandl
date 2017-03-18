@@ -73,7 +73,7 @@ export default class IntraDayTicket extends Component {
 					sendRequestStatus:	StockDataStore.getRequestSendStatus()
 				});
 
-				console.log(this.state.sendRequestStatus, this.state.marketData.data.length);
+			
 				if(this.state.sendRequestStatus==true && this.state.marketData.data.length==0) {
 					this.sendRequest();
 				}
