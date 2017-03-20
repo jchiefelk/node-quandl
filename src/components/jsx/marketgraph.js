@@ -9,6 +9,7 @@ import MarketPicker from '../components/marketpicker';
 
 require('../css/react-datetime.css');
 require('../css/marketpicker.css');
+require('../css/main.css');
 
 class MarketGraph {
 
@@ -281,15 +282,15 @@ class MarketGraph {
 
 	setCompanyPicker(){
 		this.companyPicker = (
-					<div style={{display: 'flex', alignItems:'center', justifyContent: 'center', marginTop: 100, flexDirection: 'column' }}>
+					<div className="homepage">
 						
-						<div style={{display: 'flex',justifyContent: 'center',alignItems:'center', flexDirection: 'column'}}>
-							<h2 style={{fontStyle: 14, fontWeight: '400', fontFamily: 'Courier New'}}>Enter in stock letter code for any company listed on the NYSE.</h2>
-							<h2 style={{fontStyle: 14, fontWeight: '400', fontFamily: 'Courier New'}}>For example; DB, for Deutsche Bank.</h2>
+						<div className="homepage-instructions">
+							<div>Enter in stock letter code for any company listed on the NYSE.</div>
+							<div>For example; DB, for Deutsche Bank.</div>
 						</div>
 
-						<div style={{display: 'flex', justifyContent: 'center', marginTop: 10}}>
-							<input style={{fontSize: 18, fontWeight: '700',fontFamily: 'Courier New',height:30, width: 150}} onChange={(e) => this.updatecompanyCode(e) } />
+						<div className="homepage-marketpicker">
+							<input className="homepage-input" onChange={(e) => this.updatecompanyCode(e) } />
 							<img src="https://s3-us-west-1.amazonaws.com/cointelmob/icons/enter_icon.png" style={{width: 30, height: 30, marginLeft: 10, cursor: 'pointer'}} onClick={()=> Actions.updatesendRequest() }/>
 							
 							<MarketPicker  />

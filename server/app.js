@@ -10,6 +10,8 @@ const https = require('https');
 const fs = require('fs');
 const app = express();
 
+let Correlation = require('../modules/correlation');
+
 
 let _store;
 //
@@ -60,9 +62,12 @@ app.get('/markets', function(req,res){
 
 app.post('/api', function(req,res){
 
+    
+
     Quandl.getIntraDayTicket(req.body)
            .then(function(value) {
-                 res.json({general: value});  
+                Correlation.autocorrelation(value);
+                res.json({general: value});  
             })
             .catch(function(error){
                 console.log(error);

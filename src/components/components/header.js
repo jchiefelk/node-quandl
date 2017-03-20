@@ -1,5 +1,6 @@
 import React, {  Component } from 'react';
 import { Router, Route, Link } from 'react-router';
+require('../css/main.css');
 
 export default class Header extends Component {
 
@@ -23,8 +24,8 @@ export default class Header extends Component {
 	render() {
 
 	    return (
-	      <div style={{display: 'flex', height: 50, backgroundColor: 'black', alignItems: 'center' }}>
-			    <Link to="/" style={{fontWeight: '900',fontFamily: 'Courier New',fontSize: 18,color: 'white', position: 'absolute', top: 15,left: 25, cursor: 'pointer', textDecoration: 'none'  }}>Stock Analytics Boilerplate for Heroku Deployment</Link>	
+	      <div className="header">
+			    <Link to="/" className="header-link">Stock Analytics Boilerplate for Heroku Deployment</Link>	
 	      </div>
 	    );
 	}

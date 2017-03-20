@@ -9,7 +9,6 @@ export default class IntraDayTicket extends Component {
 
 			constructor(){
 				super();
-
 				this.state = {
 					data: null,
 					intraday: [],
@@ -43,8 +42,6 @@ export default class IntraDayTicket extends Component {
 
 			componentDidUpdate(){
 
-
-				
 			}
 
 			componentDidMount(){
