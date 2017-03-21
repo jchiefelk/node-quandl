@@ -321,13 +321,8 @@ $(obj).$(TOOLSET)/%.o: $(obj)/%.s FORCE_DO_CMD
 
 ifeq ($(strip $(foreach prefix,$(NO_LOAD),\
     $(findstring $(join ^,$(prefix)),\
-                 $(join ^,callback.target.mk)))),)
-  include callback.target.mk
-endif
-ifeq ($(strip $(foreach prefix,$(NO_LOAD),\
-    $(findstring $(join ^,$(prefix)),\
-                 $(join ^,returnobject.target.mk)))),)
-  include returnobject.target.mk
+                 $(join ^,correlation.target.mk)))),)
+  include correlation.target.mk
 endif
 
 quiet_cmd_regen_makefile = ACTION Regenerating $@
