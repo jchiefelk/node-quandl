@@ -5,10 +5,24 @@ Release/obj.target/correlation/build/addons/correlation.o: \
   /Users/ggt/.node-gyp/7.4.0/include/node/v8.h \
   /Users/ggt/.node-gyp/7.4.0/include/node/v8-version.h \
   /Users/ggt/.node-gyp/7.4.0/include/node/v8config.h \
-  /Users/ggt/.node-gyp/7.4.0/include/node/node_version.h
+  /Users/ggt/.node-gyp/7.4.0/include/node/node_version.h \
+  /Users/ggt/.node-gyp/7.4.0/include/node/uv.h \
+  /Users/ggt/.node-gyp/7.4.0/include/node/uv-errno.h \
+  /Users/ggt/.node-gyp/7.4.0/include/node/uv-version.h \
+  /Users/ggt/.node-gyp/7.4.0/include/node/uv-unix.h \
+  /Users/ggt/.node-gyp/7.4.0/include/node/uv-threadpool.h \
+  /Users/ggt/.node-gyp/7.4.0/include/node/uv-darwin.h \
+  /Users/ggt/.node-gyp/7.4.0/include/node/pthread-barrier.h
 ../build/addons/correlation.cc:
 /Users/ggt/.node-gyp/7.4.0/include/node/node.h:
 /Users/ggt/.node-gyp/7.4.0/include/node/v8.h:
 /Users/ggt/.node-gyp/7.4.0/include/node/v8-version.h:
 /Users/ggt/.node-gyp/7.4.0/include/node/v8config.h:
 /Users/ggt/.node-gyp/7.4.0/include/node/node_version.h:
+/Users/ggt/.node-gyp/7.4.0/include/node/uv.h:
+/Users/ggt/.node-gyp/7.4.0/include/node/uv-errno.h:
+/Users/ggt/.node-gyp/7.4.0/include/node/uv-version.h:
+/Users/ggt/.node-gyp/7.4.0/include/node/uv-unix.h:
+/Users/ggt/.node-gyp/7.4.0/include/node/uv-threadpool.h:
+/Users/ggt/.node-gyp/7.4.0/include/node/uv-darwin.h:
+/Users/ggt/.node-gyp/7.4.0/include/node/pthread-barrier.h:
