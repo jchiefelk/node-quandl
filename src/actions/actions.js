@@ -44,15 +44,12 @@ var makeMarketRequest = function() {
     });
 
 };
-
 //
 // averages of major indexes 
 //
 var makeGeneralRequest = function() {
        console.log('Get Engage');
-      // console.log(_store);
-
-
+       // console.log(_store);
        fetch('/api', {
             method: 'post',
             headers: {
@@ -60,31 +57,34 @@ var makeGeneralRequest = function() {
                   'Content-Type': 'application/json',
             },
             body: JSON.stringify(_store)
-           
           }).then(function(response) {
             if(response.status!=undefined){
               Actions.setStatus(response.status);
             }
             return response.json();
           }).then(function(data) {
-           //  console.log(data.general);
+             console.log(data);
              Actions.updateIntradDayData(data.general);
- 
+             Actions.updateAutocorrelation(data.autocorr);
           }).catch(function(error) {
               console.log(error);
           }); 
 };
 
-
-
 var Actions = {
-
 
   makeFrontEndRequest: function(item){
       _store = item;
      //  makeETFRequest();
       // makeMarketRequest();
       makeGeneralRequest();
+  },
+
+  updateAutocorrelation: function(item){
+    AppDispatcher.handleAction({
+      actionType: appConstants.AUTOCORRELATION_INTRADAY,
+      data: item
+    });
   },
 
   updateMarket: function(item){
@@ -152,8 +152,6 @@ var Actions = {
           data: item
       });
   }
-
-
 
 };
 module.exports = Actions;

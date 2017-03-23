@@ -18,7 +18,8 @@ export default class IntraDayTicket extends Component {
 					endDate: null, 
 					rangeSelected: false,
 					market: null,
-					companyCode: null
+					companyCode: null,
+					autocorrelation: null
 				};
 			}
 
@@ -67,10 +68,12 @@ export default class IntraDayTicket extends Component {
 					startDate: StockDataStore.getStartDate(),
 					endDate: StockDataStore.getEndDate(),
 					companyCode: StockDataStore.getCompanyCode(),
-					sendRequestStatus:	StockDataStore.getRequestSendStatus()
+					sendRequestStatus:	StockDataStore.getRequestSendStatus(),
+					autocorrelation: StockDataStore.getIntraDayAutocorrelation()
 				});
 
-			
+				// console.log(this.state.autocorrelation);
+
 				if(this.state.sendRequestStatus==true && this.state.marketData.data.length==0) {
 					this.sendRequest();
 				}

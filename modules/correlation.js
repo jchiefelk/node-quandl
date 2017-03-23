@@ -9,7 +9,7 @@ function Correlation(){
 
 Correlation.prototype.autocorrelation = function(obj) {
 
-
+	this.data = [];
 
 	for(var x = obj.dataset.data.length-1; x >=0 ; x--){
 			        let data = {

@@ -27163,7 +27163,8 @@
 				endDate: null,
 				rangeSelected: false,
 				market: null,
-				companyCode: null
+				companyCode: null,
+				autocorrelation: null
 			};
 			return _this;
 		}
@@ -27214,8 +27215,11 @@
 					startDate: StockDataStore.getStartDate(),
 					endDate: StockDataStore.getEndDate(),
 					companyCode: StockDataStore.getCompanyCode(),
-					sendRequestStatus: StockDataStore.getRequestSendStatus()
+					sendRequestStatus: StockDataStore.getRequestSendStatus(),
+					autocorrelation: StockDataStore.getIntraDayAutocorrelation()
 				});
+
+				// console.log(this.state.autocorrelation);
 
 				if (this.state.sendRequestStatus == true && this.state.marketData.data.length == 0) {
 					this.sendRequest();
@@ -27261,7 +27265,8 @@
 	    startDate: null,
 	    endDate: null,
 	    companyCode: null,
-	    sendRequestStatus: false
+	    sendRequestStatus: false,
+	    autocorr: []
 	  };
 	};
 
@@ -27330,6 +27335,9 @@
 	  },
 	  getRequestSendStatus: function getRequestSendStatus() {
 	    return Stocks.IntraDay.sendRequestStatus;
+	  },
+	  getIntraDayAutocorrelation: function getIntraDayAutocorrelation() {
+	    return Stocks.IntraDay.autocorr;
 	  }
 
 	});
@@ -27362,6 +27370,12 @@
 	      } else {
 	        Stocks.IntraDay.sendRequestStatus = false;
 	      }
+	      StockDataStore.emitChange(CHANGE_EVENT);
+	      break;
+	    case appConstants.AUTOCORRELATION_INTRADAY:
+	      console.log(action.data);
+	      Stocks.IntraDay.autocorr = [];
+	      Stocks.IntraDay.autocorr = action.data;
 	      StockDataStore.emitChange(CHANGE_EVENT);
 	      break;
 	    default:
@@ -27660,7 +27674,8 @@
 	  STARTDATE: "STARTDATE",
 	  ENDDATE: "ENDDATE",
 	  COMPANY_CODE: "COMPANY_CODE",
-	  SEND_REQUEST: "SEND_REQUEST"
+	  SEND_REQUEST: "SEND_REQUEST",
+	  AUTOCORRELATION_INTRADAY: "AUTOCORRELATION_INTRADAY"
 	};
 	module.exports = appConstants;
 
@@ -42917,15 +42932,12 @@
 	    console.log(error);
 	  });
 	};
-
 	//
 	// averages of major indexes 
 	//
 	var makeGeneralRequest = function makeGeneralRequest() {
 	  console.log('Get Engage');
 	  // console.log(_store);
-
-
 	  fetch('/api', {
 	    method: 'post',
 	    headers: {
@@ -42933,15 +42945,15 @@
 	      'Content-Type': 'application/json'
 	    },
 	    body: JSON.stringify(_store)
-
 	  }).then(function (response) {
 	    if (response.status != undefined) {
 	      Actions.setStatus(response.status);
 	    }
 	    return response.json();
 	  }).then(function (data) {
-	    //  console.log(data.general);
+	    console.log(data);
 	    Actions.updateIntradDayData(data.general);
+	    Actions.updateAutocorrelation(data.autocorr);
 	  }).catch(function (error) {
 	    console.log(error);
 	  });
@@ -42954,6 +42966,13 @@
 	    //  makeETFRequest();
 	    // makeMarketRequest();
 	    makeGeneralRequest();
+	  },
+
+	  updateAutocorrelation: function updateAutocorrelation(item) {
+	    AppDispatcher.handleAction({
+	      actionType: appConstants.AUTOCORRELATION_INTRADAY,
+	      data: item
+	    });
 	  },
 
 	  updateMarket: function updateMarket(item) {

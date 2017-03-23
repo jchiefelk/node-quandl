@@ -40,7 +40,8 @@ namespace correlation {
 
 		    // Compute Autocorrelation
 		    int maxTau = work->length;
-		    work->autocorrelation[maxTau];
+
+		    
 		    for(int tau=0; tau<maxTau;tau++){
 		    	for(int t = 0;t<maxTau-tau;t++){
 					
@@ -59,7 +60,7 @@ namespace correlation {
 		// called by libuv in event loop when async function completes
 		static void WorkAsyncComplete(uv_work_t *req,int status)
 		{
-		    Isolate * isolate = Isolate::GetCurrent();
+		    Isolate* isolate = Isolate::GetCurrent();
 		    v8::HandleScope handleScope(isolate); // Required for Node 4.x
 		    Work *work = static_cast<Work *>(req->data);
   			Local<Array> result_list = Array::New(isolate);
@@ -71,43 +72,51 @@ namespace correlation {
    			Handle<Value> argv[] = { result_list };
     		// execute the callback
     		
-    		Local<Function>::New(isolate, work->callback)->
-      		Call(isolate->GetCurrentContext()->Global(), 1, argv);
+    		Local<Function>::New(isolate, work->callback)->Call(isolate->GetCurrentContext()->Global(), 1, argv);
 		    
 		    // Free up the persistent function callback
 	    	work->callback.Reset();
+	    
 		    delete work;
 		}
 
 
-		void Correlation(const FunctionCallbackInfo<Value>&args){
+		void Correlation(const v8::FunctionCallbackInfo<v8::Value>&args){
 			Isolate* isolate = args.GetIsolate();
-			// Convert v8 data to C++ array
-			cout << "Correlation Test";
 		    //
 		    // Worker Thread
 		    //
-		    Work * work = new Work();
+		    Work *work = new Work;
     		work->request.data = work;
-		    Local<Array> input = Local<Array>::Cast(args[0]);
-		    work->length = input->Length();
+		
+		 //   Local<Array> input = Local<Array>::Cast(args[0]);
+		    
+		    work->length = Local<Array>::Cast(args[0])->Length(); 
+		    // work->length = input->Length();
+	
+ 			cout << "Test Start" << "\n";
+			cout << work->length << "\n";
+
+ 			// cout << work->length;
 		    for(int x=0;x<work->length;x++){
-		    	 v8::Handle<Value> end_Value = input->Get(x);
-		    	 work->IntradayEnd[x] = end_Value->NumberValue();
+		    	v8::Local<Value> end_Value = Local<Array>::Cast(args[0])->Get(x);
+				//work->IntradayEnd[x] = input->Get(x);
+		    	work->IntradayEnd[x] = end_Value->NumberValue();
 				 
 		    };
+
+		    // cout << "Test End";
 		    // store the callback from JS in the work package so we can 
 		    // invoke it later
 		    Local<Function> callback = Local<Function>::Cast(args[1]);
+		   
 		    work->callback.Reset(isolate, callback);
+		    
 		    // kick of the worker thread
     	 	uv_queue_work(uv_default_loop(),&work->request, WorkAsync, WorkAsyncComplete);
     		args.GetReturnValue().Set(Undefined(isolate));
-		    //
-		    //
-		   	// ... and send it back to Node.js as the return value
-		    // Return the list
-		   	// args.GetReturnValue().Set(result_list);
+
+
 		}
 
 

@@ -16,7 +16,8 @@ function StockData(){
         startDate: null,
         endDate: null,
         companyCode: null,
-        sendRequestStatus: false
+        sendRequestStatus: false, 
+        autocorr: []
     };
 };
 
@@ -89,6 +90,9 @@ var StockDataStore = objectAssign({}, EventEmitter.prototype, {
   },
   getRequestSendStatus: function(){
     return Stocks.IntraDay.sendRequestStatus;
+  },
+  getIntraDayAutocorrelation: function(){
+    return Stocks.IntraDay.autocorr;
   }
 
 });
@@ -122,6 +126,12 @@ AppDispatcher.register(function(payload){
           Stocks.IntraDay.sendRequestStatus = false;
       }
       StockDataStore.emitChange(CHANGE_EVENT);
+      break;
+    case appConstants.AUTOCORRELATION_INTRADAY:
+        console.log(action.data);
+        Stocks.IntraDay.autocorr = [];
+        Stocks.IntraDay.autocorr = action.data;
+        StockDataStore.emitChange(CHANGE_EVENT);
       break;
     default:
       return true;

@@ -23,7 +23,6 @@ var markets = {
 			apiKey: 'hp2sm_6zVAoffDrYgzBi'
 		},
 
-
 		 gasfutures_rbob_params: {
 			code: 'RB1',
 			market: 'CME',

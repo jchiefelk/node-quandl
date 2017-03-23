@@ -66,10 +66,16 @@ app.post('/api', function(req,res){
 
     Quandl.getIntraDayTicket(req.body)
            .then(function(value) {
-                // res.json({general: value}); 
+                market = value;
                 return Correlation.autocorrelation(value)
             })
-           .then((result) => console.log(result) )
+           .then((result) => {
+                res.json({
+                  general: market,
+                  autocorr: result
+                });
+                market = null;
+            })
            .catch(function(error){
                 console.log(error);
                 res.json({error: error});
