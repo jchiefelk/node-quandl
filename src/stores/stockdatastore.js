@@ -6,7 +6,12 @@ var EventEmitter = require('events').EventEmitter;
 var CHANGE_EVENT = 'change';
 var moment = require('moment');
 
+function DailyData(){
+      this.etfdata = null;
+      this.marketdata = null;
+};
 
+let FrontEndData = new DailyData();
 
 function StockData(){
     this.IntraDay = {
@@ -93,13 +98,25 @@ var StockDataStore = objectAssign({}, EventEmitter.prototype, {
   },
   getIntraDayAutocorrelation: function(){
     return Stocks.IntraDay.autocorr;
+  },
+  getDailyETFData: function(){
+    return FrontEndData.etfdata;
+  },
+  getDailyMarketData: function(){
+    return FrontEndData.marketdata;
   }
+
 
 });
 
 AppDispatcher.register(function(payload){
   var action = payload.action;
   switch(action.actionType){
+    case appConstants.UPDATE_FRONTEND_DATA:
+      FrontEndData.etfdata = action.data.etfdata;
+      FrontEndData.marketdata = action.data.marketdata;
+      StockDataStore.emitChange(CHANGE_EVENT);
+      break;
     case appConstants.MARKET:
       Stocks.updateMarket(action.data);
       StockDataStore.emitChange(CHANGE_EVENT);

@@ -27194,7 +27194,7 @@
 			key: 'componentDidMount',
 			value: function componentDidMount() {
 				StockDataStore.addChangeListener(this._onChange.bind(this));
-
+				Actions.getDailyFrontEndData();
 				this.setState({
 					intraDayView: MarketGraph.setCompanyPicker()
 				});
@@ -27216,10 +27216,13 @@
 					endDate: StockDataStore.getEndDate(),
 					companyCode: StockDataStore.getCompanyCode(),
 					sendRequestStatus: StockDataStore.getRequestSendStatus(),
-					autocorrelation: StockDataStore.getIntraDayAutocorrelation()
+					autocorrelation: StockDataStore.getIntraDayAutocorrelation(),
+					dailyetfData: StockDataStore.getDailyETFData(),
+					dailymarketData: StockDataStore.getDailyMarketData()
 				});
 
-				// console.log(this.state.autocorrelation);
+				console.log(this.state.dailyetfData);
+				console.log(this.state.dailymarketData);
 
 				if (this.state.sendRequestStatus == true && this.state.marketData.data.length == 0) {
 					this.sendRequest();
@@ -27256,6 +27259,13 @@
 	var EventEmitter = __webpack_require__(247).EventEmitter;
 	var CHANGE_EVENT = 'change';
 	var moment = __webpack_require__(248);
+
+	function DailyData() {
+	  this.etfdata = null;
+	  this.marketdata = null;
+	};
+
+	var FrontEndData = new DailyData();
 
 	function StockData() {
 	  this.IntraDay = {
@@ -27338,6 +27348,12 @@
 	  },
 	  getIntraDayAutocorrelation: function getIntraDayAutocorrelation() {
 	    return Stocks.IntraDay.autocorr;
+	  },
+	  getDailyETFData: function getDailyETFData() {
+	    return FrontEndData.etfdata;
+	  },
+	  getDailyMarketData: function getDailyMarketData() {
+	    return FrontEndData.marketdata;
 	  }
 
 	});
@@ -27345,6 +27361,11 @@
 	AppDispatcher.register(function (payload) {
 	  var action = payload.action;
 	  switch (action.actionType) {
+	    case appConstants.UPDATE_FRONTEND_DATA:
+	      FrontEndData.etfdata = action.data.etfdata;
+	      FrontEndData.marketdata = action.data.marketdata;
+	      StockDataStore.emitChange(CHANGE_EVENT);
+	      break;
 	    case appConstants.MARKET:
 	      Stocks.updateMarket(action.data);
 	      StockDataStore.emitChange(CHANGE_EVENT);
@@ -27675,7 +27696,8 @@
 	  ENDDATE: "ENDDATE",
 	  COMPANY_CODE: "COMPANY_CODE",
 	  SEND_REQUEST: "SEND_REQUEST",
-	  AUTOCORRELATION_INTRADAY: "AUTOCORRELATION_INTRADAY"
+	  AUTOCORRELATION_INTRADAY: "AUTOCORRELATION_INTRADAY",
+	  UPDATE_FRONTEND_DATA: "UPDATE_FRONTEND_DATA"
 	};
 	module.exports = appConstants;
 
@@ -42949,7 +42971,6 @@
 	    if (response.status != undefined) {
 	      Actions.setStatus(response.status);
 	    }
-	    return response.json();
 	  }).then(function (data) {
 	    console.log(data);
 	    Actions.updateIntradDayData(data.general);
@@ -42959,7 +42980,33 @@
 	  });
 	};
 
+	var getFrontEndData = function getFrontEndData() {
+
+	  fetch('/frontenddata', {
+	    method: 'get',
+	    accept: 'application/json'
+	  }).then(function (response) {
+	    return response.json();
+	  }).then(function (data) {
+
+	    Actions.updateFrontEndData(data);
+	  }).catch(function (error) {
+	    console.log(error);
+	  });
+	};
+
 	var Actions = {
+
+	  getDailyFrontEndData: function getDailyFrontEndData() {
+	    getFrontEndData();
+	  },
+
+	  updateFrontEndData: function updateFrontEndData(item) {
+	    AppDispatcher.handleAction({
+	      actionType: appConstants.UPDATE_FRONTEND_DATA,
+	      data: item
+	    });
+	  },
 
 	  makeFrontEndRequest: function makeFrontEndRequest(item) {
 	    _store = item;

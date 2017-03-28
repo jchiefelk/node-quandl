@@ -61,7 +61,6 @@ var makeGeneralRequest = function() {
             if(response.status!=undefined){
               Actions.setStatus(response.status);
             }
-            return response.json();
           }).then(function(data) {
              console.log(data);
              Actions.updateIntradDayData(data.general);
@@ -71,7 +70,40 @@ var makeGeneralRequest = function() {
           }); 
 };
 
+
+
+
+var getFrontEndData = function(){
+
+  fetch('/frontenddata', {
+        method: 'get',
+        accept: 'application/json'
+  })
+  .then((response)=> {
+    return response.json();
+  })
+  .then((data) =>{
+
+      Actions.updateFrontEndData(data);
+  })
+  .catch((error)=>{
+      console.log(error);
+  });
+};
+
 var Actions = {
+
+  getDailyFrontEndData: function(){
+      getFrontEndData();
+  },
+
+  updateFrontEndData: function(item){
+    AppDispatcher.handleAction({
+      actionType: appConstants.UPDATE_FRONTEND_DATA,
+      data: item
+    });
+
+  },
 
   makeFrontEndRequest: function(item){
       _store = item;
