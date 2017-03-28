@@ -51,12 +51,14 @@ Quandl.prototype.getETFData = function(params){
 	this.etfiterator = 0;
 	this.etfpromiseArray = [];
 	this.quandlETFResults = [];
-	let date = new Date();
-	let url,
-	startDate =  moment(new Date()).format('YYYY-MM-DD'),
+
+	let url;
+	var startDate, endDate;
+	startDate =  moment(new Date().setFullYear(2016)).format('YYYY-MM-DD'),
 	endDate =  moment().format('YYYY-MM-DD');
+
 	for(var k in ETF){
-					url = quandl_url+ETF[k].db+'/'+ETF[k].market+'_'+ETF[k].code+'.json?api_key='+api_key;
+					url = quandl_url+ETF[k].db+'/'+ETF[k].market+'_'+ETF[k].code+'.json?start_date='+startDate+'&end_date='+endDate+'.json?api_key='+api_key;
 					this.etfpromiseArray.push(url);
 	};
 	return this.fetchETFData()
@@ -101,11 +103,12 @@ Quandl.prototype.getMarketData = function(item){
 	this.quandlMarketResults = [];
 	let date = new Date();
 	let url,
-	promise = null,
-	startDate =  moment(new Date()).format('YYYY-MM-DD'),
+	promise = null;
+	var startDate, endDate;
+	startDate =  moment(new Date().setFullYear(2016)).format('YYYY-MM-DD'),
 	endDate =  moment().format('YYYY-MM-DD');
 	for(var k in Market){
-					url = quandl_url+Market[k].db+'/'+Market[k].market+'_'+Market[k].code+'.json?api_key='+api_key;
+					url = quandl_url+Market[k].db+'/'+Market[k].market+'_'+Market[k].code+'.json?start_date='+startDate+'&end_date='+endDate+'.json?api_key='+api_key;
 					this.marketpromiseArray.push(url);
 	};
 
@@ -118,7 +121,7 @@ Quandl.prototype.getMarketData = function(item){
 
 Quandl.prototype.getIntraDayTicket = function(params){
 	let url;
-	let startDate, endDate;
+	var startDate, endDate;
 	startDate =  moment(new Date().setFullYear(2016)).format('YYYY-MM-DD'),
 	endDate =  moment().format('YYYY-MM-DD');
 	if( params.startDate==null || params.endDate==null) {
