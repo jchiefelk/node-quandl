@@ -47,7 +47,7 @@ export default class IntraDayTicket extends Component {
 
 			componentDidMount(){
 				StockDataStore.addChangeListener(this._onChange.bind(this));
-				Actions.getDailyFrontEndData();
+			
 				this.setState({
 					intraDayView: MarketGraph.setCompanyPicker()
 				});
@@ -70,12 +70,9 @@ export default class IntraDayTicket extends Component {
 					companyCode: StockDataStore.getCompanyCode(),
 					sendRequestStatus:	StockDataStore.getRequestSendStatus(),
 					autocorrelation: StockDataStore.getIntraDayAutocorrelation(),
-					dailyetfData: StockDataStore.getDailyETFData(),
-					dailymarketData: StockDataStore.getDailyMarketData()
+
 				});
 
-					console.log(this.state.dailyetfData);
-					console.log(this.state.dailymarketData);
 
 				if(this.state.sendRequestStatus==true && this.state.marketData.data.length==0) {
 					this.sendRequest();
