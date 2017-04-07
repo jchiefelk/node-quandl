@@ -24,8 +24,8 @@ namespace correlation {
 		struct Work {
 		  uv_work_t  request;
 		  Persistent<Function> callback;
-		  float autocorrelation[500];
-		  float IntradayEnd[500];
+		  float autocorrelation[10000];
+		  float IntradayEnd[10000];
 		  int length;
 		};
 
@@ -39,21 +39,23 @@ namespace correlation {
 		   
 
 		    // Compute Autocorrelation
-		    int maxTau = work->length;
-
-		    
+		    int maxTau = 365;
 		    for(int tau=0; tau<maxTau;tau++){
 		    	for(int t = 0;t<maxTau-tau;t++){
-					
-		    		work->autocorrelation[tau] = work->IntradayEnd[t]*work->IntradayEnd[t+tau];	
+		    		// cout << work->IntradayEnd[t] << "\t" << work->IntradayEnd[t+tau] << "\n";
+		    		work->autocorrelation[tau] += work->IntradayEnd[t]*work->IntradayEnd[t+tau];	
 		    	};
 		    	work->autocorrelation[tau]/=((maxTau-tau)); // Normalize Autocorrelation Function
-		    
 		    };
+		    float NormFactor = work->autocorrelation[0];
+		  	
+		    for(int i=0;i<maxTau;i++){
+		   		work->autocorrelation[i]/=NormFactor;
+			};
+			
 			//
 		    // that wasn't really that long of an operation, 
 		    // so lets pretend it took longer...
-
 		    sleep(3);
 		}
 

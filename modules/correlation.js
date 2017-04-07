@@ -7,10 +7,11 @@ function Correlation(){
 }; 
 
 
-Correlation.prototype.autocorrelation = function(obj) {
-
+Correlation.prototype.stockprice_autocorrelation = function(obj) {
+	//
+	// Stock Price Autocorrelation
+	//
 	this.data = [];
-
 	for(var x = obj.dataset.data.length-1; x >=0 ; x--){
 			        let data = {
 			          date: obj.dataset.data[x][0],
@@ -22,24 +23,24 @@ Correlation.prototype.autocorrelation = function(obj) {
 			        } 
 			        this.data.push(obj.dataset.data[x][4]);
 	};
-
 	let data = this.data;
-
-
 	return new Promise(function(resolve,reject){
-
-			
-
 			correlation(data, function(results) {
-
-
-	              resolve(results);
-	            
-			});
-
-			
+	              resolve(results); 
+			});	
 	});
 
 };
 
+
+Correlation.prototype.market_fund_autocorrelatation = function(correlate){
+
+	return new Promise(function(resolve,reject){
+			correlation(correlate,function(results){
+					resolve(results);
+			});
+
+	});
+
+};
 module.exports = new Correlation();

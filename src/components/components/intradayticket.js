@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 var StockDataStore = require('../../stores/stockdatastore');
 var Actions = require('../../actions/actions');
 var MarketGraph = require('../jsx/marketgraph');
+var CandleStickGraph = require('../jsx/candlestickplot');
 
 
 export default class IntraDayTicket extends Component {
@@ -19,7 +20,10 @@ export default class IntraDayTicket extends Component {
 					rangeSelected: false,
 					market: null,
 					companyCode: null,
-					autocorrelation: null
+					autocorrelation: null,
+					storeupdated: false,
+					intraDayAutocorrelation: null,
+					intraDayCandleStick: null
 				};
 			}
 
@@ -34,20 +38,42 @@ export default class IntraDayTicket extends Component {
 							endDate: this.state.endDate
 
 						};
-						Actions.makeFrontEndRequest(params);
-						this.setState({
-							intraDayView: MarketGraph.setLoadingAnimation()	
-						});
-							
+				
+						this.setState({	intraDayView: MarketGraph.setLoadingAnimation()	});
+						Actions.updatesendRequest();
+						Actions.makeFrontEndRequest(params);			
 			}
 
 			componentDidUpdate(){
+
+				if(this.state.storeupdated==true &&	this.state.sendRequestStatus==true) {
+					this.setState({
+						storeupdated: false,
+						sendRequestStatus: false,
+						intraDayView: null,
+						intraDayAutocorrelation: null,
+						intraDayCandleStick: null
+					});
+					this.sendRequest();
+				}
+
+				if(this.state.storeupdated==true && this.state.marketData.data.length>0){
+						if(this.state.marketData.data.length>0){
+								this.setState({
+									storeupdated: false,
+									marketData: null,
+									intraDayView: MarketGraph.setIntradayGraphView(this.state.marketData.data, this.state.marketData.autocorr, this.state.marketData.name)
+									// intraDayAutocorrelation: MarketGraph.setIntradayAutocorrelation(this.state.marketData.autocorr)
+
+								});
+						}
+				}
+
 
 			}
 
 			componentDidMount(){
 				StockDataStore.addChangeListener(this._onChange.bind(this));
-			
 				this.setState({
 					intraDayView: MarketGraph.setCompanyPicker()
 				});
@@ -56,8 +82,6 @@ export default class IntraDayTicket extends Component {
 			componentWillUnmount(){
 				StockDataStore.removeChangeListener(this._onChange.bind(this));
 			}
-
-
 
 			_onChange(){
 
@@ -69,27 +93,11 @@ export default class IntraDayTicket extends Component {
 					endDate: StockDataStore.getEndDate(),
 					companyCode: StockDataStore.getCompanyCode(),
 					sendRequestStatus:	StockDataStore.getRequestSendStatus(),
-					autocorrelation: StockDataStore.getIntraDayAutocorrelation(),
-
+					storeupdated: true
 				});
-
-
-				if(this.state.sendRequestStatus==true && this.state.marketData.data.length==0) {
-					this.sendRequest();
-				}
-
-
-				if(this.state.marketData.data.length>0){
-					this.setState({
-						marketData: null,
-						intraDayView: MarketGraph.setGraphView(this.state.marketData.data,	this.state.marketData.name)
-					});
-				}
-
-			
 			}
 
 			render(){
-				return(this.state.intraDayView);
+				return this.state.intraDayView;
 			}
 }

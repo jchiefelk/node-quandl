@@ -6,14 +6,14 @@ var ETF = {
 	* Commodity ETFs
 	**/
 
-
+/**
 	// Oil ETFS
 	commodity_uso: {
 			code: 'USO',
 			market: 'NYSE',
 			db: 'GOOG'
 		
-	},
+	}
 
 	// Natural Gas
 	commodity_ung: {
@@ -21,14 +21,14 @@ var ETF = {
 			market: 'NYSE',
 			db: 'GOOG'
 	},
-
+	***/
 	// Gold ETFS
 	commodity_spdr_gld: {
 			code: 'GLD',
 			market: 'AMEX',
 			db: 'GOOG'
 	},
-
+	/***
 	commodity_ishares_iau: {
 			code: 'IAU',
 			market: 'AMEX',
@@ -50,9 +50,10 @@ var ETF = {
 		
 	},
 
-	/**
-	* Sector ETF
-	**/
+	// 
+	// Sector ETFs
+	//
+	
 	sector_energy_xle: {
 			code: 'XLE',
 			market: 'AMEX',
@@ -84,6 +85,9 @@ var ETF = {
 			market: 'NYSEARCA',
 			db: 'GOOG'
 	}
+
+
+	****/
 };
 
 module.exports = ETF;

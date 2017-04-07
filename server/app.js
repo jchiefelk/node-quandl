@@ -14,29 +14,40 @@ let _store;
 let Promise = require('bluebird');
 let marketData = null;
 let etfData = null;
+let etf=[];
+let market=[];
+let etf_autocorrelation=[];
+let market_autocorrelation=[];
 /**
   Quandl Calls that are made once per day
 **/
 function Interval(){
   this.etfData = null;
   this.marketData = null;
+  this.etf=[];
+  this.market=[];
 };
 Interval.prototype.startInterval = function(){
     Quandl.getMarketData()
              .then(function(value) {
-                      marketData = value;
-                      return Quandl.getETFData();
+                     // console.log(value);
+                    marketData =  value.data;
+                    market_autocorrelation = value.correlation;
+                    return Quandl.getETFData();
                   })
-                  .then(function(result) {
-                        etfData = result;
+                  .then((result) => {
+         
+                      etfData = result.data;
+                      etf_autocorrelation = result.correlation;
                   })
                   .catch(function(error){
                       console.log(error);
                   });
+
 };
 let routine =  new Interval();
 routine.startInterval();
-setInterval( routine.startInterval, 86400000 );
+// setInterval( routine.startInterval, 86400000 );
 //
 // Required for POST Requests
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -50,15 +61,13 @@ app.use(express.static(path.resolve(__dirname, '..', 'build')));
 //
 var routes = require('./routes');
 app.use('/', routes);
-
 app.get('/etf', function(req,res){
-
         Quandl.getETFData()
             .then(function(value) {
                  res.json({etf: value});  
             })
             .catch(function(error){
-              console.log(error);
+                console.log(error);
                 res.json({error: error});
                 next(error);
             });             
@@ -82,14 +91,22 @@ app.post('/api', function(req,res){
     Quandl.getIntraDayTicket(req.body)
            .then(function(value) {
                 market = value;
-                return Correlation.autocorrelation(value)
+                console.log(req.body);
+                let request = req.body;
+                request.startDate = 'start';
+                request.endDate = 'end';
+                // 
+                return Quandl.getIntraDayTicket(request) // Get ALL Historicall Data for Autocorrelation
+            })
+            .then((value) =>{
+                return Correlation.stockprice_autocorrelation(value)
             })
            .then((result) => {
+                autocorr=result;
                 res.json({
-                  general: market,
-                  autocorr: result
+                    general: market,
+                    autocorr: autocorr
                 });
-                market = null;
             })
            .catch(function(error){
                 console.log(error);
@@ -99,9 +116,13 @@ app.post('/api', function(req,res){
 });
 
 app.get('/frontenddata',function(req,res){
+
+  
     res.json({
       marketdata: marketData,
-      etfdata: etfData
+      etfdata: etfData,
+      etf_autocorrelation: etf_autocorrelation,
+      market_autocorrelation: market_autocorrelation
     });
 });
 

@@ -1,6 +1,7 @@
 'use strict';
 let Promise = require('bluebird');
-let api_key = 'hp2sm_6zVAoffDrYgzBi';
+let api_key = 'oaWPkjrfz_aQmyPmE-WT';
+let Correlation = require('./correlation');
 let quandl_url = 'https://www.quandl.com/api/v3/datasets/';
 let ETF = require('./data/etf');
 let Market = require('./data/markets');
@@ -33,7 +34,12 @@ Quandl.prototype.ETFrecursion = function(){
 	
 
 Quandl.prototype.fetchETFData = function(){
-
+		let data =[]; 
+		let correlate=[];
+		let results={
+			data: [],
+			correlation: []
+		};
 		return this.ETFrecursion()
 			.then( ( responseJson ) => {
 					 	this.quandlETFResults.push(responseJson);
@@ -43,6 +49,30 @@ Quandl.prototype.fetchETFData = function(){
 					 	
 					 		return this.quandlETFResults;
 					 	}
+			})
+			.then(function(value) {
+                      for(var x=0;x <365;x++) {
+            
+                          results.data.push({
+                                name: value[0].dataset.name,
+                                date: value[0].dataset.data[x][0],
+                                open: value[0].dataset.data[x][1],
+                                high: value[0].dataset.data[x][2],
+                                low:  value[0].dataset.data[x][3],
+                                close: value[0].dataset.data[x][4],
+                                volume: value[0].dataset.data[x][5]
+                          });
+                      };
+
+                      for(var x = 0; x < value[0].dataset.data.length ; x++){
+                            correlate.push(value[0].dataset.data[x][1]);
+                      };
+
+                      return Correlation.market_fund_autocorrelatation(correlate);    
+            })
+			.then((result)=>{
+				results.correlation = result;
+				return results;
 			});
 };
 
@@ -58,13 +88,14 @@ Quandl.prototype.getETFData = function(params){
 	endDate =  moment().format('YYYY-MM-DD');
 
 	for(var k in ETF){
-					url = quandl_url+ETF[k].db+'/'+ETF[k].market+'_'+ETF[k].code+'.json?start_date='+startDate+'&end_date='+endDate+'.json?api_key='+api_key;
-					this.etfpromiseArray.push(url);
+					// url = quandl_url+ETF[k].db+'/'+ETF[k].market+'_'+ETF[k].code+'.json?start_date='+startDate+'&end_date='+endDate+'&api_key='+api_key;
+			url = quandl_url+ETF[k].db+'/'+ETF[k].market+'_'+ETF[k].code+'.json?api_key='+api_key;		
+			this.etfpromiseArray.push(url);
 	};
 	return this.fetchETFData()
 			.then(function(res) {
 	  			return res;
-			});
+			});	
 
 };
 
@@ -81,7 +112,12 @@ Quandl.prototype.Marketrecursion = function(){
 	
 
 Quandl.prototype.fetchMarketData = function(){
-
+		let data =[]; 
+		let correlate=[];
+		let results={
+			data: [],
+			correlation: []
+		};
 		return this.Marketrecursion()
 			.then( ( responseJson ) => {
 						
@@ -92,7 +128,31 @@ Quandl.prototype.fetchMarketData = function(){
 					
 					 		return this.quandlMarketResults;
 					 	}
+			})
+			.then(function(value) {
+                      for(var x=0;x <365;x++) {
+                          //console.log(marketData[0].dataset.data[x][1]);
+                          results.data.push({
+                              name:  value[0].dataset.name,
+                              date:  value[0].dataset.data[x][0],
+                              value:  value[0].dataset.data[x][1]
+                          });
+                      };
+
+                      for(var x = 0; x < value[0].dataset.data.length ; x++){
+                            correlate.push(value[0].dataset.data[x][1]);
+                      };
+
+                      return Correlation.market_fund_autocorrelatation(correlate);    
+            })
+			.then((result)=>{
+				results.correlation = result;
+				return results;
 			});
+
+
+
+            	
 };
 
 
@@ -108,8 +168,9 @@ Quandl.prototype.getMarketData = function(item){
 	startDate =  moment(new Date().setFullYear(2016)).format('YYYY-MM-DD'),
 	endDate =  moment().format('YYYY-MM-DD');
 	for(var k in Market){
-					url = quandl_url+Market[k].db+'/'+Market[k].market+'_'+Market[k].code+'.json?start_date='+startDate+'&end_date='+endDate+'.json?api_key='+api_key;
-					this.marketpromiseArray.push(url);
+					// url = quandl_url+Market[k].db+'/'+Market[k].market+'_'+Market[k].code+'.json?start_date='+startDate+'&end_date='+endDate+'&api_key='+api_key;
+				url = quandl_url+Market[k].db+'/'+Market[k].market+'_'+Market[k].code+'.json?api_key='+api_key;
+				this.marketpromiseArray.push(url);
 	};
 
 	return this.fetchMarketData()
@@ -124,10 +185,15 @@ Quandl.prototype.getIntraDayTicket = function(params){
 	var startDate, endDate;
 	startDate =  moment(new Date().setFullYear(2016)).format('YYYY-MM-DD'),
 	endDate =  moment().format('YYYY-MM-DD');
+	
 	if( params.startDate==null || params.endDate==null) {
-		url = quandl_url+params.db+'/'+params.market+'_'+params.code+'.json?start_date='+startDate+'&end_date='+endDate+'&api_key='+params.apiKey;
+		url = quandl_url+params.db+'/'+params.market+'_'+params.code+'.json?start_date='+startDate+'&end_date='+endDate+'&api_key='+api_key;
 	} else {
-		url = quandl_url+params.db+'/'+params.market+'_'+params.code+'.json?start_date='+params.startDate+'&end_date='+params.endDate+'&api_key='+params.apiKey;
+		url = quandl_url+params.db+'/'+params.market+'_'+params.code+'.json?start_date='+params.startDate+'&end_date='+params.endDate+'&api_key='+api_key;
+	}
+
+	if(params.startDate=='start' && params.endDate=='end'){
+		url = quandl_url+params.db+'/'+params.market+'_'+params.code+'.json?api_key='+api_key;
 	}
 
 	return fetch(url, {
@@ -138,6 +204,7 @@ Quandl.prototype.getIntraDayTicket = function(params){
 			.then( ( responseJson ) => {
 				   	return responseJson;
 			})
+
 };
 
 module.exports = new Quandl();

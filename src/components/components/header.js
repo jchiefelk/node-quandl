@@ -25,7 +25,7 @@ export default class Header extends Component {
 
 	    return (
 	      <div className="header">
-			    <Link to="/" className="header-link">Stock Analytics Boilerplate for Heroku Deployment</Link>	
+			    <Link to="/" className="header-link">Market Analytics</Link>	
 	      </div>
 	    );
 	}

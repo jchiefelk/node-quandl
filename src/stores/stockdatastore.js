@@ -9,6 +9,83 @@ var moment = require('moment');
 function DailyData(){
       this.etfdata = null;
       this.marketdata = null;
+      this.etf=null;
+      this.market=null;
+
+};
+
+
+DailyData.prototype.D3Graphs = function(item){
+    
+      //
+      // Put in D3.js format
+      //
+      this.etf={
+        points: [],
+        xValues: [],
+        yValues: [],
+        yMin: 0,
+        yMax: null,
+        autocorrelation: {
+            points: [],
+            xValues: [],
+            yValues: [],
+            yMin: 0,
+            yMax: null,
+        },
+        open: [],
+        high: [],
+        low:  []
+      };
+
+      this.market={
+        xValues: [], // dates
+        yValues: [],
+        yMin: 0,
+        yMax: null,
+        autocorrelation: {
+            xValues: [], // lag times in business days
+            yValues: [],
+            yMin: 0,
+            yMax: null,
+        }
+      };
+      // autocorrelation graphs
+      for(var x =0;x<item.etf_autocorrelation.length; x++){
+          this.etf.autocorrelation.xValues.push(x); 
+          this.etf.autocorrelation.yValues.push(item.etf_autocorrelation[x]); 
+      };
+      this.etf.autocorrelation.yMax = Math.max.apply(null, this.etf.autocorrelation.yValues); 
+      
+      for(var x =0;x<item.market_autocorrelation.length; x++){
+          this.market.autocorrelation.xValues.push(x); 
+          this.market.autocorrelation.yValues.push(item.market_autocorrelation[x]); 
+      };
+      this.market.autocorrelation.yMax = Math.max.apply(null, this.market.autocorrelation.yValues); 
+   
+      // market/etf graphs
+      for(var x = 0; x < item.etfdata.length; x++){
+          this.etf.xValues.push(item.etfdata[x].date); 
+          this.etf.yValues.push(item.etfdata[x].close); 
+          this.etf.open.push(item.etfdata[x].open),
+          this.etf.high.push(item.etfdata[x].high),
+          this.etf.low.push(item.etfdata[x].low)
+      };
+      this.etf.yMax = Math.max.apply(null, this.etf.yValues); 
+      this.etf['name'] = item.etfdata[0].name;
+      //
+      //
+
+      for(var x = 0; x < item.marketdata.length; x++){
+          this.market.xValues.push(item.etfdata[x].date); 
+          this.market.yValues.push(item.marketdata[x].value); 
+      };
+      this.market.yMax = Math.max.apply(null, this.market.yValues); 
+      this.market['name'] = item.marketdata[0].name;
+      this.marketdata=null;
+      this.etfdata = null;
+      StockDataStore.emit(CHANGE_EVENT);
+
 };
 
 let FrontEndData = new DailyData();
@@ -43,17 +120,20 @@ StockData.prototype.updateIntradayTicket = function(item){
 
         this.IntraDay.data.push(data);
   };
+
   StockDataStore.emit(CHANGE_EVENT);
 };
 
 
 StockData.prototype.updateMarket = function(item){
   this.IntraDay.market = item;
+
 };
 
 
 StockData.prototype.updateStartDate = function(item){
   this.IntraDay.startDate = item;
+
 };
 
 
@@ -100,12 +180,11 @@ var StockDataStore = objectAssign({}, EventEmitter.prototype, {
     return Stocks.IntraDay.autocorr;
   },
   getDailyETFData: function(){
-    return FrontEndData.etfdata;
+    return FrontEndData.etf;
   },
   getDailyMarketData: function(){
-    return FrontEndData.marketdata;
+    return FrontEndData.market;
   }
-
 
 });
 
@@ -115,6 +194,7 @@ AppDispatcher.register(function(payload){
     case appConstants.UPDATE_FRONTEND_DATA:
       FrontEndData.etfdata = action.data.etfdata;
       FrontEndData.marketdata = action.data.marketdata;
+      FrontEndData.D3Graphs(action.data);
       StockDataStore.emitChange(CHANGE_EVENT);
       break;
     case appConstants.MARKET:
@@ -137,15 +217,14 @@ AppDispatcher.register(function(payload){
       StockDataStore.emitChange(CHANGE_EVENT);
       break;
     case appConstants.SEND_REQUEST:
-      if(Stocks.IntraDay.sendRequestStatus==false){
-          Stocks.IntraDay.sendRequestStatus = true;
-      } else {
-          Stocks.IntraDay.sendRequestStatus = false;
+      Stocks.IntraDay.sendRequestStatus = !Stocks.IntraDay.sendRequestStatus;
+      if(Stocks.IntraDay.sendRequestStatus==true){
+        Stocks.IntraDay.data=[];
+        Stocks.IntraDay.name=null;
       }
       StockDataStore.emitChange(CHANGE_EVENT);
       break;
     case appConstants.AUTOCORRELATION_INTRADAY:
-        console.log(action.data);
         Stocks.IntraDay.autocorr = [];
         Stocks.IntraDay.autocorr = action.data;
         StockDataStore.emitChange(CHANGE_EVENT);

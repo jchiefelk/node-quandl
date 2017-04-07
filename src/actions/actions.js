@@ -16,7 +16,7 @@ var makeETFRequest = function() {
           }
           return response.json();
         }).then(function(data) {
-            console.log(data);
+          //  console.log(data);
 
         }).catch(function(error) {
           console.log(error);
@@ -37,7 +37,7 @@ var makeMarketRequest = function() {
           return response.json();
     })
     .then(function(data){
-        console.log(data);
+       // console.log(data);
     })
     .catch(function(error){
         console.log(error);
@@ -48,8 +48,7 @@ var makeMarketRequest = function() {
 // averages of major indexes 
 //
 var makeGeneralRequest = function() {
-       console.log('Get Engage');
-       // console.log(_store);
+
        fetch('/api', {
             method: 'post',
             headers: {
@@ -61,8 +60,9 @@ var makeGeneralRequest = function() {
             if(response.status!=undefined){
               Actions.setStatus(response.status);
             }
+            return response.json();
           }).then(function(data) {
-             console.log(data);
+             // console.log(data);
              Actions.updateIntradDayData(data.general);
              Actions.updateAutocorrelation(data.autocorr);
           }).catch(function(error) {
@@ -154,7 +154,7 @@ var Actions = {
 
   setStartDate: function(item){
     AppDispatcher.handleAction({
-      actionType: appConstants,
+      actionType: appConstants.STARTDATE,
       data: item
 
     });
@@ -163,7 +163,7 @@ var Actions = {
 
   setEndDate: function(item){
     AppDispatcher.handleAction({
-      actionType: appConstants,
+      actionType: appConstants.ENDDATE,
       data: item
     });
 

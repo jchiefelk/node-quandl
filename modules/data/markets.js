@@ -7,8 +7,9 @@ var markets = {
 			market: 'PET',
 			db: 'EIA',
 			apiKey: 'hp2sm_6zVAoffDrYgzBi'
-		},
-	
+		}
+		
+	/***
 		 brent_params: {
 			code: 'RBRTE_D',
 			market: 'PET',
@@ -149,6 +150,7 @@ var markets = {
 			db: 'CHRIS',
 			apiKey: 'hp2sm_6zVAoffDrYgzBi'
 		}	
+		***/
 };
 
 module.exports = markets;

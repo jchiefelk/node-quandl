@@ -23,7 +23,8 @@
 .app {
 	display: flex; 
 	flex-direction: column; 
-	align-items: center;
+	background-color: #414a4c;
+	height: 100%;
 }
 
 .paragraph {
@@ -58,8 +59,8 @@
 .header {
 	display: flex;
 	width: 100%;
-	height: 50; 
-	background-color: black; 
+	height: 5em; 
+	background-color: transparent; 
 	align-items: center; 
 }
 
@@ -74,18 +75,12 @@
 	text-decoration: none;  
 }
 
-.app {
-
-}
-
-.homepage {
-    background-color: white;
+.pickercontainer {
+    background-color: transparent;
     align-items: center; 
-    flex-direction: column;
-    margin-bottom: 20em;
 }
 
-.homepage-instructions {
+.picker-instructions {
 	display: flex;
 	justify-content: center;
 	align-items: center; 
@@ -93,13 +88,14 @@
 	font-size: 1.5em; 
 	font-weight: 400; 
 	font-family: 'Courier New';
+	color: white;
 }
 
-.homepage-marketpicker {
+.marketpicker {
 	display: flex;
 	justify-content: center;
-	align-items: center;
 	margin-top: 2em;
+	
 }
 
 .homepage-input {
@@ -114,8 +110,63 @@
 	display: flex;
 	width: 100%;
 	height: 100%;
-    background-color: #414a4c;
+    background-color: transparent;
     align-items: center; 
     flex-direction: column;
 }
 
+.linegraph {
+	display: flex;
+	width: 25em;
+}
+
+.intradaylinegraph {
+
+	margin-top: 15em;
+	width: 50em;
+	height: 20em;
+	background-color: transparent;
+
+}
+
+.intradaybargraph {
+	display: flex;
+	margin-top: 20em;
+	margin-left: 0.6em;
+	width: 45em; 
+	background-color: transparent;
+
+}
+
+.autocorrelationgraph {
+	display: flex;
+	width: 30em;
+	margin-left: 3.5em;
+}
+
+.autocorrelationgraph_intraday {
+
+	width: 30em;
+	margin-left: 3.5em;
+}
+
+.candleStickGraph_intraday {
+	display: flex;
+	width: 100em;
+	margin-left: 3.5em;
+}
+
+.candleStickGraph {
+	display: flex;
+	height: 15em;
+	width: 39em;
+	margin-top: 0em;
+	background-color: transparent;
+}
+
+.marketgraph {
+	display: flex;
+	align-items: center;
+	width: 45em;
+	justify-content: center;
+}

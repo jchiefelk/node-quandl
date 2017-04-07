@@ -9,6 +9,7 @@
 	cursor: pointer; 
 	font-family: 'Courier New';
 	font-size: 18;
+	color: white;
 
 }
 
@@ -20,11 +21,12 @@
 
 .market-date-picker-container {
 	display: flex;
-	position: absolute; 
+
 	right: 1em;
 	align-items: center;
 	justify-content: center;
 	align-text: center; 
+	margin-top: 5em;
 }
 
 .date-input {
@@ -47,19 +49,4 @@
 	margin-bottom: 10; 
 	color: white;
 	font-family: 'Courier New';
-}
-
-.linegraph {
-	margin-top: 10em;
-	width: 75em;
-	height: 20em;
-	background-color: #414a4c;
-}
-
-.bargraph {
-	display: flex;
-	margin-top: 17em;
-	margin-right: 2em;
-	width: 77em; 
-	background-color: #414a4c;
 }
