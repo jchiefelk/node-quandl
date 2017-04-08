@@ -122,7 +122,7 @@
 
 .intradaylinegraph {
 
-	margin-top: 15em;
+	margin-top: 0em;
 	width: 50em;
 	height: 20em;
 	background-color: transparent;
@@ -131,7 +131,7 @@
 
 .intradaybargraph {
 	display: flex;
-	margin-top: 20em;
+	margin-top: 17em;
 	margin-left: 0.6em;
 	width: 45em; 
 	background-color: transparent;
@@ -145,7 +145,6 @@
 }
 
 .autocorrelationgraph_intraday {
-
 	width: 30em;
 	margin-left: 3.5em;
 }

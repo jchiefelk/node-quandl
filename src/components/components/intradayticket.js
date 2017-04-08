@@ -18,33 +18,38 @@ export default class IntraDayTicket extends Component {
 					startDate: null,
 					endDate: null, 
 					rangeSelected: false,
-					market: null,
-					companyCode: null,
+					market: StockDataStore.getMarket(),
+					companyCode: StockDataStore.getCompanyCode(),
 					autocorrelation: null,
 					storeupdated: false,
 					intraDayAutocorrelation: null,
-					intraDayCandleStick: null
+					intraDayCandleStick: null,
+					sendRequestStatus:	StockDataStore.getRequestSendStatus(),
+					marketData: StockDataStore.getInradayTicketData()
 				};
 			}
 
 			sendRequest(){
+						console.log('Send Request');
 						let code = this.state.companyCode.split(' ');
 						let params = {
 							code: code[0],
 							market: this.state.market,
 							db: 'GOOG',
-							apiKey: 'hp2sm_6zVAoffDrYgzBi',
+							apiKey: 'oaWPkjrfz_aQmyPmE-WT',
 							startDate: this.state.startDate,
 							endDate: this.state.endDate
 
 						};
-				
+						
 						this.setState({	intraDayView: MarketGraph.setLoadingAnimation()	});
 						Actions.updatesendRequest();
 						Actions.makeFrontEndRequest(params);			
 			}
 
 			componentDidUpdate(){
+
+
 
 				if(this.state.storeupdated==true &&	this.state.sendRequestStatus==true) {
 					this.setState({
@@ -63,7 +68,6 @@ export default class IntraDayTicket extends Component {
 									storeupdated: false,
 									marketData: null,
 									intraDayView: MarketGraph.setIntradayGraphView(this.state.marketData.data, this.state.marketData.autocorr, this.state.marketData.name)
-									// intraDayAutocorrelation: MarketGraph.setIntradayAutocorrelation(this.state.marketData.autocorr)
 
 								});
 						}
@@ -74,9 +78,26 @@ export default class IntraDayTicket extends Component {
 
 			componentDidMount(){
 				StockDataStore.addChangeListener(this._onChange.bind(this));
-				this.setState({
-					intraDayView: MarketGraph.setCompanyPicker()
-				});
+
+
+				if(this.state.marketData.data.length==0 && this.state.sendRequestStatus==false){
+					this.setState({
+							intraDayView: MarketGraph.setCompanyPicker()
+					});
+				}
+				/**
+				if(this.state.marketData.data.length>0 && this.state.sendRequestStatus==false){
+								this.setState({
+									storeupdated: false,
+									marketData: null,
+									intraDayView: MarketGraph.setIntradayGraphView(this.state.marketData.data, this.state.marketData.autocorr, this.state.marketData.name)
+								});
+				}
+				***/
+				if(this.state.sendRequestStatus==true) {
+					this.sendRequest();
+				} 
+	
 			}
 
 			componentWillUnmount(){

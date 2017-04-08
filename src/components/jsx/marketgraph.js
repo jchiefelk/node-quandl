@@ -6,9 +6,7 @@ var moment = require('moment');
 var Datetime = require('react-datetime');
 var Loading = require('react-loading');
 import MarketPicker from '../components/marketpicker';
-
-
-
+import { Router, Route, Link } from 'react-router';
 require('../css/react-datetime.css');
 require('../css/marketpicker.css');
 require('../css/main.css');
@@ -307,7 +305,7 @@ class MarketGraph {
 	}
 
 	setAutocorrelationGraph(data){
-		console.log(data);
+
 		this.linedata.datasets.data = data.autocorrelation.yValues; // y-values
 		this.linedata.labels = data.autocorrelation.xValues; // x-values
 		this.lineoptions.title.text = data.name; // chart-name
@@ -403,7 +401,7 @@ class MarketGraph {
 
 
 	setIntradayAutocorrelation(data){
-		console.log(data);
+
 		let tau = [];
 		for(var x=0; x<1500;x++){
 			tau.push(x);
@@ -493,7 +491,7 @@ class MarketGraph {
 
 				return (				
 						<div className="autocorrelationgraph_intraday">
-							<Line data={d} options={options} height={window.innerHeight*(0.25)}/>
+							<Line data={d} options={options} height={window.innerHeight*(0.2)}/>
 						</div>
 		    	);
 	}
@@ -503,8 +501,6 @@ class MarketGraph {
 
 
 	setIntradayGraphView(data,autocorr,name){
-
-
 				this.dates=[];
 				this.close=[];
 				this.volume=[];
@@ -683,11 +679,16 @@ class MarketGraph {
 				return (
 						<div style={{display: 'flex',backgroundColor: 'transparent', flexDirection: 'column'}}>
 								
-								{this.setDatePicker()}
+								<div style={{display: 'flex', justifyContent: 'center'}}>
+									{this.setCompanyPicker()}
+									{this.setDatePicker()}
+								</div>
+
+
 
 								<div style={{display: 'flex'}}>
 									
-							
+			
 									<div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
 
 											<div className="intradaylinegraph">
@@ -699,11 +700,9 @@ class MarketGraph {
 			    							</div>
 			    					</div>
 
-			    					<div style={{marginTop: window.innerHeight*(0.25)}}>
+			    					<div style={{marginTop: window.innerHeight*(0.05)}}>
 										{this.setIntradayAutocorrelation(autocorr)}
 									</div>
-
-
 
 		    					</div>
 		    				
@@ -750,15 +749,12 @@ class MarketGraph {
 		this.companyPicker = (
 					<div className="pickercontainer">
 						
-						<div className="picker-instructions">
-							<div>Enter in letter code for any company listed on the NYSE or NASDAQ.</div>
-							<div>For example, enter in 'DB', for Deutsche Bank.</div>
-						</div>
-
 						<div className="marketpicker">
 							<input className="homepage-input" onChange={(e) => this.updatecompanyCode(e) } />
-							<img src="https://s3-us-west-1.amazonaws.com/cointelmob/icons/enter_icon.png" style={{width: 30, height: 30, marginLeft: 10, cursor: 'pointer'}} onClick={()=> Actions.updatesendRequest() }/>
 							
+							<Link to="/intradaypage" onClick={()=> Actions.updatesendRequest() }>
+								<img src="https://s3-us-west-1.amazonaws.com/cointelmob/icons/enter_icon.png" style={{width: 30, height: 30, marginLeft: 10, cursor: 'pointer'}} />
+							</Link>
 							<MarketPicker  />
 						</div>
 
