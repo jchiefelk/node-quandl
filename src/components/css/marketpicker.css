@@ -1,6 +1,8 @@
 
 .market-picker {
 	margin-left: 3em;
+
+
 }
 
 .market-picker-item {
@@ -9,13 +11,15 @@
 	cursor: pointer; 
 	font-family: 'Courier New';
 	font-size: 18;
-	color: white;
-
+	:hover { 
+	    color: yellow;
+	}
 }
 
 .dropdown-arrow {
-	width: 1.5em; 
-	height: 1.5em;
+	width: 2.0em; 
+	height: 2.0em;
+	margin-top: 0.4em;
 	cursor: pointer;
 }
 

@@ -39,6 +39,37 @@ export default class MarketFundView extends Component {
 			componentDidMount(){
 				StockDataStore.addChangeListener(this._onChange.bind(this));
 				Actions.getDailyFrontEndData();
+			
+				
+				if( this.state.dailymarketData.xValues.length>0 ){
+					this.setState({
+						
+							marketGraph: MarketGraph.setMarketFundGraph(this.state.dailymarketData)
+						});
+				}
+
+				if(this.state.dailyetfData.xValues.length>0  ){
+					this.setState({
+	
+							etfGraph: MarketGraph.setMarketFundGraph(this.state.dailyetfData)
+						});
+				}
+				
+				if(	this.state.dailymarketData.autocorrelation.xValues.length>0  ){
+					this.setState({
+							etfAutocorrelation: MarketGraph.setAutocorrelationGraph(this.state.dailyetfData),
+							etfCandleStick: CandleStickGraph.setGraph(this.state.dailyetfData)
+						});
+				}
+			
+				if(	this.state.dailymarketData.autocorrelation.xValues.length>0 ){
+						this.setState({
+							marketAutocorrelation: MarketGraph.setAutocorrelationGraph(this.state.dailymarketData)
+						});
+				}
+			
+
+
 			}
 
 			componentWillUnmount(){
@@ -108,17 +139,19 @@ export default class MarketFundView extends Component {
 				return (
 					<div className="graph-page">
 
-							<div style={{display: 'flex', marginTop: 50}}>
+							<h1 style={{fontFamily: 'Courier New',fontWeight: '700', color: 'white'}}> ETF and Futures Markets</h1>
+
+							<div style={{display: 'flex',marginTop: 30}}>
 								{this.state.marketGraph}
 								<div>
 									{this.state.marketAutocorrelation}
 								</div>
 							</div>
 
-							<div style={{display: 'flex', marginTop: 60, marginLeft: 75}}>
+							<div style={{display: 'flex',marginTop:100, marginLeft: 75}}>
 								{this.state.etfGraph}
 								
-								<div style={{display: 'flex', flexDirection: 'column', marginTop: 50}}>
+								<div style={{display: 'flex', flexDirection: 'column', marginTop: 10}}>
 									{this.state.etfAutocorrelation}
 									{this.state.etfCandleStick}
 								</div>

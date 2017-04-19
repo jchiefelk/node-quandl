@@ -91,7 +91,6 @@ app.post('/api', function(req,res){
     Quandl.getIntraDayTicket(req.body)
            .then(function(value) {
                 market = value;
-                console.log(req.body);
                 let request = req.body;
                 request.startDate = 'start';
                 request.endDate = 'end';

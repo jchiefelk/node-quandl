@@ -26,10 +26,12 @@ export default class MarketPicker extends Component {
 	}
 
 	render(){
+		console.log(this.state.selecting);
 		if(this.state.selecting==false){
+			this.items = null;
 			this.items = (
 					<div key={0} className="market-picker-item" onClick={()=> this.setState({selecting: true}) }>
-						{this.state.selectedMarket}
+					     <h4>{this.state.selectedMarket}</h4>
 						<img src="https://s3-us-west-1.amazonaws.com/node-quandl/downarrow.png" className="dropdown-arrow" />
 					</div>
 			);
@@ -39,13 +41,13 @@ export default class MarketPicker extends Component {
 			this.items = null;
 			this.items = this.state.markets.map((item,i)=> (
 					<div key={item} className="market-picker-item"   onClick={()=> this.marketPicked(i) }>
-						{item}
+						<h4>{item}</h4>
 					</div>
 			));
 		}
 
 		return(
-			<div className="market-picker">
+		<div className="market-picker">
 				  <ReactCSSTransitionGroup 
           				transitionName="example"
           				transitionEnterTimeout={1}

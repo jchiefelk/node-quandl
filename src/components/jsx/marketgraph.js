@@ -211,21 +211,24 @@ class MarketGraph {
 		      label: data.name,
 		      fill: false,
 		      lineTension: 0.1,
-		      backgroundColor: 'white',
+		     //  backgroundColor: 'white',
 		      // borderColor: 'white', // line color
-		      borderColor: 'rgba(255,99,132,1)',
+		      backgroundColor: 'rgba(75,192,192,0.4)',
+		      borderColor: 'rgba(75,192,192,1)',
+
+		     //  borderColor: 'rgba(255,99,132,1)',
 		      borderCapStyle: 'butt',
 		      borderDash: [],
 		      borderDashOffset: 0.0,
 		      borderJoinStyle: 'miter',
 		      pointBorderHeight: 100,
-		      pointBorderColor: 'black',
-		      pointBackgroundColor: 'black',
+		      pointBorderColor: 'rgba(75,192,192,1)',
+		      pointBackgroundColor: '#fff',
 		      pointBorderWidth: 1,
 		      pointHoverRadius: 5,
 		      pointHoverBackgroundColor: 'black',
 		      pointHoverBorderColor: 'black',
-		      pointHoverBorderWidth: 1,
+		      pointHoverBorderWidth: 2,
 		      pointRadius: 1,
 		      pointHitRadius: 10,
 		      data: data.yValues
@@ -299,7 +302,7 @@ class MarketGraph {
 
 		return (				
 				<div className="marketgraph">
-					<Line data={d} options={options} height={window.innerHeight*(0.24)} weight={window.innerWidth*(0.4)}/>
+					<Line data={d} options={options} height={window.innerHeight*(0.27)} weight={window.innerWidth*(0.4)}/>
 				</div>				
     	);
 	}
@@ -393,7 +396,7 @@ class MarketGraph {
 
 				return (				
 						<div className="autocorrelationgraph">
-							<Line data={d} options={options} height={window.innerHeight*(0.15)}/>
+							<Line data={d} options={options} height={window.innerHeight*(0.14)}/>
 						</div>
 		    	);
 	}
@@ -677,20 +680,15 @@ class MarketGraph {
 				this.baroptions.scales.yAxes[0].ticks.stepSize = Math.max(this.volume);
 
 				return (
-						<div style={{display: 'flex',backgroundColor: 'transparent', flexDirection: 'column'}}>
+						<div style={{backgroundColor: 'transparent'}}>
 								
 								<div style={{display: 'flex', justifyContent: 'center'}}>
 									{this.setCompanyPicker()}
 									{this.setDatePicker()}
 								</div>
 
-
-
-								<div style={{display: 'flex'}}>
-									
-			
+								<div style={{display: 'flex', justifyContent: 'center',alignItems: 'center'}}>
 									<div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
-
 											<div className="intradaylinegraph">
 												<Line data={linedata} options={lineoptions}  height={window.innerHeight*(0.25)}/>
 											</div>
@@ -705,9 +703,6 @@ class MarketGraph {
 									</div>
 
 		    					</div>
-		    				
-
-
     					</div>
     				);
 
@@ -750,10 +745,10 @@ class MarketGraph {
 					<div className="pickercontainer">
 						
 						<div className="marketpicker">
-							<input className="homepage-input" onChange={(e) => this.updatecompanyCode(e) } />
+							<input className="homepage-input" placeholder="Enter stock code" onChange={(e) => this.updatecompanyCode(e) } />
 							
 							<Link to="/intradaypage" onClick={()=> Actions.updatesendRequest() }>
-								<img src="https://s3-us-west-1.amazonaws.com/cointelmob/icons/enter_icon.png" style={{width: 30, height: 30, marginLeft: 10, cursor: 'pointer'}} />
+								<img src="https://s3-us-west-1.amazonaws.com/cointelmob/icons/enter_icon.png" style={{width: 30, height: 30, marginLeft: 10,marginTop: 4, cursor: 'pointer'}} />
 							</Link>
 							<MarketPicker  />
 						</div>
