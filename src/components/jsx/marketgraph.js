@@ -302,7 +302,7 @@ class MarketGraph {
 
 		return (				
 				<div className="marketgraph">
-					<Line data={d} options={options} height={window.innerHeight*(0.27)} weight={window.innerWidth*(0.4)}/>
+					<Line data={d} options={options} height={window.innerHeight*(0.22)} weight={window.innerWidth*(0.4)}/>
 				</div>				
     	);
 	}
@@ -396,7 +396,7 @@ class MarketGraph {
 
 				return (				
 						<div className="autocorrelationgraph">
-							<Line data={d} options={options} height={window.innerHeight*(0.14)}/>
+							<Line data={d} options={options} height={window.innerHeight*(0.1)}/>
 						</div>
 		    	);
 	}

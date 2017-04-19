@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 var StockDataStore = require('../../stores/stockdatastore');
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 let Actions = require('../../actions/actions');
+var Radium = require('radium');
 require('../css/marketpicker.css');
 
 
@@ -12,7 +13,7 @@ export default class MarketPicker extends Component {
 	    this.state = {
 	    	markets: ['NYSE', 'NASDAQ'],
 	    	selecting: false,
-	    	selectedMarket: 'Select Market'
+	    	selectedMarket: 'Market'
 	    };
 	}
 
@@ -31,7 +32,13 @@ export default class MarketPicker extends Component {
 			this.items = null;
 			this.items = (
 					<div key={0} className="market-picker-item" onClick={()=> this.setState({selecting: true}) }>
-					     <h4>{this.state.selectedMarket}</h4>
+					     <h4 
+					     	style={{
+								color: 'black'
+					     	}}
+					     	>
+					     	{this.state.selectedMarket}
+					     </h4>
 						<img src="https://s3-us-west-1.amazonaws.com/node-quandl/downarrow.png" className="dropdown-arrow" />
 					</div>
 			);
@@ -41,7 +48,16 @@ export default class MarketPicker extends Component {
 			this.items = null;
 			this.items = this.state.markets.map((item,i)=> (
 					<div key={item} className="market-picker-item"   onClick={()=> this.marketPicked(i) }>
-						<h4>{item}</h4>
+						<h4
+
+							style={{
+								color: 'black',
+								':hover': {
+								    color: 'red',
+								 }
+						     }}>
+								{item}
+							</h4>
 					</div>
 			));
 		}
@@ -50,7 +66,7 @@ export default class MarketPicker extends Component {
 		<div className="market-picker">
 				  <ReactCSSTransitionGroup 
           				transitionName="example"
-          				transitionEnterTimeout={1}
+          				transitionEnterTimeout={500}
           				transitionLeaveTimeout={1}>
 		       			
 		       			{this.items}
