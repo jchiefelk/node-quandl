@@ -76102,6 +76102,7 @@
 							'h4',
 							{
 								style: {
+
 									color: 'black'
 								}
 							},
@@ -76120,7 +76121,7 @@
 							_react2.default.createElement(
 								'h4',
 								{
-
+									key: i,
 									style: {
 										color: 'black',
 										':hover': {
@@ -76140,7 +76141,7 @@
 						_reactAddonsCssTransitionGroup2.default,
 						{
 							transitionName: 'example',
-							transitionEnterTimeout: 1,
+							transitionEnterTimeout: 500,
 							transitionLeaveTimeout: 1 },
 						this.items
 					)
@@ -76151,7 +76152,7 @@
 		return MarketPicker;
 	}(_react.Component);
 
-	exports.default = MarketPicker;
+	exports.default = Radium(MarketPicker);
 
 /***/ },
 /* 413 */

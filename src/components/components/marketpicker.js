@@ -6,7 +6,7 @@ var Radium = require('radium');
 require('../css/marketpicker.css');
 
 
-export default class MarketPicker extends Component {
+class MarketPicker extends Component {
 	
 	constructor(props) {
 	    super(props);
@@ -34,6 +34,7 @@ export default class MarketPicker extends Component {
 					<div key={0} className="market-picker-item" onClick={()=> this.setState({selecting: true}) }>
 					     <h4 
 					     	style={{
+
 								color: 'black'
 					     	}}
 					     	>
@@ -49,7 +50,7 @@ export default class MarketPicker extends Component {
 			this.items = this.state.markets.map((item,i)=> (
 					<div key={item} className="market-picker-item"   onClick={()=> this.marketPicked(i) }>
 						<h4
-
+							key={i}
 							style={{
 								color: 'black',
 								':hover': {
@@ -75,3 +76,5 @@ export default class MarketPicker extends Component {
 		);
 	}
 }
+
+export default Radium(MarketPicker)
