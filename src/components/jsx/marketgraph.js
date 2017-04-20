@@ -1,5 +1,4 @@
 import React from 'react';
-import Chart from 'chart.js';
 import {Line,Bar} from 'react-chartjs-2';
 var Actions = require('../../actions/actions');
 var moment = require('moment');
@@ -7,6 +6,7 @@ var Datetime = require('react-datetime');
 var Loading = require('react-loading');
 import MarketPicker from '../components/marketpicker';
 import { Router, Route, Link } from 'react-router';
+import { Chart } from 'react-google-charts';
 require('../css/react-datetime.css');
 require('../css/marketpicker.css');
 require('../css/main.css');
@@ -23,7 +23,7 @@ class MarketGraph {
 				this.test=(<div id="chart_div"/>);
 				this.loadingAnimation = (
 						<div style={{display: 'flex',  justifyContent: 'center', marginTop: 100 }}>
-							<Loading type='bubbles' color='#909090' style={{height: 200, width:500}}/>
+							<Loading type='bubbles' color='#909090' style={{height: 500, width:500}}/>
 						</div>
 				);
 				//
@@ -707,6 +707,137 @@ class MarketGraph {
     				);
 
 	}
+
+
+	setIntradayGraphGoogleView(data,autocorr,name){
+
+					// Math.max(this.volume);
+					let line_data = [["DATE","val1"]];
+					// let bar_data = [[ "DATE", "val1", { role: "style" }  ]];
+	      			let bar_data = [
+				        ['Month', 'Volume']
+			      	];
+					for(var x =0; x<data.length;x++){
+						line_data.push([data[x].date, data[x].close ]);
+						bar_data.push([data[x].date, parseFloat(data[x].volume) ]);
+					};
+
+					let options = {
+						legend: "none",
+						backgroundColor: 'transparent',
+						vAxis: {
+							title: "USD $",	
+							titleTextStyle: { color: '#FFF' },
+				        	textStyle: {
+				        		fontSize: 12,
+				        		fontName: 'Courier New',
+				        		color: 'white',
+				        		fontWeight: 700,
+				       
+				        	},
+				        	gridlines: {
+						    	color: 'transparent', 
+						    	count: 4
+						   }	  
+				        },
+					 	hAxis: {
+					 		 textStyle:{
+					       	   	color: 'transparent',
+					       	   	fontName: 'Courier New',
+					       	   	fontWeight: 700
+				       	   	},
+					 	}
+					
+					};
+
+			      var bardata = [
+				        ['Month', 'Volume'],
+				        ['Application', 5],
+				        ['Friend', 4],
+				        ['Newspaper', 6],
+				        ['Radio', 8],
+				        ['No Referral', 2]
+			      ];
+
+				  var baroptions = {
+	
+						 isStacked:true,
+						 
+				         vAxis: {	
+				        	
+				        	textStyle: {
+				        		fontSize: 10,
+				        		fontName: 'Courier New',
+				        		color: 'white',
+				        		fontWeight: 700,
+				        		width: 100
+				        	},
+				        	gridlines: {
+						    	color: 'transparent', 
+						    	count: 4
+						   }
+						  
+				        },
+				     
+				     	
+				        hAxis: {
+			
+				        	textStyle: {
+				        		fontSize: 10,
+				        		fontName: 'Courier New',
+				        		color: 'white',
+				        		fontWeight: 700,
+				        	},
+				        	
+				        	gridlines: {
+						    	color: 'white', 
+						    	count: 4
+						   }
+		
+				        },
+
+				        legend: {position: 'none'},
+				        backgroundColor: 'transparent'
+				    };
+
+					return (
+					
+
+
+					<div style={{backgroundColor: 'transparent'}}>
+								
+								<div style={{display: 'flex', justifyContent: 'center'}}>
+									{this.setCompanyPicker()}
+									{this.setDatePicker()}
+								</div>
+
+								<div style={{display: 'flex', flexDirection: 'column'}}>
+								
+								<div className="intradaylinegraph">
+								        <Chart
+										  chartType="LineChart"
+										  data={line_data}
+										  width="100%"
+										  height="100%"
+										  options={options}
+								        />
+			    				</div>
+
+
+								<div className="intradaybargraph">
+								        <Chart
+										  chartType="ColumnChart"
+										  data={bar_data}
+										  width="100%"
+										  height="100%"
+										  options={baroptions}
+								        />
+			    				</div>
+			    				</div>
+						</div>
+	    			);
+	}
+
 
 	setDatePicker(){
 

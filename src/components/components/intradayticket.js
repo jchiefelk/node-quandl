@@ -63,16 +63,17 @@ export default class IntraDayTicket extends Component {
 				}
 
 				if(this.state.storeupdated==true && this.state.marketData.data.length>0){
+						//
+						// intraDayView: MarketGraph.setIntradayGraphView(this.state.marketData.data, this.state.marketData.autocorr, this.state.marketData.name)
+						// 
 						if(this.state.marketData.data.length>0){
 								this.setState({
 									storeupdated: false,
 									marketData: null,
-									intraDayView: MarketGraph.setIntradayGraphView(this.state.marketData.data, this.state.marketData.autocorr, this.state.marketData.name)
-
+									intraDayView: MarketGraph.setIntradayGraphGoogleView(this.state.marketData.data, this.state.marketData.autocorr, this.state.marketData.name)
 								});
 						}
 				}
-
 
 			}
 

@@ -26680,6 +26680,9 @@
 
 	  _createClass(MarketPage, [{
 	    key: 'render',
+
+
+	    //	backgroundColor: 'rgba(75,192,192,0.4)'
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
@@ -26811,7 +26814,7 @@
 
 
 	// module
-	exports.push([module.id, "#Title {\n\tfont-size: 4.7em;\n\tcolor: black;\n\tfont-weight: 900; \n\tfont-family: 'Courier New';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n\talign-text: center;\n\tmargin: 50;\n}\n\n#About-Me {\n\tcolor: black;\n\tfont-size: 2.1em;\n\tfont-weight: 700; \n\tfont-family: 'Courier New';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n}\n\n.app {\n\tdisplay: flex; \n\tflex-direction: column; \n\tbackground-color: #414a4c;\n\theight: 100%;\n}\n\n.paragraph {\n\tcolor: black;\n\tfont-size: 1.5em;\n\tfont-weight: 400;\n\tfont-family: 'Courier New';\n\tmargin-top: 2em;\n\tmargin: 50;\n}\n\n.table_row_parent { \n\tborder-width: 2; \n\tborder-style: solid; \n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n.section-title {\n\tmargin: 50;\n\tfont-size: 2em;\n\tfont-weight: 900;\n\tfont-family: 'Courier New';\n\tmargin-top: 2em;\n}\n\n.code-image {\n\tmargin: 0;\n\twidth: 100;\n}\n\n.header {\n\tflex-direction: row;\n\twidth: 100%;\n\theight: 5em; \n\tbackground-color: transparent; \n\talign-items: center; \n}\n\n.header-link {\n\tfont-weight: 900;\n\tfont-family: 'Courier New';\n\tfont-size: 18;\n\tcolor: white; \n\ttop: 15;\n\tleft: 25; \n\tcursor: pointer; \n\ttext-decoration: none;  \n}\n\n.pickercontainer {\n    background-color: transparent;\n    align-items: center; \n}\n\n.picker-instructions {\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center; \n\tflex-direction: column;\n\tfont-size: 1.5em; \n\tfont-weight: 400; \n\tfont-family: 'Courier New';\n\tcolor: white;\n}\n\n.marketpicker {\n\tdisplay: flex;\n\tjustify-content: center;\n\tmargin-top: 2em;\n\t\n}\n\n.homepage-input {\n\t\tfont-size: 18; \n\t\tfont-weight: 700;\n\t\tfont-family: 'Courier New';\n\t\theight: 3em; \n\t\twidth: 17em;\n}\n\n.graph-page {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n    background-color: transparent;\n    align-items: center; \n    flex-direction: column;\n    margin-top: 10em;\n}\n\n.linegraph {\n\tdisplay: flex;\n\twidth: 25em;\n}\n\n\n.intradaypage {\n\tdisplay: flex; \n\tflex-direction: column; \n\tbackground-color: #696969;\n\theight: 100%;\n}\n\n.intradaylinegraph {\n\tmargin-top: 0em;\n\twidth: 50em;\n\theight: 20em;\n\tbackground-color: transparent;\n}\n\n.intradaybargraph {\n\tdisplay: flex;\n\tmargin-top: 16em;\n\tmargin-left: 1.1em;\n\twidth: 45em; \n\tbackground-color: transparent;\n}\n\n.autocorrelationgraph {\n\tdisplay: flex;\n\twidth: 30em;\n\tmargin-left: 3.5em;\n}\n\n.autocorrelationgraph_intraday {\n\twidth: 30em;\n\tmargin-left: 3.5em;\n}\n\n.candleStickGraph_intraday {\n\tdisplay: flex;\n\twidth: 100em;\n\tmargin-left: 3.5em;\n}\n\n.candleStickGraph {\n\tdisplay: flex;\n\theight: 10em;\n\twidth: 39em;\n\tmargin-top: 3em;\n\tbackground-color: transparent;\n}\n\n.marketgraph {\n\tdisplay: flex;\n\talign-items: center;\n\twidth: 35em;\n\tjustify-content: center;\n}", ""]);
+	exports.push([module.id, "#Title {\n\tfont-size: 4.7em;\n\tcolor: black;\n\tfont-weight: 900; \n\tfont-family: 'Courier New';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n\talign-text: center;\n\tmargin: 50;\n}\n\n#About-Me {\n\tcolor: black;\n\tfont-size: 2.1em;\n\tfont-weight: 700; \n\tfont-family: 'Courier New';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n}\n\n.app {\n\tdisplay: flex; \n\tflex-direction: column; \n\tbackground-color: transparent;\n\theight: 100%;\n}\n\n.paragraph {\n\tcolor: black;\n\tfont-size: 1.5em;\n\tfont-weight: 400;\n\tfont-family: 'Courier New';\n\tmargin-top: 2em;\n\tmargin: 50;\n}\n\n.table_row_parent { \n\tborder-width: 2; \n\tborder-style: solid; \n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n.section-title {\n\tmargin: 50;\n\tfont-size: 2em;\n\tfont-weight: 900;\n\tfont-family: 'Courier New';\n\tmargin-top: 2em;\n}\n\n.code-image {\n\tmargin: 0;\n\twidth: 100;\n}\n\n.header {\n\tflex-direction: row;\n\twidth: 100%;\n\theight: 5em; \n\tbackground-color: transparent; \n\talign-items: center; \n}\n\n.header-link {\n\tfont-weight: 900;\n\tfont-family: 'Courier New';\n\tfont-size: 18;\n\tcolor: white; \n\ttop: 15;\n\tleft: 25; \n\tcursor: pointer; \n\ttext-decoration: none;  \n}\n\n.pickercontainer {\n    background-color: transparent;\n    align-items: center; \n}\n\n.picker-instructions {\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center; \n\tflex-direction: column;\n\tfont-size: 1.5em; \n\tfont-weight: 400; \n\tfont-family: 'Courier New';\n\tcolor: white;\n}\n\n.marketpicker {\n\tdisplay: flex;\n\tjustify-content: center;\n\tmargin-top: 2em;\n\t\n}\n\n.homepage-input {\n\t\tfont-size: 18; \n\t\tfont-weight: 700;\n\t\tfont-family: 'Courier New';\n\t\theight: 3em; \n\t\twidth: 17em;\n}\n\n.graph-page {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n    background-color: transparent;\n    align-items: center; \n    flex-direction: column;\n    margin-top: 10em;\n}\n\n.linegraph {\n\tdisplay: flex;\n\twidth: 25em;\n}\n\n\n.intradaypage {\n\tdisplay: flex; \n\tflex-direction: column; \n\tbackground-color: red;\n\theight: 100%;\n}\n\n.intradaylinegraph {\n\tmargin-top: 0em;\n\twidth: 50em;\n\theight: 20em;\n\tbackground-color: transparent;\n}\n\n.intradaybargraph {\n\tdisplay: flex;\n\tmargin-top: 0.1em;\n\tmargin-left: 1.4em;\n\twidth: 46.5em;\n\theight: 10em; \n\tbackground-color: transparent;\n}\n\n.autocorrelationgraph {\n\tdisplay: flex;\n\twidth: 30em;\n\tmargin-left: 3.5em;\n}\n\n.autocorrelationgraph_intraday {\n\twidth: 30em;\n\tmargin-left: 3.5em;\n}\n\n.candleStickGraph_intraday {\n\tdisplay: flex;\n\twidth: 100em;\n\tmargin-left: 3.5em;\n}\n\n.candleStickGraph {\n\tdisplay: flex;\n\theight: 10em;\n\twidth: 39em;\n\tmargin-top: 3em;\n\tbackground-color: transparent;\n}\n\n.marketgraph {\n\tdisplay: flex;\n\talign-items: center;\n\twidth: 35em;\n\tjustify-content: center;\n}", ""]);
 
 	// exports
 
@@ -27155,7 +27158,7 @@
 	var StockDataStore = __webpack_require__(401);
 	var Actions = __webpack_require__(407);
 	var MarketGraph = __webpack_require__(409);
-	var CandleStickGraph = __webpack_require__(502);
+	var CandleStickGraph = __webpack_require__(510);
 	__webpack_require__(237);
 
 	var MarketFundView = function (_Component) {
@@ -72871,10 +72874,6 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _chart = __webpack_require__(243);
-
-	var _chart2 = _interopRequireDefault(_chart);
-
 	var _reactChartjs = __webpack_require__(410);
 
 	var _marketpicker = __webpack_require__(412);
@@ -72882,6 +72881,8 @@
 	var _marketpicker2 = _interopRequireDefault(_marketpicker);
 
 	var _reactRouter = __webpack_require__(179);
+
+	var _reactGoogleCharts = __webpack_require__(492);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -72891,10 +72892,10 @@
 
 	var Actions = __webpack_require__(407);
 	var moment = __webpack_require__(277);
-	var Datetime = __webpack_require__(492);
-	var Loading = __webpack_require__(499);
+	var Datetime = __webpack_require__(500);
+	var Loading = __webpack_require__(507);
 
-	__webpack_require__(500);
+	__webpack_require__(508);
 	__webpack_require__(490);
 	__webpack_require__(237);
 
@@ -73564,6 +73565,126 @@
 							'div',
 							{ style: { marginTop: window.innerHeight * 0.05 } },
 							this.setIntradayAutocorrelation(autocorr)
+						)
+					)
+				);
+			}
+		}, {
+			key: 'setIntradayGraphGoogleView',
+			value: function setIntradayGraphGoogleView(data, autocorr, name) {
+
+				// Math.max(this.volume);
+				var line_data = [["DATE", "val1"]];
+				// let bar_data = [[ "DATE", "val1", { role: "style" }  ]];
+				var bar_data = [['Month', 'Volume']];
+				for (var x = 0; x < data.length; x++) {
+					line_data.push([data[x].date, data[x].close]);
+					bar_data.push([data[x].date, parseFloat(data[x].volume)]);
+				};
+
+				var options = {
+					legend: "none",
+					backgroundColor: 'transparent',
+					vAxis: {
+						title: "USD $",
+						titleTextStyle: { color: '#FFF' },
+						textStyle: {
+							fontSize: 12,
+							fontName: 'Courier New',
+							color: 'white',
+							fontWeight: 700
+
+						},
+						gridlines: {
+							color: 'transparent',
+							count: 4
+						}
+					},
+					hAxis: {
+						textStyle: {
+							color: 'transparent',
+							fontName: 'Courier New',
+							fontWeight: 700
+						}
+					}
+
+				};
+
+				var bardata = [['Month', 'Volume'], ['Application', 5], ['Friend', 4], ['Newspaper', 6], ['Radio', 8], ['No Referral', 2]];
+
+				var baroptions = {
+
+					isStacked: true,
+
+					vAxis: {
+
+						textStyle: {
+							fontSize: 10,
+							fontName: 'Courier New',
+							color: 'white',
+							fontWeight: 700,
+							width: 100
+						},
+						gridlines: {
+							color: 'transparent',
+							count: 4
+						}
+
+					},
+
+					hAxis: {
+
+						textStyle: {
+							fontSize: 10,
+							fontName: 'Courier New',
+							color: 'white',
+							fontWeight: 700
+						},
+
+						gridlines: {
+							color: 'white',
+							count: 4
+						}
+
+					},
+
+					legend: { position: 'none' },
+					backgroundColor: 'transparent'
+				};
+
+				return _react2.default.createElement(
+					'div',
+					{ style: { backgroundColor: 'transparent' } },
+					_react2.default.createElement(
+						'div',
+						{ style: { display: 'flex', justifyContent: 'center' } },
+						this.setCompanyPicker(),
+						this.setDatePicker()
+					),
+					_react2.default.createElement(
+						'div',
+						{ style: { display: 'flex', flexDirection: 'column' } },
+						_react2.default.createElement(
+							'div',
+							{ className: 'intradaylinegraph' },
+							_react2.default.createElement(_reactGoogleCharts.Chart, {
+								chartType: 'LineChart',
+								data: line_data,
+								width: '100%',
+								height: '100%',
+								options: options
+							})
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'intradaybargraph' },
+							_react2.default.createElement(_reactGoogleCharts.Chart, {
+								chartType: 'ColumnChart',
+								data: bar_data,
+								width: '100%',
+								height: '100%',
+								options: baroptions
+							})
 						)
 					)
 				);
@@ -82465,1625 +82586,9 @@
 
 	'use strict';
 
-	var assign = __webpack_require__(493),
-		moment = __webpack_require__(277),
-		React = __webpack_require__(1),
-		DaysView = __webpack_require__(494),
-		MonthsView = __webpack_require__(495),
-		YearsView = __webpack_require__(496),
-		TimeView = __webpack_require__(497)
-	;
-
-	var TYPES = React.PropTypes;
-	var Datetime = React.createClass({
-		mixins: [
-			__webpack_require__(498)
-		],
-		viewComponents: {
-			days: DaysView,
-			months: MonthsView,
-			years: YearsView,
-			time: TimeView
-		},
-		propTypes: {
-			// value: TYPES.object | TYPES.string,
-			// defaultValue: TYPES.object | TYPES.string,
-			onFocus: TYPES.func,
-			onBlur: TYPES.func,
-			onChange: TYPES.func,
-			locale: TYPES.string,
-			utc: TYPES.bool,
-			input: TYPES.bool,
-			// dateFormat: TYPES.string | TYPES.bool,
-			// timeFormat: TYPES.string | TYPES.bool,
-			inputProps: TYPES.object,
-			timeConstraints: TYPES.object,
-			viewMode: TYPES.oneOf(['years', 'months', 'days', 'time']),
-			isValidDate: TYPES.func,
-			open: TYPES.bool,
-			strictParsing: TYPES.bool,
-			closeOnSelect: TYPES.bool,
-			closeOnTab: TYPES.bool
-		},
-
-		getDefaultProps: function() {
-			var nof = function() {};
-			return {
-				className: '',
-				defaultValue: '',
-				inputProps: {},
-				input: true,
-				onFocus: nof,
-				onBlur: nof,
-				onChange: nof,
-				timeFormat: true,
-				timeConstraints: {},
-				dateFormat: true,
-				strictParsing: true,
-				closeOnSelect: false,
-				closeOnTab: true,
-				utc: false
-			};
-		},
-
-		getInitialState: function() {
-			var state = this.getStateFromProps( this.props );
-
-			if ( state.open === undefined )
-				state.open = !this.props.input;
-
-			state.currentView = this.props.dateFormat ? (this.props.viewMode || state.updateOn || 'days') : 'time';
-
-			return state;
-		},
-
-		getStateFromProps: function( props ) {
-			var formats = this.getFormats( props ),
-				date = props.value || props.defaultValue,
-				selectedDate, viewDate, updateOn, inputValue
-			;
-
-			if ( date && typeof date === 'string' )
-				selectedDate = this.localMoment( date, formats.datetime );
-			else if ( date )
-				selectedDate = this.localMoment( date );
-
-			if ( selectedDate && !selectedDate.isValid() )
-				selectedDate = null;
-
-			viewDate = selectedDate ?
-				selectedDate.clone().startOf('month') :
-				this.localMoment().startOf('month')
-			;
-
-			updateOn = this.getUpdateOn(formats);
-
-			if ( selectedDate )
-				inputValue = selectedDate.format(formats.datetime);
-			else if ( date.isValid && !date.isValid() )
-				inputValue = '';
-			else
-				inputValue = date || '';
-
-			return {
-				updateOn: updateOn,
-				inputFormat: formats.datetime,
-				viewDate: viewDate,
-				selectedDate: selectedDate,
-				inputValue: inputValue,
-				open: props.open
-			};
-		},
-
-		getUpdateOn: function( formats ) {
-			if ( formats.date.match(/[lLD]/) ) {
-				return 'days';
-			}
-			else if ( formats.date.indexOf('M') !== -1 ) {
-				return 'months';
-			}
-			else if ( formats.date.indexOf('Y') !== -1 ) {
-				return 'years';
-			}
-
-			return 'days';
-		},
-
-		getFormats: function( props ) {
-			var formats = {
-					date: props.dateFormat || '',
-					time: props.timeFormat || ''
-				},
-				locale = this.localMoment( props.date, null, props ).localeData()
-			;
-
-			if ( formats.date === true ) {
-				formats.date = locale.longDateFormat('L');
-			}
-			else if ( this.getUpdateOn(formats) !== 'days' ) {
-				formats.time = '';
-			}
-
-			if ( formats.time === true ) {
-				formats.time = locale.longDateFormat('LT');
-			}
-
-			formats.datetime = formats.date && formats.time ?
-				formats.date + ' ' + formats.time :
-				formats.date || formats.time
-			;
-
-			return formats;
-		},
-
-		componentWillReceiveProps: function( nextProps ) {
-			var formats = this.getFormats( nextProps ),
-				updatedState = {}
-			;
-
-			if ( nextProps.value !== this.props.value ||
-				formats.datetime !== this.getFormats( this.props ).datetime ) {
-				updatedState = this.getStateFromProps( nextProps );
-			}
-
-			if ( updatedState.open === undefined ) {
-				if ( this.props.closeOnSelect && this.state.currentView !== 'time' ) {
-					updatedState.open = false;
-				} else {
-					updatedState.open = this.state.open;
-				}
-			}
-
-			if ( nextProps.viewMode !== this.props.viewMode ) {
-				updatedState.currentView = nextProps.viewMode;
-			}
-
-			if ( nextProps.locale !== this.props.locale ) {
-				if ( this.state.viewDate ) {
-					var updatedViewDate = this.state.viewDate.clone().locale( nextProps.locale );
-					updatedState.viewDate = updatedViewDate;
-				}
-				if ( this.state.selectedDate ) {
-					var updatedSelectedDate = this.state.selectedDate.clone().locale( nextProps.locale );
-					updatedState.selectedDate = updatedSelectedDate;
-					updatedState.inputValue = updatedSelectedDate.format( formats.datetime );
-				}
-			}
-
-			if ( nextProps.utc !== this.props.utc ) {
-				if ( nextProps.utc ) {
-					if ( this.state.viewDate )
-						updatedState.viewDate = this.state.viewDate.clone().utc();
-					if ( this.state.selectedDate ) {
-						updatedState.selectedDate = this.state.selectedDate.clone().utc();
-						updatedState.inputValue = updatedState.selectedDate.format( formats.datetime );
-					}
-				} else {
-					if ( this.state.viewDate )
-						updatedState.viewDate = this.state.viewDate.clone().local();
-					if ( this.state.selectedDate ) {
-						updatedState.selectedDate = this.state.selectedDate.clone().local();
-						updatedState.inputValue = updatedState.selectedDate.format(formats.datetime);
-					}
-				}
-			}
-
-			this.setState( updatedState );
-		},
-
-		onInputChange: function( e ) {
-			var value = e.target === null ? e : e.target.value,
-				localMoment = this.localMoment( value, this.state.inputFormat ),
-				update = { inputValue: value }
-			;
-
-			if ( localMoment.isValid() && !this.props.value ) {
-				update.selectedDate = localMoment;
-				update.viewDate = localMoment.clone().startOf('month');
-			}
-			else {
-				update.selectedDate = null;
-			}
-
-			return this.setState( update, function() {
-				return this.props.onChange( localMoment.isValid() ? localMoment : this.state.inputValue );
-			});
-		},
-
-		onInputKey: function( e ) {
-			if ( e.which === 9 && this.props.closeOnTab ) {
-				this.closeCalendar();
-			}
-		},
-
-		showView: function( view ) {
-			var me = this;
-			return function() {
-				me.setState({ currentView: view });
-			};
-		},
-
-		setDate: function( type ) {
-			var me = this,
-				nextViews = {
-					month: 'days',
-					year: 'months'
-				}
-			;
-			return function( e ) {
-				me.setState({
-					viewDate: me.state.viewDate.clone()[ type ]( parseInt(e.target.getAttribute('data-value'), 10) ).startOf( type ),
-					currentView: nextViews[ type ]
-				});
-			};
-		},
-
-		addTime: function( amount, type, toSelected ) {
-			return this.updateTime( 'add', amount, type, toSelected );
-		},
-
-		subtractTime: function( amount, type, toSelected ) {
-			return this.updateTime( 'subtract', amount, type, toSelected );
-		},
-
-		updateTime: function( op, amount, type, toSelected ) {
-			var me = this;
-
-			return function() {
-				var update = {},
-					date = toSelected ? 'selectedDate' : 'viewDate'
-				;
-
-				update[ date ] = me.state[ date ].clone()[ op ]( amount, type );
-
-				me.setState( update );
-			};
-		},
-
-		allowedSetTime: ['hours', 'minutes', 'seconds', 'milliseconds'],
-		setTime: function( type, value ) {
-			var index = this.allowedSetTime.indexOf( type ) + 1,
-				state = this.state,
-				date = (state.selectedDate || state.viewDate).clone(),
-				nextType
-			;
-
-			// It is needed to set all the time properties
-			// to not to reset the time
-			date[ type ]( value );
-			for (; index < this.allowedSetTime.length; index++) {
-				nextType = this.allowedSetTime[index];
-				date[ nextType ]( date[nextType]() );
-			}
-
-			if ( !this.props.value ) {
-				this.setState({
-					selectedDate: date,
-					inputValue: date.format( state.inputFormat )
-				});
-			}
-			this.props.onChange( date );
-		},
-
-		updateSelectedDate: function( e, close ) {
-			var target = e.target,
-				modifier = 0,
-				viewDate = this.state.viewDate,
-				currentDate = this.state.selectedDate || viewDate,
-				date
-	    ;
-
-			if (target.className.indexOf('rdtDay') !== -1) {
-				if (target.className.indexOf('rdtNew') !== -1)
-					modifier = 1;
-				else if (target.className.indexOf('rdtOld') !== -1)
-					modifier = -1;
-
-				date = viewDate.clone()
-					.month( viewDate.month() + modifier )
-					.date( parseInt( target.getAttribute('data-value'), 10 ) );
-			} else if (target.className.indexOf('rdtMonth') !== -1) {
-				date = viewDate.clone()
-					.month( parseInt( target.getAttribute('data-value'), 10 ) )
-					.date( currentDate.date() );
-			} else if (target.className.indexOf('rdtYear') !== -1) {
-				date = viewDate.clone()
-					.month( currentDate.month() )
-					.date( currentDate.date() )
-					.year( parseInt( target.getAttribute('data-value'), 10 ) );
-			}
-
-			date.hours( currentDate.hours() )
-				.minutes( currentDate.minutes() )
-				.seconds( currentDate.seconds() )
-				.milliseconds( currentDate.milliseconds() );
-
-			if ( !this.props.value ) {
-				this.setState({
-					selectedDate: date,
-					viewDate: date.clone().startOf('month'),
-					inputValue: date.format( this.state.inputFormat ),
-					open: !(this.props.closeOnSelect && close )
-				});
-			} else {
-				if (this.props.closeOnSelect && close) {
-					this.closeCalendar();
-				}
-			}
-
-			this.props.onChange( date );
-		},
-
-		openCalendar: function() {
-			if (!this.state.open) {
-				this.setState({ open: true }, function() {
-					this.props.onFocus();
-				});
-			}
-		},
-
-		closeCalendar: function() {
-			this.setState({ open: false }, function () {
-				this.props.onBlur( this.state.selectedDate || this.state.inputValue );
-			});
-		},
-
-		handleClickOutside: function() {
-			if ( this.props.input && this.state.open && !this.props.open ) {
-				this.setState({ open: false }, function() {
-					this.props.onBlur( this.state.selectedDate || this.state.inputValue );
-				});
-			}
-		},
-
-		localMoment: function( date, format, props ) {
-			props = props || this.props;
-			var momentFn = props.utc ? moment.utc : moment;
-			var m = momentFn( date, format, props.strictParsing );
-			if ( props.locale )
-				m.locale( props.locale );
-			return m;
-		},
-
-		componentProps: {
-			fromProps: ['value', 'isValidDate', 'renderDay', 'renderMonth', 'renderYear', 'timeConstraints'],
-			fromState: ['viewDate', 'selectedDate', 'updateOn'],
-			fromThis: ['setDate', 'setTime', 'showView', 'addTime', 'subtractTime', 'updateSelectedDate', 'localMoment']
-		},
-
-		getComponentProps: function() {
-			var me = this,
-				formats = this.getFormats( this.props ),
-				props = {dateFormat: formats.date, timeFormat: formats.time}
-			;
-
-			this.componentProps.fromProps.forEach( function( name ) {
-				props[ name ] = me.props[ name ];
-			});
-			this.componentProps.fromState.forEach( function( name ) {
-				props[ name ] = me.state[ name ];
-			});
-			this.componentProps.fromThis.forEach( function( name ) {
-				props[ name ] = me[ name ];
-			});
-
-			return props;
-		},
-
-		render: function() {
-			var Component = this.viewComponents[ this.state.currentView ],
-				DOM = React.DOM,
-				className = 'rdt' + (this.props.className ?
-	                  ( Array.isArray( this.props.className ) ?
-	                  ' ' + this.props.className.join( ' ' ) : ' ' + this.props.className) : ''),
-				children = []
-			;
-
-			if ( this.props.input ) {
-				children = [ DOM.input( assign({
-					key: 'i',
-					type: 'text',
-					className: 'form-control',
-					onFocus: this.openCalendar,
-					onChange: this.onInputChange,
-					onKeyDown: this.onInputKey,
-					value: this.state.inputValue
-				}, this.props.inputProps ))];
-			} else {
-				className += ' rdtStatic';
-			}
-
-			if ( this.state.open )
-				className += ' rdtOpen';
-
-			return DOM.div({className: className}, children.concat(
-				DOM.div(
-					{ key: 'dt', className: 'rdtPicker' },
-					React.createElement( Component, this.getComponentProps())
-				)
-			));
-		}
-	});
-
-	// Make moment accessible through the Datetime class
-	Datetime.moment = moment;
-
-	module.exports = Datetime;
-
-
-/***/ },
-/* 493 */
-/***/ function(module, exports) {
-
-	'use strict';
-	var propIsEnumerable = Object.prototype.propertyIsEnumerable;
-
-	function ToObject(val) {
-		if (val == null) {
-			throw new TypeError('Object.assign cannot be called with null or undefined');
-		}
-
-		return Object(val);
-	}
-
-	function ownEnumerableKeys(obj) {
-		var keys = Object.getOwnPropertyNames(obj);
-
-		if (Object.getOwnPropertySymbols) {
-			keys = keys.concat(Object.getOwnPropertySymbols(obj));
-		}
-
-		return keys.filter(function (key) {
-			return propIsEnumerable.call(obj, key);
-		});
-	}
-
-	module.exports = Object.assign || function (target, source) {
-		var from;
-		var keys;
-		var to = ToObject(target);
-
-		for (var s = 1; s < arguments.length; s++) {
-			from = arguments[s];
-			keys = ownEnumerableKeys(Object(from));
-
-			for (var i = 0; i < keys.length; i++) {
-				to[keys[i]] = from[keys[i]];
-			}
-		}
-
-		return to;
-	};
-
-
-/***/ },
-/* 494 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var React = __webpack_require__(1),
-		moment = __webpack_require__(277)
-	;
-
-	var DOM = React.DOM;
-	var DateTimePickerDays = React.createClass({
-		render: function() {
-			var footer = this.renderFooter(),
-				date = this.props.viewDate,
-				locale = date.localeData(),
-				tableChildren
-			;
-
-			tableChildren = [
-				DOM.thead({ key: 'th' }, [
-					DOM.tr({ key: 'h' }, [
-						DOM.th({ key: 'p', className: 'rdtPrev' }, DOM.span({ onClick: this.props.subtractTime( 1, 'months' )}, '‹' )),
-						DOM.th({ key: 's', className: 'rdtSwitch', onClick: this.props.showView( 'months' ), colSpan: 5, 'data-value': this.props.viewDate.month() }, locale.months( date ) + ' ' + date.year() ),
-						DOM.th({ key: 'n', className: 'rdtNext' }, DOM.span({ onClick: this.props.addTime( 1, 'months' )}, '›' ))
-					]),
-					DOM.tr({ key: 'd'}, this.getDaysOfWeek( locale ).map( function( day, index ) { return DOM.th({ key: day + index, className: 'dow'}, day ); }) )
-				]),
-				DOM.tbody({ key: 'tb' }, this.renderDays())
-			];
-
-			if ( footer )
-				tableChildren.push( footer );
-
-			return DOM.div({ className: 'rdtDays' },
-				DOM.table({}, tableChildren )
-			);
-		},
-
-		/**
-		 * Get a list of the days of the week
-		 * depending on the current locale
-		 * @return {array} A list with the shortname of the days
-		 */
-		getDaysOfWeek: function( locale ) {
-			var days = locale._weekdaysMin,
-				first = locale.firstDayOfWeek(),
-				dow = [],
-				i = 0
-			;
-
-			days.forEach( function( day ) {
-				dow[ (7 + ( i++ ) - first) % 7 ] = day;
-			});
-
-			return dow;
-		},
-
-		renderDays: function() {
-			var date = this.props.viewDate,
-				selected = this.props.selectedDate && this.props.selectedDate.clone(),
-				prevMonth = date.clone().subtract( 1, 'months' ),
-				currentYear = date.year(),
-				currentMonth = date.month(),
-				weeks = [],
-				days = [],
-				renderer = this.props.renderDay || this.renderDay,
-				isValid = this.props.isValidDate || this.alwaysValidDate,
-				classes, isDisabled, dayProps, currentDate
-			;
-
-			// Go to the last week of the previous month
-			prevMonth.date( prevMonth.daysInMonth() ).startOf( 'week' );
-			var lastDay = prevMonth.clone().add( 42, 'd' );
-
-			while ( prevMonth.isBefore( lastDay ) ) {
-				classes = 'rdtDay';
-				currentDate = prevMonth.clone();
-
-				if ( ( prevMonth.year() === currentYear && prevMonth.month() < currentMonth ) || ( prevMonth.year() < currentYear ) )
-					classes += ' rdtOld';
-				else if ( ( prevMonth.year() === currentYear && prevMonth.month() > currentMonth ) || ( prevMonth.year() > currentYear ) )
-					classes += ' rdtNew';
-
-				if ( selected && prevMonth.isSame( selected, 'day' ) )
-					classes += ' rdtActive';
-
-				if (prevMonth.isSame( moment(), 'day' ) )
-					classes += ' rdtToday';
-
-				isDisabled = !isValid( currentDate, selected );
-				if ( isDisabled )
-					classes += ' rdtDisabled';
-
-				dayProps = {
-					key: prevMonth.format( 'M_D' ),
-					'data-value': prevMonth.date(),
-					className: classes
-				};
-
-				if ( !isDisabled )
-					dayProps.onClick = this.updateSelectedDate;
-
-				days.push( renderer( dayProps, currentDate, selected ) );
-
-				if ( days.length === 7 ) {
-					weeks.push( DOM.tr({ key: prevMonth.format( 'M_D' )}, days ) );
-					days = [];
-				}
-
-				prevMonth.add( 1, 'd' );
-			}
-
-			return weeks;
-		},
-
-		updateSelectedDate: function( event ) {
-			this.props.updateSelectedDate( event, true );
-		},
-
-		renderDay: function( props, currentDate ) {
-			return DOM.td( props, currentDate.date() );
-		},
-
-		renderFooter: function() {
-			if ( !this.props.timeFormat )
-				return '';
-
-			var date = this.props.selectedDate || this.props.viewDate;
-
-			return DOM.tfoot({ key: 'tf'},
-				DOM.tr({},
-					DOM.td({ onClick: this.props.showView( 'time' ), colSpan: 7, className: 'rdtTimeToggle' }, date.format( this.props.timeFormat ))
-				)
-			);
-		},
-
-		alwaysValidDate: function() {
-			return 1;
-		}
-	});
-
-	module.exports = DateTimePickerDays;
-
-
-/***/ },
-/* 495 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var React = __webpack_require__(1);
-
-	var DOM = React.DOM;
-	var DateTimePickerMonths = React.createClass({
-		render: function() {
-			return DOM.div({ className: 'rdtMonths' }, [
-				DOM.table({ key: 'a' }, DOM.thead( {}, DOM.tr( {}, [
-					DOM.th({ key: 'prev', className: 'rdtPrev' }, DOM.span({ onClick: this.props.subtractTime( 1, 'years' )}, '‹' )),
-					DOM.th({ key: 'year', className: 'rdtSwitch', onClick: this.props.showView( 'years' ), colSpan: 2, 'data-value': this.props.viewDate.year() }, this.props.viewDate.year() ),
-					DOM.th({ key: 'next', className: 'rdtNext' }, DOM.span({ onClick: this.props.addTime( 1, 'years' )}, '›' ))
-				]))),
-				DOM.table({ key: 'months' }, DOM.tbody({ key: 'b' }, this.renderMonths()))
-			]);
-		},
-
-		renderMonths: function() {
-			var date = this.props.selectedDate,
-				month = this.props.viewDate.month(),
-				year = this.props.viewDate.year(),
-				rows = [],
-				i = 0,
-				months = [],
-				renderer = this.props.renderMonth || this.renderMonth,
-				isValid = this.props.isValidDate || this.alwaysValidDate,
-				classes, props, currentMonth, isDisabled, noOfDaysInMonth, daysInMonth, validDay,
-				// Date is irrelevant because we're only interested in month
-				irrelevantDate = 1
-			;
-
-			while (i < 12) {
-				classes = 'rdtMonth';
-				currentMonth =
-					this.props.viewDate.clone().set({ year: year, month: i, date: irrelevantDate });
-
-				noOfDaysInMonth = currentMonth.endOf( 'month' ).format( 'D' );
-				daysInMonth = Array.from({ length: noOfDaysInMonth }, function( e, i ) {
-					return i + 1;
-				});
-
-				validDay = daysInMonth.find(function( d ) {
-					var day = currentMonth.clone().set( 'date', d );
-					return isValid( day );
-				});
-
-				isDisabled = ( validDay === undefined );
-
-				if ( isDisabled )
-					classes += ' rdtDisabled';
-
-				if ( date && i === month && year === date.year() )
-					classes += ' rdtActive';
-
-				props = {
-					key: i,
-					'data-value': i,
-					className: classes
-				};
-
-				if ( !isDisabled )
-					props.onClick = ( this.props.updateOn === 'months' ?
-						this.updateSelectedMonth : this.props.setDate( 'month' ) );
-
-				months.push( renderer( props, i, year, date && date.clone() ) );
-
-				if ( months.length === 4 ) {
-					rows.push( DOM.tr({ key: month + '_' + rows.length }, months ) );
-					months = [];
-				}
-
-				i++;
-			}
-
-			return rows;
-		},
-
-		updateSelectedMonth: function( event ) {
-			this.props.updateSelectedDate( event, true );
-		},
-
-		renderMonth: function( props, month ) {
-			var localMoment = this.props.viewDate;
-			var monthStr = localMoment.localeData().monthsShort( localMoment.month( month ) );
-			var strLength = 3;
-			// Because some months are up to 5 characters long, we want to
-			// use a fixed string length for consistency
-			var monthStrFixedLength = monthStr.substring( 0, strLength );
-			return DOM.td( props, capitalize( monthStrFixedLength ) );
-		},
-
-		alwaysValidDate: function() {
-			return 1;
-		}
-	});
-
-	function capitalize( str ) {
-		return str.charAt( 0 ).toUpperCase() + str.slice( 1 );
-	}
-
-	module.exports = DateTimePickerMonths;
-
-
-/***/ },
-/* 496 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var React = __webpack_require__(1);
-
-	var DOM = React.DOM;
-	var DateTimePickerYears = React.createClass({
-		render: function() {
-			var year = parseInt( this.props.viewDate.year() / 10, 10 ) * 10;
-
-			return DOM.div({ className: 'rdtYears' }, [
-				DOM.table({ key: 'a' }, DOM.thead({}, DOM.tr({}, [
-					DOM.th({ key: 'prev', className: 'rdtPrev' }, DOM.span({ onClick: this.props.subtractTime( 10, 'years' )}, '‹' )),
-					DOM.th({ key: 'year', className: 'rdtSwitch', onClick: this.props.showView( 'years' ), colSpan: 2 }, year + '-' + ( year + 9 ) ),
-					DOM.th({ key: 'next', className: 'rdtNext' }, DOM.span({ onClick: this.props.addTime( 10, 'years' )}, '›' ))
-					]))),
-				DOM.table({ key: 'years' }, DOM.tbody( {}, this.renderYears( year )))
-			]);
-		},
-
-		renderYears: function( year ) {
-			var years = [],
-				i = -1,
-				rows = [],
-				renderer = this.props.renderYear || this.renderYear,
-				selectedDate = this.props.selectedDate,
-				isValid = this.props.isValidDate || this.alwaysValidDate,
-				classes, props, currentYear, isDisabled, noOfDaysInYear, daysInYear, validDay,
-				// Month and date are irrelevant here because
-				// we're only interested in the year
-				irrelevantMonth = 0,
-				irrelevantDate = 1
-			;
-
-			year--;
-			while (i < 11) {
-				classes = 'rdtYear';
-				currentYear = this.props.viewDate.clone().set(
-					{ year: year, month: irrelevantMonth, date: irrelevantDate } );
-
-				// Not sure what 'rdtOld' is for, commenting out for now as it's not working properly
-				// if ( i === -1 | i === 10 )
-					// classes += ' rdtOld';
-
-				noOfDaysInYear = currentYear.endOf( 'year' ).format( 'DDD' );
-				daysInYear = Array.from({ length: noOfDaysInYear }, function( e, i ) {
-					return i + 1;
-				});
-
-				validDay = daysInYear.find(function( d ) {
-					var day = currentYear.clone().dayOfYear( d );
-					return isValid( day );
-				});
-
-				isDisabled = ( validDay === undefined );
-
-				if ( isDisabled )
-					classes += ' rdtDisabled';
-
-				if ( selectedDate && selectedDate.year() === year )
-					classes += ' rdtActive';
-
-				props = {
-					key: year,
-					'data-value': year,
-					className: classes
-				};
-
-				if ( !isDisabled )
-					props.onClick = ( this.props.updateOn === 'years' ?
-						this.updateSelectedYear : this.props.setDate('year') );
-
-				years.push( renderer( props, year, selectedDate && selectedDate.clone() ));
-
-				if ( years.length === 4 ) {
-					rows.push( DOM.tr({ key: i }, years ) );
-					years = [];
-				}
-
-				year++;
-				i++;
-			}
-
-			return rows;
-		},
-
-		updateSelectedYear: function( event ) {
-			this.props.updateSelectedDate( event, true );
-		},
-
-		renderYear: function( props, year ) {
-			return DOM.td( props, year );
-		},
-
-		alwaysValidDate: function() {
-			return 1;
-		}
-	});
-
-	module.exports = DateTimePickerYears;
-
-
-/***/ },
-/* 497 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var React = __webpack_require__(1),
-		assign = __webpack_require__(493)
-	;
-
-	var DOM = React.DOM;
-	var DateTimePickerTime = React.createClass({
-		getInitialState: function() {
-			return this.calculateState( this.props );
-		},
-
-		calculateState: function( props ) {
-			var date = props.selectedDate || props.viewDate,
-				format = props.timeFormat,
-				counters = []
-			;
-
-			if ( format.toLowerCase().indexOf('h') !== -1 ) {
-				counters.push('hours');
-				if ( format.indexOf('m') !== -1 ) {
-					counters.push('minutes');
-					if ( format.indexOf('s') !== -1 ) {
-						counters.push('seconds');
-					}
-				}
-			}
-
-			var daypart = false;
-			if ( this.state !== null && this.props.timeFormat.toLowerCase().indexOf( ' a' ) !== -1 ) {
-				if ( this.props.timeFormat.indexOf( ' A' ) !== -1 ) {
-					daypart = ( this.state.hours >= 12 ) ? 'PM' : 'AM';
-				} else {
-					daypart = ( this.state.hours >= 12 ) ? 'pm' : 'am';
-				}
-			}
-
-			return {
-				hours: date.format( 'H' ),
-				minutes: date.format( 'mm' ),
-				seconds: date.format( 'ss' ),
-				milliseconds: date.format( 'SSS' ),
-				daypart: daypart,
-				counters: counters
-			};
-		},
-
-		renderCounter: function( type ) {
-			if ( type !== 'daypart' ) {
-				var value = this.state[ type ];
-				if ( type === 'hours' && this.props.timeFormat.toLowerCase().indexOf( ' a' ) !== -1 ) {
-					value = ( value - 1 ) % 12 + 1;
-
-					if ( value === 0 ) {
-						value = 12;
-					}
-				}
-				return DOM.div({ key: type, className: 'rdtCounter' }, [
-					DOM.span({ key: 'up', className: 'rdtBtn', onMouseDown: this.onStartClicking( 'increase', type ) }, '▲' ),
-					DOM.div({ key: 'c', className: 'rdtCount' }, value ),
-					DOM.span({ key: 'do', className: 'rdtBtn', onMouseDown: this.onStartClicking( 'decrease', type ) }, '▼' )
-				]);
-			}
-			return '';
-		},
-
-		renderDayPart: function() {
-			return DOM.div({ key: 'dayPart', className: 'rdtCounter' }, [
-				DOM.span({ key: 'up', className: 'rdtBtn', onMouseDown: this.onStartClicking( 'toggleDayPart', 'hours') }, '▲' ),
-				DOM.div({ key: this.state.daypart, className: 'rdtCount' }, this.state.daypart ),
-				DOM.span({ key: 'do', className: 'rdtBtn', onMouseDown: this.onStartClicking( 'toggleDayPart', 'hours') }, '▼' )
-			]);
-		},
-
-		render: function() {
-			var me = this,
-				counters = []
-			;
-
-			this.state.counters.forEach( function( c ) {
-				if ( counters.length )
-					counters.push( DOM.div({ key: 'sep' + counters.length, className: 'rdtCounterSeparator' }, ':' ) );
-				counters.push( me.renderCounter( c ) );
-			});
-
-			if ( this.state.daypart !== false ) {
-				counters.push( me.renderDayPart() );
-			}
-
-			if ( this.state.counters.length === 3 && this.props.timeFormat.indexOf( 'S' ) !== -1 ) {
-				counters.push( DOM.div({ className: 'rdtCounterSeparator', key: 'sep5' }, ':' ) );
-				counters.push(
-					DOM.div({ className: 'rdtCounter rdtMilli', key: 'm' },
-						DOM.input({ value: this.state.milliseconds, type: 'text', onChange: this.updateMilli } )
-						)
-					);
-			}
-
-			return DOM.div({ className: 'rdtTime' },
-				DOM.table({}, [
-					this.renderHeader(),
-					DOM.tbody({ key: 'b'}, DOM.tr({}, DOM.td({},
-						DOM.div({ className: 'rdtCounters' }, counters )
-					)))
-				])
-			);
-		},
-
-		componentWillMount: function() {
-			var me = this;
-			me.timeConstraints = {
-				hours: {
-					min: 0,
-					max: 23,
-					step: 1
-				},
-				minutes: {
-					min: 0,
-					max: 59,
-					step: 1
-				},
-				seconds: {
-					min: 0,
-					max: 59,
-					step: 1
-				},
-				milliseconds: {
-					min: 0,
-					max: 999,
-					step: 1
-				}
-			};
-			['hours', 'minutes', 'seconds', 'milliseconds'].forEach( function( type ) {
-				assign(me.timeConstraints[ type ], me.props.timeConstraints[ type ]);
-			});
-			this.setState( this.calculateState( this.props ) );
-		},
-
-		componentWillReceiveProps: function( nextProps ) {
-			this.setState( this.calculateState( nextProps ) );
-		},
-
-		updateMilli: function( e ) {
-			var milli = parseInt( e.target.value, 10 );
-			if ( milli === e.target.value && milli >= 0 && milli < 1000 ) {
-				this.props.setTime( 'milliseconds', milli );
-				this.setState( { milliseconds: milli } );
-			}
-		},
-
-		renderHeader: function() {
-			if ( !this.props.dateFormat )
-				return null;
-
-			var date = this.props.selectedDate || this.props.viewDate;
-			return DOM.thead({ key: 'h' }, DOM.tr({},
-				DOM.th({ className: 'rdtSwitch', colSpan: 4, onClick: this.props.showView( 'days' ) }, date.format( this.props.dateFormat ) )
-			));
-		},
-
-		onStartClicking: function( action, type ) {
-			var me = this;
-
-			return function() {
-				var update = {};
-				update[ type ] = me[ action ]( type );
-				me.setState( update );
-
-				me.timer = setTimeout( function() {
-					me.increaseTimer = setInterval( function() {
-						update[ type ] = me[ action ]( type );
-						me.setState( update );
-					}, 70);
-				}, 500);
-
-				me.mouseUpListener = function() {
-					clearTimeout( me.timer );
-					clearInterval( me.increaseTimer );
-					me.props.setTime( type, me.state[ type ] );
-					document.body.removeEventListener( 'mouseup', me.mouseUpListener );
-				};
-
-				document.body.addEventListener( 'mouseup', me.mouseUpListener );
-			};
-		},
-
-		padValues: {
-			hours: 1,
-			minutes: 2,
-			seconds: 2,
-			milliseconds: 3
-		},
-
-		toggleDayPart: function( type ) { // type is always 'hours'
-			var value = parseInt( this.state[ type ], 10) + 12;
-			if ( value > this.timeConstraints[ type ].max )
-				value = this.timeConstraints[ type ].min + ( value - ( this.timeConstraints[ type ].max + 1 ) );
-			return this.pad( type, value );
-		},
-
-		increase: function( type ) {
-			var value = parseInt( this.state[ type ], 10) + this.timeConstraints[ type ].step;
-			if ( value > this.timeConstraints[ type ].max )
-				value = this.timeConstraints[ type ].min + ( value - ( this.timeConstraints[ type ].max + 1 ) );
-			return this.pad( type, value );
-		},
-
-		decrease: function( type ) {
-			var value = parseInt( this.state[ type ], 10) - this.timeConstraints[ type ].step;
-			if ( value < this.timeConstraints[ type ].min )
-				value = this.timeConstraints[ type ].max + 1 - ( this.timeConstraints[ type ].min - value );
-			return this.pad( type, value );
-		},
-
-		pad: function( type, value ) {
-			var str = value + '';
-			while ( str.length < this.padValues[ type ] )
-				str = '0' + str;
-			return str;
-		}
-	});
-
-	module.exports = DateTimePickerTime;
-
-
-/***/ },
-/* 498 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	// This is extracted from https://github.com/Pomax/react-onclickoutside
-	// And modified to support react 0.13 and react 0.14
-
-	var React = __webpack_require__(1),
-		version = React.version && React.version.split('.')
-	;
-
-	if ( version && ( version[0] > 0 || version[1] > 13 ) )
-		React = __webpack_require__(32);
-
-	// Use a parallel array because we can't use
-	// objects as keys, they get toString-coerced
-	var registeredComponents = [];
-	var handlers = [];
-
-	var IGNORE_CLASS = 'ignore-react-onclickoutside';
-
-	var isSourceFound = function(source, localNode) {
-	 if (source === localNode) {
-	   return true;
-	 }
-	 // SVG <use/> elements do not technically reside in the rendered DOM, so
-	 // they do not have classList directly, but they offer a link to their
-	 // corresponding element, which can have classList. This extra check is for
-	 // that case.
-	 // See: http://www.w3.org/TR/SVG11/struct.html#InterfaceSVGUseElement
-	 // Discussion: https://github.com/Pomax/react-onclickoutside/pull/17
-	 if (source.correspondingElement) {
-	   return source.correspondingElement.classList.contains(IGNORE_CLASS);
-	 }
-	 return source.classList.contains(IGNORE_CLASS);
-	};
-
-	module.exports = {
-	 componentDidMount: function() {
-	   if (typeof this.handleClickOutside !== 'function')
-	     throw new Error('Component lacks a handleClickOutside(event) function for processing outside click events.');
-
-	   var fn = this.__outsideClickHandler = (function(localNode, eventHandler) {
-	     return function(evt) {
-	       evt.stopPropagation();
-	       var source = evt.target;
-	       var found = false;
-	       // If source=local then this event came from "somewhere"
-	       // inside and should be ignored. We could handle this with
-	       // a layered approach, too, but that requires going back to
-	       // thinking in terms of Dom node nesting, running counter
-	       // to React's "you shouldn't care about the DOM" philosophy.
-	       while (source.parentNode) {
-	         found = isSourceFound(source, localNode);
-	         if (found) return;
-	         source = source.parentNode;
-	       }
-	       eventHandler(evt);
-	     };
-	   }(React.findDOMNode(this), this.handleClickOutside));
-
-	   var pos = registeredComponents.length;
-	   registeredComponents.push(this);
-	   handlers[pos] = fn;
-
-	   // If there is a truthy disableOnClickOutside property for this
-	   // component, don't immediately start listening for outside events.
-	   if (!this.props.disableOnClickOutside) {
-	     this.enableOnClickOutside();
-	   }
-	 },
-
-	 componentWillUnmount: function() {
-	   this.disableOnClickOutside();
-	   this.__outsideClickHandler = false;
-	   var pos = registeredComponents.indexOf(this);
-	   if ( pos>-1) {
-	     if (handlers[pos]) {
-	       // clean up so we don't leak memory
-	       handlers.splice(pos, 1);
-	       registeredComponents.splice(pos, 1);
-	     }
-	   }
-	 },
-
-	 /**
-	  * Can be called to explicitly enable event listening
-	  * for clicks and touches outside of this element.
-	  */
-	 enableOnClickOutside: function() {
-	   var fn = this.__outsideClickHandler;
-	   document.addEventListener('mousedown', fn);
-	   document.addEventListener('touchstart', fn);
-	 },
-
-	 /**
-	  * Can be called to explicitly disable event listening
-	  * for clicks and touches outside of this element.
-	  */
-	 disableOnClickOutside: function() {
-	   var fn = this.__outsideClickHandler;
-	   document.removeEventListener('mousedown', fn);
-	   document.removeEventListener('touchstart', fn);
-	 }
-	};
-
-
-/***/ },
-/* 499 */
-/***/ function(module, exports, __webpack_require__) {
-
-	(function webpackUniversalModuleDefinition(root, factory) {
-		if(true)
-			module.exports = factory(__webpack_require__(1));
-		else if(typeof define === 'function' && define.amd)
-			define(["react"], factory);
-		else if(typeof exports === 'object')
-			exports["Loading"] = factory(require("react"));
-		else
-			root["Loading"] = factory(root["React"]);
-	})(this, function(__WEBPACK_EXTERNAL_MODULE_1__) {
-	return /******/ (function(modules) { // webpackBootstrap
-	/******/ 	// The module cache
-	/******/ 	var installedModules = {};
-
-	/******/ 	// The require function
-	/******/ 	function __webpack_require__(moduleId) {
-
-	/******/ 		// Check if module is in cache
-	/******/ 		if(installedModules[moduleId])
-	/******/ 			return installedModules[moduleId].exports;
-
-	/******/ 		// Create a new module (and put it into the cache)
-	/******/ 		var module = installedModules[moduleId] = {
-	/******/ 			exports: {},
-	/******/ 			id: moduleId,
-	/******/ 			loaded: false
-	/******/ 		};
-
-	/******/ 		// Execute the module function
-	/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-
-	/******/ 		// Flag the module as loaded
-	/******/ 		module.loaded = true;
-
-	/******/ 		// Return the exports of the module
-	/******/ 		return module.exports;
-	/******/ 	}
-
-
-	/******/ 	// expose the modules object (__webpack_modules__)
-	/******/ 	__webpack_require__.m = modules;
-
-	/******/ 	// expose the module cache
-	/******/ 	__webpack_require__.c = installedModules;
-
-	/******/ 	// __webpack_public_path__
-	/******/ 	__webpack_require__.p = "";
-
-	/******/ 	// Load entry module and return exports
-	/******/ 	return __webpack_require__(0);
-	/******/ })
-	/************************************************************************/
-	/******/ ([
-	/* 0 */
-	/***/ function(module, exports, __webpack_require__) {
-
-		'use strict';
-
-		Object.defineProperty(exports, '__esModule', {
-		  value: true
-		});
-
-		var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-		var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-		function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
-
-		function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-		function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-		function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-		var _react = __webpack_require__(1);
-
-		var _react2 = _interopRequireDefault(_react);
-
-		var _svg = __webpack_require__(2);
-
-		var svgSources = _interopRequireWildcard(_svg);
-
-		var Loading = (function (_Component) {
-		  _inherits(Loading, _Component);
-
-		  function Loading() {
-		    _classCallCheck(this, Loading);
-
-		    _get(Object.getPrototypeOf(Loading.prototype), 'constructor', this).call(this);
-		    this.state = {
-		      delayed: false
-		    };
-		  }
-
-		  _createClass(Loading, [{
-		    key: 'componentWillMount',
-		    value: function componentWillMount() {
-		      var _this = this;
-
-		      var delayed = this.props.delay > 0;
-
-		      if (delayed) {
-		        this.setState({ delayed: true });
-		        this._timeout = setTimeout(function () {
-		          _this.setState({ delayed: false });
-		        }, this.props.delay);
-		      }
-		    }
-		  }, {
-		    key: 'componentWillUnmount',
-		    value: function componentWillUnmount() {
-		      this._timeout && clearTimeout(this._timeout);
-		    }
-		  }, {
-		    key: 'render',
-		    value: function render() {
-		      var type = this.state.delayed ? 'blank' : this.props.type;
-		      var svg = svgSources[type];
-		      var style = {
-		        fill: this.props.color,
-		        height: this.props.height,
-		        width: this.props.width
-		      };
-
-		      return _react2['default'].createElement('div', {
-		        style: style,
-		        dangerouslySetInnerHTML: { __html: svg }
-		      });
-		    }
-		  }]);
-
-		  return Loading;
-		})(_react.Component);
-
-		exports['default'] = Loading;
-
-		Loading.propTypes = {
-		  color: _react.PropTypes.string,
-		  delay: _react.PropTypes.number,
-		  height: _react.PropTypes.oneOfType([_react.PropTypes.number, _react.PropTypes.string]),
-		  type: _react.PropTypes.string,
-		  width: _react.PropTypes.oneOfType([_react.PropTypes.number, _react.PropTypes.string])
-		};
-		Loading.defaultProps = {
-		  color: '#fff',
-		  delay: 1000,
-		  height: 64,
-		  type: 'balls',
-		  width: 64
-		};
-		module.exports = exports['default'];
-
-	/***/ },
-	/* 1 */
-	/***/ function(module, exports) {
-
-		module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
-
-	/***/ },
-	/* 2 */
-	/***/ function(module, exports, __webpack_require__) {
-
-		'use strict';
-
-		Object.defineProperty(exports, '__esModule', {
-		  value: true
-		});
-
-		function _interopRequire(obj) { return obj && obj.__esModule ? obj['default'] : obj; }
-
-		var _blankSvg = __webpack_require__(3);
-
-		exports.blank = _interopRequire(_blankSvg);
-
-		var _loadingBallsSvg = __webpack_require__(4);
-
-		exports.balls = _interopRequire(_loadingBallsSvg);
-
-		var _loadingBarsSvg = __webpack_require__(5);
-
-		exports.bars = _interopRequire(_loadingBarsSvg);
-
-		var _loadingBubblesSvg = __webpack_require__(6);
-
-		exports.bubbles = _interopRequire(_loadingBubblesSvg);
-
-		var _loadingCubesSvg = __webpack_require__(7);
-
-		exports.cubes = _interopRequire(_loadingCubesSvg);
-
-		var _loadingCylonSvg = __webpack_require__(8);
-
-		exports.cylon = _interopRequire(_loadingCylonSvg);
-
-		var _loadingSpinSvg = __webpack_require__(9);
-
-		exports.spin = _interopRequire(_loadingSpinSvg);
-
-		var _loadingSpinningBubblesSvg = __webpack_require__(10);
-
-		exports.spinningBubbles = _interopRequire(_loadingSpinningBubblesSvg);
-
-		var _loadingSpokesSvg = __webpack_require__(11);
-
-		exports.spokes = _interopRequire(_loadingSpokesSvg);
-
-	/***/ },
-	/* 3 */
-	/***/ function(module, exports) {
-
-		module.exports = "<svg class=\"icon-blank\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\"></svg>\n"
-
-	/***/ },
-	/* 4 */
-	/***/ function(module, exports) {
-
-		module.exports = "<svg class=\"icon-loading\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\">\n  <path transform=\"translate(-8 0)\" d=\"M4 12 A4 4 0 0 0 4 20 A4 4 0 0 0 4 12\"> \n    <animateTransform attributeName=\"transform\" type=\"translate\" values=\"-8 0; 2 0; 2 0;\" dur=\"0.8s\" repeatCount=\"indefinite\" begin=\"0\" keytimes=\"0;.25;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8\" calcMode=\"spline\"  />\n  </path>\n  <path transform=\"translate(2 0)\" d=\"M4 12 A4 4 0 0 0 4 20 A4 4 0 0 0 4 12\"> \n    <animateTransform attributeName=\"transform\" type=\"translate\" values=\"2 0; 12 0; 12 0;\" dur=\"0.8s\" repeatCount=\"indefinite\" begin=\"0\" keytimes=\"0;.35;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8\" calcMode=\"spline\"  />\n  </path>\n  <path transform=\"translate(12 0)\" d=\"M4 12 A4 4 0 0 0 4 20 A4 4 0 0 0 4 12\"> \n    <animateTransform attributeName=\"transform\" type=\"translate\" values=\"12 0; 22 0; 22 0;\" dur=\"0.8s\" repeatCount=\"indefinite\" begin=\"0\" keytimes=\"0;.45;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8\" calcMode=\"spline\"  />\n  </path>\n  <path transform=\"translate(24 0)\" d=\"M4 12 A4 4 0 0 0 4 20 A4 4 0 0 0 4 12\"> \n    <animateTransform attributeName=\"transform\" type=\"translate\" values=\"22 0; 32 0; 32 0;\" dur=\"0.8s\" repeatCount=\"indefinite\" begin=\"0\" keytimes=\"0;.55;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8\" calcMode=\"spline\"  />\n  </path>\n</svg>\n"
-
-	/***/ },
-	/* 5 */
-	/***/ function(module, exports) {
-
-		module.exports = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\">\n  <path transform=\"translate(2)\" d=\"M0 12 V20 H4 V12z\"> \n    <animate attributeName=\"d\" values=\"M0 12 V20 H4 V12z; M0 4 V28 H4 V4z; M0 12 V20 H4 V12z; M0 12 V20 H4 V12z\" dur=\"1.2s\" repeatCount=\"indefinite\" begin=\"0\" keytimes=\"0;.2;.5;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.8 0.4 0.8\" calcMode=\"spline\"  />\n  </path>\n  <path transform=\"translate(8)\" d=\"M0 12 V20 H4 V12z\">\n    <animate attributeName=\"d\" values=\"M0 12 V20 H4 V12z; M0 4 V28 H4 V4z; M0 12 V20 H4 V12z; M0 12 V20 H4 V12z\" dur=\"1.2s\" repeatCount=\"indefinite\" begin=\"0.2\" keytimes=\"0;.2;.5;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.8 0.4 0.8\" calcMode=\"spline\"  />\n  </path>\n  <path transform=\"translate(14)\" d=\"M0 12 V20 H4 V12z\">\n    <animate attributeName=\"d\" values=\"M0 12 V20 H4 V12z; M0 4 V28 H4 V4z; M0 12 V20 H4 V12z; M0 12 V20 H4 V12z\" dur=\"1.2s\" repeatCount=\"indefinite\" begin=\"0.4\" keytimes=\"0;.2;.5;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.8 0.4 0.8\" calcMode=\"spline\" />\n  </path>\n  <path transform=\"translate(20)\" d=\"M0 12 V20 H4 V12z\">\n    <animate attributeName=\"d\" values=\"M0 12 V20 H4 V12z; M0 4 V28 H4 V4z; M0 12 V20 H4 V12z; M0 12 V20 H4 V12z\" dur=\"1.2s\" repeatCount=\"indefinite\" begin=\"0.6\" keytimes=\"0;.2;.5;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.8 0.4 0.8\" calcMode=\"spline\" />\n  </path>\n  <path transform=\"translate(26)\" d=\"M0 12 V20 H4 V12z\">\n    <animate attributeName=\"d\" values=\"M0 12 V20 H4 V12z; M0 4 V28 H4 V4z; M0 12 V20 H4 V12z; M0 12 V20 H4 V12z\" dur=\"1.2s\" repeatCount=\"indefinite\" begin=\"0.8\" keytimes=\"0;.2;.5;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.8 0.4 0.8\" calcMode=\"spline\" />\n  </path>\n</svg>\n"
-
-	/***/ },
-	/* 6 */
-	/***/ function(module, exports) {
-
-		module.exports = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\">\n  <circle transform=\"translate(8 0)\" cx=\"0\" cy=\"16\" r=\"0\"> \n    <animate attributeName=\"r\" values=\"0; 4; 0; 0\" dur=\"1.2s\" repeatCount=\"indefinite\" begin=\"0\"\n      keytimes=\"0;0.2;0.7;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.6 0.4 0.8\" calcMode=\"spline\" />\n  </circle>\n  <circle transform=\"translate(16 0)\" cx=\"0\" cy=\"16\" r=\"0\"> \n    <animate attributeName=\"r\" values=\"0; 4; 0; 0\" dur=\"1.2s\" repeatCount=\"indefinite\" begin=\"0.3\"\n      keytimes=\"0;0.2;0.7;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.6 0.4 0.8\" calcMode=\"spline\" />\n  </circle>\n  <circle transform=\"translate(24 0)\" cx=\"0\" cy=\"16\" r=\"0\"> \n    <animate attributeName=\"r\" values=\"0; 4; 0; 0\" dur=\"1.2s\" repeatCount=\"indefinite\" begin=\"0.6\"\n      keytimes=\"0;0.2;0.7;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.6 0.4 0.8\" calcMode=\"spline\" />\n  </circle>\n</svg>\n"
-
-	/***/ },
-	/* 7 */
-	/***/ function(module, exports) {
-
-		module.exports = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\">\n  <path transform=\"translate(-8 0)\" d=\"M0 12 V20 H8 V12z\"> \n    <animateTransform attributeName=\"transform\" type=\"translate\" values=\"-8 0; 2 0; 2 0;\" dur=\"0.8s\" repeatCount=\"indefinite\" begin=\"0\" keytimes=\"0;.25;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8\" calcMode=\"spline\"  />\n  </path>\n  <path transform=\"translate(2 0)\" d=\"M0 12 V20 H8 V12z\"> \n    <animateTransform attributeName=\"transform\" type=\"translate\" values=\"2 0; 12 0; 12 0;\" dur=\"0.8s\" repeatCount=\"indefinite\" begin=\"0\" keytimes=\"0;.35;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8\" calcMode=\"spline\"  />\n  </path>\n  <path transform=\"translate(12 0)\" d=\"M0 12 V20 H8 V12z\"> \n    <animateTransform attributeName=\"transform\" type=\"translate\" values=\"12 0; 22 0; 22 0;\" dur=\"0.8s\" repeatCount=\"indefinite\" begin=\"0\" keytimes=\"0;.45;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8\" calcMode=\"spline\"  />\n  </path>\n  <path transform=\"translate(24 0)\" d=\"M0 12 V20 H8 V12z\"> \n    <animateTransform attributeName=\"transform\" type=\"translate\" values=\"22 0; 32 0; 32 0;\" dur=\"0.8s\" repeatCount=\"indefinite\" begin=\"0\" keytimes=\"0;.55;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8\" calcMode=\"spline\"  />\n  </path>\n</svg>\n"
-
-	/***/ },
-	/* 8 */
-	/***/ function(module, exports) {
-
-		module.exports = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\">\n  <path transform=\"translate(0 0)\" d=\"M0 12 V20 H4 V12z\">\n    <animateTransform attributeName=\"transform\" type=\"translate\" values=\"0 0; 28 0; 0 0; 0 0\" dur=\"1.5s\" begin=\"0\" repeatCount=\"indefinite\" keytimes=\"0;0.3;0.6;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8\" calcMode=\"spline\" />\n  </path>\n  <path opacity=\"0.5\" transform=\"translate(0 0)\" d=\"M0 12 V20 H4 V12z\">\n    <animateTransform attributeName=\"transform\" type=\"translate\" values=\"0 0; 28 0; 0 0; 0 0\" dur=\"1.5s\" begin=\"0.1s\" repeatCount=\"indefinite\" keytimes=\"0;0.3;0.6;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8\" calcMode=\"spline\" />\n  </path>\n  <path opacity=\"0.25\" transform=\"translate(0 0)\" d=\"M0 12 V20 H4 V12z\">\n    <animateTransform attributeName=\"transform\" type=\"translate\" values=\"0 0; 28 0; 0 0; 0 0\" dur=\"1.5s\" begin=\"0.2s\" repeatCount=\"indefinite\" keytimes=\"0;0.3;0.6;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8\" calcMode=\"spline\" />\n  </path>\n</svg>\n"
-
-	/***/ },
-	/* 9 */
-	/***/ function(module, exports) {
-
-		module.exports = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\">\n  <path opacity=\".25\" d=\"M16 0 A16 16 0 0 0 16 32 A16 16 0 0 0 16 0 M16 4 A12 12 0 0 1 16 28 A12 12 0 0 1 16 4\"/>\n  <path d=\"M16 0 A16 16 0 0 1 32 16 L28 16 A12 12 0 0 0 16 4z\">\n    <animateTransform attributeName=\"transform\" type=\"rotate\" from=\"0 16 16\" to=\"360 16 16\" dur=\"0.8s\" repeatCount=\"indefinite\" />\n  </path>\n</svg>\n"
-
-	/***/ },
-	/* 10 */
-	/***/ function(module, exports) {
-
-		module.exports = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\">\n  <circle cx=\"16\" cy=\"3\" r=\"0\">\n    <animate attributeName=\"r\" values=\"0;3;0;0\" dur=\"1s\" repeatCount=\"indefinite\" begin=\"0\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8\" calcMode=\"spline\" />\n  </circle>\n  <circle transform=\"rotate(45 16 16)\" cx=\"16\" cy=\"3\" r=\"0\">\n    <animate attributeName=\"r\" values=\"0;3;0;0\" dur=\"1s\" repeatCount=\"indefinite\" begin=\"0.125s\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8\" calcMode=\"spline\" />\n  </circle>\n  <circle transform=\"rotate(90 16 16)\" cx=\"16\" cy=\"3\" r=\"0\">\n    <animate attributeName=\"r\" values=\"0;3;0;0\" dur=\"1s\" repeatCount=\"indefinite\" begin=\"0.25s\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8\" calcMode=\"spline\" />\n  </circle>\n  <circle transform=\"rotate(135 16 16)\" cx=\"16\" cy=\"3\" r=\"0\">\n    <animate attributeName=\"r\" values=\"0;3;0;0\" dur=\"1s\" repeatCount=\"indefinite\" begin=\"0.375s\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8\" calcMode=\"spline\" />\n  </circle>\n  <circle transform=\"rotate(180 16 16)\" cx=\"16\" cy=\"3\" r=\"0\">\n    <animate attributeName=\"r\" values=\"0;3;0;0\" dur=\"1s\" repeatCount=\"indefinite\" begin=\"0.5s\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8\" calcMode=\"spline\" />\n  </circle>\n  <circle transform=\"rotate(225 16 16)\" cx=\"16\" cy=\"3\" r=\"0\">\n    <animate attributeName=\"r\" values=\"0;3;0;0\" dur=\"1s\" repeatCount=\"indefinite\" begin=\"0.625s\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8\" calcMode=\"spline\" />\n  </circle>\n  <circle transform=\"rotate(270 16 16)\" cx=\"16\" cy=\"3\" r=\"0\">\n    <animate attributeName=\"r\" values=\"0;3;0;0\" dur=\"1s\" repeatCount=\"indefinite\" begin=\"0.75s\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8\" calcMode=\"spline\" />\n  </circle>\n  <circle transform=\"rotate(315 16 16)\" cx=\"16\" cy=\"3\" r=\"0\">\n    <animate attributeName=\"r\" values=\"0;3;0;0\" dur=\"1s\" repeatCount=\"indefinite\" begin=\"0.875s\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8\" calcMode=\"spline\" />\n  </circle>\n  <circle transform=\"rotate(180 16 16)\" cx=\"16\" cy=\"3\" r=\"0\">\n    <animate attributeName=\"r\" values=\"0;3;0;0\" dur=\"1s\" repeatCount=\"indefinite\" begin=\"0.5s\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8\" calcMode=\"spline\" />\n  </circle>\n</svg>\n"
-
-	/***/ },
-	/* 11 */
-	/***/ function(module, exports) {
-
-		module.exports = "<svg id=\"loading\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\">\n  <path opacity=\".1\" d=\"M14 0 H18 V8 H14 z\" transform=\"rotate(0 16 16)\">\n    <animate attributeName=\"opacity\" from=\"1\" to=\".1\" dur=\"1s\" repeatCount=\"indefinite\" begin=\"0\"/>\n  </path>\n  <path opacity=\".1\" d=\"M14 0 H18 V8 H14 z\" transform=\"rotate(45 16 16)\">\n    <animate attributeName=\"opacity\" from=\"1\" to=\".1\" dur=\"1s\" repeatCount=\"indefinite\" begin=\"0.125s\"/>\n  </path>\n  <path opacity=\".1\" d=\"M14 0 H18 V8 H14 z\" transform=\"rotate(90 16 16)\">\n    <animate attributeName=\"opacity\" from=\"1\" to=\".1\" dur=\"1s\" repeatCount=\"indefinite\" begin=\"0.25s\"/>\n  </path>\n  <path opacity=\".1\" d=\"M14 0 H18 V8 H14 z\" transform=\"rotate(135 16 16)\">\n    <animate attributeName=\"opacity\" from=\"1\" to=\".1\" dur=\"1s\" repeatCount=\"indefinite\" begin=\"0.375s\"/>\n  </path>\n  <path opacity=\".1\" d=\"M14 0 H18 V8 H14 z\" transform=\"rotate(180 16 16)\">\n    <animate attributeName=\"opacity\" from=\"1\" to=\".1\" dur=\"1s\" repeatCount=\"indefinite\" begin=\"0.5s\"/>\n  </path>\n  <path opacity=\".1\" d=\"M14 0 H18 V8 H14 z\" transform=\"rotate(225 16 16)\">\n    <animate attributeName=\"opacity\" from=\"1\" to=\".1\" dur=\"1s\" repeatCount=\"indefinite\" begin=\"0.675s\"/>\n  </path>\n  <path opacity=\".1\" d=\"M14 0 H18 V8 H14 z\" transform=\"rotate(270 16 16)\">\n    <animate attributeName=\"opacity\" from=\"1\" to=\".1\" dur=\"1s\" repeatCount=\"indefinite\" begin=\"0.75s\"/>\n  </path>\n  <path opacity=\".1\" d=\"M14 0 H18 V8 H14 z\" transform=\"rotate(315 16 16)\">\n    <animate attributeName=\"opacity\" from=\"1\" to=\".1\" dur=\"1s\" repeatCount=\"indefinite\" begin=\"0.875s\"/>\n  </path>\n</svg>\n"
-
-	/***/ }
-	/******/ ])
-	});
-	;
-
-/***/ },
-/* 500 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(501);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(240)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!../../../node_modules/css-loader/index.js!./react-datetime.css", function() {
-				var newContent = require("!!../../../node_modules/css-loader/index.js!./react-datetime.css");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 501 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(239)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "/*!\n * https://github.com/arqex/react-datetime\n */\n\n.rdt {\n  position: relative;\n}\n.rdtPicker {\n  display: none;\n  position: absolute;\n  width: 250px;\n  padding: 4px;\n  margin-top: 1px;\n  z-index: 99999 !important;\n  background: #fff;\n  box-shadow: 0 1px 3px rgba(0,0,0,.1);\n  border: 1px solid #f9f9f9;\n}\n.rdtOpen .rdtPicker {\n  display: block;\n}\n.rdtStatic .rdtPicker {\n  box-shadow: none;\n  position: static;\n}\n\n.rdtPicker .rdtTimeToggle {\n  text-align: center;\n}\n\n.rdtPicker table {\n  width: 100%;\n  margin: 0;\n}\n.rdtPicker td,\n.rdtPicker th {\n  text-align: center;\n  height: 28px;\n}\n.rdtPicker td {\n  cursor: pointer;\n}\n.rdtPicker td.rdtDay:hover,\n.rdtPicker td.rdtHour:hover,\n.rdtPicker td.rdtMinute:hover,\n.rdtPicker td.rdtSecond:hover,\n.rdtPicker .rdtTimeToggle:hover {\n  background: #eeeeee;\n  cursor: pointer;\n}\n.rdtPicker td.rdtOld,\n.rdtPicker td.rdtNew {\n  color: #999999;\n}\n.rdtPicker td.rdtToday {\n  position: relative;\n}\n.rdtPicker td.rdtToday:before {\n  content: '';\n  display: inline-block;\n  border-left: 7px solid transparent;\n  border-bottom: 7px solid #428bca;\n  border-top-color: rgba(0, 0, 0, 0.2);\n  position: absolute;\n  bottom: 4px;\n  right: 4px;\n}\n.rdtPicker td.rdtActive,\n.rdtPicker td.rdtActive:hover {\n  background-color: #428bca;\n  color: #fff;\n  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);\n}\n.rdtPicker td.rdtActive.rdtToday:before {\n  border-bottom-color: #fff;\n}\n.rdtPicker td.rdtDisabled,\n.rdtPicker td.rdtDisabled:hover {\n  background: none;\n  color: #999999;\n  cursor: not-allowed;\n}\n\n.rdtPicker td span.rdtOld {\n  color: #999999;\n}\n.rdtPicker td span.rdtDisabled,\n.rdtPicker td span.rdtDisabled:hover {\n  background: none;\n  color: #999999;\n  cursor: not-allowed;\n}\n.rdtPicker th {\n  border-bottom: 1px solid #f9f9f9;\n}\n.rdtPicker .dow {\n  width: 14.2857%;\n  border-bottom: none;\n}\n.rdtPicker th.rdtSwitch {\n  width: 100px;\n}\n.rdtPicker th.rdtNext,\n.rdtPicker th.rdtPrev {\n  font-size: 21px;\n  vertical-align: top;\n}\n\n.rdtPrev span,\n.rdtNext span {\n  display: block;\n  -webkit-touch-callout: none; /* iOS Safari */\n  -webkit-user-select: none;   /* Chrome/Safari/Opera */\n  -khtml-user-select: none;    /* Konqueror */\n  -moz-user-select: none;      /* Firefox */\n  -ms-user-select: none;       /* Internet Explorer/Edge */\n  user-select: none;\n}\n\n.rdtPicker th.rdtDisabled,\n.rdtPicker th.rdtDisabled:hover {\n  background: none;\n  color: #999999;\n  cursor: not-allowed;\n}\n.rdtPicker thead tr:first-child th {\n  cursor: pointer;\n}\n.rdtPicker thead tr:first-child th:hover {\n  background: #eeeeee;\n}\n\n.rdtPicker tfoot {\n  border-top: 1px solid #f9f9f9;\n}\n\n.rdtPicker button {\n  border: none;\n  background: none;\n  cursor: pointer;\n}\n.rdtPicker button:hover {\n  background-color: #eee;\n}\n\n.rdtPicker thead button {\n  width: 100%;\n  height: 100%;\n}\n\ntd.rdtMonth,\ntd.rdtYear {\n  height: 50px;\n  width: 25%;\n  cursor: pointer;\n}\ntd.rdtMonth:hover,\ntd.rdtYear:hover {\n  background: #eee;\n}\n\n.rdtCounters {\n  display: inline-block;\n}\n\n.rdtCounters > div {\n  float: left;\n}\n\n.rdtCounter {\n  height: 100px;\n}\n\n.rdtCounter {\n  width: 40px;\n}\n\n.rdtCounterSeparator {\n  line-height: 100px;\n}\n\n.rdtCounter .rdtBtn {\n  height: 40%;\n  line-height: 40px;\n  cursor: pointer;\n  display: block;\n\n  -webkit-touch-callout: none; /* iOS Safari */\n  -webkit-user-select: none;   /* Chrome/Safari/Opera */\n  -khtml-user-select: none;    /* Konqueror */\n  -moz-user-select: none;      /* Firefox */\n  -ms-user-select: none;       /* Internet Explorer/Edge */\n  user-select: none;\n}\n.rdtCounter .rdtBtn:hover {\n  background: #eee;\n}\n.rdtCounter .rdtCount {\n  height: 20%;\n  font-size: 1.2em;\n}\n\n.rdtMilli {\n  vertical-align: middle;\n  padding-left: 8px;\n  width: 48px;\n}\n\n.rdtMilli input {\n  width: 100%;\n  font-size: 1.2em;\n  margin-top: 37px;\n}", ""]);
-
-	// exports
-
-
-/***/ },
-/* 502 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactGoogleCharts = __webpack_require__(503);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	__webpack_require__(237);
-
-	function CandleStickGraph() {
-		this.graph = null;
-		this.options = {
-			legend: "none",
-			backgroundColor: 'transparent',
-			candlestick: {
-				fallingColor: { strokeWidth: 0, fill: 'red' }, // red
-				risingColor: { strokeWidth: 0, fill: 'black' } // green
-			},
-
-			hAxis: {
-
-				textStyle: {
-					color: 'white',
-					fontName: 'Courier New',
-					fontWeight: 700,
-					fontSize: 10
-
-				},
-				gridlines: {
-					color: 'transparent',
-					count: 1
-				},
-				format: 'MMM d, y',
-
-				labels: {
-					enabled: true
-				}
-			},
-
-			vAxis: {
-				textStyle: {
-					color: 'white',
-					fontName: 'Courier New',
-					fontWeight: 700
-				},
-				labels: {
-					enabled: true
-				},
-				gridlines: {
-					color: 'transparent',
-					count: 4
-				}
-			}
-
-		};
-		this.data = [["DATE", "val1", "val2", "val3", "val4"]];
-		//this.data = [["DATE","val1","val2","val3","val4"],["Mon",20,28,38,45],["Tue",31,38,55,66],["Wed",50,55,77,80],["Thu",77,77,66,50],["Fri",68,66,22,15]]; 
-		// col0: xaxis label, col1: number specifying low/minumum, col2: opening value, col3: closing price, col4: high price for the day
-	};
-
-	CandleStickGraph.prototype.setGraph = function (item) {
-		//
-		//
-		for (var x = 30; x >= 0; x--) {
-			var data = [item.xValues[x], item.low[x], item.open[x], item.yValues[x], item.high[x]];
-			this.data.push(data);
-		};
-		//
-		this.graph = _react2.default.createElement(
-			'div',
-			{ className: 'candleStickGraph' },
-			_react2.default.createElement(_reactGoogleCharts.Chart, {
-				chartType: 'CandlestickChart',
-				data: this.data,
-				width: '100%',
-				height: '100%',
-				options: this.options
-			})
-		);
-
-		return this.graph;
-	};
-
-	CandleStickGraph.prototype.setIntraDayGraph = function (item) {
-		//
-		//
-		for (var x = item.data.length; x >= 0; x--) {
-			var data = [item.data[x], item.low[x], item.open[x], item.yValues[x], item.high[x]];
-			this.data.push(data);
-		};
-		//
-		this.graph = _react2.default.createElement(
-			'div',
-			{ className: 'candleStickGraph_intraday' },
-			_react2.default.createElement(_reactGoogleCharts.Chart, {
-				chartType: 'CandlestickChart',
-				data: this.data,
-				width: '100%',
-				height: '100%',
-				options: this.options
-			})
-		);
-
-		return this.graph;
-	};
-
-	module.exports = new CandleStickGraph();
-
-/***/ },
-/* 503 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
 	exports.__esModule = true;
 
-	var _Chart = __webpack_require__(504);
+	var _Chart = __webpack_require__(493);
 
 	var _Chart2 = _interopRequireDefault(_Chart);
 
@@ -84093,7 +82598,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 504 */
+/* 493 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -84105,15 +82610,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _debug = __webpack_require__(505);
+	var _debug = __webpack_require__(494);
 
 	var _debug2 = _interopRequireDefault(_debug);
 
-	var _DEFAULT_CHART_COLORS = __webpack_require__(508);
+	var _DEFAULT_CHART_COLORS = __webpack_require__(497);
 
 	var _DEFAULT_CHART_COLORS2 = _interopRequireDefault(_DEFAULT_CHART_COLORS);
 
-	var _GoogleChartLoader = __webpack_require__(509);
+	var _GoogleChartLoader = __webpack_require__(498);
 
 	var _GoogleChartLoader2 = _interopRequireDefault(_GoogleChartLoader);
 
@@ -84581,7 +83086,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 505 */
+/* 494 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -84591,7 +83096,7 @@
 	 * Expose `debug()` as the module.
 	 */
 
-	exports = module.exports = __webpack_require__(506);
+	exports = module.exports = __webpack_require__(495);
 	exports.log = log;
 	exports.formatArgs = formatArgs;
 	exports.save = save;
@@ -84755,7 +83260,7 @@
 
 
 /***/ },
-/* 506 */
+/* 495 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -84771,7 +83276,7 @@
 	exports.disable = disable;
 	exports.enable = enable;
 	exports.enabled = enabled;
-	exports.humanize = __webpack_require__(507);
+	exports.humanize = __webpack_require__(496);
 
 	/**
 	 * The currently active debug mode names, and names to skip.
@@ -84958,7 +83463,7 @@
 
 
 /***/ },
-/* 507 */
+/* 496 */
 /***/ function(module, exports) {
 
 	/**
@@ -85089,7 +83594,7 @@
 
 
 /***/ },
-/* 508 */
+/* 497 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -85099,14 +83604,14 @@
 	module.exports = ['#3366CC', '#DC3912', '#FF9900', '#109618', '#990099', '#3B3EAC', '#0099C6', '#DD4477', '#66AA00', '#B82E2E', '#316395', '#994499', '#22AA99', '#AAAA11', '#6633CC', '#E67300', '#8B0707', '#329262', '#5574A6', '#3B3EAC'];
 
 /***/ },
-/* 509 */
+/* 498 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _debug = __webpack_require__(505);
+	var _debug = __webpack_require__(494);
 
 	var _debug2 = _interopRequireDefault(_debug);
 
@@ -85116,7 +83621,7 @@
 
 	// Based on http://blog.arkency.com/2014/09/react-dot-js-and-google-charts/
 
-	var script = typeof window !== 'undefined' ? __webpack_require__(510) : function (link, _ref) {
+	var script = typeof window !== 'undefined' ? __webpack_require__(499) : function (link, _ref) {
 	  var callback = _ref.success;
 	  return callback();
 	};
@@ -85153,7 +83658,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 510 */
+/* 499 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function(root, factory) {
@@ -85434,6 +83939,1622 @@
 
 
 /***/ },
+/* 500 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var assign = __webpack_require__(501),
+		moment = __webpack_require__(277),
+		React = __webpack_require__(1),
+		DaysView = __webpack_require__(502),
+		MonthsView = __webpack_require__(503),
+		YearsView = __webpack_require__(504),
+		TimeView = __webpack_require__(505)
+	;
+
+	var TYPES = React.PropTypes;
+	var Datetime = React.createClass({
+		mixins: [
+			__webpack_require__(506)
+		],
+		viewComponents: {
+			days: DaysView,
+			months: MonthsView,
+			years: YearsView,
+			time: TimeView
+		},
+		propTypes: {
+			// value: TYPES.object | TYPES.string,
+			// defaultValue: TYPES.object | TYPES.string,
+			onFocus: TYPES.func,
+			onBlur: TYPES.func,
+			onChange: TYPES.func,
+			locale: TYPES.string,
+			utc: TYPES.bool,
+			input: TYPES.bool,
+			// dateFormat: TYPES.string | TYPES.bool,
+			// timeFormat: TYPES.string | TYPES.bool,
+			inputProps: TYPES.object,
+			timeConstraints: TYPES.object,
+			viewMode: TYPES.oneOf(['years', 'months', 'days', 'time']),
+			isValidDate: TYPES.func,
+			open: TYPES.bool,
+			strictParsing: TYPES.bool,
+			closeOnSelect: TYPES.bool,
+			closeOnTab: TYPES.bool
+		},
+
+		getDefaultProps: function() {
+			var nof = function() {};
+			return {
+				className: '',
+				defaultValue: '',
+				inputProps: {},
+				input: true,
+				onFocus: nof,
+				onBlur: nof,
+				onChange: nof,
+				timeFormat: true,
+				timeConstraints: {},
+				dateFormat: true,
+				strictParsing: true,
+				closeOnSelect: false,
+				closeOnTab: true,
+				utc: false
+			};
+		},
+
+		getInitialState: function() {
+			var state = this.getStateFromProps( this.props );
+
+			if ( state.open === undefined )
+				state.open = !this.props.input;
+
+			state.currentView = this.props.dateFormat ? (this.props.viewMode || state.updateOn || 'days') : 'time';
+
+			return state;
+		},
+
+		getStateFromProps: function( props ) {
+			var formats = this.getFormats( props ),
+				date = props.value || props.defaultValue,
+				selectedDate, viewDate, updateOn, inputValue
+			;
+
+			if ( date && typeof date === 'string' )
+				selectedDate = this.localMoment( date, formats.datetime );
+			else if ( date )
+				selectedDate = this.localMoment( date );
+
+			if ( selectedDate && !selectedDate.isValid() )
+				selectedDate = null;
+
+			viewDate = selectedDate ?
+				selectedDate.clone().startOf('month') :
+				this.localMoment().startOf('month')
+			;
+
+			updateOn = this.getUpdateOn(formats);
+
+			if ( selectedDate )
+				inputValue = selectedDate.format(formats.datetime);
+			else if ( date.isValid && !date.isValid() )
+				inputValue = '';
+			else
+				inputValue = date || '';
+
+			return {
+				updateOn: updateOn,
+				inputFormat: formats.datetime,
+				viewDate: viewDate,
+				selectedDate: selectedDate,
+				inputValue: inputValue,
+				open: props.open
+			};
+		},
+
+		getUpdateOn: function( formats ) {
+			if ( formats.date.match(/[lLD]/) ) {
+				return 'days';
+			}
+			else if ( formats.date.indexOf('M') !== -1 ) {
+				return 'months';
+			}
+			else if ( formats.date.indexOf('Y') !== -1 ) {
+				return 'years';
+			}
+
+			return 'days';
+		},
+
+		getFormats: function( props ) {
+			var formats = {
+					date: props.dateFormat || '',
+					time: props.timeFormat || ''
+				},
+				locale = this.localMoment( props.date, null, props ).localeData()
+			;
+
+			if ( formats.date === true ) {
+				formats.date = locale.longDateFormat('L');
+			}
+			else if ( this.getUpdateOn(formats) !== 'days' ) {
+				formats.time = '';
+			}
+
+			if ( formats.time === true ) {
+				formats.time = locale.longDateFormat('LT');
+			}
+
+			formats.datetime = formats.date && formats.time ?
+				formats.date + ' ' + formats.time :
+				formats.date || formats.time
+			;
+
+			return formats;
+		},
+
+		componentWillReceiveProps: function( nextProps ) {
+			var formats = this.getFormats( nextProps ),
+				updatedState = {}
+			;
+
+			if ( nextProps.value !== this.props.value ||
+				formats.datetime !== this.getFormats( this.props ).datetime ) {
+				updatedState = this.getStateFromProps( nextProps );
+			}
+
+			if ( updatedState.open === undefined ) {
+				if ( this.props.closeOnSelect && this.state.currentView !== 'time' ) {
+					updatedState.open = false;
+				} else {
+					updatedState.open = this.state.open;
+				}
+			}
+
+			if ( nextProps.viewMode !== this.props.viewMode ) {
+				updatedState.currentView = nextProps.viewMode;
+			}
+
+			if ( nextProps.locale !== this.props.locale ) {
+				if ( this.state.viewDate ) {
+					var updatedViewDate = this.state.viewDate.clone().locale( nextProps.locale );
+					updatedState.viewDate = updatedViewDate;
+				}
+				if ( this.state.selectedDate ) {
+					var updatedSelectedDate = this.state.selectedDate.clone().locale( nextProps.locale );
+					updatedState.selectedDate = updatedSelectedDate;
+					updatedState.inputValue = updatedSelectedDate.format( formats.datetime );
+				}
+			}
+
+			if ( nextProps.utc !== this.props.utc ) {
+				if ( nextProps.utc ) {
+					if ( this.state.viewDate )
+						updatedState.viewDate = this.state.viewDate.clone().utc();
+					if ( this.state.selectedDate ) {
+						updatedState.selectedDate = this.state.selectedDate.clone().utc();
+						updatedState.inputValue = updatedState.selectedDate.format( formats.datetime );
+					}
+				} else {
+					if ( this.state.viewDate )
+						updatedState.viewDate = this.state.viewDate.clone().local();
+					if ( this.state.selectedDate ) {
+						updatedState.selectedDate = this.state.selectedDate.clone().local();
+						updatedState.inputValue = updatedState.selectedDate.format(formats.datetime);
+					}
+				}
+			}
+
+			this.setState( updatedState );
+		},
+
+		onInputChange: function( e ) {
+			var value = e.target === null ? e : e.target.value,
+				localMoment = this.localMoment( value, this.state.inputFormat ),
+				update = { inputValue: value }
+			;
+
+			if ( localMoment.isValid() && !this.props.value ) {
+				update.selectedDate = localMoment;
+				update.viewDate = localMoment.clone().startOf('month');
+			}
+			else {
+				update.selectedDate = null;
+			}
+
+			return this.setState( update, function() {
+				return this.props.onChange( localMoment.isValid() ? localMoment : this.state.inputValue );
+			});
+		},
+
+		onInputKey: function( e ) {
+			if ( e.which === 9 && this.props.closeOnTab ) {
+				this.closeCalendar();
+			}
+		},
+
+		showView: function( view ) {
+			var me = this;
+			return function() {
+				me.setState({ currentView: view });
+			};
+		},
+
+		setDate: function( type ) {
+			var me = this,
+				nextViews = {
+					month: 'days',
+					year: 'months'
+				}
+			;
+			return function( e ) {
+				me.setState({
+					viewDate: me.state.viewDate.clone()[ type ]( parseInt(e.target.getAttribute('data-value'), 10) ).startOf( type ),
+					currentView: nextViews[ type ]
+				});
+			};
+		},
+
+		addTime: function( amount, type, toSelected ) {
+			return this.updateTime( 'add', amount, type, toSelected );
+		},
+
+		subtractTime: function( amount, type, toSelected ) {
+			return this.updateTime( 'subtract', amount, type, toSelected );
+		},
+
+		updateTime: function( op, amount, type, toSelected ) {
+			var me = this;
+
+			return function() {
+				var update = {},
+					date = toSelected ? 'selectedDate' : 'viewDate'
+				;
+
+				update[ date ] = me.state[ date ].clone()[ op ]( amount, type );
+
+				me.setState( update );
+			};
+		},
+
+		allowedSetTime: ['hours', 'minutes', 'seconds', 'milliseconds'],
+		setTime: function( type, value ) {
+			var index = this.allowedSetTime.indexOf( type ) + 1,
+				state = this.state,
+				date = (state.selectedDate || state.viewDate).clone(),
+				nextType
+			;
+
+			// It is needed to set all the time properties
+			// to not to reset the time
+			date[ type ]( value );
+			for (; index < this.allowedSetTime.length; index++) {
+				nextType = this.allowedSetTime[index];
+				date[ nextType ]( date[nextType]() );
+			}
+
+			if ( !this.props.value ) {
+				this.setState({
+					selectedDate: date,
+					inputValue: date.format( state.inputFormat )
+				});
+			}
+			this.props.onChange( date );
+		},
+
+		updateSelectedDate: function( e, close ) {
+			var target = e.target,
+				modifier = 0,
+				viewDate = this.state.viewDate,
+				currentDate = this.state.selectedDate || viewDate,
+				date
+	    ;
+
+			if (target.className.indexOf('rdtDay') !== -1) {
+				if (target.className.indexOf('rdtNew') !== -1)
+					modifier = 1;
+				else if (target.className.indexOf('rdtOld') !== -1)
+					modifier = -1;
+
+				date = viewDate.clone()
+					.month( viewDate.month() + modifier )
+					.date( parseInt( target.getAttribute('data-value'), 10 ) );
+			} else if (target.className.indexOf('rdtMonth') !== -1) {
+				date = viewDate.clone()
+					.month( parseInt( target.getAttribute('data-value'), 10 ) )
+					.date( currentDate.date() );
+			} else if (target.className.indexOf('rdtYear') !== -1) {
+				date = viewDate.clone()
+					.month( currentDate.month() )
+					.date( currentDate.date() )
+					.year( parseInt( target.getAttribute('data-value'), 10 ) );
+			}
+
+			date.hours( currentDate.hours() )
+				.minutes( currentDate.minutes() )
+				.seconds( currentDate.seconds() )
+				.milliseconds( currentDate.milliseconds() );
+
+			if ( !this.props.value ) {
+				this.setState({
+					selectedDate: date,
+					viewDate: date.clone().startOf('month'),
+					inputValue: date.format( this.state.inputFormat ),
+					open: !(this.props.closeOnSelect && close )
+				});
+			} else {
+				if (this.props.closeOnSelect && close) {
+					this.closeCalendar();
+				}
+			}
+
+			this.props.onChange( date );
+		},
+
+		openCalendar: function() {
+			if (!this.state.open) {
+				this.setState({ open: true }, function() {
+					this.props.onFocus();
+				});
+			}
+		},
+
+		closeCalendar: function() {
+			this.setState({ open: false }, function () {
+				this.props.onBlur( this.state.selectedDate || this.state.inputValue );
+			});
+		},
+
+		handleClickOutside: function() {
+			if ( this.props.input && this.state.open && !this.props.open ) {
+				this.setState({ open: false }, function() {
+					this.props.onBlur( this.state.selectedDate || this.state.inputValue );
+				});
+			}
+		},
+
+		localMoment: function( date, format, props ) {
+			props = props || this.props;
+			var momentFn = props.utc ? moment.utc : moment;
+			var m = momentFn( date, format, props.strictParsing );
+			if ( props.locale )
+				m.locale( props.locale );
+			return m;
+		},
+
+		componentProps: {
+			fromProps: ['value', 'isValidDate', 'renderDay', 'renderMonth', 'renderYear', 'timeConstraints'],
+			fromState: ['viewDate', 'selectedDate', 'updateOn'],
+			fromThis: ['setDate', 'setTime', 'showView', 'addTime', 'subtractTime', 'updateSelectedDate', 'localMoment']
+		},
+
+		getComponentProps: function() {
+			var me = this,
+				formats = this.getFormats( this.props ),
+				props = {dateFormat: formats.date, timeFormat: formats.time}
+			;
+
+			this.componentProps.fromProps.forEach( function( name ) {
+				props[ name ] = me.props[ name ];
+			});
+			this.componentProps.fromState.forEach( function( name ) {
+				props[ name ] = me.state[ name ];
+			});
+			this.componentProps.fromThis.forEach( function( name ) {
+				props[ name ] = me[ name ];
+			});
+
+			return props;
+		},
+
+		render: function() {
+			var Component = this.viewComponents[ this.state.currentView ],
+				DOM = React.DOM,
+				className = 'rdt' + (this.props.className ?
+	                  ( Array.isArray( this.props.className ) ?
+	                  ' ' + this.props.className.join( ' ' ) : ' ' + this.props.className) : ''),
+				children = []
+			;
+
+			if ( this.props.input ) {
+				children = [ DOM.input( assign({
+					key: 'i',
+					type: 'text',
+					className: 'form-control',
+					onFocus: this.openCalendar,
+					onChange: this.onInputChange,
+					onKeyDown: this.onInputKey,
+					value: this.state.inputValue
+				}, this.props.inputProps ))];
+			} else {
+				className += ' rdtStatic';
+			}
+
+			if ( this.state.open )
+				className += ' rdtOpen';
+
+			return DOM.div({className: className}, children.concat(
+				DOM.div(
+					{ key: 'dt', className: 'rdtPicker' },
+					React.createElement( Component, this.getComponentProps())
+				)
+			));
+		}
+	});
+
+	// Make moment accessible through the Datetime class
+	Datetime.moment = moment;
+
+	module.exports = Datetime;
+
+
+/***/ },
+/* 501 */
+/***/ function(module, exports) {
+
+	'use strict';
+	var propIsEnumerable = Object.prototype.propertyIsEnumerable;
+
+	function ToObject(val) {
+		if (val == null) {
+			throw new TypeError('Object.assign cannot be called with null or undefined');
+		}
+
+		return Object(val);
+	}
+
+	function ownEnumerableKeys(obj) {
+		var keys = Object.getOwnPropertyNames(obj);
+
+		if (Object.getOwnPropertySymbols) {
+			keys = keys.concat(Object.getOwnPropertySymbols(obj));
+		}
+
+		return keys.filter(function (key) {
+			return propIsEnumerable.call(obj, key);
+		});
+	}
+
+	module.exports = Object.assign || function (target, source) {
+		var from;
+		var keys;
+		var to = ToObject(target);
+
+		for (var s = 1; s < arguments.length; s++) {
+			from = arguments[s];
+			keys = ownEnumerableKeys(Object(from));
+
+			for (var i = 0; i < keys.length; i++) {
+				to[keys[i]] = from[keys[i]];
+			}
+		}
+
+		return to;
+	};
+
+
+/***/ },
+/* 502 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1),
+		moment = __webpack_require__(277)
+	;
+
+	var DOM = React.DOM;
+	var DateTimePickerDays = React.createClass({
+		render: function() {
+			var footer = this.renderFooter(),
+				date = this.props.viewDate,
+				locale = date.localeData(),
+				tableChildren
+			;
+
+			tableChildren = [
+				DOM.thead({ key: 'th' }, [
+					DOM.tr({ key: 'h' }, [
+						DOM.th({ key: 'p', className: 'rdtPrev' }, DOM.span({ onClick: this.props.subtractTime( 1, 'months' )}, '‹' )),
+						DOM.th({ key: 's', className: 'rdtSwitch', onClick: this.props.showView( 'months' ), colSpan: 5, 'data-value': this.props.viewDate.month() }, locale.months( date ) + ' ' + date.year() ),
+						DOM.th({ key: 'n', className: 'rdtNext' }, DOM.span({ onClick: this.props.addTime( 1, 'months' )}, '›' ))
+					]),
+					DOM.tr({ key: 'd'}, this.getDaysOfWeek( locale ).map( function( day, index ) { return DOM.th({ key: day + index, className: 'dow'}, day ); }) )
+				]),
+				DOM.tbody({ key: 'tb' }, this.renderDays())
+			];
+
+			if ( footer )
+				tableChildren.push( footer );
+
+			return DOM.div({ className: 'rdtDays' },
+				DOM.table({}, tableChildren )
+			);
+		},
+
+		/**
+		 * Get a list of the days of the week
+		 * depending on the current locale
+		 * @return {array} A list with the shortname of the days
+		 */
+		getDaysOfWeek: function( locale ) {
+			var days = locale._weekdaysMin,
+				first = locale.firstDayOfWeek(),
+				dow = [],
+				i = 0
+			;
+
+			days.forEach( function( day ) {
+				dow[ (7 + ( i++ ) - first) % 7 ] = day;
+			});
+
+			return dow;
+		},
+
+		renderDays: function() {
+			var date = this.props.viewDate,
+				selected = this.props.selectedDate && this.props.selectedDate.clone(),
+				prevMonth = date.clone().subtract( 1, 'months' ),
+				currentYear = date.year(),
+				currentMonth = date.month(),
+				weeks = [],
+				days = [],
+				renderer = this.props.renderDay || this.renderDay,
+				isValid = this.props.isValidDate || this.alwaysValidDate,
+				classes, isDisabled, dayProps, currentDate
+			;
+
+			// Go to the last week of the previous month
+			prevMonth.date( prevMonth.daysInMonth() ).startOf( 'week' );
+			var lastDay = prevMonth.clone().add( 42, 'd' );
+
+			while ( prevMonth.isBefore( lastDay ) ) {
+				classes = 'rdtDay';
+				currentDate = prevMonth.clone();
+
+				if ( ( prevMonth.year() === currentYear && prevMonth.month() < currentMonth ) || ( prevMonth.year() < currentYear ) )
+					classes += ' rdtOld';
+				else if ( ( prevMonth.year() === currentYear && prevMonth.month() > currentMonth ) || ( prevMonth.year() > currentYear ) )
+					classes += ' rdtNew';
+
+				if ( selected && prevMonth.isSame( selected, 'day' ) )
+					classes += ' rdtActive';
+
+				if (prevMonth.isSame( moment(), 'day' ) )
+					classes += ' rdtToday';
+
+				isDisabled = !isValid( currentDate, selected );
+				if ( isDisabled )
+					classes += ' rdtDisabled';
+
+				dayProps = {
+					key: prevMonth.format( 'M_D' ),
+					'data-value': prevMonth.date(),
+					className: classes
+				};
+
+				if ( !isDisabled )
+					dayProps.onClick = this.updateSelectedDate;
+
+				days.push( renderer( dayProps, currentDate, selected ) );
+
+				if ( days.length === 7 ) {
+					weeks.push( DOM.tr({ key: prevMonth.format( 'M_D' )}, days ) );
+					days = [];
+				}
+
+				prevMonth.add( 1, 'd' );
+			}
+
+			return weeks;
+		},
+
+		updateSelectedDate: function( event ) {
+			this.props.updateSelectedDate( event, true );
+		},
+
+		renderDay: function( props, currentDate ) {
+			return DOM.td( props, currentDate.date() );
+		},
+
+		renderFooter: function() {
+			if ( !this.props.timeFormat )
+				return '';
+
+			var date = this.props.selectedDate || this.props.viewDate;
+
+			return DOM.tfoot({ key: 'tf'},
+				DOM.tr({},
+					DOM.td({ onClick: this.props.showView( 'time' ), colSpan: 7, className: 'rdtTimeToggle' }, date.format( this.props.timeFormat ))
+				)
+			);
+		},
+
+		alwaysValidDate: function() {
+			return 1;
+		}
+	});
+
+	module.exports = DateTimePickerDays;
+
+
+/***/ },
+/* 503 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+
+	var DOM = React.DOM;
+	var DateTimePickerMonths = React.createClass({
+		render: function() {
+			return DOM.div({ className: 'rdtMonths' }, [
+				DOM.table({ key: 'a' }, DOM.thead( {}, DOM.tr( {}, [
+					DOM.th({ key: 'prev', className: 'rdtPrev' }, DOM.span({ onClick: this.props.subtractTime( 1, 'years' )}, '‹' )),
+					DOM.th({ key: 'year', className: 'rdtSwitch', onClick: this.props.showView( 'years' ), colSpan: 2, 'data-value': this.props.viewDate.year() }, this.props.viewDate.year() ),
+					DOM.th({ key: 'next', className: 'rdtNext' }, DOM.span({ onClick: this.props.addTime( 1, 'years' )}, '›' ))
+				]))),
+				DOM.table({ key: 'months' }, DOM.tbody({ key: 'b' }, this.renderMonths()))
+			]);
+		},
+
+		renderMonths: function() {
+			var date = this.props.selectedDate,
+				month = this.props.viewDate.month(),
+				year = this.props.viewDate.year(),
+				rows = [],
+				i = 0,
+				months = [],
+				renderer = this.props.renderMonth || this.renderMonth,
+				isValid = this.props.isValidDate || this.alwaysValidDate,
+				classes, props, currentMonth, isDisabled, noOfDaysInMonth, daysInMonth, validDay,
+				// Date is irrelevant because we're only interested in month
+				irrelevantDate = 1
+			;
+
+			while (i < 12) {
+				classes = 'rdtMonth';
+				currentMonth =
+					this.props.viewDate.clone().set({ year: year, month: i, date: irrelevantDate });
+
+				noOfDaysInMonth = currentMonth.endOf( 'month' ).format( 'D' );
+				daysInMonth = Array.from({ length: noOfDaysInMonth }, function( e, i ) {
+					return i + 1;
+				});
+
+				validDay = daysInMonth.find(function( d ) {
+					var day = currentMonth.clone().set( 'date', d );
+					return isValid( day );
+				});
+
+				isDisabled = ( validDay === undefined );
+
+				if ( isDisabled )
+					classes += ' rdtDisabled';
+
+				if ( date && i === month && year === date.year() )
+					classes += ' rdtActive';
+
+				props = {
+					key: i,
+					'data-value': i,
+					className: classes
+				};
+
+				if ( !isDisabled )
+					props.onClick = ( this.props.updateOn === 'months' ?
+						this.updateSelectedMonth : this.props.setDate( 'month' ) );
+
+				months.push( renderer( props, i, year, date && date.clone() ) );
+
+				if ( months.length === 4 ) {
+					rows.push( DOM.tr({ key: month + '_' + rows.length }, months ) );
+					months = [];
+				}
+
+				i++;
+			}
+
+			return rows;
+		},
+
+		updateSelectedMonth: function( event ) {
+			this.props.updateSelectedDate( event, true );
+		},
+
+		renderMonth: function( props, month ) {
+			var localMoment = this.props.viewDate;
+			var monthStr = localMoment.localeData().monthsShort( localMoment.month( month ) );
+			var strLength = 3;
+			// Because some months are up to 5 characters long, we want to
+			// use a fixed string length for consistency
+			var monthStrFixedLength = monthStr.substring( 0, strLength );
+			return DOM.td( props, capitalize( monthStrFixedLength ) );
+		},
+
+		alwaysValidDate: function() {
+			return 1;
+		}
+	});
+
+	function capitalize( str ) {
+		return str.charAt( 0 ).toUpperCase() + str.slice( 1 );
+	}
+
+	module.exports = DateTimePickerMonths;
+
+
+/***/ },
+/* 504 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+
+	var DOM = React.DOM;
+	var DateTimePickerYears = React.createClass({
+		render: function() {
+			var year = parseInt( this.props.viewDate.year() / 10, 10 ) * 10;
+
+			return DOM.div({ className: 'rdtYears' }, [
+				DOM.table({ key: 'a' }, DOM.thead({}, DOM.tr({}, [
+					DOM.th({ key: 'prev', className: 'rdtPrev' }, DOM.span({ onClick: this.props.subtractTime( 10, 'years' )}, '‹' )),
+					DOM.th({ key: 'year', className: 'rdtSwitch', onClick: this.props.showView( 'years' ), colSpan: 2 }, year + '-' + ( year + 9 ) ),
+					DOM.th({ key: 'next', className: 'rdtNext' }, DOM.span({ onClick: this.props.addTime( 10, 'years' )}, '›' ))
+					]))),
+				DOM.table({ key: 'years' }, DOM.tbody( {}, this.renderYears( year )))
+			]);
+		},
+
+		renderYears: function( year ) {
+			var years = [],
+				i = -1,
+				rows = [],
+				renderer = this.props.renderYear || this.renderYear,
+				selectedDate = this.props.selectedDate,
+				isValid = this.props.isValidDate || this.alwaysValidDate,
+				classes, props, currentYear, isDisabled, noOfDaysInYear, daysInYear, validDay,
+				// Month and date are irrelevant here because
+				// we're only interested in the year
+				irrelevantMonth = 0,
+				irrelevantDate = 1
+			;
+
+			year--;
+			while (i < 11) {
+				classes = 'rdtYear';
+				currentYear = this.props.viewDate.clone().set(
+					{ year: year, month: irrelevantMonth, date: irrelevantDate } );
+
+				// Not sure what 'rdtOld' is for, commenting out for now as it's not working properly
+				// if ( i === -1 | i === 10 )
+					// classes += ' rdtOld';
+
+				noOfDaysInYear = currentYear.endOf( 'year' ).format( 'DDD' );
+				daysInYear = Array.from({ length: noOfDaysInYear }, function( e, i ) {
+					return i + 1;
+				});
+
+				validDay = daysInYear.find(function( d ) {
+					var day = currentYear.clone().dayOfYear( d );
+					return isValid( day );
+				});
+
+				isDisabled = ( validDay === undefined );
+
+				if ( isDisabled )
+					classes += ' rdtDisabled';
+
+				if ( selectedDate && selectedDate.year() === year )
+					classes += ' rdtActive';
+
+				props = {
+					key: year,
+					'data-value': year,
+					className: classes
+				};
+
+				if ( !isDisabled )
+					props.onClick = ( this.props.updateOn === 'years' ?
+						this.updateSelectedYear : this.props.setDate('year') );
+
+				years.push( renderer( props, year, selectedDate && selectedDate.clone() ));
+
+				if ( years.length === 4 ) {
+					rows.push( DOM.tr({ key: i }, years ) );
+					years = [];
+				}
+
+				year++;
+				i++;
+			}
+
+			return rows;
+		},
+
+		updateSelectedYear: function( event ) {
+			this.props.updateSelectedDate( event, true );
+		},
+
+		renderYear: function( props, year ) {
+			return DOM.td( props, year );
+		},
+
+		alwaysValidDate: function() {
+			return 1;
+		}
+	});
+
+	module.exports = DateTimePickerYears;
+
+
+/***/ },
+/* 505 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1),
+		assign = __webpack_require__(501)
+	;
+
+	var DOM = React.DOM;
+	var DateTimePickerTime = React.createClass({
+		getInitialState: function() {
+			return this.calculateState( this.props );
+		},
+
+		calculateState: function( props ) {
+			var date = props.selectedDate || props.viewDate,
+				format = props.timeFormat,
+				counters = []
+			;
+
+			if ( format.toLowerCase().indexOf('h') !== -1 ) {
+				counters.push('hours');
+				if ( format.indexOf('m') !== -1 ) {
+					counters.push('minutes');
+					if ( format.indexOf('s') !== -1 ) {
+						counters.push('seconds');
+					}
+				}
+			}
+
+			var daypart = false;
+			if ( this.state !== null && this.props.timeFormat.toLowerCase().indexOf( ' a' ) !== -1 ) {
+				if ( this.props.timeFormat.indexOf( ' A' ) !== -1 ) {
+					daypart = ( this.state.hours >= 12 ) ? 'PM' : 'AM';
+				} else {
+					daypart = ( this.state.hours >= 12 ) ? 'pm' : 'am';
+				}
+			}
+
+			return {
+				hours: date.format( 'H' ),
+				minutes: date.format( 'mm' ),
+				seconds: date.format( 'ss' ),
+				milliseconds: date.format( 'SSS' ),
+				daypart: daypart,
+				counters: counters
+			};
+		},
+
+		renderCounter: function( type ) {
+			if ( type !== 'daypart' ) {
+				var value = this.state[ type ];
+				if ( type === 'hours' && this.props.timeFormat.toLowerCase().indexOf( ' a' ) !== -1 ) {
+					value = ( value - 1 ) % 12 + 1;
+
+					if ( value === 0 ) {
+						value = 12;
+					}
+				}
+				return DOM.div({ key: type, className: 'rdtCounter' }, [
+					DOM.span({ key: 'up', className: 'rdtBtn', onMouseDown: this.onStartClicking( 'increase', type ) }, '▲' ),
+					DOM.div({ key: 'c', className: 'rdtCount' }, value ),
+					DOM.span({ key: 'do', className: 'rdtBtn', onMouseDown: this.onStartClicking( 'decrease', type ) }, '▼' )
+				]);
+			}
+			return '';
+		},
+
+		renderDayPart: function() {
+			return DOM.div({ key: 'dayPart', className: 'rdtCounter' }, [
+				DOM.span({ key: 'up', className: 'rdtBtn', onMouseDown: this.onStartClicking( 'toggleDayPart', 'hours') }, '▲' ),
+				DOM.div({ key: this.state.daypart, className: 'rdtCount' }, this.state.daypart ),
+				DOM.span({ key: 'do', className: 'rdtBtn', onMouseDown: this.onStartClicking( 'toggleDayPart', 'hours') }, '▼' )
+			]);
+		},
+
+		render: function() {
+			var me = this,
+				counters = []
+			;
+
+			this.state.counters.forEach( function( c ) {
+				if ( counters.length )
+					counters.push( DOM.div({ key: 'sep' + counters.length, className: 'rdtCounterSeparator' }, ':' ) );
+				counters.push( me.renderCounter( c ) );
+			});
+
+			if ( this.state.daypart !== false ) {
+				counters.push( me.renderDayPart() );
+			}
+
+			if ( this.state.counters.length === 3 && this.props.timeFormat.indexOf( 'S' ) !== -1 ) {
+				counters.push( DOM.div({ className: 'rdtCounterSeparator', key: 'sep5' }, ':' ) );
+				counters.push(
+					DOM.div({ className: 'rdtCounter rdtMilli', key: 'm' },
+						DOM.input({ value: this.state.milliseconds, type: 'text', onChange: this.updateMilli } )
+						)
+					);
+			}
+
+			return DOM.div({ className: 'rdtTime' },
+				DOM.table({}, [
+					this.renderHeader(),
+					DOM.tbody({ key: 'b'}, DOM.tr({}, DOM.td({},
+						DOM.div({ className: 'rdtCounters' }, counters )
+					)))
+				])
+			);
+		},
+
+		componentWillMount: function() {
+			var me = this;
+			me.timeConstraints = {
+				hours: {
+					min: 0,
+					max: 23,
+					step: 1
+				},
+				minutes: {
+					min: 0,
+					max: 59,
+					step: 1
+				},
+				seconds: {
+					min: 0,
+					max: 59,
+					step: 1
+				},
+				milliseconds: {
+					min: 0,
+					max: 999,
+					step: 1
+				}
+			};
+			['hours', 'minutes', 'seconds', 'milliseconds'].forEach( function( type ) {
+				assign(me.timeConstraints[ type ], me.props.timeConstraints[ type ]);
+			});
+			this.setState( this.calculateState( this.props ) );
+		},
+
+		componentWillReceiveProps: function( nextProps ) {
+			this.setState( this.calculateState( nextProps ) );
+		},
+
+		updateMilli: function( e ) {
+			var milli = parseInt( e.target.value, 10 );
+			if ( milli === e.target.value && milli >= 0 && milli < 1000 ) {
+				this.props.setTime( 'milliseconds', milli );
+				this.setState( { milliseconds: milli } );
+			}
+		},
+
+		renderHeader: function() {
+			if ( !this.props.dateFormat )
+				return null;
+
+			var date = this.props.selectedDate || this.props.viewDate;
+			return DOM.thead({ key: 'h' }, DOM.tr({},
+				DOM.th({ className: 'rdtSwitch', colSpan: 4, onClick: this.props.showView( 'days' ) }, date.format( this.props.dateFormat ) )
+			));
+		},
+
+		onStartClicking: function( action, type ) {
+			var me = this;
+
+			return function() {
+				var update = {};
+				update[ type ] = me[ action ]( type );
+				me.setState( update );
+
+				me.timer = setTimeout( function() {
+					me.increaseTimer = setInterval( function() {
+						update[ type ] = me[ action ]( type );
+						me.setState( update );
+					}, 70);
+				}, 500);
+
+				me.mouseUpListener = function() {
+					clearTimeout( me.timer );
+					clearInterval( me.increaseTimer );
+					me.props.setTime( type, me.state[ type ] );
+					document.body.removeEventListener( 'mouseup', me.mouseUpListener );
+				};
+
+				document.body.addEventListener( 'mouseup', me.mouseUpListener );
+			};
+		},
+
+		padValues: {
+			hours: 1,
+			minutes: 2,
+			seconds: 2,
+			milliseconds: 3
+		},
+
+		toggleDayPart: function( type ) { // type is always 'hours'
+			var value = parseInt( this.state[ type ], 10) + 12;
+			if ( value > this.timeConstraints[ type ].max )
+				value = this.timeConstraints[ type ].min + ( value - ( this.timeConstraints[ type ].max + 1 ) );
+			return this.pad( type, value );
+		},
+
+		increase: function( type ) {
+			var value = parseInt( this.state[ type ], 10) + this.timeConstraints[ type ].step;
+			if ( value > this.timeConstraints[ type ].max )
+				value = this.timeConstraints[ type ].min + ( value - ( this.timeConstraints[ type ].max + 1 ) );
+			return this.pad( type, value );
+		},
+
+		decrease: function( type ) {
+			var value = parseInt( this.state[ type ], 10) - this.timeConstraints[ type ].step;
+			if ( value < this.timeConstraints[ type ].min )
+				value = this.timeConstraints[ type ].max + 1 - ( this.timeConstraints[ type ].min - value );
+			return this.pad( type, value );
+		},
+
+		pad: function( type, value ) {
+			var str = value + '';
+			while ( str.length < this.padValues[ type ] )
+				str = '0' + str;
+			return str;
+		}
+	});
+
+	module.exports = DateTimePickerTime;
+
+
+/***/ },
+/* 506 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	// This is extracted from https://github.com/Pomax/react-onclickoutside
+	// And modified to support react 0.13 and react 0.14
+
+	var React = __webpack_require__(1),
+		version = React.version && React.version.split('.')
+	;
+
+	if ( version && ( version[0] > 0 || version[1] > 13 ) )
+		React = __webpack_require__(32);
+
+	// Use a parallel array because we can't use
+	// objects as keys, they get toString-coerced
+	var registeredComponents = [];
+	var handlers = [];
+
+	var IGNORE_CLASS = 'ignore-react-onclickoutside';
+
+	var isSourceFound = function(source, localNode) {
+	 if (source === localNode) {
+	   return true;
+	 }
+	 // SVG <use/> elements do not technically reside in the rendered DOM, so
+	 // they do not have classList directly, but they offer a link to their
+	 // corresponding element, which can have classList. This extra check is for
+	 // that case.
+	 // See: http://www.w3.org/TR/SVG11/struct.html#InterfaceSVGUseElement
+	 // Discussion: https://github.com/Pomax/react-onclickoutside/pull/17
+	 if (source.correspondingElement) {
+	   return source.correspondingElement.classList.contains(IGNORE_CLASS);
+	 }
+	 return source.classList.contains(IGNORE_CLASS);
+	};
+
+	module.exports = {
+	 componentDidMount: function() {
+	   if (typeof this.handleClickOutside !== 'function')
+	     throw new Error('Component lacks a handleClickOutside(event) function for processing outside click events.');
+
+	   var fn = this.__outsideClickHandler = (function(localNode, eventHandler) {
+	     return function(evt) {
+	       evt.stopPropagation();
+	       var source = evt.target;
+	       var found = false;
+	       // If source=local then this event came from "somewhere"
+	       // inside and should be ignored. We could handle this with
+	       // a layered approach, too, but that requires going back to
+	       // thinking in terms of Dom node nesting, running counter
+	       // to React's "you shouldn't care about the DOM" philosophy.
+	       while (source.parentNode) {
+	         found = isSourceFound(source, localNode);
+	         if (found) return;
+	         source = source.parentNode;
+	       }
+	       eventHandler(evt);
+	     };
+	   }(React.findDOMNode(this), this.handleClickOutside));
+
+	   var pos = registeredComponents.length;
+	   registeredComponents.push(this);
+	   handlers[pos] = fn;
+
+	   // If there is a truthy disableOnClickOutside property for this
+	   // component, don't immediately start listening for outside events.
+	   if (!this.props.disableOnClickOutside) {
+	     this.enableOnClickOutside();
+	   }
+	 },
+
+	 componentWillUnmount: function() {
+	   this.disableOnClickOutside();
+	   this.__outsideClickHandler = false;
+	   var pos = registeredComponents.indexOf(this);
+	   if ( pos>-1) {
+	     if (handlers[pos]) {
+	       // clean up so we don't leak memory
+	       handlers.splice(pos, 1);
+	       registeredComponents.splice(pos, 1);
+	     }
+	   }
+	 },
+
+	 /**
+	  * Can be called to explicitly enable event listening
+	  * for clicks and touches outside of this element.
+	  */
+	 enableOnClickOutside: function() {
+	   var fn = this.__outsideClickHandler;
+	   document.addEventListener('mousedown', fn);
+	   document.addEventListener('touchstart', fn);
+	 },
+
+	 /**
+	  * Can be called to explicitly disable event listening
+	  * for clicks and touches outside of this element.
+	  */
+	 disableOnClickOutside: function() {
+	   var fn = this.__outsideClickHandler;
+	   document.removeEventListener('mousedown', fn);
+	   document.removeEventListener('touchstart', fn);
+	 }
+	};
+
+
+/***/ },
+/* 507 */
+/***/ function(module, exports, __webpack_require__) {
+
+	(function webpackUniversalModuleDefinition(root, factory) {
+		if(true)
+			module.exports = factory(__webpack_require__(1));
+		else if(typeof define === 'function' && define.amd)
+			define(["react"], factory);
+		else if(typeof exports === 'object')
+			exports["Loading"] = factory(require("react"));
+		else
+			root["Loading"] = factory(root["React"]);
+	})(this, function(__WEBPACK_EXTERNAL_MODULE_1__) {
+	return /******/ (function(modules) { // webpackBootstrap
+	/******/ 	// The module cache
+	/******/ 	var installedModules = {};
+
+	/******/ 	// The require function
+	/******/ 	function __webpack_require__(moduleId) {
+
+	/******/ 		// Check if module is in cache
+	/******/ 		if(installedModules[moduleId])
+	/******/ 			return installedModules[moduleId].exports;
+
+	/******/ 		// Create a new module (and put it into the cache)
+	/******/ 		var module = installedModules[moduleId] = {
+	/******/ 			exports: {},
+	/******/ 			id: moduleId,
+	/******/ 			loaded: false
+	/******/ 		};
+
+	/******/ 		// Execute the module function
+	/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+
+	/******/ 		// Flag the module as loaded
+	/******/ 		module.loaded = true;
+
+	/******/ 		// Return the exports of the module
+	/******/ 		return module.exports;
+	/******/ 	}
+
+
+	/******/ 	// expose the modules object (__webpack_modules__)
+	/******/ 	__webpack_require__.m = modules;
+
+	/******/ 	// expose the module cache
+	/******/ 	__webpack_require__.c = installedModules;
+
+	/******/ 	// __webpack_public_path__
+	/******/ 	__webpack_require__.p = "";
+
+	/******/ 	// Load entry module and return exports
+	/******/ 	return __webpack_require__(0);
+	/******/ })
+	/************************************************************************/
+	/******/ ([
+	/* 0 */
+	/***/ function(module, exports, __webpack_require__) {
+
+		'use strict';
+
+		Object.defineProperty(exports, '__esModule', {
+		  value: true
+		});
+
+		var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+		var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+		function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
+
+		function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+		function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+		function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+		var _react = __webpack_require__(1);
+
+		var _react2 = _interopRequireDefault(_react);
+
+		var _svg = __webpack_require__(2);
+
+		var svgSources = _interopRequireWildcard(_svg);
+
+		var Loading = (function (_Component) {
+		  _inherits(Loading, _Component);
+
+		  function Loading() {
+		    _classCallCheck(this, Loading);
+
+		    _get(Object.getPrototypeOf(Loading.prototype), 'constructor', this).call(this);
+		    this.state = {
+		      delayed: false
+		    };
+		  }
+
+		  _createClass(Loading, [{
+		    key: 'componentWillMount',
+		    value: function componentWillMount() {
+		      var _this = this;
+
+		      var delayed = this.props.delay > 0;
+
+		      if (delayed) {
+		        this.setState({ delayed: true });
+		        this._timeout = setTimeout(function () {
+		          _this.setState({ delayed: false });
+		        }, this.props.delay);
+		      }
+		    }
+		  }, {
+		    key: 'componentWillUnmount',
+		    value: function componentWillUnmount() {
+		      this._timeout && clearTimeout(this._timeout);
+		    }
+		  }, {
+		    key: 'render',
+		    value: function render() {
+		      var type = this.state.delayed ? 'blank' : this.props.type;
+		      var svg = svgSources[type];
+		      var style = {
+		        fill: this.props.color,
+		        height: this.props.height,
+		        width: this.props.width
+		      };
+
+		      return _react2['default'].createElement('div', {
+		        style: style,
+		        dangerouslySetInnerHTML: { __html: svg }
+		      });
+		    }
+		  }]);
+
+		  return Loading;
+		})(_react.Component);
+
+		exports['default'] = Loading;
+
+		Loading.propTypes = {
+		  color: _react.PropTypes.string,
+		  delay: _react.PropTypes.number,
+		  height: _react.PropTypes.oneOfType([_react.PropTypes.number, _react.PropTypes.string]),
+		  type: _react.PropTypes.string,
+		  width: _react.PropTypes.oneOfType([_react.PropTypes.number, _react.PropTypes.string])
+		};
+		Loading.defaultProps = {
+		  color: '#fff',
+		  delay: 1000,
+		  height: 64,
+		  type: 'balls',
+		  width: 64
+		};
+		module.exports = exports['default'];
+
+	/***/ },
+	/* 1 */
+	/***/ function(module, exports) {
+
+		module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
+
+	/***/ },
+	/* 2 */
+	/***/ function(module, exports, __webpack_require__) {
+
+		'use strict';
+
+		Object.defineProperty(exports, '__esModule', {
+		  value: true
+		});
+
+		function _interopRequire(obj) { return obj && obj.__esModule ? obj['default'] : obj; }
+
+		var _blankSvg = __webpack_require__(3);
+
+		exports.blank = _interopRequire(_blankSvg);
+
+		var _loadingBallsSvg = __webpack_require__(4);
+
+		exports.balls = _interopRequire(_loadingBallsSvg);
+
+		var _loadingBarsSvg = __webpack_require__(5);
+
+		exports.bars = _interopRequire(_loadingBarsSvg);
+
+		var _loadingBubblesSvg = __webpack_require__(6);
+
+		exports.bubbles = _interopRequire(_loadingBubblesSvg);
+
+		var _loadingCubesSvg = __webpack_require__(7);
+
+		exports.cubes = _interopRequire(_loadingCubesSvg);
+
+		var _loadingCylonSvg = __webpack_require__(8);
+
+		exports.cylon = _interopRequire(_loadingCylonSvg);
+
+		var _loadingSpinSvg = __webpack_require__(9);
+
+		exports.spin = _interopRequire(_loadingSpinSvg);
+
+		var _loadingSpinningBubblesSvg = __webpack_require__(10);
+
+		exports.spinningBubbles = _interopRequire(_loadingSpinningBubblesSvg);
+
+		var _loadingSpokesSvg = __webpack_require__(11);
+
+		exports.spokes = _interopRequire(_loadingSpokesSvg);
+
+	/***/ },
+	/* 3 */
+	/***/ function(module, exports) {
+
+		module.exports = "<svg class=\"icon-blank\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\"></svg>\n"
+
+	/***/ },
+	/* 4 */
+	/***/ function(module, exports) {
+
+		module.exports = "<svg class=\"icon-loading\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\">\n  <path transform=\"translate(-8 0)\" d=\"M4 12 A4 4 0 0 0 4 20 A4 4 0 0 0 4 12\"> \n    <animateTransform attributeName=\"transform\" type=\"translate\" values=\"-8 0; 2 0; 2 0;\" dur=\"0.8s\" repeatCount=\"indefinite\" begin=\"0\" keytimes=\"0;.25;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8\" calcMode=\"spline\"  />\n  </path>\n  <path transform=\"translate(2 0)\" d=\"M4 12 A4 4 0 0 0 4 20 A4 4 0 0 0 4 12\"> \n    <animateTransform attributeName=\"transform\" type=\"translate\" values=\"2 0; 12 0; 12 0;\" dur=\"0.8s\" repeatCount=\"indefinite\" begin=\"0\" keytimes=\"0;.35;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8\" calcMode=\"spline\"  />\n  </path>\n  <path transform=\"translate(12 0)\" d=\"M4 12 A4 4 0 0 0 4 20 A4 4 0 0 0 4 12\"> \n    <animateTransform attributeName=\"transform\" type=\"translate\" values=\"12 0; 22 0; 22 0;\" dur=\"0.8s\" repeatCount=\"indefinite\" begin=\"0\" keytimes=\"0;.45;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8\" calcMode=\"spline\"  />\n  </path>\n  <path transform=\"translate(24 0)\" d=\"M4 12 A4 4 0 0 0 4 20 A4 4 0 0 0 4 12\"> \n    <animateTransform attributeName=\"transform\" type=\"translate\" values=\"22 0; 32 0; 32 0;\" dur=\"0.8s\" repeatCount=\"indefinite\" begin=\"0\" keytimes=\"0;.55;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8\" calcMode=\"spline\"  />\n  </path>\n</svg>\n"
+
+	/***/ },
+	/* 5 */
+	/***/ function(module, exports) {
+
+		module.exports = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\">\n  <path transform=\"translate(2)\" d=\"M0 12 V20 H4 V12z\"> \n    <animate attributeName=\"d\" values=\"M0 12 V20 H4 V12z; M0 4 V28 H4 V4z; M0 12 V20 H4 V12z; M0 12 V20 H4 V12z\" dur=\"1.2s\" repeatCount=\"indefinite\" begin=\"0\" keytimes=\"0;.2;.5;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.8 0.4 0.8\" calcMode=\"spline\"  />\n  </path>\n  <path transform=\"translate(8)\" d=\"M0 12 V20 H4 V12z\">\n    <animate attributeName=\"d\" values=\"M0 12 V20 H4 V12z; M0 4 V28 H4 V4z; M0 12 V20 H4 V12z; M0 12 V20 H4 V12z\" dur=\"1.2s\" repeatCount=\"indefinite\" begin=\"0.2\" keytimes=\"0;.2;.5;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.8 0.4 0.8\" calcMode=\"spline\"  />\n  </path>\n  <path transform=\"translate(14)\" d=\"M0 12 V20 H4 V12z\">\n    <animate attributeName=\"d\" values=\"M0 12 V20 H4 V12z; M0 4 V28 H4 V4z; M0 12 V20 H4 V12z; M0 12 V20 H4 V12z\" dur=\"1.2s\" repeatCount=\"indefinite\" begin=\"0.4\" keytimes=\"0;.2;.5;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.8 0.4 0.8\" calcMode=\"spline\" />\n  </path>\n  <path transform=\"translate(20)\" d=\"M0 12 V20 H4 V12z\">\n    <animate attributeName=\"d\" values=\"M0 12 V20 H4 V12z; M0 4 V28 H4 V4z; M0 12 V20 H4 V12z; M0 12 V20 H4 V12z\" dur=\"1.2s\" repeatCount=\"indefinite\" begin=\"0.6\" keytimes=\"0;.2;.5;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.8 0.4 0.8\" calcMode=\"spline\" />\n  </path>\n  <path transform=\"translate(26)\" d=\"M0 12 V20 H4 V12z\">\n    <animate attributeName=\"d\" values=\"M0 12 V20 H4 V12z; M0 4 V28 H4 V4z; M0 12 V20 H4 V12z; M0 12 V20 H4 V12z\" dur=\"1.2s\" repeatCount=\"indefinite\" begin=\"0.8\" keytimes=\"0;.2;.5;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.8 0.4 0.8\" calcMode=\"spline\" />\n  </path>\n</svg>\n"
+
+	/***/ },
+	/* 6 */
+	/***/ function(module, exports) {
+
+		module.exports = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\">\n  <circle transform=\"translate(8 0)\" cx=\"0\" cy=\"16\" r=\"0\"> \n    <animate attributeName=\"r\" values=\"0; 4; 0; 0\" dur=\"1.2s\" repeatCount=\"indefinite\" begin=\"0\"\n      keytimes=\"0;0.2;0.7;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.6 0.4 0.8\" calcMode=\"spline\" />\n  </circle>\n  <circle transform=\"translate(16 0)\" cx=\"0\" cy=\"16\" r=\"0\"> \n    <animate attributeName=\"r\" values=\"0; 4; 0; 0\" dur=\"1.2s\" repeatCount=\"indefinite\" begin=\"0.3\"\n      keytimes=\"0;0.2;0.7;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.6 0.4 0.8\" calcMode=\"spline\" />\n  </circle>\n  <circle transform=\"translate(24 0)\" cx=\"0\" cy=\"16\" r=\"0\"> \n    <animate attributeName=\"r\" values=\"0; 4; 0; 0\" dur=\"1.2s\" repeatCount=\"indefinite\" begin=\"0.6\"\n      keytimes=\"0;0.2;0.7;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.6 0.4 0.8\" calcMode=\"spline\" />\n  </circle>\n</svg>\n"
+
+	/***/ },
+	/* 7 */
+	/***/ function(module, exports) {
+
+		module.exports = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\">\n  <path transform=\"translate(-8 0)\" d=\"M0 12 V20 H8 V12z\"> \n    <animateTransform attributeName=\"transform\" type=\"translate\" values=\"-8 0; 2 0; 2 0;\" dur=\"0.8s\" repeatCount=\"indefinite\" begin=\"0\" keytimes=\"0;.25;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8\" calcMode=\"spline\"  />\n  </path>\n  <path transform=\"translate(2 0)\" d=\"M0 12 V20 H8 V12z\"> \n    <animateTransform attributeName=\"transform\" type=\"translate\" values=\"2 0; 12 0; 12 0;\" dur=\"0.8s\" repeatCount=\"indefinite\" begin=\"0\" keytimes=\"0;.35;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8\" calcMode=\"spline\"  />\n  </path>\n  <path transform=\"translate(12 0)\" d=\"M0 12 V20 H8 V12z\"> \n    <animateTransform attributeName=\"transform\" type=\"translate\" values=\"12 0; 22 0; 22 0;\" dur=\"0.8s\" repeatCount=\"indefinite\" begin=\"0\" keytimes=\"0;.45;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8\" calcMode=\"spline\"  />\n  </path>\n  <path transform=\"translate(24 0)\" d=\"M0 12 V20 H8 V12z\"> \n    <animateTransform attributeName=\"transform\" type=\"translate\" values=\"22 0; 32 0; 32 0;\" dur=\"0.8s\" repeatCount=\"indefinite\" begin=\"0\" keytimes=\"0;.55;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8\" calcMode=\"spline\"  />\n  </path>\n</svg>\n"
+
+	/***/ },
+	/* 8 */
+	/***/ function(module, exports) {
+
+		module.exports = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\">\n  <path transform=\"translate(0 0)\" d=\"M0 12 V20 H4 V12z\">\n    <animateTransform attributeName=\"transform\" type=\"translate\" values=\"0 0; 28 0; 0 0; 0 0\" dur=\"1.5s\" begin=\"0\" repeatCount=\"indefinite\" keytimes=\"0;0.3;0.6;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8\" calcMode=\"spline\" />\n  </path>\n  <path opacity=\"0.5\" transform=\"translate(0 0)\" d=\"M0 12 V20 H4 V12z\">\n    <animateTransform attributeName=\"transform\" type=\"translate\" values=\"0 0; 28 0; 0 0; 0 0\" dur=\"1.5s\" begin=\"0.1s\" repeatCount=\"indefinite\" keytimes=\"0;0.3;0.6;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8\" calcMode=\"spline\" />\n  </path>\n  <path opacity=\"0.25\" transform=\"translate(0 0)\" d=\"M0 12 V20 H4 V12z\">\n    <animateTransform attributeName=\"transform\" type=\"translate\" values=\"0 0; 28 0; 0 0; 0 0\" dur=\"1.5s\" begin=\"0.2s\" repeatCount=\"indefinite\" keytimes=\"0;0.3;0.6;1\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8\" calcMode=\"spline\" />\n  </path>\n</svg>\n"
+
+	/***/ },
+	/* 9 */
+	/***/ function(module, exports) {
+
+		module.exports = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\">\n  <path opacity=\".25\" d=\"M16 0 A16 16 0 0 0 16 32 A16 16 0 0 0 16 0 M16 4 A12 12 0 0 1 16 28 A12 12 0 0 1 16 4\"/>\n  <path d=\"M16 0 A16 16 0 0 1 32 16 L28 16 A12 12 0 0 0 16 4z\">\n    <animateTransform attributeName=\"transform\" type=\"rotate\" from=\"0 16 16\" to=\"360 16 16\" dur=\"0.8s\" repeatCount=\"indefinite\" />\n  </path>\n</svg>\n"
+
+	/***/ },
+	/* 10 */
+	/***/ function(module, exports) {
+
+		module.exports = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\">\n  <circle cx=\"16\" cy=\"3\" r=\"0\">\n    <animate attributeName=\"r\" values=\"0;3;0;0\" dur=\"1s\" repeatCount=\"indefinite\" begin=\"0\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8\" calcMode=\"spline\" />\n  </circle>\n  <circle transform=\"rotate(45 16 16)\" cx=\"16\" cy=\"3\" r=\"0\">\n    <animate attributeName=\"r\" values=\"0;3;0;0\" dur=\"1s\" repeatCount=\"indefinite\" begin=\"0.125s\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8\" calcMode=\"spline\" />\n  </circle>\n  <circle transform=\"rotate(90 16 16)\" cx=\"16\" cy=\"3\" r=\"0\">\n    <animate attributeName=\"r\" values=\"0;3;0;0\" dur=\"1s\" repeatCount=\"indefinite\" begin=\"0.25s\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8\" calcMode=\"spline\" />\n  </circle>\n  <circle transform=\"rotate(135 16 16)\" cx=\"16\" cy=\"3\" r=\"0\">\n    <animate attributeName=\"r\" values=\"0;3;0;0\" dur=\"1s\" repeatCount=\"indefinite\" begin=\"0.375s\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8\" calcMode=\"spline\" />\n  </circle>\n  <circle transform=\"rotate(180 16 16)\" cx=\"16\" cy=\"3\" r=\"0\">\n    <animate attributeName=\"r\" values=\"0;3;0;0\" dur=\"1s\" repeatCount=\"indefinite\" begin=\"0.5s\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8\" calcMode=\"spline\" />\n  </circle>\n  <circle transform=\"rotate(225 16 16)\" cx=\"16\" cy=\"3\" r=\"0\">\n    <animate attributeName=\"r\" values=\"0;3;0;0\" dur=\"1s\" repeatCount=\"indefinite\" begin=\"0.625s\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8\" calcMode=\"spline\" />\n  </circle>\n  <circle transform=\"rotate(270 16 16)\" cx=\"16\" cy=\"3\" r=\"0\">\n    <animate attributeName=\"r\" values=\"0;3;0;0\" dur=\"1s\" repeatCount=\"indefinite\" begin=\"0.75s\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8\" calcMode=\"spline\" />\n  </circle>\n  <circle transform=\"rotate(315 16 16)\" cx=\"16\" cy=\"3\" r=\"0\">\n    <animate attributeName=\"r\" values=\"0;3;0;0\" dur=\"1s\" repeatCount=\"indefinite\" begin=\"0.875s\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8\" calcMode=\"spline\" />\n  </circle>\n  <circle transform=\"rotate(180 16 16)\" cx=\"16\" cy=\"3\" r=\"0\">\n    <animate attributeName=\"r\" values=\"0;3;0;0\" dur=\"1s\" repeatCount=\"indefinite\" begin=\"0.5s\" keySplines=\"0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8\" calcMode=\"spline\" />\n  </circle>\n</svg>\n"
+
+	/***/ },
+	/* 11 */
+	/***/ function(module, exports) {
+
+		module.exports = "<svg id=\"loading\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\">\n  <path opacity=\".1\" d=\"M14 0 H18 V8 H14 z\" transform=\"rotate(0 16 16)\">\n    <animate attributeName=\"opacity\" from=\"1\" to=\".1\" dur=\"1s\" repeatCount=\"indefinite\" begin=\"0\"/>\n  </path>\n  <path opacity=\".1\" d=\"M14 0 H18 V8 H14 z\" transform=\"rotate(45 16 16)\">\n    <animate attributeName=\"opacity\" from=\"1\" to=\".1\" dur=\"1s\" repeatCount=\"indefinite\" begin=\"0.125s\"/>\n  </path>\n  <path opacity=\".1\" d=\"M14 0 H18 V8 H14 z\" transform=\"rotate(90 16 16)\">\n    <animate attributeName=\"opacity\" from=\"1\" to=\".1\" dur=\"1s\" repeatCount=\"indefinite\" begin=\"0.25s\"/>\n  </path>\n  <path opacity=\".1\" d=\"M14 0 H18 V8 H14 z\" transform=\"rotate(135 16 16)\">\n    <animate attributeName=\"opacity\" from=\"1\" to=\".1\" dur=\"1s\" repeatCount=\"indefinite\" begin=\"0.375s\"/>\n  </path>\n  <path opacity=\".1\" d=\"M14 0 H18 V8 H14 z\" transform=\"rotate(180 16 16)\">\n    <animate attributeName=\"opacity\" from=\"1\" to=\".1\" dur=\"1s\" repeatCount=\"indefinite\" begin=\"0.5s\"/>\n  </path>\n  <path opacity=\".1\" d=\"M14 0 H18 V8 H14 z\" transform=\"rotate(225 16 16)\">\n    <animate attributeName=\"opacity\" from=\"1\" to=\".1\" dur=\"1s\" repeatCount=\"indefinite\" begin=\"0.675s\"/>\n  </path>\n  <path opacity=\".1\" d=\"M14 0 H18 V8 H14 z\" transform=\"rotate(270 16 16)\">\n    <animate attributeName=\"opacity\" from=\"1\" to=\".1\" dur=\"1s\" repeatCount=\"indefinite\" begin=\"0.75s\"/>\n  </path>\n  <path opacity=\".1\" d=\"M14 0 H18 V8 H14 z\" transform=\"rotate(315 16 16)\">\n    <animate attributeName=\"opacity\" from=\"1\" to=\".1\" dur=\"1s\" repeatCount=\"indefinite\" begin=\"0.875s\"/>\n  </path>\n</svg>\n"
+
+	/***/ }
+	/******/ ])
+	});
+	;
+
+/***/ },
+/* 508 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(509);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(240)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../../../node_modules/css-loader/index.js!./react-datetime.css", function() {
+				var newContent = require("!!../../../node_modules/css-loader/index.js!./react-datetime.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 509 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(239)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "/*!\n * https://github.com/arqex/react-datetime\n */\n\n.rdt {\n  position: relative;\n}\n.rdtPicker {\n  display: none;\n  position: absolute;\n  width: 250px;\n  padding: 4px;\n  margin-top: 1px;\n  z-index: 99999 !important;\n  background: #fff;\n  box-shadow: 0 1px 3px rgba(0,0,0,.1);\n  border: 1px solid #f9f9f9;\n}\n.rdtOpen .rdtPicker {\n  display: block;\n}\n.rdtStatic .rdtPicker {\n  box-shadow: none;\n  position: static;\n}\n\n.rdtPicker .rdtTimeToggle {\n  text-align: center;\n}\n\n.rdtPicker table {\n  width: 100%;\n  margin: 0;\n}\n.rdtPicker td,\n.rdtPicker th {\n  text-align: center;\n  height: 28px;\n}\n.rdtPicker td {\n  cursor: pointer;\n}\n.rdtPicker td.rdtDay:hover,\n.rdtPicker td.rdtHour:hover,\n.rdtPicker td.rdtMinute:hover,\n.rdtPicker td.rdtSecond:hover,\n.rdtPicker .rdtTimeToggle:hover {\n  background: #eeeeee;\n  cursor: pointer;\n}\n.rdtPicker td.rdtOld,\n.rdtPicker td.rdtNew {\n  color: #999999;\n}\n.rdtPicker td.rdtToday {\n  position: relative;\n}\n.rdtPicker td.rdtToday:before {\n  content: '';\n  display: inline-block;\n  border-left: 7px solid transparent;\n  border-bottom: 7px solid #428bca;\n  border-top-color: rgba(0, 0, 0, 0.2);\n  position: absolute;\n  bottom: 4px;\n  right: 4px;\n}\n.rdtPicker td.rdtActive,\n.rdtPicker td.rdtActive:hover {\n  background-color: #428bca;\n  color: #fff;\n  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);\n}\n.rdtPicker td.rdtActive.rdtToday:before {\n  border-bottom-color: #fff;\n}\n.rdtPicker td.rdtDisabled,\n.rdtPicker td.rdtDisabled:hover {\n  background: none;\n  color: #999999;\n  cursor: not-allowed;\n}\n\n.rdtPicker td span.rdtOld {\n  color: #999999;\n}\n.rdtPicker td span.rdtDisabled,\n.rdtPicker td span.rdtDisabled:hover {\n  background: none;\n  color: #999999;\n  cursor: not-allowed;\n}\n.rdtPicker th {\n  border-bottom: 1px solid #f9f9f9;\n}\n.rdtPicker .dow {\n  width: 14.2857%;\n  border-bottom: none;\n}\n.rdtPicker th.rdtSwitch {\n  width: 100px;\n}\n.rdtPicker th.rdtNext,\n.rdtPicker th.rdtPrev {\n  font-size: 21px;\n  vertical-align: top;\n}\n\n.rdtPrev span,\n.rdtNext span {\n  display: block;\n  -webkit-touch-callout: none; /* iOS Safari */\n  -webkit-user-select: none;   /* Chrome/Safari/Opera */\n  -khtml-user-select: none;    /* Konqueror */\n  -moz-user-select: none;      /* Firefox */\n  -ms-user-select: none;       /* Internet Explorer/Edge */\n  user-select: none;\n}\n\n.rdtPicker th.rdtDisabled,\n.rdtPicker th.rdtDisabled:hover {\n  background: none;\n  color: #999999;\n  cursor: not-allowed;\n}\n.rdtPicker thead tr:first-child th {\n  cursor: pointer;\n}\n.rdtPicker thead tr:first-child th:hover {\n  background: #eeeeee;\n}\n\n.rdtPicker tfoot {\n  border-top: 1px solid #f9f9f9;\n}\n\n.rdtPicker button {\n  border: none;\n  background: none;\n  cursor: pointer;\n}\n.rdtPicker button:hover {\n  background-color: #eee;\n}\n\n.rdtPicker thead button {\n  width: 100%;\n  height: 100%;\n}\n\ntd.rdtMonth,\ntd.rdtYear {\n  height: 50px;\n  width: 25%;\n  cursor: pointer;\n}\ntd.rdtMonth:hover,\ntd.rdtYear:hover {\n  background: #eee;\n}\n\n.rdtCounters {\n  display: inline-block;\n}\n\n.rdtCounters > div {\n  float: left;\n}\n\n.rdtCounter {\n  height: 100px;\n}\n\n.rdtCounter {\n  width: 40px;\n}\n\n.rdtCounterSeparator {\n  line-height: 100px;\n}\n\n.rdtCounter .rdtBtn {\n  height: 40%;\n  line-height: 40px;\n  cursor: pointer;\n  display: block;\n\n  -webkit-touch-callout: none; /* iOS Safari */\n  -webkit-user-select: none;   /* Chrome/Safari/Opera */\n  -khtml-user-select: none;    /* Konqueror */\n  -moz-user-select: none;      /* Firefox */\n  -ms-user-select: none;       /* Internet Explorer/Edge */\n  user-select: none;\n}\n.rdtCounter .rdtBtn:hover {\n  background: #eee;\n}\n.rdtCounter .rdtCount {\n  height: 20%;\n  font-size: 1.2em;\n}\n\n.rdtMilli {\n  vertical-align: middle;\n  padding-left: 8px;\n  width: 48px;\n}\n\n.rdtMilli input {\n  width: 100%;\n  font-size: 1.2em;\n  margin-top: 37px;\n}", ""]);
+
+	// exports
+
+
+/***/ },
+/* 510 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactGoogleCharts = __webpack_require__(492);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	__webpack_require__(237);
+
+	function CandleStickGraph() {
+		this.graph = null;
+		this.options = {
+			legend: "none",
+			backgroundColor: 'transparent',
+			candlestick: {
+				fallingColor: { strokeWidth: 0, fill: 'red' }, // red
+				risingColor: { strokeWidth: 0, fill: 'black' } // green
+			},
+
+			hAxis: {
+
+				textStyle: {
+					color: 'white',
+					fontName: 'Courier New',
+					fontWeight: 700,
+					fontSize: 10
+
+				},
+				gridlines: {
+					color: 'transparent',
+					count: 1
+				},
+				format: 'MMM d, y',
+
+				labels: {
+					enabled: true
+				}
+			},
+
+			vAxis: {
+				textStyle: {
+					color: 'white',
+					fontName: 'Courier New',
+					fontWeight: 700
+				},
+				labels: {
+					enabled: true
+				},
+				gridlines: {
+					color: 'transparent',
+					count: 4
+				}
+			}
+
+		};
+		this.data = [["DATE", "val1", "val2", "val3", "val4"]];
+		//this.data = [["DATE","val1","val2","val3","val4"],["Mon",20,28,38,45],["Tue",31,38,55,66],["Wed",50,55,77,80],["Thu",77,77,66,50],["Fri",68,66,22,15]]; 
+		// col0: xaxis label, col1: number specifying low/minumum, col2: opening value, col3: closing price, col4: high price for the day
+	};
+
+	CandleStickGraph.prototype.setGraph = function (item) {
+		//
+		//
+		for (var x = 30; x >= 0; x--) {
+			var data = [item.xValues[x], item.low[x], item.open[x], item.yValues[x], item.high[x]];
+			this.data.push(data);
+		};
+		//
+		this.graph = _react2.default.createElement(
+			'div',
+			{ className: 'candleStickGraph' },
+			_react2.default.createElement(_reactGoogleCharts.Chart, {
+				chartType: 'CandlestickChart',
+				data: this.data,
+				width: '100%',
+				height: '100%',
+				options: this.options
+			})
+		);
+
+		return this.graph;
+	};
+
+	CandleStickGraph.prototype.setIntraDayGraph = function (item) {
+		//
+		//
+		for (var x = item.data.length; x >= 0; x--) {
+			var data = [item.data[x], item.low[x], item.open[x], item.yValues[x], item.high[x]];
+			this.data.push(data);
+		};
+		//
+		this.graph = _react2.default.createElement(
+			'div',
+			{ className: 'candleStickGraph_intraday' },
+			_react2.default.createElement(_reactGoogleCharts.Chart, {
+				chartType: 'CandlestickChart',
+				data: this.data,
+				width: '100%',
+				height: '100%',
+				options: this.options
+			})
+		);
+
+		return this.graph;
+	};
+
+	module.exports = new CandleStickGraph();
+
+/***/ },
 /* 511 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -85460,7 +85581,7 @@
 	var StockDataStore = __webpack_require__(401);
 	var Actions = __webpack_require__(407);
 	var MarketGraph = __webpack_require__(409);
-	var CandleStickGraph = __webpack_require__(502);
+	var CandleStickGraph = __webpack_require__(510);
 
 	var IntraDayTicket = function (_Component) {
 		_inherits(IntraDayTicket, _Component);
@@ -85525,12 +85646,14 @@
 				}
 
 				if (this.state.storeupdated == true && this.state.marketData.data.length > 0) {
+					//
+					// intraDayView: MarketGraph.setIntradayGraphView(this.state.marketData.data, this.state.marketData.autocorr, this.state.marketData.name)
+					// 
 					if (this.state.marketData.data.length > 0) {
 						this.setState({
 							storeupdated: false,
 							marketData: null,
-							intraDayView: MarketGraph.setIntradayGraphView(this.state.marketData.data, this.state.marketData.autocorr, this.state.marketData.name)
-
+							intraDayView: MarketGraph.setIntradayGraphGoogleView(this.state.marketData.data, this.state.marketData.autocorr, this.state.marketData.name)
 						});
 					}
 				}
