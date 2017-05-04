@@ -5,6 +5,7 @@ var StockDataStore = require('../../stores/stockdatastore');
 var Actions = require('../../actions/actions');
 var MarketGraph = require('../jsx/marketgraph');
 var CandleStickGraph = require('../jsx/candlestickplot');
+var Autocorrelation = require('../jsx/autocorrelationgraph');
 require('../css/main.css');
 
 
@@ -57,14 +58,14 @@ export default class MarketFundView extends Component {
 				
 				if(	this.state.dailymarketData.autocorrelation.xValues.length>0  ){
 					this.setState({
-							etfAutocorrelation: MarketGraph.setAutocorrelationGraph(this.state.dailyetfData),
+							etfAutocorrelation: Autocorrelation.setAutocorrelationGraph(this.state.dailyetfData),
 							etfCandleStick: CandleStickGraph.setGraph(this.state.dailyetfData)
 						});
 				}
 			
 				if(	this.state.dailymarketData.autocorrelation.xValues.length>0 ){
 						this.setState({
-							marketAutocorrelation: MarketGraph.setAutocorrelationGraph(this.state.dailymarketData)
+							marketAutocorrelation: Autocorrelation.setAutocorrelationGraph(this.state.dailymarketData)
 						});
 				}
 			
@@ -87,8 +88,7 @@ export default class MarketFundView extends Component {
 
 			componentDidUpdate(){
 
-				
-
+			
 				if(this.state.storeupdated==true && this.state.sendRequestStatus==true){
 					this.setState({
 						storeupdated: true,
@@ -119,7 +119,7 @@ export default class MarketFundView extends Component {
 				if(	this.state.storeupdated==true && this.state.dailymarketData.autocorrelation.xValues.length>0  && this.state.sendRequestStatus==false && this.state.viewMode=='markets'){
 					this.setState({
 							storeupdated: false,
-							etfAutocorrelation: MarketGraph.setAutocorrelationGraph(this.state.dailyetfData),
+							etfAutocorrelation: Autocorrelation.setAutocorrelationGraph(this.state.dailyetfData),
 							etfCandleStick: CandleStickGraph.setGraph(this.state.dailyetfData)
 						});
 				}
@@ -127,7 +127,7 @@ export default class MarketFundView extends Component {
 				if(	this.state.storeupdated==true && this.state.dailymarketData.autocorrelation.xValues.length>0  && this.state.sendRequestStatus==false && this.state.viewMode=='markets'){
 						this.setState({
 							storeupdated: false,
-							marketAutocorrelation: MarketGraph.setAutocorrelationGraph(this.state.dailymarketData)
+							marketAutocorrelation: Autocorrelation.setAutocorrelationGraph(this.state.dailymarketData)
 						});
 				}
 		

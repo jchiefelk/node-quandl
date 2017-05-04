@@ -4,6 +4,7 @@ var StockDataStore = require('../../stores/stockdatastore');
 var Actions = require('../../actions/actions');
 var MarketGraph = require('../jsx/marketgraph');
 var CandleStickGraph = require('../jsx/candlestickplot');
+var Autocorrelation = require('../jsx/autocorrelationgraph');
 
 
 export default class IntraDayTicket extends Component {
@@ -63,9 +64,6 @@ export default class IntraDayTicket extends Component {
 				}
 
 				if(this.state.storeupdated==true && this.state.marketData.data.length>0){
-						//
-						// intraDayView: MarketGraph.setIntradayGraphView(this.state.marketData.data, this.state.marketData.autocorr, this.state.marketData.name)
-						// 
 						if(this.state.marketData.data.length>0){
 								this.setState({
 									storeupdated: false,
@@ -79,22 +77,11 @@ export default class IntraDayTicket extends Component {
 
 			componentDidMount(){
 				StockDataStore.addChangeListener(this._onChange.bind(this));
-
-
 				if(this.state.marketData.data.length==0 && this.state.sendRequestStatus==false){
 					this.setState({
 							intraDayView: MarketGraph.setCompanyPicker()
 					});
 				}
-				/**
-				if(this.state.marketData.data.length>0 && this.state.sendRequestStatus==false){
-								this.setState({
-									storeupdated: false,
-									marketData: null,
-									intraDayView: MarketGraph.setIntradayGraphView(this.state.marketData.data, this.state.marketData.autocorr, this.state.marketData.name)
-								});
-				}
-				***/
 				if(this.state.sendRequestStatus==true) {
 					this.sendRequest();
 				} 
