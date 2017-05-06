@@ -28,100 +28,66 @@ class MarketGraph {
 				);
 	}
 
+	setMarketGoogleGraph(data){
 
-	setMarketFundGraph(data){
-		
-		let d = {
-		  labels: data.xValues,
-		  datasets: [
-		    {
-		      label: data.name,
-		      fill: false,
-		      lineTension: 0.1,
-		      backgroundColor: 'rgba(75,192,192,0.4)',
-		      borderColor: 'rgba(75,192,192,1)',
-		      borderCapStyle: 'butt',
-		      borderDash: [],
-		      borderDashOffset: 0.0,
-		      borderJoinStyle: 'miter',
-		      pointBorderHeight: 100,
-		      pointBorderColor: 'rgba(75,192,192,1)',
-		      pointBackgroundColor: '#fff',
-		      pointBorderWidth: 1,
-		      pointHoverRadius: 5,
-		      pointHoverBackgroundColor: 'black',
-		      pointHoverBorderColor: 'black',
-		      pointHoverBorderWidth: 2,
-		      pointRadius: 1,
-		      pointHitRadius: 10,
-		      data: data.yValues
-		    }
-		  ]
-		};	
-		let options = {
-						  responsive: true,
-					      title: {
-					            display: true,
-					            text: data.name,
-					            fontColor: 'white',
-					            fontSize: 14,
-					            fontFamily: 'Courier New',
-					            fontWeight: '200'
-					      },
-						  showLines: true, 
-					      legend: {
-					            display: false,
-					      },
-						  scales: {
-						    yAxes: [{
-							     scaleLabel: {
-							     	fontSize: 12,
-							     	fontColor: 'white',
-							     	fontFamily: 'Courier New',
-							        display: false,
-							        labelString: 'Price (USD)'
-							     },
-			  					 ticks: {
-			  					 	fontSize: 12, 
-			  					 	fontColor: 'white',
-			  					 	fontFamily: 'Courier New',
-			  					 	display: true,
-			  					 },
-			  					 gridLines: {
-			  					 		display: false,
-			                   			color: "white"
-			               		 }
-						    }],
-							xAxes: [{  
-								                type: 'time',
-											    ticks: {
-											    	fontFamily: 'Courier New',
-											    	fontColor: 'white',
-											    	fontSize: 12,
-											    	maxRotation: 0, // angle in degrees
-											    	display: true,
-											    	maxTicksLimit: 4, 
-											    	autoSkip: true
-											    },
+				let line_data = [["DATE","valuation"]];
+				for(var x =0; x<data.xValues.length;x++){
+					line_data.push([data.xValues[x], data.yValues[x] ]);
+				};
+
+				let options = {
+						title: data.name,
+						legend: "none",
+						backgroundColor: 'transparent',
 						
-								                time: {
-								                    displayFormats: {
-								                        quarter: 'MMM YYYY'
-								                    },
-								                },
+						vAxis: {
+							title: "USD $",	
+							titleTextStyle: { color: '#FFF' },
+				        	textStyle: {
+				        		fontSize: 12,
+				        		fontName: 'Courier New',
+				        		color: 'black',
+				        		fontWeight: 700,
+				       
+				        	},
 
-								                gridLines: {
-								                	 display: false,
-								                	 color: "white"
-						               		 	},
-								}],
-						}	
-		};
-		return(				
+				        	gridlines: {
+						    	color: 'transparent', 
+						    	count: 5
+						   }	
+
+				        },
+
+					 	hAxis: {
+
+					 		textStyle:{
+					       	   	color: 'black',
+					       	   	fontName: 'Courier New',
+					       	   	fontWeight: 700
+				       	   	},
+
+				       	   	gridlines: {
+						    	color: 'black', 
+						    	count: 5
+						   	}	 
+					 	
+					 	}
+					
+				};
+
+			return (
 				<div className="marketgraph">
-					<Line data={d} options={options} height={window.innerHeight*(0.25)} weight={window.innerWidth*(0.4)}/>
-				</div>				
-    	);
+					<Chart
+						chartType="LineChart"
+						data={line_data}
+						width="100%"
+						height="100%"
+						options={options}
+						/>
+				</div>
+			);
+
+
 
 	}
 

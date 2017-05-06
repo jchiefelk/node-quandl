@@ -26688,7 +26688,7 @@
 	        'div',
 	        { style: { display: 'flex', flexDirection: 'column', width: window.innerWidth, backgroundColor: 'rgba(75,192,192,0.4)' } },
 	        _react2.default.createElement(_header2.default, null),
-	        _react2.default.createElement(_intradayticket2.default, null)
+	        _react2.default.createElement(_marketfundview2.default, null)
 	      );
 	    }
 	  }]);
@@ -26813,7 +26813,7 @@
 
 
 	// module
-	exports.push([module.id, "#Title {\n\tfont-size: 4.7em;\n\tcolor: black;\n\tfont-weight: 900; \n\tfont-family: 'Courier New';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n\talign-text: center;\n\tmargin: 50;\n}\n\n#About-Me {\n\tcolor: black;\n\tfont-size: 2.1em;\n\tfont-weight: 700; \n\tfont-family: 'Courier New';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n}\n\n.app {\n\tdisplay: flex; \n\tflex-direction: column; \n\tbackground-color: transparent;\n\theight: 100%;\n}\n\n.paragraph {\n\tcolor: black;\n\tfont-size: 1.5em;\n\tfont-weight: 400;\n\tfont-family: 'Courier New';\n\tmargin-top: 2em;\n\tmargin: 50;\n}\n\n.table_row_parent { \n\tborder-width: 2; \n\tborder-style: solid; \n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n.section-title {\n\tmargin: 50;\n\tfont-size: 2em;\n\tfont-weight: 900;\n\tfont-family: 'Courier New';\n\tmargin-top: 2em;\n}\n\n.code-image {\n\tmargin: 0;\n\twidth: 100;\n}\n\n.header {\n\tflex-direction: row;\n\twidth: 100%;\n\theight: 5em; \n\tbackground-color: transparent; \n\talign-items: center; \n}\n\n.header-link {\n\tfont-weight: 900;\n\tfont-family: 'Courier New';\n\tfont-size: 18;\n\tcolor: white; \n\ttop: 15;\n\tleft: 25; \n\tcursor: pointer; \n\ttext-decoration: none;  \n}\n\n.pickercontainer {\n    background-color: transparent;\n    align-items: center; \n}\n\n.picker-instructions {\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center; \n\tflex-direction: column;\n\tfont-size: 1.5em; \n\tfont-weight: 400; \n\tfont-family: 'Courier New';\n\tcolor: white;\n}\n\n.marketpicker {\n\tdisplay: flex;\n\tjustify-content: center;\n\tmargin-top: 2em;\n\t\n}\n\n.homepage-input {\n\t\tfont-size: 18; \n\t\tfont-weight: 700;\n\t\tfont-family: 'Courier New';\n\t\theight: 3em; \n\t\twidth: 17em;\n}\n\n.graph-page {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n    background-color: transparent;\n    align-items: center; \n    flex-direction: column;\n    margin-top: 10em;\n}\n\n.linegraph {\n\tdisplay: flex;\n\twidth: 25em;\n}\n\n\n.intradaypage {\n\tdisplay: flex; \n\tflex-direction: column; \n\tbackground-color: red;\n\theight: 100%;\n}\n\n.intradaylinegraph {\n\tmargin-top: 0em;\n\twidth: 50em;\n\theight: 20em;\n\tbackground-color: transparent;\n}\n\n.intradaybargraph {\n\tdisplay: flex;\n\tmargin-top: 0.1em;\n\tmargin-left: 1.4em;\n\twidth: 46.5em;\n\theight: 10em; \n\tbackground-color: transparent;\n}\n\n.autocorrelationgraph {\n\tdisplay: flex;\n\twidth: 30em;\n\tmargin-left: 3.5em;\n}\n\n.autocorrelationgraph_intraday {\n\twidth: 30em;\n\tmargin-left: 3.5em;\n}\n\n.candleStickGraph_intraday {\n\tdisplay: flex;\n\twidth: 100em;\n\tmargin-left: 3.5em;\n}\n\n.candleStickGraph {\n\tdisplay: flex;\n\theight: 10em;\n\twidth: 39em;\n\tmargin-top: 3em;\n\tbackground-color: transparent;\n}\n\n.marketgraph {\n\tdisplay: flex;\n\talign-items: center;\n\twidth: 35em;\n\tjustify-content: center;\n}", ""]);
+	exports.push([module.id, "#Title {\n\tfont-size: 4.7em;\n\tcolor: black;\n\tfont-weight: 900; \n\tfont-family: 'Courier New';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n\talign-text: center;\n\tmargin: 50;\n}\n\n#About-Me {\n\tcolor: black;\n\tfont-size: 2.1em;\n\tfont-weight: 700; \n\tfont-family: 'Courier New';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n}\n\n.app {\n\tdisplay: flex; \n\tflex-direction: column; \n\tbackground-color: transparent;\n\theight: 100%;\n}\n\n.paragraph {\n\tcolor: black;\n\tfont-size: 1.5em;\n\tfont-weight: 400;\n\tfont-family: 'Courier New';\n\tmargin-top: 2em;\n\tmargin: 50;\n}\n\n.table_row_parent { \n\tborder-width: 2; \n\tborder-style: solid; \n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n.section-title {\n\tmargin: 50;\n\tfont-size: 2em;\n\tfont-weight: 900;\n\tfont-family: 'Courier New';\n\tmargin-top: 2em;\n}\n\n.code-image {\n\tmargin: 0;\n\twidth: 100;\n}\n\n.header {\n\tflex-direction: row;\n\twidth: 100%;\n\theight: 5em; \n\tbackground-color: transparent; \n\talign-items: center; \n}\n\n.header-link {\n\tfont-weight: 900;\n\tfont-family: 'Courier New';\n\tfont-size: 18;\n\tcolor: white; \n\ttop: 15;\n\tleft: 25; \n\tcursor: pointer; \n\ttext-decoration: none;  \n}\n\n.pickercontainer {\n    background-color: transparent;\n    align-items: center; \n}\n\n.picker-instructions {\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center; \n\tflex-direction: column;\n\tfont-size: 1.5em; \n\tfont-weight: 400; \n\tfont-family: 'Courier New';\n\tcolor: white;\n}\n\n.marketpicker {\n\tdisplay: flex;\n\tjustify-content: center;\n\tmargin-top: 2em;\n\t\n}\n\n.homepage-input {\n\t\tfont-size: 18; \n\t\tfont-weight: 700;\n\t\tfont-family: 'Courier New';\n\t\theight: 3em; \n\t\twidth: 17em;\n}\n\n.graph-page {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n    background-color: transparent;\n    align-items: center; \n    flex-direction: column;\n    margin-top: 10em;\n}\n\n.linegraph {\n\tdisplay: flex;\n\twidth: 25em;\n}\n\n\n.intradaypage {\n\tdisplay: flex; \n\tflex-direction: column; \n\tbackground-color: red;\n\theight: 100%;\n}\n\n.intradaylinegraph {\n\tmargin-top: 0em;\n\twidth: 50em;\n\theight: 20em;\n\tbackground-color: transparent;\n}\n\n.intradaybargraph {\n\tdisplay: flex;\n\tmargin-top: 0.1em;\n\tmargin-left: 1.4em;\n\twidth: 46.5em;\n\theight: 10em; \n\tbackground-color: transparent;\n}\n\n.autocorrelationgraph {\n\tdisplay: flex;\n\twidth: 50em;\n\theight: 10em;\n}\n\n.autocorrelationgraph_intraday {\n\twidth: 30em;\n\tmargin-left: 3.5em;\n}\n\n.candleStickGraph_intraday {\n\tdisplay: flex;\n\twidth: 100em;\n\tmargin-left: 3.5em;\n}\n\n.candleStickGraph {\n\tdisplay: flex;\n\theight: 10em;\n\twidth: 39em;\n\tmargin-top: 3em;\n\tmargin-left: 2em;\n\tbackground-color: transparent;\n}\n\n.marketgraph {\n\tdisplay: flex;\n\talign-items: center;\n\twidth: 40em;\n\theight: 30em;\n\tjustify-content: center;\n}", ""]);
 
 	// exports
 
@@ -27202,28 +27202,26 @@
 
 				if (this.state.dailymarketData.xValues.length > 0) {
 					this.setState({
-
-						marketGraph: MarketGraph.setMarketFundGraph(this.state.dailymarketData)
+						marketGraph: MarketGraph.setMarketGoogleGraph(this.state.dailymarketData)
 					});
 				}
 
 				if (this.state.dailyetfData.xValues.length > 0) {
 					this.setState({
-
-						etfGraph: MarketGraph.setMarketFundGraph(this.state.dailyetfData)
+						etfGraph: MarketGraph.setMarketGoogleGraph(this.state.dailyetfData)
 					});
 				}
 
 				if (this.state.dailymarketData.autocorrelation.xValues.length > 0) {
 					this.setState({
-						etfAutocorrelation: Autocorrelation.setAutocorrelationGraph(this.state.dailyetfData),
+						etfAutocorrelation: Autocorrelation.setGoogleAutocorr(this.state.dailyetfData),
 						etfCandleStick: CandleStickGraph.setGraph(this.state.dailyetfData)
 					});
 				}
 
 				if (this.state.dailymarketData.autocorrelation.xValues.length > 0) {
 					this.setState({
-						marketAutocorrelation: Autocorrelation.setAutocorrelationGraph(this.state.dailymarketData)
+						marketAutocorrelation: Autocorrelation.setGoogleAutocorr(this.state.dailymarketData)
 					});
 				}
 			}
@@ -27262,29 +27260,28 @@
 				if (this.state.storeupdated == true && this.state.dailymarketData.xValues.length > 0 && this.state.sendRequestStatus == false && this.state.viewMode == 'markets') {
 					this.setState({
 						storeupdated: false,
-						marketGraph: MarketGraph.setMarketFundGraph(this.state.dailymarketData)
+						marketGraph: MarketGraph.setMarketGoogleGraph(this.state.dailymarketData)
 					});
 				}
 
 				if (this.state.storeupdated == true && this.state.dailyetfData.xValues.length > 0 && this.state.sendRequestStatus == false && this.state.viewMode == 'markets') {
 					this.setState({
 						storeupdated: false,
-						etfGraph: MarketGraph.setMarketFundGraph(this.state.dailyetfData)
+						etfGraph: MarketGraph.setMarketGoogleGraph(this.state.dailyetfData)
 					});
 				}
 
 				if (this.state.storeupdated == true && this.state.dailymarketData.autocorrelation.xValues.length > 0 && this.state.sendRequestStatus == false && this.state.viewMode == 'markets') {
 					this.setState({
 						storeupdated: false,
-						etfAutocorrelation: Autocorrelation.setAutocorrelationGraph(this.state.dailyetfData),
+						etfAutocorrelation: Autocorrelation.setGoogleAutocorr(this.state.dailyetfData),
 						etfCandleStick: CandleStickGraph.setGraph(this.state.dailyetfData)
 					});
 				}
 
 				if (this.state.storeupdated == true && this.state.dailymarketData.autocorrelation.xValues.length > 0 && this.state.sendRequestStatus == false && this.state.viewMode == 'markets') {
 					this.setState({
-						storeupdated: false,
-						marketAutocorrelation: Autocorrelation.setAutocorrelationGraph(this.state.dailymarketData)
+						storeupdated: false
 					});
 				}
 			}
@@ -27306,7 +27303,7 @@
 						this.state.marketGraph,
 						_react2.default.createElement(
 							'div',
-							null,
+							{ style: { display: 'flex', flexDirection: 'column', marginTop: 30 } },
 							this.state.marketAutocorrelation
 						)
 					),
@@ -27316,7 +27313,7 @@
 						this.state.etfGraph,
 						_react2.default.createElement(
 							'div',
-							{ style: { display: 'flex', flexDirection: 'column', marginTop: 10 } },
+							{ style: { display: 'flex', flexDirection: 'column', marginTop: 30 } },
 							this.state.etfAutocorrelation,
 							this.state.etfCandleStick
 						)
@@ -72916,97 +72913,64 @@
 		}
 
 		_createClass(MarketGraph, [{
-			key: 'setMarketFundGraph',
-			value: function setMarketFundGraph(data) {
+			key: 'setMarketGoogleGraph',
+			value: function setMarketGoogleGraph(data) {
 
-				var d = {
-					labels: data.xValues,
-					datasets: [{
-						label: data.name,
-						fill: false,
-						lineTension: 0.1,
-						backgroundColor: 'rgba(75,192,192,0.4)',
-						borderColor: 'rgba(75,192,192,1)',
-						borderCapStyle: 'butt',
-						borderDash: [],
-						borderDashOffset: 0.0,
-						borderJoinStyle: 'miter',
-						pointBorderHeight: 100,
-						pointBorderColor: 'rgba(75,192,192,1)',
-						pointBackgroundColor: '#fff',
-						pointBorderWidth: 1,
-						pointHoverRadius: 5,
-						pointHoverBackgroundColor: 'black',
-						pointHoverBorderColor: 'black',
-						pointHoverBorderWidth: 2,
-						pointRadius: 1,
-						pointHitRadius: 10,
-						data: data.yValues
-					}]
+				var line_data = [["DATE", "valuation"]];
+				for (var x = 0; x < data.xValues.length; x++) {
+					line_data.push([data.xValues[x], data.yValues[x]]);
 				};
+
 				var options = {
-					responsive: true,
-					title: {
-						display: true,
-						text: data.name,
-						fontColor: 'white',
-						fontSize: 14,
-						fontFamily: 'Courier New',
-						fontWeight: '200'
-					},
-					showLines: true,
-					legend: {
-						display: false
-					},
-					scales: {
-						yAxes: [{
-							scaleLabel: {
-								fontSize: 12,
-								fontColor: 'white',
-								fontFamily: 'Courier New',
-								display: false,
-								labelString: 'Price (USD)'
-							},
-							ticks: {
-								fontSize: 12,
-								fontColor: 'white',
-								fontFamily: 'Courier New',
-								display: true
-							},
-							gridLines: {
-								display: false,
-								color: "white"
-							}
-						}],
-						xAxes: [{
-							type: 'time',
-							ticks: {
-								fontFamily: 'Courier New',
-								fontColor: 'white',
-								fontSize: 12,
-								maxRotation: 0, // angle in degrees
-								display: true,
-								maxTicksLimit: 4,
-								autoSkip: true
-							},
+					title: data.name,
+					legend: "none",
+					backgroundColor: 'transparent',
 
-							time: {
-								displayFormats: {
-									quarter: 'MMM YYYY'
-								}
-							},
+					vAxis: {
+						title: "USD $",
+						titleTextStyle: { color: '#FFF' },
+						textStyle: {
+							fontSize: 12,
+							fontName: 'Courier New',
+							color: 'black',
+							fontWeight: 700
 
-							gridLines: {
-								display: false,
-								color: "white"
-							}
-						}]
+						},
+
+						gridlines: {
+							color: 'transparent',
+							count: 5
+						}
+
+					},
+
+					hAxis: {
+
+						textStyle: {
+							color: 'black',
+							fontName: 'Courier New',
+							fontWeight: 700
+						},
+
+						gridlines: {
+							color: 'black',
+							count: 5
+						}
+
 					}
+
 				};
+
 				return _react2.default.createElement(
 					'div',
 					{ className: 'marketgraph' },
-					_react2.default.createElement(_reactChartjs.Line, { data: d, options: options, height: window.innerHeight * 0.25, weight: window.innerWidth * 0.4 })
+					_react2.default.createElement(_reactGoogleCharts.Chart, {
+						chartType: 'LineChart',
+						data: line_data,
+						width: '100%',
+						height: '100%',
+						options: options
+					})
 				);
 			}
 		}, {
@@ -84990,7 +84954,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactChartjs = __webpack_require__(410);
+	var _reactGoogleCharts = __webpack_require__(492);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -85000,93 +84964,54 @@
 		this.graphView = null;
 	};
 
-	Autocorrelation.prototype.setAutocorrelationGraph = function (data) {
-
-		console.log(data);
-		var d = {
-			labels: data.autocorrelation.xValues,
-			datasets: [{
-				fill: false,
-				lineTension: 0.1,
-				backgroundColor: 'white',
-				borderColor: 'white', // line color
-				borderCapStyle: 'butt',
-				borderDash: [],
-				borderDashOffset: 0.0,
-				borderJoinStyle: 'miter',
-				pointBorderColor: 'white',
-				pointBackgroundColor: 'black',
-				pointBorderWidth: 1,
-				pointHoverRadius: 5,
-				pointHoverBackgroundColor: 'black',
-				pointHoverBorderColor: 'black',
-				pointHoverBorderWidth: 1,
-				pointRadius: 0.7,
-				pointHitRadius: 10,
-				data: data.autocorrelation.yValues
-			}]
+	Autocorrelation.prototype.setGoogleAutocorr = function (data) {
+		var line_data = [["DATE", "valuation"]];
+		for (var x = 0; x < data.xValues.length; x++) {
+			line_data.push([data.autocorrelation.xValues[x], data.autocorrelation.yValues[x]]);
 		};
 		var options = {
-			responsive: true,
-			title: {
-				display: true,
-				text: 'Historical 200-day Autocorrelation',
-				fontColor: 'white',
-				fontSize: 10,
-				fontFamily: 'Courier New',
-				fontWeight: '200'
-			},
-			showLines: true,
-			legend: {
-				display: false
-			},
+			title: data.name,
+			legend: "none",
+			backgroundColor: 'transparent',
+			vAxis: {
+				title: "USD $",
+				titleTextStyle: { color: '#FFF' },
+				textStyle: {
+					fontSize: 12,
+					fontName: 'Courier New',
+					color: 'black',
+					fontWeight: 700
 
-			scales: {
-				yAxes: [{
-					scaleLabel: {
-						fontSize: 8,
-						fontColor: 'white',
-						fontFamily: 'Courier New',
-						display: false,
-						labelString: 'Autocorrelation'
-					},
-					ticks: {
-						fontSize: 8,
-						fontColor: 'white',
-						fontFamily: 'Courier New',
-						display: true,
-						max: 1.4,
-						min: 0
-					},
-					gridLines: {
-						display: false,
-						color: "white"
-					}
-				}],
-				xAxes: [{
-					ticks: {
-						fontFamily: 'Courier New',
-						fontColor: 'white',
-						fontSize: 8,
-						maxRotation: 0, // angle in degrees
-						display: true,
-						maxTicksLimit: 5,
-						autoSkip: true,
-						max: 200,
-						min: 0
-					},
-					gridLines: {
-						display: false,
-						color: "white"
-					}
-				}]
+				},
+				gridlines: {
+					color: 'transparent',
+					count: 5
+				}
+			},
+			hAxis: {
+				textStyle: {
+					color: 'black',
+					fontName: 'Courier New',
+					fontWeight: 700
+				},
+				gridlines: {
+					color: 'transparent',
+					count: 10
+				}
 			}
+
 		};
 
 		return _react2.default.createElement(
 			'div',
 			{ className: 'autocorrelationgraph' },
-			_react2.default.createElement(_reactChartjs.Line, { data: d, options: options, height: window.innerHeight * 0.13 })
+			_react2.default.createElement(_reactGoogleCharts.Chart, {
+				chartType: 'LineChart',
+				data: line_data,
+				width: '100%',
+				height: '100%',
+				options: options
+			})
 		);
 	};
 
@@ -85178,7 +85103,7 @@
 		return _react2.default.createElement(
 			'div',
 			{ className: 'autocorrelationgraph_intraday' },
-			_react2.default.createElement(_reactChartjs.Line, { data: d, options: options, height: window.innerHeight * 0.2 })
+			_react2.default.createElement(Line, { data: d, options: options, height: window.innerHeight * 0.2 })
 		);
 	};
 

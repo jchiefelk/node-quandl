@@ -145,8 +145,8 @@
 
 .autocorrelationgraph {
 	display: flex;
-	width: 30em;
-	margin-left: 3.5em;
+	width: 50em;
+	height: 10em;
 }
 
 .autocorrelationgraph_intraday {
@@ -165,12 +165,14 @@
 	height: 10em;
 	width: 39em;
 	margin-top: 3em;
+	margin-left: 2em;
 	background-color: transparent;
 }
 
 .marketgraph {
 	display: flex;
 	align-items: center;
-	width: 35em;
+	width: 40em;
+	height: 30em;
 	justify-content: center;
 }

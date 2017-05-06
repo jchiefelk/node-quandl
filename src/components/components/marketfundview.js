@@ -44,32 +44,29 @@ export default class MarketFundView extends Component {
 				
 				if( this.state.dailymarketData.xValues.length>0 ){
 					this.setState({
-						
-							marketGraph: MarketGraph.setMarketFundGraph(this.state.dailymarketData)
-						});
+						marketGraph: MarketGraph.setMarketGoogleGraph(this.state.dailymarketData)
+					});
 				}
 
 				if(this.state.dailyetfData.xValues.length>0  ){
 					this.setState({
-	
-							etfGraph: MarketGraph.setMarketFundGraph(this.state.dailyetfData)
-						});
+						etfGraph: MarketGraph.setMarketGoogleGraph(this.state.dailyetfData)
+					});
 				}
 				
 				if(	this.state.dailymarketData.autocorrelation.xValues.length>0  ){
 					this.setState({
-							etfAutocorrelation: Autocorrelation.setAutocorrelationGraph(this.state.dailyetfData),
-							etfCandleStick: CandleStickGraph.setGraph(this.state.dailyetfData)
-						});
+						etfAutocorrelation: Autocorrelation.setGoogleAutocorr(this.state.dailyetfData),
+						etfCandleStick: CandleStickGraph.setGraph(this.state.dailyetfData)
+					});
 				}
 			
 				if(	this.state.dailymarketData.autocorrelation.xValues.length>0 ){
-						this.setState({
-							marketAutocorrelation: Autocorrelation.setAutocorrelationGraph(this.state.dailymarketData)
-						});
+					this.setState({
+						marketAutocorrelation: Autocorrelation.setGoogleAutocorr(this.state.dailymarketData)
+					});
 				}
 			
-
 
 			}
 
@@ -84,6 +81,7 @@ export default class MarketFundView extends Component {
 					sendRequestStatus:	StockDataStore.getRequestSendStatus(),
 					storeupdated: true
 				});
+
 			}
 
 			componentDidUpdate(){
@@ -102,24 +100,25 @@ export default class MarketFundView extends Component {
 					// Actions.updatesendRequest();
 				}
 
+
 				if(this.state.storeupdated==true && this.state.dailymarketData.xValues.length>0 && this.state.sendRequestStatus==false && this.state.viewMode=='markets'){
 					this.setState({
 							storeupdated: false,
-							marketGraph: MarketGraph.setMarketFundGraph(this.state.dailymarketData)
+							marketGraph: MarketGraph.setMarketGoogleGraph(this.state.dailymarketData)
 						});
 				}
 
 				if(this.state.storeupdated==true && this.state.dailyetfData.xValues.length>0  && this.state.sendRequestStatus==false && this.state.viewMode=='markets'){
 					this.setState({
 							storeupdated: false,
-							etfGraph: MarketGraph.setMarketFundGraph(this.state.dailyetfData)
+							etfGraph: MarketGraph.setMarketGoogleGraph(this.state.dailyetfData)
 						});
 				}
 				
 				if(	this.state.storeupdated==true && this.state.dailymarketData.autocorrelation.xValues.length>0  && this.state.sendRequestStatus==false && this.state.viewMode=='markets'){
 					this.setState({
 							storeupdated: false,
-							etfAutocorrelation: Autocorrelation.setAutocorrelationGraph(this.state.dailyetfData),
+							etfAutocorrelation: Autocorrelation.setGoogleAutocorr(this.state.dailyetfData),
 							etfCandleStick: CandleStickGraph.setGraph(this.state.dailyetfData)
 						});
 				}
@@ -127,10 +126,9 @@ export default class MarketFundView extends Component {
 				if(	this.state.storeupdated==true && this.state.dailymarketData.autocorrelation.xValues.length>0  && this.state.sendRequestStatus==false && this.state.viewMode=='markets'){
 						this.setState({
 							storeupdated: false,
-							marketAutocorrelation: Autocorrelation.setAutocorrelationGraph(this.state.dailymarketData)
+							// marketAutocorrelation: Autocorrelation.setGoogleAutocorr(this.state.dailymarketData)
 						});
 				}
-		
 				
 			}
 
@@ -143,7 +141,7 @@ export default class MarketFundView extends Component {
 
 							<div style={{display: 'flex',marginTop: 30}}>
 								{this.state.marketGraph}
-								<div>
+								<div	style={{display: 'flex', flexDirection: 'column', marginTop: 30}}>
 									{this.state.marketAutocorrelation}
 								</div>
 							</div>
@@ -151,7 +149,7 @@ export default class MarketFundView extends Component {
 							<div style={{display: 'flex',marginTop:100, marginLeft: 75}}>
 								{this.state.etfGraph}
 								
-								<div style={{display: 'flex', flexDirection: 'column', marginTop: 10}}>
+								<div style={{display: 'flex', flexDirection: 'column', marginTop: 30}}>
 									{this.state.etfAutocorrelation}
 									{this.state.etfCandleStick}
 								</div>
