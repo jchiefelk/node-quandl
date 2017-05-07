@@ -126,7 +126,7 @@ export default class MarketFundView extends Component {
 				if(	this.state.storeupdated==true && this.state.dailymarketData.autocorrelation.xValues.length>0  && this.state.sendRequestStatus==false && this.state.viewMode=='markets'){
 						this.setState({
 							storeupdated: false,
-							// marketAutocorrelation: Autocorrelation.setGoogleAutocorr(this.state.dailymarketData)
+							marketAutocorrelation: Autocorrelation.setGoogleAutocorr(this.state.dailymarketData)
 						});
 				}
 				
