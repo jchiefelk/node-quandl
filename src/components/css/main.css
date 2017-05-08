@@ -104,21 +104,10 @@
 		width: 17em;
 }
 
-.graph-page {
-	display: flex;
-	width: 100%;
-	height: 100%;
-    background-color: transparent;
-    align-items: center; 
-    flex-direction: column;
-    margin-top: 10em;
-}
-
 .linegraph {
 	display: flex;
 	width: 25em;
 }
-
 
 .intradaypage {
 	display: flex; 
@@ -143,10 +132,22 @@
 	background-color: transparent;
 }
 
+.graph-page {
+	display: flex;
+	height: 100%;
+    background-color: transparent;
+    align-items: center; 
+    flex-direction: column;
+    margin-top: 10em;
+}
+
+
 .autocorrelationgraph {
 	display: flex;
-	width: 50em;
-	height: 10em;
+	background-color: silver;
+	width: 40em;
+	height: 15em;
+	margin-top: 4em;
 }
 
 .autocorrelationgraph_intraday {
@@ -162,17 +163,32 @@
 
 .candleStickGraph {
 	display: flex;
-	height: 10em;
-	width: 39em;
+	height: 15em;
+	width: 41em;
 	margin-top: 3em;
-	margin-left: 2em;
 	background-color: transparent;
 }
 
 .marketgraph {
-	display: flex;
+	background-color: silver;
 	align-items: center;
-	width: 40em;
-	height: 30em;
+	width: 50em;
+	height: 40em;
 	justify-content: center;
+}
+
+.graphViews {
+	display: flex;
+	background-color: silver;
+	width: 90%;
+	margin-top: 1em;
+	background-color: white;
+}
+
+.graphViewChild {
+	display: flex;
+	background-color: silver;
+	flex-direction: column; 
+	height: 40em;
+	width: 50em;
 }

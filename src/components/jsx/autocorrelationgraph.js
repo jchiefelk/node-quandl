@@ -12,12 +12,12 @@ Autocorrelation.prototype.setGoogleAutocorr = function(data){
 					line_data.push([data.autocorrelation.xValues[x], data.autocorrelation.yValues[x] ]);
 			};
 			let options = {
-						title: data.name,
+						title: 'Historical 1 year Momentum',
 						legend: "none",
 						backgroundColor: 'transparent',
 						vAxis: {
 							title: "USD $",	
-							titleTextStyle: { color: '#FFF' },
+							titleTextStyle: { color: 'black' },
 				        	textStyle: {
 				        		fontSize: 12,
 				        		fontName: 'Courier New',

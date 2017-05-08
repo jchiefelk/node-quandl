@@ -16,7 +16,7 @@ function CandleStickGraph(){
 		hAxis: {
 
        	   textStyle:{
-       	   	color: 'white',
+       	   	color: 'black',
        	   	fontName: 'Courier New',
        	   	fontWeight: 700,
        	   	fontSize: 10
@@ -35,7 +35,7 @@ function CandleStickGraph(){
 
        	vAxis: {
        	   textStyle:{
-       	   	color: 'white',
+       	   	color: 'black',
        	   	fontName: 'Courier New',
        	   	fontWeight: 700
        	   },

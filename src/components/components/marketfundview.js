@@ -139,17 +139,17 @@ export default class MarketFundView extends Component {
 
 							<h1 style={{fontFamily: 'Courier New',fontWeight: '700', color: 'white'}}> ETF and Futures Markets</h1>
 
-							<div style={{display: 'flex',marginTop: 30}}>
+							<div className="graphViews">
 								{this.state.marketGraph}
-								<div	style={{display: 'flex', flexDirection: 'column', marginTop: 30}}>
+								<div className="graphViewChild">
 									{this.state.marketAutocorrelation}
 								</div>
 							</div>
 
-							<div style={{display: 'flex',marginTop:100, marginLeft: 75}}>
+							<div className="graphViews">
 								{this.state.etfGraph}
 								
-								<div style={{display: 'flex', flexDirection: 'column', marginTop: 30}}>
+								<div className="graphViewChild">
 									{this.state.etfAutocorrelation}
 									{this.state.etfCandleStick}
 								</div>

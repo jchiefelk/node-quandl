@@ -42,7 +42,7 @@ class MarketGraph {
 						
 						vAxis: {
 							title: "USD $",	
-							titleTextStyle: { color: '#FFF' },
+							titleTextStyle: { color: 'black' },
 				        	textStyle: {
 				        		fontSize: 12,
 				        		fontName: 'Courier New',
