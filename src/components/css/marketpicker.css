@@ -1,12 +1,13 @@
 
 .market-picker {
 	margin-left: 3em;
-
-
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
 
 .market-picker-item {
-
 	display: flex; 
 	cursor: pointer; 
 	font-family: 'Courier New';

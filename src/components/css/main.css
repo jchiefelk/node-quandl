@@ -76,6 +76,8 @@
 .pickercontainer {
     background-color: transparent;
     align-items: center; 
+    justify-content: center;
+    display: flex;
 }
 
 .picker-instructions {
@@ -111,15 +113,20 @@
 
 .intradaypage {
 	display: flex; 
-	flex-direction: column; 
-	background-color: red;
+	justify-content: center;
+	background-color: silver;
 	height: 100%;
 }
 
+.intradaychild {
+	margin-top: 10em;
+}
+
 .intradaylinegraph {
+
 	margin-top: 0em;
 	width: 50em;
-	height: 20em;
+	height: 40em;
 	background-color: transparent;
 }
 
@@ -132,6 +139,7 @@
 	background-color: transparent;
 }
 
+
 .graph-page {
 	display: flex;
 	height: 100%;
@@ -140,6 +148,7 @@
     flex-direction: column;
     margin-top: 10em;
 }
+
 
 
 .autocorrelationgraph {
@@ -151,14 +160,19 @@
 }
 
 .autocorrelationgraph_intraday {
-	width: 30em;
+	width: 50em;
+	height: 20em;
 	margin-left: 3.5em;
+	margin-top: 4em;
+
 }
 
 .candleStickGraph_intraday {
 	display: flex;
-	width: 100em;
+	width: 50em;
+	height: 20em;
 	margin-left: 3.5em;
+
 }
 
 .candleStickGraph {
@@ -180,7 +194,6 @@
 .graphViews {
 	display: flex;
 	background-color: silver;
-	width: 90%;
 	margin-top: 1em;
 	background-color: white;
 }
@@ -192,3 +205,5 @@
 	height: 40em;
 	width: 50em;
 }
+
+

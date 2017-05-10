@@ -10,8 +10,9 @@ export default class MarketPage extends Component {
 	//	backgroundColor: 'rgba(75,192,192,0.4)'
     render() {
           return(
-            <div style={{display: 'flex',flexDirection: 'column',backgroundColor:'DarkGray'}}> 
+            <div style={{display: 'flex',flexDirection: 'column', backgroundColor: 'silver'}}> 
               <Header/>
+              <IntraDayTicket/>
               <MarketFundView />
             </div>
           );

@@ -82,7 +82,7 @@ CandleStickGraph.prototype.setGraph = function(item){
 CandleStickGraph.prototype.setIntraDayGraph = function(item){
 	//
 	//
-	for(var x=item.data.length; x >=0; x--){
+	for(var x=item.length; x >=0; x--){
 			let data = [item.data[x], item.low[x], item.open[x], item.yValues[x], item.high[x]];
 			this.data.push(data);
 	};

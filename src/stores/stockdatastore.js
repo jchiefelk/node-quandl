@@ -105,14 +105,18 @@ function StockData(){
 
 StockData.prototype.updateIntradayTicket = function(item){
   console.log('Update Intraday');
- // console.log(item);
+  // console.log(item);
+
   this.IntraDay.data=[];
   this.IntraDay.name = item.dataset.name;
   for(var x = item.dataset.data.length-1; x >=0 ; x--){
         let data = {
           date: item.dataset.data[x][0],
+          open: item.dataset.data[x][1],
+          high: item.dataset.data[x][2],
+          low:  item.dataset.data[x][3],
           close: item.dataset.data[x][4],
-          volume: null
+          volume: null,
         }; 
         if(item.dataset.data[x][5]!=null){
           data.volume = item.dataset.data[x][5].toExponential(2);

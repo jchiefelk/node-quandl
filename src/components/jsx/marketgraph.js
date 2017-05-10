@@ -128,7 +128,7 @@ class MarketGraph {
 					 	}
 					
 				};
-				var baroptions = {
+				let baroptions = {
 	
 						 isStacked:true,
 				         vAxis: {	
@@ -162,12 +162,13 @@ class MarketGraph {
 				        backgroundColor: 'transparent'
 				    };
 
-					return (
-						<div style={{backgroundColor: 'transparent'}}>
-									<div style={{display: 'flex', justifyContent: 'center'}}>
-										{this.setDatePicker()}
-									</div>
 
+					return (
+						<div>
+							<div style={{display: 'flex', justifyContent: 'center'}}>
+									{this.setDatePicker()}
+							</div>
+							
 									<div style={{display: 'flex', flexDirection: 'column'}}>
 											<div className="intradaylinegraph">
 											        <Chart
@@ -224,6 +225,8 @@ class MarketGraph {
 
 	setCompanyPicker(){
 
+
+
 		this.companyPicker = (
 					<div className="pickercontainer">
 						
@@ -234,6 +237,7 @@ class MarketGraph {
 								<img src="https://s3-us-west-1.amazonaws.com/cointelmob/icons/enter_icon.png" style={{width: 30, height: 30, marginLeft: 10,marginTop: 4, cursor: 'pointer'}} />
 							</Link>
 							<MarketPicker  />
+
 						</div>
 
 					</div>

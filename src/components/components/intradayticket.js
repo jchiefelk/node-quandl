@@ -64,14 +64,26 @@ export default class IntraDayTicket extends Component {
 				}
 
 				if(this.state.storeupdated==true && this.state.marketData.data.length>0){
+						console.log(this.state.marketData);
 						if(this.state.marketData.data.length>0){
-								this.setState({
-									storeupdated: false,
-									marketData: null,
-									intraDayView: MarketGraph.setIntradayGraphGoogleView(this.state.marketData.data, this.state.marketData.autocorr, this.state.marketData.name)
-								});
+									this.setState({
+											storeupdated: false,
+											marketData: null,
+											intraDayView: MarketGraph.setIntradayGraphGoogleView(this.state.marketData.data, this.state.marketData.autocorr, this.state.marketData.name),
+											intraDayCandleStick: CandleStickGraph.setIntraDayGraph(this.state.marketData),
+											// intraDayAutocorrelation: Autocorrelation.setIntradayAutocorrelation(this.state.marketData)
+									});	
 						}
+
+						if(this.state.marketData.autocorr.length > 0) {
+								this.setState({
+										intraDayAutocorrelation: Autocorrelation.setIntradayAutocorrelation(this.state.marketData.autocorr)
+								});
+
+						}
+
 				}
+
 
 			}
 
@@ -107,6 +119,19 @@ export default class IntraDayTicket extends Component {
 			}
 
 			render(){
-				return this.state.intraDayView;
+				return (
+					<div className="intradaypage">
+					
+							{this.state.intraDayView}
+				
+						<div className="intradaychild">
+							{this.state.intraDayCandleStick}
+							{this.state.intraDayAutocorrelation}
+						</div>
+
+					</div>
+				);
+
+
 			}
 }
