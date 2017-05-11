@@ -40,8 +40,6 @@
   "scripts": {
     "install": "node-gyp configure; node-gyp build",
     "prod_build": "webpack --config webpack.config.js",
-    "prod_start": "node server/app.js",
-    "start": "react-scripts start",
-    "build": "react-scripts build"
+    "prod_start": "node server/app.js"
   }
 }

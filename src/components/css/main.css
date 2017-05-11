@@ -57,8 +57,8 @@
 .header {
 	flex-direction: row;
 	width: 100%;
-	height: 5em; 
-	background-color: transparent; 
+	height: 3em; 
+	background-color: black; 
 	align-items: center; 
 }
 
@@ -67,8 +67,9 @@
 	font-family: 'Courier New';
 	font-size: 18;
 	color: white; 
-	top: 15;
-	left: 25; 
+	position: absolute;
+	top: 1em;
+	left: 2em;
 	cursor: pointer; 
 	text-decoration: none;  
 }
@@ -78,6 +79,8 @@
     align-items: center; 
     justify-content: center;
     display: flex;
+    position: absolute;
+    top: 10em;
 }
 
 .picker-instructions {
@@ -194,8 +197,7 @@
 .graphViews {
 	display: flex;
 	background-color: silver;
-	margin-top: 1em;
-	background-color: white;
+
 }
 
 .graphViewChild {
@@ -206,4 +208,12 @@
 	width: 50em;
 }
 
-
+#background-video{
+	position: relative;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	padding: none;
+	display: flex;
+	background: transparent;
+}

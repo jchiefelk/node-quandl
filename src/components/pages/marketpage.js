@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import Header from '../components/header';
 import MarketFundView from '../components/marketfundview';
 import IntraDayTicket from '../components/intradayticket';
+import VideoBackground from '../components/videobackground';
+
+
 import { Router, Route, Link } from 'react-router'
 require('../css/main.css');
 
@@ -12,6 +15,7 @@ export default class MarketPage extends Component {
           return(
             <div style={{display: 'flex',flexDirection: 'column', backgroundColor: 'silver'}}> 
               <Header/>
+              <VideoBackground />
               <IntraDayTicket/>
               <MarketFundView />
             </div>
