@@ -15,7 +15,7 @@ export default class MarketPage extends Component {
           return(
             <div style={{display: 'flex',flexDirection: 'column', backgroundColor: 'silver'}}> 
               <Header/>
-              <VideoBackground />
+            
               <IntraDayTicket/>
               <MarketFundView />
             </div>

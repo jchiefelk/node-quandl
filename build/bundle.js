@@ -27836,7 +27836,6 @@
 	        'div',
 	        { style: { display: 'flex', flexDirection: 'column', backgroundColor: 'silver' } },
 	        _react2.default.createElement(_header2.default, null),
-	        _react2.default.createElement(_videobackground2.default, null),
 	        _react2.default.createElement(_intradayticket2.default, null),
 	        _react2.default.createElement(_marketfundview2.default, null)
 	      );
