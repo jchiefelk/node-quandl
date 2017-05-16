@@ -115,6 +115,7 @@
 }
 
 .intradaypage {
+	margin-top: 3em;
 	display: flex; 
 	justify-content: center;
 	background-color: silver;
@@ -128,7 +129,7 @@
 .intradaylinegraph {
 
 	margin-top: 0em;
-	width: 50em;
+	width: 60em;
 	height: 40em;
 	background-color: transparent;
 }
@@ -136,9 +137,9 @@
 .intradaybargraph {
 	display: flex;
 	margin-top: 0.1em;
-	margin-left: 1.4em;
-	width: 46.5em;
-	height: 10em; 
+	width: 49.5em;
+	height: 15em; 
+	margin-left: 5em;
 	background-color: transparent;
 }
 
@@ -164,16 +165,16 @@
 
 .autocorrelationgraph_intraday {
 	width: 50em;
-	height: 20em;
-	margin-left: 3.5em;
+	height: 24em;
+	margin-left: 2em;
 	margin-top: 4em;
-
 }
 
 .candleStickGraph_intraday {
 	display: flex;
 	width: 50em;
 	height: 20em;
+	margin-top: 5em;
 	margin-left: 3.5em;
 
 }

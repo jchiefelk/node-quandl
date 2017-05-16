@@ -27836,6 +27836,7 @@
 	        'div',
 	        { style: { display: 'flex', flexDirection: 'column', backgroundColor: 'silver' } },
 	        _react2.default.createElement(_header2.default, null),
+	        _react2.default.createElement(_videobackground2.default, null),
 	        _react2.default.createElement(_intradayticket2.default, null),
 	        _react2.default.createElement(_marketfundview2.default, null)
 	      );
@@ -27962,7 +27963,7 @@
 
 
 	// module
-	exports.push([module.id, "#Title {\n\tfont-size: 4.7em;\n\tcolor: black;\n\tfont-weight: 900; \n\tfont-family: 'Courier New';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n\talign-text: center;\n\tmargin: 50;\n}\n\n#About-Me {\n\tcolor: black;\n\tfont-size: 2.1em;\n\tfont-weight: 700; \n\tfont-family: 'Courier New';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n}\n\n.app {\n\tdisplay: flex; \n\tflex-direction: column; \n\tbackground-color: transparent;\n\theight: 100%;\n}\n\n.paragraph {\n\tcolor: black;\n\tfont-size: 1.5em;\n\tfont-weight: 400;\n\tfont-family: 'Courier New';\n\tmargin-top: 2em;\n\tmargin: 50;\n}\n\n.table_row_parent { \n\tborder-width: 2; \n\tborder-style: solid; \n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n.section-title {\n\tmargin: 50;\n\tfont-size: 2em;\n\tfont-weight: 900;\n\tfont-family: 'Courier New';\n\tmargin-top: 2em;\n}\n\n.code-image {\n\tmargin: 0;\n\twidth: 100;\n}\n\n.header {\n\tflex-direction: row;\n\twidth: 100%;\n\theight: 3em; \n\tbackground-color: black; \n\talign-items: center; \n}\n\n.header-link {\n\tfont-weight: 900;\n\tfont-family: 'Courier New';\n\tfont-size: 18;\n\tcolor: white; \n\tposition: absolute;\n\ttop: 1em;\n\tleft: 2em;\n\tcursor: pointer; \n\ttext-decoration: none;  \n}\n\n.pickercontainer {\n    background-color: transparent;\n    align-items: center; \n    justify-content: center;\n    display: flex;\n    position: absolute;\n    top: 10em;\n}\n\n.picker-instructions {\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center; \n\tflex-direction: column;\n\tfont-size: 1.5em; \n\tfont-weight: 400; \n\tfont-family: 'Courier New';\n\tcolor: white;\n}\n\n.marketpicker {\n\tdisplay: flex;\n\tjustify-content: center;\n\tmargin-top: 2em;\n\t\n}\n\n.homepage-input {\n\t\tfont-size: 18; \n\t\tfont-weight: 700;\n\t\tfont-family: 'Courier New';\n\t\theight: 3em; \n\t\twidth: 17em;\n}\n\n.linegraph {\n\tdisplay: flex;\n\twidth: 25em;\n}\n\n.intradaypage {\n\tdisplay: flex; \n\tjustify-content: center;\n\tbackground-color: silver;\n\theight: 100%;\n}\n\n.intradaychild {\n\tmargin-top: 10em;\n}\n\n.intradaylinegraph {\n\n\tmargin-top: 0em;\n\twidth: 50em;\n\theight: 40em;\n\tbackground-color: transparent;\n}\n\n.intradaybargraph {\n\tdisplay: flex;\n\tmargin-top: 0.1em;\n\tmargin-left: 1.4em;\n\twidth: 46.5em;\n\theight: 10em; \n\tbackground-color: transparent;\n}\n\n\n.graph-page {\n\tdisplay: flex;\n\theight: 100%;\n    background-color: transparent;\n    align-items: center; \n    flex-direction: column;\n    margin-top: 10em;\n}\n\n\n\n.autocorrelationgraph {\n\tdisplay: flex;\n\tbackground-color: silver;\n\twidth: 40em;\n\theight: 15em;\n\tmargin-top: 4em;\n}\n\n.autocorrelationgraph_intraday {\n\twidth: 50em;\n\theight: 20em;\n\tmargin-left: 3.5em;\n\tmargin-top: 4em;\n\n}\n\n.candleStickGraph_intraday {\n\tdisplay: flex;\n\twidth: 50em;\n\theight: 20em;\n\tmargin-left: 3.5em;\n\n}\n\n.candleStickGraph {\n\tdisplay: flex;\n\theight: 15em;\n\twidth: 41em;\n\tmargin-top: 3em;\n\tbackground-color: transparent;\n}\n\n.marketgraph {\n\tbackground-color: silver;\n\talign-items: center;\n\twidth: 50em;\n\theight: 40em;\n\tjustify-content: center;\n}\n\n.graphViews {\n\tdisplay: flex;\n\tbackground-color: silver;\n\n}\n\n.graphViewChild {\n\tdisplay: flex;\n\tbackground-color: silver;\n\tflex-direction: column; \n\theight: 40em;\n\twidth: 50em;\n}\n\n#background-video{\n\tposition: relative;\n\ttop: 0;\n\theight: 100%;\n\twidth: 100%;\n\tpadding: none;\n\tdisplay: flex;\n\tbackground: transparent;\n}\n", ""]);
+	exports.push([module.id, "#Title {\n\tfont-size: 4.7em;\n\tcolor: black;\n\tfont-weight: 900; \n\tfont-family: 'Courier New';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n\talign-text: center;\n\tmargin: 50;\n}\n\n#About-Me {\n\tcolor: black;\n\tfont-size: 2.1em;\n\tfont-weight: 700; \n\tfont-family: 'Courier New';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n}\n\n.app {\n\tdisplay: flex; \n\tflex-direction: column; \n\tbackground-color: transparent;\n\theight: 100%;\n}\n\n.paragraph {\n\tcolor: black;\n\tfont-size: 1.5em;\n\tfont-weight: 400;\n\tfont-family: 'Courier New';\n\tmargin-top: 2em;\n\tmargin: 50;\n}\n\n.table_row_parent { \n\tborder-width: 2; \n\tborder-style: solid; \n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n.section-title {\n\tmargin: 50;\n\tfont-size: 2em;\n\tfont-weight: 900;\n\tfont-family: 'Courier New';\n\tmargin-top: 2em;\n}\n\n.code-image {\n\tmargin: 0;\n\twidth: 100;\n}\n\n.header {\n\tflex-direction: row;\n\twidth: 100%;\n\theight: 3em; \n\tbackground-color: black; \n\talign-items: center; \n}\n\n.header-link {\n\tfont-weight: 900;\n\tfont-family: 'Courier New';\n\tfont-size: 18;\n\tcolor: white; \n\tposition: absolute;\n\ttop: 1em;\n\tleft: 2em;\n\tcursor: pointer; \n\ttext-decoration: none;  \n}\n\n.pickercontainer {\n    background-color: transparent;\n    align-items: center; \n    justify-content: center;\n    display: flex;\n    position: absolute;\n    top: 10em;\n}\n\n.picker-instructions {\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center; \n\tflex-direction: column;\n\tfont-size: 1.5em; \n\tfont-weight: 400; \n\tfont-family: 'Courier New';\n\tcolor: white;\n}\n\n.marketpicker {\n\tdisplay: flex;\n\tjustify-content: center;\n\tmargin-top: 2em;\n\t\n}\n\n.homepage-input {\n\t\tfont-size: 18; \n\t\tfont-weight: 700;\n\t\tfont-family: 'Courier New';\n\t\theight: 3em; \n\t\twidth: 17em;\n}\n\n.linegraph {\n\tdisplay: flex;\n\twidth: 25em;\n}\n\n.intradaypage {\n\tmargin-top: 3em;\n\tdisplay: flex; \n\tjustify-content: center;\n\tbackground-color: silver;\n\theight: 100%;\n}\n\n.intradaychild {\n\tmargin-top: 10em;\n}\n\n.intradaylinegraph {\n\n\tmargin-top: 0em;\n\twidth: 60em;\n\theight: 40em;\n\tbackground-color: transparent;\n}\n\n.intradaybargraph {\n\tdisplay: flex;\n\tmargin-top: 0.1em;\n\twidth: 49.5em;\n\theight: 15em; \n\tmargin-left: 5em;\n\tbackground-color: transparent;\n}\n\n\n.graph-page {\n\tdisplay: flex;\n\theight: 100%;\n    background-color: transparent;\n    align-items: center; \n    flex-direction: column;\n    margin-top: 10em;\n}\n\n\n\n.autocorrelationgraph {\n\tdisplay: flex;\n\tbackground-color: silver;\n\twidth: 40em;\n\theight: 15em;\n\tmargin-top: 4em;\n}\n\n.autocorrelationgraph_intraday {\n\twidth: 50em;\n\theight: 24em;\n\tmargin-left: 2em;\n\tmargin-top: 4em;\n}\n\n.candleStickGraph_intraday {\n\tdisplay: flex;\n\twidth: 50em;\n\theight: 20em;\n\tmargin-top: 5em;\n\tmargin-left: 3.5em;\n\n}\n\n.candleStickGraph {\n\tdisplay: flex;\n\theight: 15em;\n\twidth: 41em;\n\tmargin-top: 3em;\n\tbackground-color: transparent;\n}\n\n.marketgraph {\n\tbackground-color: silver;\n\talign-items: center;\n\twidth: 50em;\n\theight: 40em;\n\tjustify-content: center;\n}\n\n.graphViews {\n\tdisplay: flex;\n\tbackground-color: silver;\n\n}\n\n.graphViewChild {\n\tdisplay: flex;\n\tbackground-color: silver;\n\tflex-direction: column; \n\theight: 40em;\n\twidth: 50em;\n}\n\n#background-video{\n\tposition: relative;\n\ttop: 0;\n\theight: 100%;\n\twidth: 100%;\n\tpadding: none;\n\tdisplay: flex;\n\tbackground: transparent;\n}\n", ""]);
 
 	// exports
 
@@ -74997,7 +74998,7 @@
 					backgroundColor: 'transparent',
 
 					vAxis: {
-						title: "USD $",
+						title: "",
 						titleTextStyle: { color: 'black' },
 						textStyle: {
 							fontSize: 12,
@@ -75053,15 +75054,16 @@
 					bar_data.push([data[x].date, parseFloat(data[x].volume)]);
 				};
 				var options = {
+					title: name,
 					legend: "none",
 					backgroundColor: 'transparent',
 					vAxis: {
-						title: "USD $",
-						titleTextStyle: { color: '#FFF' },
+						title: "",
+						titleTextStyle: { color: 'black' },
 						textStyle: {
 							fontSize: 12,
 							fontName: 'Courier New',
-							color: 'white',
+							color: 'black',
 							fontWeight: 700
 
 						},
@@ -75070,45 +75072,58 @@
 							count: 4
 						}
 					},
+
 					hAxis: {
+
 						textStyle: {
-							color: 'transparent',
+							color: 'black',
 							fontName: 'Courier New',
-							fontWeight: 700
+							fontWeight: 700,
+							fontSize: 8
+						},
+
+						gridlines: {
+							color: 'black',
+							count: 2
 						}
+
 					}
 
 				};
 				var baroptions = {
-
 					isStacked: true,
+
 					vAxis: {
+						title: "",
+						titleTextStyle: { color: 'black' },
 						textStyle: {
-							fontSize: 10,
+							fontSize: 0,
 							fontName: 'Courier New',
-							color: 'white',
-							fontWeight: 700,
-							width: 100
+							color: 'black',
+							fontWeight: 700
+
 						},
 						gridlines: {
 							color: 'transparent',
-							count: 4
+							count: 0
 						}
-
 					},
 
 					hAxis: {
+
 						textStyle: {
-							fontSize: 10,
+							fontSize: 8,
 							fontName: 'Courier New',
-							color: 'white',
+							color: 'black',
 							fontWeight: 700
 						},
 						gridlines: {
-							color: 'white',
-							count: 4
+							color: 'transparent',
+							count: 5
 						}
+
 					},
+
 					legend: { position: 'none' },
 					backgroundColor: 'transparent'
 				};
@@ -87307,29 +87322,30 @@
 		this.options = {
 			legend: "none",
 			backgroundColor: 'transparent',
+			bar: { groupWidth: '100%' },
 			candlestick: {
 				fallingColor: { strokeWidth: 0, fill: 'red' }, // red
-				risingColor: { strokeWidth: 0, fill: 'black' } // green
+				risingColor: { strokeWidth: 0, fill: 'black' } // back
 			},
 
 			hAxis: {
-
 				textStyle: {
 					color: 'black',
 					fontName: 'Courier New',
 					fontWeight: 700,
 					fontSize: 10
-
 				},
+
 				gridlines: {
-					color: 'transparent',
-					count: 1
+					color: 'black',
+					count: 2
 				},
-				format: 'MMM d, y',
 
+				format: 'MMM d, y',
 				labels: {
 					enabled: true
 				}
+
 			},
 
 			vAxis: {
@@ -87338,22 +87354,23 @@
 					fontName: 'Courier New',
 					fontWeight: 700
 				},
+
 				labels: {
 					enabled: true
 				},
+
 				gridlines: {
 					color: 'transparent',
-					count: 4
+					count: 5
 				}
 			}
 
 		};
 		this.data = [["DATE", "val1", "val2", "val3", "val4"]];
-		//this.data = [["DATE","val1","val2","val3","val4"],["Mon",20,28,38,45],["Tue",31,38,55,66],["Wed",50,55,77,80],["Thu",77,77,66,50],["Fri",68,66,22,15]]; 
-		// col0: xaxis label, col1: number specifying low/minumum, col2: opening value, col3: closing price, col4: high price for the day
 	};
 
 	CandleStickGraph.prototype.setGraph = function (item) {
+		this.data = [["DATE", "val1", "val2", "val3", "val4"]];
 		//
 		//
 		for (var x = 30; x >= 0; x--) {
@@ -87372,17 +87389,28 @@
 				options: this.options
 			})
 		);
-
 		return this.graph;
 	};
 
 	CandleStickGraph.prototype.setIntraDayGraph = function (item) {
+
+		this.data = [["DATE", "val1", "val2", "val3", "val4"]];
 		//
 		//
-		for (var x = item.length; x >= 0; x--) {
-			var data = [item.data[x], item.low[x], item.open[x], item.yValues[x], item.high[x]];
-			this.data.push(data);
-		};
+		if (item.data.length >= 60) {
+			for (var x = 0; x < 60; x++) {
+				var data = [item.data[x].date, item.data[x].low, item.data[x].open, item.data[x].close, item.data[x].high];
+
+				this.data.push(data);
+			};
+		}
+		if (item.data.length < 60) {
+			for (var x = 0; x < item.data.length; x++) {
+				var _data = [item.data[x].date, item.data[x].low, item.data[x].open, item.data[x].close, item.data[x].high];
+
+				this.data.push(_data);
+			};
+		}
 		//
 		this.graph = _react2.default.createElement(
 			'div',
@@ -87395,7 +87423,6 @@
 				options: this.options
 			})
 		);
-
 		return this.graph;
 	};
 
@@ -87431,6 +87458,7 @@
 			legend: "none",
 			backgroundColor: 'transparent',
 			vAxis: {
+				baselineColor: 'black',
 				title: "Correlation Coefficient",
 				titleTextStyle: { color: 'black' },
 				textStyle: {
@@ -87446,6 +87474,7 @@
 				}
 			},
 			hAxis: {
+				baselineColor: 'black',
 				textStyle: {
 					color: 'black',
 					fontName: 'Courier New',
@@ -87474,16 +87503,26 @@
 
 	Autocorrelation.prototype.setIntradayAutocorrelation = function (data) {
 		var line_data = [["DATE", "valuation"]];
+		var set = [];
 		for (var x = 0; x < 365; x++) {
 			line_data.push([x, data[x]]);
+			set.push(data[x]);
 		};
+
+		console.log(Math.min.apply(null, set));
+
 		var options = {
 			title: 'Historical 1 year Momentum',
 			legend: "none",
 			backgroundColor: 'transparent',
+
 			vAxis: {
 				title: "Correlation Coefficient",
 				titleTextStyle: { color: 'black' },
+				// gridlineColor: 'transparent',
+
+				baselineColor: 'transparent',
+				minValue: Math.min.apply(null, set),
 				textStyle: {
 					fontSize: 12,
 					fontName: 'Courier New',
@@ -87491,19 +87530,23 @@
 					fontWeight: 700
 
 				},
+
 				gridlines: {
-					color: 'transparent',
 					count: 5
 				}
+
 			},
 			hAxis: {
+				baselineColor: 'transparent',
+				// gridlineColor: 'transparent',
 				textStyle: {
 					color: 'black',
 					fontName: 'Courier New',
 					fontWeight: 700
 				},
+
 				gridlines: {
-					color: 'transparent',
+					// color: 'transparent', 
 					count: 5
 				}
 			}
@@ -87625,6 +87668,7 @@
 							marketData: null,
 							intraDayView: MarketGraph.setIntradayGraphGoogleView(this.state.marketData.data, this.state.marketData.autocorr, this.state.marketData.name),
 							intraDayCandleStick: CandleStickGraph.setIntraDayGraph(this.state.marketData)
+
 						});
 					}
 

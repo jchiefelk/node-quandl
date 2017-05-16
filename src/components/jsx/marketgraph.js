@@ -41,7 +41,7 @@ class MarketGraph {
 						backgroundColor: 'transparent',
 						
 						vAxis: {
-							title: "USD $",	
+							title: "",	
 							titleTextStyle: { color: 'black' },
 				        	textStyle: {
 				        		fontSize: 12,
@@ -87,8 +87,6 @@ class MarketGraph {
 				</div>
 			);
 
-
-
 	}
 
 
@@ -102,15 +100,16 @@ class MarketGraph {
 						bar_data.push([data[x].date, parseFloat(data[x].volume) ]);
 				};
 				let options = {
+						title: name,
 						legend: "none",
 						backgroundColor: 'transparent',
 						vAxis: {
-							title: "USD $",	
-							titleTextStyle: { color: '#FFF' },
+							title: "",	
+							titleTextStyle: { color: 'black' },
 				        	textStyle: {
 				        		fontSize: 12,
 				        		fontName: 'Courier New',
-				        		color: 'white',
+				        		color: 'black',
 				        		fontWeight: 700,
 				       
 				        	},
@@ -119,48 +118,65 @@ class MarketGraph {
 						    	count: 4
 						   }	  
 				        },
+
 					 	hAxis: {
-					 		 textStyle:{
-					       	   	color: 'transparent',
+					 	
+					 		textStyle:{
+					       	   	color: 'black',
 					       	   	fontName: 'Courier New',
-					       	   	fontWeight: 700
+					       	   	fontWeight: 700,
+					       	   	fontSize: 8
 				       	   	},
+
+					 	
+				        	gridlines: {
+						    	color: 'black', 
+						    	count: 2
+						   }
+
+
 					 	}
+
 					
 				};
 				let baroptions = {
-	
-						 isStacked:true,
-				         vAxis: {	
+						isStacked:true,
+
+						vAxis: {
+							title: "",	
+							titleTextStyle: { color: 'black' },
 				        	textStyle: {
-				        		fontSize: 10,
+				        		fontSize: 0,
 				        		fontName: 'Courier New',
-				        		color: 'white',
+				        		color: 'black',
 				        		fontWeight: 700,
-				        		width: 100
+				       
 				        	},
 				        	gridlines: {
 						    	color: 'transparent', 
-						    	count: 4
-						   }
-						  
+						    	count: 0
+						   }	  
 				        },
 
 				        hAxis: {
+			
 				        	textStyle: {
-				        		fontSize: 10,
+				        		fontSize: 8,
 				        		fontName: 'Courier New',
-				        		color: 'white',
+				        		color: 'black',
 				        		fontWeight: 700,
 				        	},
-				        	gridlines: {
-						    	color: 'white', 
-						    	count: 4
-						   }
+	   	   					gridlines: {
+						    	color: 'transparent', 
+						    	count: 5
+						   	}	
+
+
 				        },
+
 				        legend: {position: 'none'},
-				        backgroundColor: 'transparent'
-				    };
+				  		backgroundColor: 'transparent'
+				   };
 
 
 					return (
@@ -169,7 +185,7 @@ class MarketGraph {
 									{this.setDatePicker()}
 							</div>
 							
-									<div style={{display: 'flex', flexDirection: 'column'}}>
+							<div style={{display: 'flex', flexDirection: 'column'}}>
 											<div className="intradaylinegraph">
 											        <Chart
 													  chartType="LineChart"
@@ -189,7 +205,7 @@ class MarketGraph {
 													  options={baroptions}
 											        />
 						    				</div>
-				    				</div>
+				    			</div>
 						</div>
 	    			);
 	}
@@ -224,8 +240,6 @@ class MarketGraph {
 
 
 	setCompanyPicker(){
-
-
 
 		this.companyPicker = (
 					<div className="pickercontainer">

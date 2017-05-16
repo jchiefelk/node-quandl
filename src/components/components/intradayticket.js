@@ -71,7 +71,7 @@ export default class IntraDayTicket extends Component {
 											marketData: null,
 											intraDayView: MarketGraph.setIntradayGraphGoogleView(this.state.marketData.data, this.state.marketData.autocorr, this.state.marketData.name),
 											intraDayCandleStick: CandleStickGraph.setIntraDayGraph(this.state.marketData),
-											// intraDayAutocorrelation: Autocorrelation.setIntradayAutocorrelation(this.state.marketData)
+											
 									});	
 						}
 
