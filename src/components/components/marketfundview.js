@@ -137,7 +137,7 @@ export default class MarketFundView extends Component {
 				return (
 					<div className="graph-page">
 
-							<h1 style={{fontFamily: 'Courier New',fontWeight: '700', color: 'white'}}> ETF and Futures Markets</h1>
+							<h1 style={{fontFamily: 'Courier New',fontWeight: '700', color: 'black'}}> ETF and Futures Markets</h1>
 
 							<div className="graphViews">
 								{this.state.marketGraph}

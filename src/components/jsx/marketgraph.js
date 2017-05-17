@@ -7,9 +7,8 @@ var Loading = require('react-loading');
 import MarketPicker from '../components/marketpicker';
 import { Router, Route, Link } from 'react-router';
 import { Chart } from 'react-google-charts';
-require('../css/react-datetime.css');
-require('../css/marketpicker.css');
-require('../css/main.css');
+
+
 
 class MarketGraph {
 
@@ -43,34 +42,32 @@ class MarketGraph {
 						vAxis: {
 							title: "",	
 							titleTextStyle: { color: 'black' },
+							baselineColor: 'transparent',
 				        	textStyle: {
-				        		fontSize: 12,
+				        		fontSize: 10,
 				        		fontName: 'Courier New',
 				        		color: 'black',
 				        		fontWeight: 700,
 				       
 				        	},
-
 				        	gridlines: {
-						    	color: 'transparent', 
 						    	count: 5
-						   }	
+						   	}	
 
 				        },
 
 					 	hAxis: {
-
+					 		baselineColor: 'transparent',
 					 		textStyle:{
 					       	   	color: 'black',
 					       	   	fontName: 'Courier New',
-					       	   	fontWeight: 700
+					       	   	fontWeight: 700,
+					       	   	fontSize: 10
 				       	   	},
-
 				       	   	gridlines: {
-						    	color: 'black', 
 						    	count: 5
 						   	}	 
-					 	
+		
 					 	}
 					
 				};
@@ -106,6 +103,7 @@ class MarketGraph {
 						vAxis: {
 							title: "",	
 							titleTextStyle: { color: 'black' },
+							baselineColor: 'transparent',
 				        	textStyle: {
 				        		fontSize: 12,
 				        		fontName: 'Courier New',
@@ -114,35 +112,27 @@ class MarketGraph {
 				       
 				        	},
 				        	gridlines: {
-						    	color: 'transparent', 
 						    	count: 4
 						   }	  
 				        },
 
 					 	hAxis: {
-					 	
+					 		baselineColor: 'transparent',
 					 		textStyle:{
 					       	   	color: 'black',
 					       	   	fontName: 'Courier New',
 					       	   	fontWeight: 700,
 					       	   	fontSize: 8
 				       	   	},
-
-					 	
 				        	gridlines: {
-						    	color: 'black', 
 						    	count: 2
 						   }
-
-
 					 	}
-
-					
 				};
 				let baroptions = {
 						isStacked:true,
-
 						vAxis: {
+							baselineColor: 'transparent',
 							title: "",	
 							titleTextStyle: { color: 'black' },
 				        	textStyle: {
@@ -153,13 +143,12 @@ class MarketGraph {
 				       
 				        	},
 				        	gridlines: {
-						    	color: 'transparent', 
 						    	count: 0
 						   }	  
 				        },
 
 				        hAxis: {
-			
+							baselineColor: 'transparent',
 				        	textStyle: {
 				        		fontSize: 8,
 				        		fontName: 'Courier New',
@@ -167,13 +156,9 @@ class MarketGraph {
 				        		fontWeight: 700,
 				        	},
 	   	   					gridlines: {
-						    	color: 'transparent', 
 						    	count: 5
 						   	}	
-
-
 				        },
-
 				        legend: {position: 'none'},
 				  		backgroundColor: 'transparent'
 				   };
@@ -280,7 +265,6 @@ class MarketGraph {
 			this.endDate = moment(selectedDate._d).format('YYYY-MM-DD');	
 			Actions.setEndDate(this.endDate);
 	}
-
 
 };
 

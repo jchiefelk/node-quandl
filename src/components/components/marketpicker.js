@@ -3,7 +3,7 @@ var StockDataStore = require('../../stores/stockdatastore');
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 let Actions = require('../../actions/actions');
 var Radium = require('radium');
-require('../css/marketpicker.css');
+
 
 
 class MarketPicker extends Component {

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Chart } from 'react-google-charts';
-require('../css/main.css');
 
 function Autocorrelation(){
 	this.graphView = null;
@@ -16,9 +15,9 @@ Autocorrelation.prototype.setGoogleAutocorr = function(data){
 						legend: "none",
 						backgroundColor: 'transparent',
 						vAxis: {
-							baselineColor: 'black',
 							title: "Correlation Coefficient",	
 							titleTextStyle: { color: 'black' },
+							baselineColor: 'transparent',
 				        	textStyle: {
 				        		fontSize: 12,
 				        		fontName: 'Courier New',
@@ -27,19 +26,19 @@ Autocorrelation.prototype.setGoogleAutocorr = function(data){
 				       
 				        	},
 				        	gridlines: {
-						    	color: 'transparent', 
+		 
 						    	count: 5
 						   }	
 				        },
 					 	hAxis: {
-					 	baselineColor: 'black',
+					 		 baselineColor: 'transparent',
 					 		textStyle:{
 					       	   	color: 'black',
 					       	   	fontName: 'Courier New',
 					       	   	fontWeight: 700
 				       	   	},
 				       	   	gridlines: {
-						    	color: 'transparent', 
+				
 						    	count: 10
 						   	}	 
 					 	}

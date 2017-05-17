@@ -15,40 +15,30 @@ function CandleStickGraph(){
         },
 
 		hAxis: {
+
+		baselineColor: 'transparent',
        	   textStyle:{
        	   	color: 'black',
        	   	fontName: 'Courier New',
        	   	fontWeight: 700,
-       	   	fontSize: 10
+       	   	fontSize: 8
        	   },
 
-
-		   gridlines: {
-		    	color: 'black', 
-		    	count: 2
-		    },
-
-
-	        format:'MMM d, y',
-			labels: {
-			      enabled: true
-			}
-
+	       format:'MMM d, y',
         },
 
        	vAxis: {
+
+       	   baselineColor: 'transparent',
        	   textStyle:{
        	   	color: 'black',
        	   	fontName: 'Courier New',
        	   	fontWeight: 700
        	   },
-
 		   labels: {
 		       enabled: true
 		   },
-
 		   gridlines: {
-		    	color: 'transparent', 
 		    	count: 5
 		   }
         }

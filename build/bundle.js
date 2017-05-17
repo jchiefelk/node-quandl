@@ -27751,6 +27751,8 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	__webpack_require__(245);
+	__webpack_require__(526);
+	__webpack_require__(528);
 
 	var App = function (_Component) {
 		_inherits(App, _Component);
@@ -27797,11 +27799,11 @@
 
 	var _marketfundview2 = _interopRequireDefault(_marketfundview);
 
-	var _intradayticket = __webpack_require__(528);
+	var _intradayticket = __webpack_require__(524);
 
 	var _intradayticket2 = _interopRequireDefault(_intradayticket);
 
-	var _videobackground = __webpack_require__(529);
+	var _videobackground = __webpack_require__(525);
 
 	var _videobackground2 = _interopRequireDefault(_videobackground);
 
@@ -27963,7 +27965,7 @@
 
 
 	// module
-	exports.push([module.id, "#Title {\n\tfont-size: 4.7em;\n\tcolor: black;\n\tfont-weight: 900; \n\tfont-family: 'Courier New';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n\talign-text: center;\n\tmargin: 50;\n}\n\n#About-Me {\n\tcolor: black;\n\tfont-size: 2.1em;\n\tfont-weight: 700; \n\tfont-family: 'Courier New';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n}\n\n.app {\n\tdisplay: flex; \n\tflex-direction: column; \n\tbackground-color: transparent;\n\theight: 100%;\n}\n\n.paragraph {\n\tcolor: black;\n\tfont-size: 1.5em;\n\tfont-weight: 400;\n\tfont-family: 'Courier New';\n\tmargin-top: 2em;\n\tmargin: 50;\n}\n\n.table_row_parent { \n\tborder-width: 2; \n\tborder-style: solid; \n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n.section-title {\n\tmargin: 50;\n\tfont-size: 2em;\n\tfont-weight: 900;\n\tfont-family: 'Courier New';\n\tmargin-top: 2em;\n}\n\n.code-image {\n\tmargin: 0;\n\twidth: 100;\n}\n\n.header {\n\tflex-direction: row;\n\twidth: 100%;\n\theight: 3em; \n\tbackground-color: black; \n\talign-items: center; \n}\n\n.header-link {\n\tfont-weight: 900;\n\tfont-family: 'Courier New';\n\tfont-size: 18;\n\tcolor: white; \n\tposition: absolute;\n\ttop: 1em;\n\tleft: 2em;\n\tcursor: pointer; \n\ttext-decoration: none;  \n}\n\n.pickercontainer {\n    background-color: transparent;\n    align-items: center; \n    justify-content: center;\n    display: flex;\n    position: absolute;\n    top: 10em;\n}\n\n.picker-instructions {\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center; \n\tflex-direction: column;\n\tfont-size: 1.5em; \n\tfont-weight: 400; \n\tfont-family: 'Courier New';\n\tcolor: white;\n}\n\n.marketpicker {\n\tdisplay: flex;\n\tjustify-content: center;\n\tmargin-top: 2em;\n\t\n}\n\n.homepage-input {\n\t\tfont-size: 18; \n\t\tfont-weight: 700;\n\t\tfont-family: 'Courier New';\n\t\theight: 3em; \n\t\twidth: 17em;\n}\n\n.linegraph {\n\tdisplay: flex;\n\twidth: 25em;\n}\n\n.intradaypage {\n\tmargin-top: 3em;\n\tdisplay: flex; \n\tjustify-content: center;\n\tbackground-color: silver;\n\theight: 100%;\n}\n\n.intradaychild {\n\tmargin-top: 10em;\n}\n\n.intradaylinegraph {\n\n\tmargin-top: 0em;\n\twidth: 60em;\n\theight: 40em;\n\tbackground-color: transparent;\n}\n\n.intradaybargraph {\n\tdisplay: flex;\n\tmargin-top: 0.1em;\n\twidth: 49.5em;\n\theight: 15em; \n\tmargin-left: 5em;\n\tbackground-color: transparent;\n}\n\n\n.graph-page {\n\tdisplay: flex;\n\theight: 100%;\n    background-color: transparent;\n    align-items: center; \n    flex-direction: column;\n    margin-top: 10em;\n}\n\n\n\n.autocorrelationgraph {\n\tdisplay: flex;\n\tbackground-color: silver;\n\twidth: 40em;\n\theight: 15em;\n\tmargin-top: 4em;\n}\n\n.autocorrelationgraph_intraday {\n\twidth: 50em;\n\theight: 24em;\n\tmargin-left: 2em;\n\tmargin-top: 4em;\n}\n\n.candleStickGraph_intraday {\n\tdisplay: flex;\n\twidth: 50em;\n\theight: 20em;\n\tmargin-top: 5em;\n\tmargin-left: 3.5em;\n\n}\n\n.candleStickGraph {\n\tdisplay: flex;\n\theight: 15em;\n\twidth: 41em;\n\tmargin-top: 3em;\n\tbackground-color: transparent;\n}\n\n.marketgraph {\n\tbackground-color: silver;\n\talign-items: center;\n\twidth: 50em;\n\theight: 40em;\n\tjustify-content: center;\n}\n\n.graphViews {\n\tdisplay: flex;\n\tbackground-color: silver;\n\n}\n\n.graphViewChild {\n\tdisplay: flex;\n\tbackground-color: silver;\n\tflex-direction: column; \n\theight: 40em;\n\twidth: 50em;\n}\n\n#background-video{\n\tposition: relative;\n\ttop: 0;\n\theight: 100%;\n\twidth: 100%;\n\tpadding: none;\n\tdisplay: flex;\n\tbackground: transparent;\n}\n", ""]);
+	exports.push([module.id, "#Title {\n\tfont-size: 4.7em;\n\tcolor: black;\n\tfont-weight: 900; \n\tfont-family: 'Courier New';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n\talign-text: center;\n\tmargin: 50;\n}\n\n#About-Me {\n\tcolor: black;\n\tfont-size: 2.1em;\n\tfont-weight: 700; \n\tfont-family: 'Courier New';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n}\n\n.app {\n\tdisplay: flex; \n\tflex-direction: column; \n\tbackground-color: transparent;\n\theight: 100%;\n}\n\n.paragraph {\n\tcolor: black;\n\tfont-size: 1.5em;\n\tfont-weight: 400;\n\tfont-family: 'Courier New';\n\tmargin-top: 2em;\n\tmargin: 50;\n}\n\n.table_row_parent { \n\tborder-width: 2; \n\tborder-style: solid; \n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n.section-title {\n\tmargin: 50;\n\tfont-size: 2em;\n\tfont-weight: 900;\n\tfont-family: 'Courier New';\n\tmargin-top: 2em;\n}\n\n.code-image {\n\tmargin: 0;\n\twidth: 100;\n}\n\n.header {\n\tflex-direction: row;\n\twidth: 100%;\n\theight: 3em; \n\tbackground-color: black; \n\talign-items: center; \n}\n\n.header-link {\n\tfont-weight: 900;\n\tfont-family: 'Courier New';\n\tfont-size: 18;\n\tcolor: white; \n\tposition: absolute;\n\ttop: 1em;\n\tleft: 2em;\n\tcursor: pointer; \n\ttext-decoration: none;  \n}\n\n.pickercontainer {\n    background-color: transparent;\n    align-items: center; \n    justify-content: center;\n    display: flex;\n    position: absolute;\n    top: 10em;\n}\n\n.picker-instructions {\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center; \n\tflex-direction: column;\n\tfont-size: 1.5em; \n\tfont-weight: 400; \n\tfont-family: 'Courier New';\n\tcolor: black;\n}\n\n.marketpicker {\n\tdisplay: flex;\n\tjustify-content: center;\n\tmargin-top: 2em;\n\t\n}\n\n.homepage-input {\n\t\tfont-size: 18; \n\t\tfont-weight: 700;\n\t\tfont-family: 'Courier New';\n\t\theight: 3em; \n\t\twidth: 17em;\n}\n\n.linegraph {\n\tdisplay: flex;\n\twidth: 25em;\n}\n\n.intradaypage {\n\tmargin-top: 3em;\n\tdisplay: flex; \n\tjustify-content: center;\n\tbackground-color: silver;\n\theight: 100%;\n}\n\n.intradaychild {\n\tmargin-top: 10em;\n}\n\n.intradaylinegraph {\n\n\tmargin-top: 0em;\n\twidth: 60em;\n\theight: 40em;\n\tbackground-color: transparent;\n}\n\n.intradaybargraph {\n\tdisplay: flex;\n\tmargin-top: 0.1em;\n\twidth: 49.5em;\n\theight: 15em; \n\tmargin-left: 5em;\n\tbackground-color: transparent;\n}\n\n\n.graph-page {\n\tdisplay: flex;\n\theight: 100%;\n    background-color: transparent;\n    align-items: center; \n    flex-direction: column;\n}\n\n.autocorrelationgraph {\n\tdisplay: flex;\n\tbackground-color: silver;\n\twidth: 40em;\n\theight: 15em;\n\tmargin-top: 4em;\n}\n\n.autocorrelationgraph_intraday {\n\twidth: 50em;\n\theight: 24em;\n\tmargin-left: 2em;\n\tmargin-top: 4em;\n}\n\n.candleStickGraph_intraday {\n\tdisplay: flex;\n\twidth: 50em;\n\theight: 20em;\n\tmargin-top: 5em;\n\tmargin-left: 3.5em;\n}\n\n.candleStickGraph {\n\tdisplay: flex;\n\theight: 15em;\n\twidth: 41em;\n\tmargin-top: 1em;\n\tbackground-color: transparent;\n}\n\n.marketgraph {\n\tbackground-color: silver;\n\talign-items: center;\n\twidth: 50em;\n\theight: 40em;\n\tjustify-content: center;\n}\n\n.graphViews {\n\tdisplay: flex;\n\tbackground-color: silver;\n}\n\n.graphViewChild {\n\tdisplay: flex;\n\tbackground-color: silver;\n\tflex-direction: column; \n\theight: 40em;\n\twidth: 50em;\n}\n\n.background-video {\n\tdisplay: flex;\n\theight: 100%;\n\twidth: 100%;\n\tbackground: transparent;\n}\n\n.videobanner {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n\theight: 100%;\n\twidth: 100%;\n\ttop: 0;\n\tposition: absolute;\n\tbackground-color: transparent;\n\tcolor: white;\n\tfont-family: 'Courier New';\n}\n\n.bannerchild {\n\tfont-size: 2em;\n\tmargin-left: 4em;\n\tmargin-top: 2.5em;\n}\n\n.bannerAd {\n\twidth: 80%;\n\theight: 15%;\n\tbackground-color: white;\n\topacity: 0.4;\n}\n\n", ""]);
 
 	// exports
 
@@ -28307,8 +28309,8 @@
 	var StockDataStore = __webpack_require__(416);
 	var Actions = __webpack_require__(422);
 	var MarketGraph = __webpack_require__(424);
-	var CandleStickGraph = __webpack_require__(526);
-	var Autocorrelation = __webpack_require__(527);
+	var CandleStickGraph = __webpack_require__(522);
+	var Autocorrelation = __webpack_require__(523);
 	__webpack_require__(245);
 
 	var MarketFundView = function (_Component) {
@@ -28445,7 +28447,7 @@
 					{ className: 'graph-page' },
 					_react2.default.createElement(
 						'h1',
-						{ style: { fontFamily: 'Courier New', fontWeight: '700', color: 'white' } },
+						{ style: { fontFamily: 'Courier New', fontWeight: '700', color: 'black' } },
 						' ETF and Futures Markets'
 					),
 					_react2.default.createElement(
@@ -74950,7 +74952,7 @@
 
 	var _reactRouter = __webpack_require__(183);
 
-	var _reactGoogleCharts = __webpack_require__(507);
+	var _reactGoogleCharts = __webpack_require__(505);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -74958,12 +74960,8 @@
 
 	var Actions = __webpack_require__(422);
 	var moment = __webpack_require__(285);
-	var Datetime = __webpack_require__(515);
-	var Loading = __webpack_require__(523);
-
-	__webpack_require__(524);
-	__webpack_require__(505);
-	__webpack_require__(245);
+	var Datetime = __webpack_require__(513);
+	var Loading = __webpack_require__(521);
 
 	var MarketGraph = function () {
 		function MarketGraph() {
@@ -75000,31 +74998,29 @@
 					vAxis: {
 						title: "",
 						titleTextStyle: { color: 'black' },
+						baselineColor: 'transparent',
 						textStyle: {
-							fontSize: 12,
+							fontSize: 10,
 							fontName: 'Courier New',
 							color: 'black',
 							fontWeight: 700
 
 						},
-
 						gridlines: {
-							color: 'transparent',
 							count: 5
 						}
 
 					},
 
 					hAxis: {
-
+						baselineColor: 'transparent',
 						textStyle: {
 							color: 'black',
 							fontName: 'Courier New',
-							fontWeight: 700
+							fontWeight: 700,
+							fontSize: 10
 						},
-
 						gridlines: {
-							color: 'black',
 							count: 5
 						}
 
@@ -75060,6 +75056,7 @@
 					vAxis: {
 						title: "",
 						titleTextStyle: { color: 'black' },
+						baselineColor: 'transparent',
 						textStyle: {
 							fontSize: 12,
 							fontName: 'Courier New',
@@ -75068,32 +75065,27 @@
 
 						},
 						gridlines: {
-							color: 'transparent',
 							count: 4
 						}
 					},
 
 					hAxis: {
-
+						baselineColor: 'transparent',
 						textStyle: {
 							color: 'black',
 							fontName: 'Courier New',
 							fontWeight: 700,
 							fontSize: 8
 						},
-
 						gridlines: {
-							color: 'black',
 							count: 2
 						}
-
 					}
-
 				};
 				var baroptions = {
 					isStacked: true,
-
 					vAxis: {
+						baselineColor: 'transparent',
 						title: "",
 						titleTextStyle: { color: 'black' },
 						textStyle: {
@@ -75104,13 +75096,12 @@
 
 						},
 						gridlines: {
-							color: 'transparent',
 							count: 0
 						}
 					},
 
 					hAxis: {
-
+						baselineColor: 'transparent',
 						textStyle: {
 							fontSize: 8,
 							fontName: 'Courier New',
@@ -75118,12 +75109,9 @@
 							fontWeight: 700
 						},
 						gridlines: {
-							color: 'transparent',
 							count: 5
 						}
-
 					},
-
 					legend: { position: 'none' },
 					backgroundColor: 'transparent'
 				};
@@ -77693,7 +77681,6 @@
 
 	var Actions = __webpack_require__(422);
 	var Radium = __webpack_require__(441);
-	__webpack_require__(505);
 
 	var MarketPicker = function (_Component) {
 		_inherits(MarketPicker, _Component);
@@ -84108,51 +84095,11 @@
 /* 505 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(506);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(248)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!../../../node_modules/css-loader/index.js!./marketpicker.css", function() {
-				var newContent = require("!!../../../node_modules/css-loader/index.js!./marketpicker.css");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ }),
-/* 506 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(247)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "\n.market-picker {\n\tmargin-left: 3em;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n}\n\n.market-picker-item {\n\tdisplay: flex; \n\tcursor: pointer; \n\tfont-family: 'Courier New';\n\tfont-size: 18;\n\t:hover { \n\t    color: yellow;\n\t}\n}\n\n.dropdown-arrow {\n\twidth: 2.0em; \n\theight: 2.0em;\n\tmargin-top: 0.4em;\n\tcursor: pointer;\n}\n\n.market-date-picker-container {\n\tdisplay: flex;\n\tright: 1em;\n\talign-items: center;\n\tjustify-content: center;\n\talign-text: center; \n\tmargin-top: -1.5em;\n}\n\n.date-input {\n\twidth: 10em;\n\tmargin: 1em;\n}\n\n.submit-button {\n\tbackground-color: white;\n\twidth: 2.4em;\n\theight: 2.4em;\n\tmargin-top: 1.5em; \n\tmargin-left: 1em;\n\tcursor: pointer;\n}\n\n.date-text {\n\tmargin-left: 1.1em;\n\tfont-size: 12;\n\tmargin-bottom: 10; \n\tcolor: white;\n\tfont-family: 'Courier New';\n}", ""]);
-
-	// exports
-
-
-/***/ }),
-/* 507 */
-/***/ (function(module, exports, __webpack_require__) {
-
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _Chart = __webpack_require__(508);
+	var _Chart = __webpack_require__(506);
 
 	var _Chart2 = _interopRequireDefault(_Chart);
 
@@ -84162,7 +84109,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 508 */
+/* 506 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -84174,15 +84121,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _debug = __webpack_require__(509);
+	var _debug = __webpack_require__(507);
 
 	var _debug2 = _interopRequireDefault(_debug);
 
-	var _DEFAULT_CHART_COLORS = __webpack_require__(512);
+	var _DEFAULT_CHART_COLORS = __webpack_require__(510);
 
 	var _DEFAULT_CHART_COLORS2 = _interopRequireDefault(_DEFAULT_CHART_COLORS);
 
-	var _GoogleChartLoader = __webpack_require__(513);
+	var _GoogleChartLoader = __webpack_require__(511);
 
 	var _GoogleChartLoader2 = _interopRequireDefault(_GoogleChartLoader);
 
@@ -84650,7 +84597,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
-/* 509 */
+/* 507 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -84659,7 +84606,7 @@
 	 * Expose `debug()` as the module.
 	 */
 
-	exports = module.exports = __webpack_require__(510);
+	exports = module.exports = __webpack_require__(508);
 	exports.log = log;
 	exports.formatArgs = formatArgs;
 	exports.save = save;
@@ -84839,7 +84786,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
-/* 510 */
+/* 508 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	
@@ -84855,7 +84802,7 @@
 	exports.disable = disable;
 	exports.enable = enable;
 	exports.enabled = enabled;
-	exports.humanize = __webpack_require__(511);
+	exports.humanize = __webpack_require__(509);
 
 	/**
 	 * The currently active debug mode names, and names to skip.
@@ -85047,7 +84994,7 @@
 
 
 /***/ }),
-/* 511 */
+/* 509 */
 /***/ (function(module, exports) {
 
 	/**
@@ -85202,7 +85149,7 @@
 
 
 /***/ }),
-/* 512 */
+/* 510 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -85212,14 +85159,14 @@
 	module.exports = ['#3366CC', '#DC3912', '#FF9900', '#109618', '#990099', '#3B3EAC', '#0099C6', '#DD4477', '#66AA00', '#B82E2E', '#316395', '#994499', '#22AA99', '#AAAA11', '#6633CC', '#E67300', '#8B0707', '#329262', '#5574A6', '#3B3EAC'];
 
 /***/ }),
-/* 513 */
+/* 511 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _debug = __webpack_require__(509);
+	var _debug = __webpack_require__(507);
 
 	var _debug2 = _interopRequireDefault(_debug);
 
@@ -85229,7 +85176,7 @@
 
 	// Based on http://blog.arkency.com/2014/09/react-dot-js-and-google-charts/
 
-	var script = typeof window !== 'undefined' ? __webpack_require__(514) : function (link, _ref) {
+	var script = typeof window !== 'undefined' ? __webpack_require__(512) : function (link, _ref) {
 	  var callback = _ref.success;
 	  return callback();
 	};
@@ -85266,7 +85213,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 514 */
+/* 512 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function(root, factory) {
@@ -85547,17 +85494,17 @@
 
 
 /***/ }),
-/* 515 */
+/* 513 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var assign = __webpack_require__(516),
+	var assign = __webpack_require__(514),
 	        PropTypes = __webpack_require__(186),
 	        createClass = __webpack_require__(191),
 		moment = __webpack_require__(285),
 		React = __webpack_require__(1),
-		CalendarContainer = __webpack_require__(517)
+		CalendarContainer = __webpack_require__(515)
 	;
 
 	var TYPES = PropTypes;
@@ -85993,7 +85940,7 @@
 
 
 /***/ }),
-/* 516 */
+/* 514 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -86038,15 +85985,15 @@
 
 
 /***/ }),
-/* 517 */
+/* 515 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1),
 	  createClass = __webpack_require__(191),
-	  DaysView = __webpack_require__(518),
-	  MonthsView = __webpack_require__(520),
-	  YearsView = __webpack_require__(521),
-	  TimeView = __webpack_require__(522)
+	  DaysView = __webpack_require__(516),
+	  MonthsView = __webpack_require__(518),
+	  YearsView = __webpack_require__(519),
+	  TimeView = __webpack_require__(520)
 	;
 
 	var CalendarContainer = createClass({
@@ -86066,7 +86013,7 @@
 
 
 /***/ }),
-/* 518 */
+/* 516 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -86074,7 +86021,7 @@
 	var React = __webpack_require__(1),
 	    createClass = __webpack_require__(191),
 		moment = __webpack_require__(285),
-	  onClickOutside = __webpack_require__(519)
+	  onClickOutside = __webpack_require__(517)
 	;
 
 	var DOM = React.DOM;
@@ -86217,7 +86164,7 @@
 
 
 /***/ }),
-/* 519 */
+/* 517 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -86532,14 +86479,14 @@
 
 
 /***/ }),
-/* 520 */
+/* 518 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1),
 	    createClass = __webpack_require__(191),
-		onClickOutside = __webpack_require__(519)
+		onClickOutside = __webpack_require__(517)
 	;
 
 	var DOM = React.DOM;
@@ -86646,14 +86593,14 @@
 
 
 /***/ }),
-/* 521 */
+/* 519 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1),
 	    createClass = __webpack_require__(191),
-		onClickOutside = __webpack_require__(519)
+		onClickOutside = __webpack_require__(517)
 	;
 
 	var DOM = React.DOM;
@@ -86758,15 +86705,15 @@
 
 
 /***/ }),
-/* 522 */
+/* 520 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1),
 	    createClass = __webpack_require__(191),
-		assign = __webpack_require__(516),
-	  onClickOutside = __webpack_require__(519)
+		assign = __webpack_require__(514),
+	  onClickOutside = __webpack_require__(517)
 	;
 
 	var DOM = React.DOM;
@@ -86993,7 +86940,7 @@
 
 
 /***/ }),
-/* 523 */
+/* 521 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
@@ -87262,47 +87209,7 @@
 	;
 
 /***/ }),
-/* 524 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(525);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(248)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!../../../node_modules/css-loader/index.js!./react-datetime.css", function() {
-				var newContent = require("!!../../../node_modules/css-loader/index.js!./react-datetime.css");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ }),
-/* 525 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(247)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "/*!\n * https://github.com/arqex/react-datetime\n */\n\n.rdt {\n  position: relative;\n}\n.rdtPicker {\n  display: none;\n  position: absolute;\n  width: 250px;\n  padding: 4px;\n  margin-top: 1px;\n  z-index: 99999 !important;\n  background: #fff;\n  box-shadow: 0 1px 3px rgba(0,0,0,.1);\n  border: 1px solid #f9f9f9;\n}\n.rdtOpen .rdtPicker {\n  display: block;\n}\n.rdtStatic .rdtPicker {\n  box-shadow: none;\n  position: static;\n}\n\n.rdtPicker .rdtTimeToggle {\n  text-align: center;\n}\n\n.rdtPicker table {\n  width: 100%;\n  margin: 0;\n}\n.rdtPicker td,\n.rdtPicker th {\n  text-align: center;\n  height: 28px;\n}\n.rdtPicker td {\n  cursor: pointer;\n}\n.rdtPicker td.rdtDay:hover,\n.rdtPicker td.rdtHour:hover,\n.rdtPicker td.rdtMinute:hover,\n.rdtPicker td.rdtSecond:hover,\n.rdtPicker .rdtTimeToggle:hover {\n  background: #eeeeee;\n  cursor: pointer;\n}\n.rdtPicker td.rdtOld,\n.rdtPicker td.rdtNew {\n  color: #999999;\n}\n.rdtPicker td.rdtToday {\n  position: relative;\n}\n.rdtPicker td.rdtToday:before {\n  content: '';\n  display: inline-block;\n  border-left: 7px solid transparent;\n  border-bottom: 7px solid #428bca;\n  border-top-color: rgba(0, 0, 0, 0.2);\n  position: absolute;\n  bottom: 4px;\n  right: 4px;\n}\n.rdtPicker td.rdtActive,\n.rdtPicker td.rdtActive:hover {\n  background-color: #428bca;\n  color: #fff;\n  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);\n}\n.rdtPicker td.rdtActive.rdtToday:before {\n  border-bottom-color: #fff;\n}\n.rdtPicker td.rdtDisabled,\n.rdtPicker td.rdtDisabled:hover {\n  background: none;\n  color: #999999;\n  cursor: not-allowed;\n}\n\n.rdtPicker td span.rdtOld {\n  color: #999999;\n}\n.rdtPicker td span.rdtDisabled,\n.rdtPicker td span.rdtDisabled:hover {\n  background: none;\n  color: #999999;\n  cursor: not-allowed;\n}\n.rdtPicker th {\n  border-bottom: 1px solid #f9f9f9;\n}\n.rdtPicker .dow {\n  width: 14.2857%;\n  border-bottom: none;\n}\n.rdtPicker th.rdtSwitch {\n  width: 100px;\n}\n.rdtPicker th.rdtNext,\n.rdtPicker th.rdtPrev {\n  font-size: 21px;\n  vertical-align: top;\n}\n\n.rdtPrev span,\n.rdtNext span {\n  display: block;\n  -webkit-touch-callout: none; /* iOS Safari */\n  -webkit-user-select: none;   /* Chrome/Safari/Opera */\n  -khtml-user-select: none;    /* Konqueror */\n  -moz-user-select: none;      /* Firefox */\n  -ms-user-select: none;       /* Internet Explorer/Edge */\n  user-select: none;\n}\n\n.rdtPicker th.rdtDisabled,\n.rdtPicker th.rdtDisabled:hover {\n  background: none;\n  color: #999999;\n  cursor: not-allowed;\n}\n.rdtPicker thead tr:first-child th {\n  cursor: pointer;\n}\n.rdtPicker thead tr:first-child th:hover {\n  background: #eeeeee;\n}\n\n.rdtPicker tfoot {\n  border-top: 1px solid #f9f9f9;\n}\n\n.rdtPicker button {\n  border: none;\n  background: none;\n  cursor: pointer;\n}\n.rdtPicker button:hover {\n  background-color: #eee;\n}\n\n.rdtPicker thead button {\n  width: 100%;\n  height: 100%;\n}\n\ntd.rdtMonth,\ntd.rdtYear {\n  height: 50px;\n  width: 25%;\n  cursor: pointer;\n}\ntd.rdtMonth:hover,\ntd.rdtYear:hover {\n  background: #eee;\n}\n\n.rdtCounters {\n  display: inline-block;\n}\n\n.rdtCounters > div {\n  float: left;\n}\n\n.rdtCounter {\n  height: 100px;\n}\n\n.rdtCounter {\n  width: 40px;\n}\n\n.rdtCounterSeparator {\n  line-height: 100px;\n}\n\n.rdtCounter .rdtBtn {\n  height: 40%;\n  line-height: 40px;\n  cursor: pointer;\n  display: block;\n\n  -webkit-touch-callout: none; /* iOS Safari */\n  -webkit-user-select: none;   /* Chrome/Safari/Opera */\n  -khtml-user-select: none;    /* Konqueror */\n  -moz-user-select: none;      /* Firefox */\n  -ms-user-select: none;       /* Internet Explorer/Edge */\n  user-select: none;\n}\n.rdtCounter .rdtBtn:hover {\n  background: #eee;\n}\n.rdtCounter .rdtCount {\n  height: 20%;\n  font-size: 1.2em;\n}\n\n.rdtMilli {\n  vertical-align: middle;\n  padding-left: 8px;\n  width: 48px;\n}\n\n.rdtMilli input {\n  width: 100%;\n  font-size: 1.2em;\n  margin-top: 37px;\n}", ""]);
-
-	// exports
-
-
-/***/ }),
-/* 526 */
+/* 522 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -87311,7 +87218,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactGoogleCharts = __webpack_require__(507);
+	var _reactGoogleCharts = __webpack_require__(505);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -87329,38 +87236,30 @@
 			},
 
 			hAxis: {
+
+				baselineColor: 'transparent',
 				textStyle: {
 					color: 'black',
 					fontName: 'Courier New',
 					fontWeight: 700,
-					fontSize: 10
+					fontSize: 8
 				},
 
-				gridlines: {
-					color: 'black',
-					count: 2
-				},
-
-				format: 'MMM d, y',
-				labels: {
-					enabled: true
-				}
-
+				format: 'MMM d, y'
 			},
 
 			vAxis: {
+
+				baselineColor: 'transparent',
 				textStyle: {
 					color: 'black',
 					fontName: 'Courier New',
 					fontWeight: 700
 				},
-
 				labels: {
 					enabled: true
 				},
-
 				gridlines: {
-					color: 'transparent',
 					count: 5
 				}
 			}
@@ -87429,7 +87328,7 @@
 	module.exports = new CandleStickGraph();
 
 /***/ }),
-/* 527 */
+/* 523 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -87438,11 +87337,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactGoogleCharts = __webpack_require__(507);
+	var _reactGoogleCharts = __webpack_require__(505);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	__webpack_require__(245);
 
 	function Autocorrelation() {
 		this.graphView = null;
@@ -87458,9 +87355,9 @@
 			legend: "none",
 			backgroundColor: 'transparent',
 			vAxis: {
-				baselineColor: 'black',
 				title: "Correlation Coefficient",
 				titleTextStyle: { color: 'black' },
+				baselineColor: 'transparent',
 				textStyle: {
 					fontSize: 12,
 					fontName: 'Courier New',
@@ -87469,19 +87366,19 @@
 
 				},
 				gridlines: {
-					color: 'transparent',
+
 					count: 5
 				}
 			},
 			hAxis: {
-				baselineColor: 'black',
+				baselineColor: 'transparent',
 				textStyle: {
 					color: 'black',
 					fontName: 'Courier New',
 					fontWeight: 700
 				},
 				gridlines: {
-					color: 'transparent',
+
 					count: 10
 				}
 			}
@@ -87569,7 +87466,7 @@
 	module.exports = new Autocorrelation();
 
 /***/ }),
-/* 528 */
+/* 524 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -87595,8 +87492,8 @@
 	var StockDataStore = __webpack_require__(416);
 	var Actions = __webpack_require__(422);
 	var MarketGraph = __webpack_require__(424);
-	var CandleStickGraph = __webpack_require__(526);
-	var Autocorrelation = __webpack_require__(527);
+	var CandleStickGraph = __webpack_require__(522);
+	var Autocorrelation = __webpack_require__(523);
 
 	var IntraDayTicket = function (_Component) {
 		_inherits(IntraDayTicket, _Component);
@@ -87735,10 +87632,10 @@
 	exports.default = IntraDayTicket;
 
 /***/ }),
-/* 529 */
+/* 525 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -87749,8 +87646,6 @@
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
-
-	__webpack_require__(245);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -87779,24 +87674,39 @@
 				webmsrc: null,
 				ended: false,
 				index: 0,
-				view: null
+				view: null,
+				banner: null
 			};
 			return _this;
 		}
 
 		_createClass(VideoBackground, [{
-			key: 'componentDidMount',
+			key: "componentDidMount",
 			value: function componentDidMount() {
 				var _this2 = this;
+
+				// <h1 style={{color: white}}>Market Analusis and Commentary</h1>
+				//
 
 				this.setState({
 					mp4src: this.videosources[0].mp4,
 					webmsrc: this.videosources[0].webm,
+					banner: _react2.default.createElement(
+						"div",
+						{ className: "videobanner" },
+						_react2.default.createElement(
+							"div",
+							{ className: "bannerchild" },
+							"Market Analysis and Commentary"
+						),
+						_react2.default.createElement("div", { className: "bannerAd" })
+					),
+
 					view: _react2.default.createElement(
-						'video',
+						"video",
 						{
-							id: 'background-video',
-							poster: 'http://www.forexnewsnow.com/wp-content/uploads/2016/10/Bitcoin.jpg',
+							className: "background-video",
+							poster: "http://www.forexnewsnow.com/wp-content/uploads/2016/10/Bitcoin.jpg",
 							onEnded: function onEnded() {
 								_this2.setState({
 									ended: true,
@@ -87806,30 +87716,29 @@
 							playsinline: true,
 							autoPlay: true,
 							muted: true },
-						_react2.default.createElement('source', { src: this.videosources[this.index].mp4, type: 'video/mp4' }),
-						_react2.default.createElement('source', { src: this.videosources[this.index].webm, type: 'video/webm' })
+						_react2.default.createElement("source", { src: this.videosources[this.index].mp4, type: "video/mp4" }),
+						_react2.default.createElement("source", { src: this.videosources[this.index].webm, type: "video/webm" })
 					)
+
 				});
 			}
 		}, {
-			key: 'componentDidUpdate',
+			key: "componentDidUpdate",
 			value: function componentDidUpdate() {
 				var _this3 = this;
 
 				if (this.state.ended == true) {
-
 					this.index += 1;
 					if (this.index == this.videosources.length) {
 						this.index = 0;
 					}
-
 					this.setState({
 						ended: false,
 						view: _react2.default.createElement(
-							'video',
+							"video",
 							{
-								id: 'background-video',
-								poster: 'http://www.forexnewsnow.com/wp-content/uploads/2016/10/Bitcoin.jpg',
+								className: "background-video",
+								poster: "http://www.forexnewsnow.com/wp-content/uploads/2016/10/Bitcoin.jpg",
 								onEnded: function onEnded() {
 									_this3.setState({
 										ended: true,
@@ -87837,19 +87746,20 @@
 									});
 								},
 								autoPlay: true, muted: true },
-							_react2.default.createElement('source', { src: this.videosources[this.index].mp4, type: 'video/mp4' }),
-							_react2.default.createElement('source', { src: this.videosources[this.index].webm, type: 'video/webm' })
+							_react2.default.createElement("source", { src: this.videosources[this.index].mp4, type: "video/mp4" }),
+							_react2.default.createElement("source", { src: this.videosources[this.index].webm, type: "video/webm" })
 						)
 					});
 				}
 			}
 		}, {
-			key: 'render',
+			key: "render",
 			value: function render() {
 				return _react2.default.createElement(
-					'div',
+					"div",
 					null,
-					this.state.view
+					this.state.view,
+					this.state.banner
 				);
 			}
 		}]);
@@ -87860,6 +87770,86 @@
 	;
 
 	exports.default = VideoBackground;
+
+/***/ }),
+/* 526 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(527);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(248)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../../../node_modules/css-loader/index.js!./react-datetime.css", function() {
+				var newContent = require("!!../../../node_modules/css-loader/index.js!./react-datetime.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ }),
+/* 527 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(247)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "/*!\n * https://github.com/arqex/react-datetime\n */\n\n.rdt {\n  position: relative;\n}\n.rdtPicker {\n  display: none;\n  position: absolute;\n  width: 250px;\n  padding: 4px;\n  margin-top: 1px;\n  z-index: 99999 !important;\n  background: #fff;\n  box-shadow: 0 1px 3px rgba(0,0,0,.1);\n  border: 1px solid #f9f9f9;\n}\n.rdtOpen .rdtPicker {\n  display: block;\n}\n.rdtStatic .rdtPicker {\n  box-shadow: none;\n  position: static;\n}\n\n.rdtPicker .rdtTimeToggle {\n  text-align: center;\n}\n\n.rdtPicker table {\n  width: 100%;\n  margin: 0;\n}\n.rdtPicker td,\n.rdtPicker th {\n  text-align: center;\n  height: 28px;\n}\n.rdtPicker td {\n  cursor: pointer;\n}\n.rdtPicker td.rdtDay:hover,\n.rdtPicker td.rdtHour:hover,\n.rdtPicker td.rdtMinute:hover,\n.rdtPicker td.rdtSecond:hover,\n.rdtPicker .rdtTimeToggle:hover {\n  background: #eeeeee;\n  cursor: pointer;\n}\n.rdtPicker td.rdtOld,\n.rdtPicker td.rdtNew {\n  color: #999999;\n}\n.rdtPicker td.rdtToday {\n  position: relative;\n}\n.rdtPicker td.rdtToday:before {\n  content: '';\n  display: inline-block;\n  border-left: 7px solid transparent;\n  border-bottom: 7px solid #428bca;\n  border-top-color: rgba(0, 0, 0, 0.2);\n  position: absolute;\n  bottom: 4px;\n  right: 4px;\n}\n.rdtPicker td.rdtActive,\n.rdtPicker td.rdtActive:hover {\n  background-color: #428bca;\n  color: #fff;\n  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);\n}\n.rdtPicker td.rdtActive.rdtToday:before {\n  border-bottom-color: #fff;\n}\n.rdtPicker td.rdtDisabled,\n.rdtPicker td.rdtDisabled:hover {\n  background: none;\n  color: #999999;\n  cursor: not-allowed;\n}\n\n.rdtPicker td span.rdtOld {\n  color: #999999;\n}\n.rdtPicker td span.rdtDisabled,\n.rdtPicker td span.rdtDisabled:hover {\n  background: none;\n  color: #999999;\n  cursor: not-allowed;\n}\n.rdtPicker th {\n  border-bottom: 1px solid #f9f9f9;\n}\n.rdtPicker .dow {\n  width: 14.2857%;\n  border-bottom: none;\n}\n.rdtPicker th.rdtSwitch {\n  width: 100px;\n}\n.rdtPicker th.rdtNext,\n.rdtPicker th.rdtPrev {\n  font-size: 21px;\n  vertical-align: top;\n}\n\n.rdtPrev span,\n.rdtNext span {\n  display: block;\n  -webkit-touch-callout: none; /* iOS Safari */\n  -webkit-user-select: none;   /* Chrome/Safari/Opera */\n  -khtml-user-select: none;    /* Konqueror */\n  -moz-user-select: none;      /* Firefox */\n  -ms-user-select: none;       /* Internet Explorer/Edge */\n  user-select: none;\n}\n\n.rdtPicker th.rdtDisabled,\n.rdtPicker th.rdtDisabled:hover {\n  background: none;\n  color: #999999;\n  cursor: not-allowed;\n}\n.rdtPicker thead tr:first-child th {\n  cursor: pointer;\n}\n.rdtPicker thead tr:first-child th:hover {\n  background: #eeeeee;\n}\n\n.rdtPicker tfoot {\n  border-top: 1px solid #f9f9f9;\n}\n\n.rdtPicker button {\n  border: none;\n  background: none;\n  cursor: pointer;\n}\n.rdtPicker button:hover {\n  background-color: #eee;\n}\n\n.rdtPicker thead button {\n  width: 100%;\n  height: 100%;\n}\n\ntd.rdtMonth,\ntd.rdtYear {\n  height: 50px;\n  width: 25%;\n  cursor: pointer;\n}\ntd.rdtMonth:hover,\ntd.rdtYear:hover {\n  background: #eee;\n}\n\n.rdtCounters {\n  display: inline-block;\n}\n\n.rdtCounters > div {\n  float: left;\n}\n\n.rdtCounter {\n  height: 100px;\n}\n\n.rdtCounter {\n  width: 40px;\n}\n\n.rdtCounterSeparator {\n  line-height: 100px;\n}\n\n.rdtCounter .rdtBtn {\n  height: 40%;\n  line-height: 40px;\n  cursor: pointer;\n  display: block;\n\n  -webkit-touch-callout: none; /* iOS Safari */\n  -webkit-user-select: none;   /* Chrome/Safari/Opera */\n  -khtml-user-select: none;    /* Konqueror */\n  -moz-user-select: none;      /* Firefox */\n  -ms-user-select: none;       /* Internet Explorer/Edge */\n  user-select: none;\n}\n.rdtCounter .rdtBtn:hover {\n  background: #eee;\n}\n.rdtCounter .rdtCount {\n  height: 20%;\n  font-size: 1.2em;\n}\n\n.rdtMilli {\n  vertical-align: middle;\n  padding-left: 8px;\n  width: 48px;\n}\n\n.rdtMilli input {\n  width: 100%;\n  font-size: 1.2em;\n  margin-top: 37px;\n}", ""]);
+
+	// exports
+
+
+/***/ }),
+/* 528 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(529);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(248)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../../../node_modules/css-loader/index.js!./marketpicker.css", function() {
+				var newContent = require("!!../../../node_modules/css-loader/index.js!./marketpicker.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ }),
+/* 529 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(247)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\n.market-picker {\n\tmargin-left: 3em;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n}\n\n.market-picker-item {\n\tdisplay: flex; \n\tcursor: pointer; \n\tfont-family: 'Courier New';\n\tfont-size: 18;\n\t:hover { \n\t    color: yellow;\n\t}\n}\n\n.dropdown-arrow {\n\twidth: 2.0em; \n\theight: 2.0em;\n\tmargin-top: 0.4em;\n\tcursor: pointer;\n}\n\n.market-date-picker-container {\n\tdisplay: flex;\n\tright: 1em;\n\talign-items: center;\n\tjustify-content: center;\n\talign-text: center; \n\tmargin-top: -1.5em;\n}\n\n.date-input {\n\twidth: 10em;\n\tmargin: 1em;\n}\n\n.submit-button {\n\tbackground-color: white;\n\twidth: 2.4em;\n\theight: 2.4em;\n\tmargin-top: 1.5em; \n\tmargin-left: 1em;\n\tcursor: pointer;\n}\n\n.date-text {\n\tmargin-left: 1.1em;\n\tfont-size: 12;\n\tmargin-bottom: 10; \n\tcolor: black;\n\tfont-family: 'Courier New';\n}", ""]);
+
+	// exports
+
 
 /***/ }),
 /* 530 */
@@ -87950,7 +87940,7 @@
 
 	var _reactRouter = __webpack_require__(183);
 
-	var _intradayticket = __webpack_require__(528);
+	var _intradayticket = __webpack_require__(524);
 
 	var _intradayticket2 = _interopRequireDefault(_intradayticket);
 
