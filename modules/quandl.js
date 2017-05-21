@@ -51,7 +51,7 @@ Quandl.prototype.fetchETFData = function(){
 					 	}
 			})
 			.then(function(value) {
-                      for(var x=0;x <365;x++) {
+                    for(var x=0;x <365;x++) {
             
                           results.data.push({
                                 name: value[0].dataset.name,
@@ -62,13 +62,13 @@ Quandl.prototype.fetchETFData = function(){
                                 close: value[0].dataset.data[x][4],
                                 volume: value[0].dataset.data[x][5]
                           });
-                      };
+                    };
 
-                      for(var x = 0; x < value[0].dataset.data.length ; x++){
+                    for(var x = 0; x < value[0].dataset.data.length ; x++){
                             correlate.push(value[0].dataset.data[x][1]);
-                      };
+                    };
 
-                      return Correlation.market_fund_autocorrelatation(correlate);    
+                     return Correlation.market_fund_autocorrelatation(correlate);    
             })
 			.then((result)=>{
 				results.correlation = result;
@@ -81,7 +81,6 @@ Quandl.prototype.getETFData = function(params){
 	this.etfiterator = 0;
 	this.etfpromiseArray = [];
 	this.quandlETFResults = [];
-
 	let url;
 	var startDate, endDate;
 	startDate =  moment(new Date().setFullYear(2016)).format('YYYY-MM-DD'),
@@ -131,7 +130,7 @@ Quandl.prototype.fetchMarketData = function(){
 			})
 			.then(function(value) {
                       for(var x=0;x <365;x++) {
-                          //console.log(marketData[0].dataset.data[x][1]);
+                  
                           results.data.push({
                               name:  value[0].dataset.name,
                               date:  value[0].dataset.data[x][0],

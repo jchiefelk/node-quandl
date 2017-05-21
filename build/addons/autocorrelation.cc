@@ -6,8 +6,8 @@
 
 using namespace std;
 
-namespace correlation {
-		
+namespace autocorrelation {
+
 		using v8::Function;
 		using v8::FunctionCallbackInfo;
 		using v8::FunctionTemplate;
@@ -53,7 +53,6 @@ namespace correlation {
 			};
 		}
 
-
 		// called by libuv in event loop when async function completes
 		static void WorkAsyncComplete(uv_work_t *req,int status)
 		{
@@ -75,21 +74,25 @@ namespace correlation {
 		}
 
 
-		void Correlation(const v8::FunctionCallbackInfo<v8::Value>&args){
-			 Isolate* isolate = args.GetIsolate();
-	
+		void Autocorrelation(const v8::FunctionCallbackInfo<v8::Value>&args){
+			Isolate* isolate = args.GetIsolate();
 			// kick of the worker thread
 		    //
 		    // Worker Thread
 		    //
 		    Work *work = new Work;
     		work->request.data = work;
-    		work->length = Local<Array>::Cast(args[0])->Length(); 
-    		// cout << work->length << "\n";
-		    for(int x=0;x<work->length;x++){
-		    	v8::Local<Value> end_Value = Local<Array>::Cast(args[0])->Get(x);
-		        work->IntradayEnd[x] = end_Value->NumberValue();
-		    };
+    		// 
+		    // Local<Object> obj = Object::New(isolate);
+  			Local<Context> context = isolate->GetCurrentContext();
+  			Local<Object> obj = args[0]->ToObject(context).ToLocalChecked();
+  			Handle<Array> array =  Handle<Array>::Cast(obj->Get(String::NewFromUtf8(isolate,"close")));
+		
+			work->length = array->Length();
+			for(int x=0;x<work->length;x++){
+			      v8::Local<Value> val = array->Get(x); 			 
+			      work->IntradayEnd[x] = val->NumberValue();
+			};
 		    // store the callback from JS in the work package so we can 
 		    // invoke it later
 		    Local<Function> callback = Local<Function>::Cast(args[1]);
@@ -97,12 +100,12 @@ namespace correlation {
 		    // kick of the worker thread
     	 	uv_queue_work(uv_default_loop(),&work->request, WorkAsync, WorkAsyncComplete);
     		args.GetReturnValue().Set(Undefined(isolate));
-	
 		}
 
 		void Init(Local<Object> exports, Local<Object> module) {
-			NODE_SET_METHOD(module, "exports", Correlation);
+			NODE_SET_METHOD(module, "exports", Autocorrelation);
 		}
 
-		NODE_MODULE(addon,Init);
+
+		NODE_MODULE(autocorrelation,Init);
 }

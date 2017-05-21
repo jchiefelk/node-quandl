@@ -2,42 +2,65 @@ let Promise = require('bluebird');
 
 const correlation = require('../build/Release/correlation');
 
-function Correlation(){
-	this.data = [];
-}; 
+const autocorrelation = require('../build/Release/autocorrelation');
 
+
+
+function Correlation(){
+	this.data = {
+
+		date: null,
+		close: null,
+		volume: null
+	};
+}; 
 
 Correlation.prototype.stockprice_autocorrelation = function(obj) {
 	//
 	// Stock Price Autocorrelation
 	//
-	this.data = [];
-	for(var x = obj.dataset.data.length-1; x >=0 ; x--){
-			        let data = {
-			          date: obj.dataset.data[x][0],
-			          close: obj.dataset.data[x][4],
-			          volume: null
-			        }; 
-			        if(obj.dataset.data[x][5]!=null){
-			          	data.volume = obj.dataset.data[x][5].toExponential(2);
-			        } 
-			        this.data.push(obj.dataset.data[x][4]);
+	this.data = {
+		name: "Stockprice Autocorrelation",
+		date: [],
+		close: [],
+		volume: []
 	};
-	let data = this.data;
+	//
+	for(var x = obj.dataset.data.length-1; x >=0 ; x--){
+		this.data.date.push(obj.dataset.data[x][0]);
+		this.data.close.push(obj.dataset.data[x][4]); 
+		if(obj.dataset.data[x][5]!=null){
+			 this.data.volume.push(obj.dataset.data[x][5].toExponential(2));
+		}
+	};
+	//
 	return new Promise(function(resolve,reject){
-			correlation(data, function(results) {
+			correlation(this.data, function(results) {
 	              resolve(results); 
 			});	
 	});
-
 };
 
 
 Correlation.prototype.market_fund_autocorrelatation = function(correlate){
+	// console.log(co);
+	this.data = {
+		name: "Stockprice Autocorrelation",
+		date: [],
+		close: correlate,
+		volume: []
+	};
 
+	
 	return new Promise(function(resolve,reject){
-			correlation(correlate,function(results){
-					resolve(results);
+
+			let obj = {
+				'close': correlate,
+				'high': []	
+			};
+
+			autocorrelation(obj, function(results){
+				resolve(results);
 			});
 
 	});
