@@ -36,7 +36,9 @@ class VideoBackground extends Component {
 							Market Analysis and Commentary
 						</div>
 
-						<div className="bannerAd" />
+						<div className="bannerAd">
+							Stock, ETF, and Futures market analysis. 
+						</div>
 
 					</div>
 				),

@@ -232,9 +232,15 @@
 }
 
 .bannerAd {
-	width: 80%;
-	height: 15%;
+	width: 90%;
+	height: 40%;
+	display: flex;
+	font-size: 4.5vh;
+	align-text: center;
+	align-items: center;
+	justify-content: center;
 	background-color: white;
-	opacity: 0.4;
+	color: black;
+	opacity: 0.6;
 }
 
