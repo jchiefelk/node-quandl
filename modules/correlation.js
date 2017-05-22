@@ -34,8 +34,13 @@ Correlation.prototype.stockprice_autocorrelation = function(obj) {
 		}
 	};
 	//
+	//
+	var obj = {
+			'close': this.data.close
+	};
 	return new Promise(function(resolve,reject){
-			correlation(this.data, function(results) {
+
+			autocorrelation(obj, function(results) {
 	              resolve(results); 
 			});	
 	});

@@ -5,6 +5,7 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	color: red;
 }
 
 .market-picker-item {
@@ -12,8 +13,9 @@
 	cursor: pointer; 
 	font-family: 'Courier New';
 	font-size: 18;
+	color: red;
 	:hover { 
-	    color: yellow;
+	    color: blue;
 	}
 }
 
@@ -45,12 +47,13 @@
 	margin-top: 1.5em; 
 	margin-left: 1em;
 	cursor: pointer;
+
 }
 
 .date-text {
 	margin-left: 1.1em;
 	font-size: 12;
 	margin-bottom: 10; 
-	color: black;
+	color: red;
 	font-family: 'Courier New';
 }

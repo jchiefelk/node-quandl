@@ -4,8 +4,6 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 let Actions = require('../../actions/actions');
 var Radium = require('radium');
 
-
-
 class MarketPicker extends Component {
 	
 	constructor(props) {
@@ -35,7 +33,7 @@ class MarketPicker extends Component {
 					     <h4 
 					     	style={{
 
-								color: 'black'
+								color: 'red'
 					     	}}
 					     	>
 					     	{this.state.selectedMarket}
@@ -52,9 +50,9 @@ class MarketPicker extends Component {
 						<h4
 							key={i}
 							style={{
-								color: 'black',
+								color: 'red',
 								':hover': {
-								    color: 'red',
+								    color: 'blue',
 								 }
 						     }}>
 								{item}

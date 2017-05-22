@@ -98,6 +98,7 @@ app.post('/api', function(req,res){
                 return Quandl.getIntraDayTicket(request) // Get ALL Historicall Data for Autocorrelation
             })
             .then((value) =>{
+          
                 return Correlation.stockprice_autocorrelation(value)
             })
            .then((result) => {
