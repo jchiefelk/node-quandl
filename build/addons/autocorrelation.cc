@@ -39,7 +39,7 @@ namespace autocorrelation {
 		    // allocated results from the heap because we'll need
 		    // to access in the event loop later to send back
 		    // Compute Autocorrelation
-		    int maxTau = 365;
+		    int maxTau = work->length;
 		    for(int tau=0; tau<maxTau;tau++){
 		    	work->autocorrelation[tau] = 0;
 		    	for(int t = 0;t<maxTau-tau;t++){
@@ -47,6 +47,7 @@ namespace autocorrelation {
 		    	};
 		    	work->autocorrelation[tau]/=((maxTau-tau)); // Normalize Autocorrelation Function
 		    };
+
 		    float NormFactor = work->autocorrelation[0];
 		    for(int i=0;i<maxTau;i++){
 		   		work->autocorrelation[i]/=NormFactor;

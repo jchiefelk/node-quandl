@@ -7,9 +7,13 @@ function Autocorrelation(){
 
 Autocorrelation.prototype.setGoogleAutocorr = function(data){
 			let line_data = [["DATE","valuation"]];
-			for(var x =0; x<data.xValues.length;x++){
+
+			// data.xValues.length
+			for(var x =0; x<200; x++){
 					line_data.push([x, data.autocorrelation.yValues[x] ]);
 			};
+
+
 			let options = {
 						title: 'Historical 1 year Momentum',
 						legend: "none",
@@ -73,7 +77,6 @@ Autocorrelation.prototype.setIntradayAutocorrelation = function(data){
 						title: 'Historical 1 year Momentum',
 						legend: "none",
 						backgroundColor: 'transparent',
-
 						vAxis: {
 							title: "Correlation Coefficient",	
 							titleTextStyle: { color: 'black' },
@@ -108,7 +111,6 @@ Autocorrelation.prototype.setIntradayAutocorrelation = function(data){
 						    	count: 5
 						   	}	 
 					 	}
-					
 			};
 
 				return (				
@@ -119,7 +121,7 @@ Autocorrelation.prototype.setIntradayAutocorrelation = function(data){
 								width="100%"
 								height="100%"
 								options={options}
-								/>
+							/>
 					</div>
 		    	);
 };

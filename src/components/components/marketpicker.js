@@ -25,7 +25,7 @@ class MarketPicker extends Component {
 	}
 
 	render(){
-		console.log(this.state.selecting);
+		
 		if(this.state.selecting==false){
 			this.items = null;
 			this.items = (

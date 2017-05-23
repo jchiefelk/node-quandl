@@ -42,7 +42,6 @@ export default class IntraDayTicket extends Component {
 							endDate: this.state.endDate
 
 						};
-						
 						this.setState({	intraDayView: MarketGraph.setLoadingAnimation()	});
 						Actions.updatesendRequest();
 						Actions.makeFrontEndRequest(params);			
@@ -89,15 +88,18 @@ export default class IntraDayTicket extends Component {
 
 			componentDidMount(){
 				StockDataStore.addChangeListener(this._onChange.bind(this));
+				/***
 				if(this.state.marketData.data.length==0 && this.state.sendRequestStatus==false){
 					this.setState({
 							intraDayView: MarketGraph.setCompanyPicker()
 					});
 				}
+				*****/
+
 				if(this.state.sendRequestStatus==true) {
 					this.sendRequest();
 				} 
-	
+			
 			}
 
 			componentWillUnmount(){

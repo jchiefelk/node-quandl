@@ -131,15 +131,11 @@ StockData.prototype.updateIntradayTicket = function(item){
 
 StockData.prototype.updateMarket = function(item){
   this.IntraDay.market = item;
-
 };
-
 
 StockData.prototype.updateStartDate = function(item){
   this.IntraDay.startDate = item;
-
 };
-
 
 StockData.prototype.updateEndDate = function(item){
   this.IntraDay.endDate = item;
