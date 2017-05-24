@@ -87233,11 +87233,11 @@
 			}
 
 		};
-		this.data = [["DATE", "val1", "val2", "val3", "val4"]];
+		this.data = [["DATE", "low-high & open-close", "open", "close", "high"]];
 	};
 
 	CandleStickGraph.prototype.setGraph = function (item) {
-		this.data = [["DATE", "val1", "val2", "val3", "val4"]];
+		this.data = [["DATE", "low-high & open-close", "open", "close", "high"]];
 		//
 		//
 		for (var x = 30; x >= 0; x--) {
@@ -87261,7 +87261,7 @@
 
 	CandleStickGraph.prototype.setIntraDayGraph = function (item) {
 
-		this.data = [["DATE", "val1", "val2", "val3", "val4"]];
+		this.data = [["DATE", "low-high & open-close", "open", "close", "high"]];
 		//
 		//
 		if (item.data.length >= 60) {
@@ -87314,7 +87314,7 @@
 	};
 
 	Autocorrelation.prototype.setGoogleAutocorr = function (data) {
-		var line_data = [["DATE", "valuation"]];
+		var line_data = [["DATE", "correlation coefficient"]];
 
 		// data.xValues.length
 		for (var x = 0; x < 200; x++) {
@@ -87370,14 +87370,12 @@
 	};
 
 	Autocorrelation.prototype.setIntradayAutocorrelation = function (data) {
-		var line_data = [["DATE", "valuation"]];
+		var line_data = [["DATE", "correlation coefficient"]];
 		var set = [];
 		for (var x = 0; x < 365; x++) {
 			line_data.push([x, data[x]]);
 			set.push(data[x]);
 		};
-
-		console.log(Math.min.apply(null, set));
 
 		var options = {
 			title: 'Historical 1 year Momentum',

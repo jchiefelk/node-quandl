@@ -6,7 +6,7 @@ function Autocorrelation(){
 };
 
 Autocorrelation.prototype.setGoogleAutocorr = function(data){
-			let line_data = [["DATE","valuation"]];
+			let line_data = [["DATE","correlation coefficient"]];
 
 			// data.xValues.length
 			for(var x =0; x<200; x++){
@@ -35,7 +35,7 @@ Autocorrelation.prototype.setGoogleAutocorr = function(data){
 						   }	
 				        },
 					 	hAxis: {
-					 		 baselineColor: 'transparent',
+					 		baselineColor: 'transparent',
 					 		textStyle:{
 					       	   	color: 'black',
 					       	   	fontName: 'Courier New',
@@ -64,14 +64,14 @@ Autocorrelation.prototype.setGoogleAutocorr = function(data){
 
 
 Autocorrelation.prototype.setIntradayAutocorrelation = function(data){
-			let line_data = [["DATE","valuation"]];
+			let line_data = [["DATE","correlation coefficient"]];
 			let set = [];
 			for(var x =0; x<365;x++){
 				line_data.push([x, data[x] ]);
 				set.push(data[x]);
 			};
 			
-			console.log(Math.min.apply(null,set));
+		
 
 			let options = {
 						title: 'Historical 1 year Momentum',

@@ -45,12 +45,12 @@ function CandleStickGraph(){
         }
 	
 	};
-	this.data = [["DATE","val1","val2","val3","val4"]];
+	this.data = [["DATE","low-high & open-close","open","close","high"]];
 };
 
 
 CandleStickGraph.prototype.setGraph = function(item){
-	this.data = [["DATE","val1","val2","val3","val4"]];
+	this.data = [["DATE","low-high & open-close","open","close","high"]];
 	//
 	//
 	for(var x=30; x >=0; x--){
@@ -74,7 +74,7 @@ CandleStickGraph.prototype.setGraph = function(item){
 
 CandleStickGraph.prototype.setIntraDayGraph = function(item){
 
-	this.data = [["DATE","val1","val2","val3","val4"]];
+	this.data = [["DATE","low-high & open-close","open","close","high"]];
 	//
 	//
 	if(item.data.length>=60){
