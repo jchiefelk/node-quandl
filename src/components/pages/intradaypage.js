@@ -8,7 +8,7 @@ export default class IntraDayPage extends Component {
 
     render() {
           return(
-            <div style={{display: 'flex',flexDirection: 'column', backgroundColor: 'silver'}}>   
+            <div style={{display: 'flex',flexDirection: 'column', backgroundColor: 'transparent',alignItems: 'center'}}>   
               <Header/>
               <IntraDayTicket />
             </div>

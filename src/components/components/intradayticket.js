@@ -31,7 +31,7 @@ export default class IntraDayTicket extends Component {
 			}
 
 			sendRequest(){
-						console.log('Send Request');
+				
 						let code = this.state.companyCode.split(' ');
 						let params = {
 							code: code[0],
@@ -63,7 +63,7 @@ export default class IntraDayTicket extends Component {
 				}
 
 				if(this.state.storeupdated==true && this.state.marketData.data.length>0){
-						console.log(this.state.marketData);
+			
 						if(this.state.marketData.data.length>0){
 									this.setState({
 											storeupdated: false,
@@ -88,18 +88,9 @@ export default class IntraDayTicket extends Component {
 
 			componentDidMount(){
 				StockDataStore.addChangeListener(this._onChange.bind(this));
-				/***
-				if(this.state.marketData.data.length==0 && this.state.sendRequestStatus==false){
-					this.setState({
-							intraDayView: MarketGraph.setCompanyPicker()
-					});
-				}
-				*****/
-
 				if(this.state.sendRequestStatus==true) {
 					this.sendRequest();
 				} 
-			
 			}
 
 			componentWillUnmount(){
@@ -107,7 +98,6 @@ export default class IntraDayTicket extends Component {
 			}
 
 			_onChange(){
-
 				this.setState({
 					market: StockDataStore.getMarket(),
 					marketSelected: true, 

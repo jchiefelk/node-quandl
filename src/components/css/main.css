@@ -102,8 +102,8 @@
 	display: flex; 
 	justify-content: center;
 	align-items: center;
-	background-color: silver;
-	height: 100%;
+	background-color: Snow;
+	width: 90%;
 }
 
 .intradaychild {
@@ -228,6 +228,5 @@
 	background-color: transparent;
 	color: black;
 	opacity: 0.6;
-
 }
 
