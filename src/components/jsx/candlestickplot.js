@@ -6,6 +6,7 @@ require('../css/main.css');
 function CandleStickGraph(){
 	this.graph=null;
 	this.options = {
+		title: 'Intraday Price Variance',
 		legend: "none",
 		backgroundColor: 'transparent',
 		bar: { groupWidth: '100%' }, 
