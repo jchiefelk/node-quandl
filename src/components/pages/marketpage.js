@@ -21,15 +21,13 @@ export default class MarketPage extends Component {
 
 
     render() {
+
+      //  <VideoBackground />
           return(
-            <div style={{display: 'flex',flexDirection: 'column', backgroundColor: 'silver'}}> 
+            <div className="marketpage"> 
               <Header/>
-              <VideoBackground />
-
-              <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                  {this.state.marketPicker}
-              </div>
-
+             
+              {this.state.marketPicker}
               <MarketFundView />
             </div>
           );

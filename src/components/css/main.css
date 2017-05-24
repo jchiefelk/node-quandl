@@ -25,6 +25,22 @@
 	height: 100%;
 }
 
+
+.marketpage {
+	display: flex;
+	flex-direction: column;
+	background-color: transparent; 
+	align-items: center;
+}
+
+.marketgraph {
+	background-color: transparent;
+	align-items: center;
+	width: 50em;
+	height: 40em;
+	justify-content: center;
+}
+
 .paragraph {
 	color: black;
 	font-size: 1.5em;
@@ -55,6 +71,7 @@
 }
 
 .header {
+	display: flex;
 	flex-direction: row;
 	width: 100%;
 	height: 3em; 
@@ -74,40 +91,6 @@
 	text-decoration: none;  
 }
 
-.pickercontainer {
-    background-color: transparent;
-    align-items: center; 
-    justify-content: center;
-    display: flex;
-    position: absolute;
-    top: 10em;
-}
-
-.picker-instructions {
-	display: flex;
-	justify-content: center;
-	align-items: center; 
-	flex-direction: column;
-	font-size: 1.5em; 
-	font-weight: 400; 
-	font-family: 'Courier New';
-	color: black;
-}
-
-.marketpicker {
-	display: flex;
-	justify-content: center;
-	margin-top: 2em;
-	
-}
-
-.homepage-input {
-		font-size: 18; 
-		font-weight: 700;
-		font-family: 'Courier New';
-		height: 3em; 
-		width: 17em;
-}
 
 .linegraph {
 	display: flex;
@@ -144,18 +127,9 @@
 	background-color: transparent;
 }
 
-
-.graph-page {
-	display: flex;
-	height: 100%;
-    background-color: transparent;
-    align-items: center; 
-    flex-direction: column;
-}
-
 .autocorrelationgraph {
 	display: flex;
-	background-color: silver;
+	background-color: transparent;
 	width: 40em;
 	height: 15em;
 	margin-top: 4em;
@@ -184,32 +158,41 @@
 	background-color: transparent;
 }
 
-.marketgraph {
-	background-color: silver;
-	align-items: center;
-	width: 50em;
-	height: 40em;
-	justify-content: center;
-}
-
 .graphViews {
 	display: flex;
-	background-color: silver;
+	background-color: Snow;
+	width: 90%;
 }
+
+.marketgraph-view {
+	display: flex;
+    background-color: Snow;
+    width: 90%;
+    align-items: center; 
+    flex-direction: column;
+    margin-top: 10em;
+}
+
 
 .graphViewChild {
 	display: flex;
-	background-color: silver;
+	background-color: transparent;
 	flex-direction: column; 
 	height: 40em;
 	width: 50em;
 }
 
+.graph-page-title {
+	font-family: 'Courier New';
+	font-weight: 700; 
+	color: black;
+	font-size: 2.5em;
+}
+
 .background-video {
 	display: flex;
-	height: 100%;
 	width: 100%;
-	background: transparent;
+	background-color: transparent;
 }
 
 .videobanner {
@@ -217,7 +200,7 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	height: 100%;
+	height: 70%;
 	width: 100%;
 	top: 0;
 	position: absolute;
@@ -227,21 +210,24 @@
 }
 
 .bannerchild {
-	font-size: 2em;
+	font-size: 4vh;
 	margin-left: 4em;
 	margin-top: 2.5em;
 }
 
 .bannerAd {
+	position: absolute;
+	top: 30%;
 	width: 90%;
-	height: 40%;
+	height: 30vh;
 	display: flex;
 	font-size: 4.5vh;
 	align-text: center;
 	align-items: center;
 	justify-content: center;
-	background-color: white;
+	background-color: transparent;
 	color: black;
 	opacity: 0.6;
+
 }
 

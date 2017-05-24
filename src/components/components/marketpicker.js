@@ -15,61 +15,33 @@ class MarketPicker extends Component {
 	    };
 	}
 
-	marketPicked(i){
+	componentDidMount(){
+
+		Actions.updateMarket('nyse');
+
+	}
+
+	marketPicked(e){
+
 
 		this.setState({
 			selecting: false,
-			selectedMarket: this.state.markets[i]
+			selectedMarket: e.target.value
 		});
-		Actions.updateMarket(this.state.markets[i]);
+		Actions.updateMarket(e.target.value);
 	}
 
 	render(){
 		
-		if(this.state.selecting==false){
-			this.items = null;
-			this.items = (
-					<div key={0} className="market-picker-item" onClick={()=> this.setState({selecting: true}) }>
-					     <h4 
-					     	style={{
-
-								color: 'red'
-					     	}}
-					     	>
-					     	{this.state.selectedMarket}
-					     </h4>
-						<img src="https://s3-us-west-1.amazonaws.com/node-quandl/downarrow.png" className="dropdown-arrow" />
-					</div>
-			);
-
-
-		} else {
-			this.items = null;
-			this.items = this.state.markets.map((item,i)=> (
-					<div key={item} className="market-picker-item"   onClick={()=> this.marketPicked(i) }>
-						<h4
-							key={i}
-							style={{
-								color: 'red',
-								':hover': {
-								    color: 'blue',
-								 }
-						     }}>
-								{item}
-							</h4>
-					</div>
-			));
-		}
 
 		return(
-		<div className="market-picker">
-				  <ReactCSSTransitionGroup 
-          				transitionName="example"
-          				transitionEnterTimeout={500}
-          				transitionLeaveTimeout={1}>
-		       			
-		       			{this.items}
-				   </ReactCSSTransitionGroup>
+			<div className="market-picker">
+			
+				<select className="market-picker-item" onClick={(e)=> this.marketPicked(e) } >
+					<option value="nyse">nyse</option>
+					<option value="nasdaq">nasdaq</option>
+				</select>
+
 			</div>
 		);
 	}

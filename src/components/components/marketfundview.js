@@ -66,8 +66,7 @@ export default class MarketFundView extends Component {
 						marketAutocorrelation: Autocorrelation.setGoogleAutocorr(this.state.dailymarketData)
 					});
 				}
-			
-
+		
 			}
 
 			componentWillUnmount(){
@@ -81,7 +80,6 @@ export default class MarketFundView extends Component {
 					sendRequestStatus:	StockDataStore.getRequestSendStatus(),
 					storeupdated: true
 				});
-
 			}
 
 			componentDidUpdate(){
@@ -135,9 +133,9 @@ export default class MarketFundView extends Component {
 			render(){
 
 				return (
-					<div className="graph-page">
+					<div className="marketgraph-view">
 
-							<h1 style={{fontFamily: 'Courier New',fontWeight: '700', color: 'black'}}> ETF and Futures Markets</h1>
+							<h1 className="graph-page-title" > ETF and Futures Markets</h1>
 
 							<div className="graphViews">
 								{this.state.marketGraph}

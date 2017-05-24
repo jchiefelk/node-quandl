@@ -27838,16 +27838,13 @@
 	    _createClass(MarketPage, [{
 	        key: 'render',
 	        value: function render() {
+
+	            //  <VideoBackground />
 	            return _react2.default.createElement(
 	                'div',
-	                { style: { display: 'flex', flexDirection: 'column', backgroundColor: 'silver' } },
+	                { className: 'marketpage' },
 	                _react2.default.createElement(_header2.default, null),
-	                _react2.default.createElement(_videobackground2.default, null),
-	                _react2.default.createElement(
-	                    'div',
-	                    { style: { display: 'flex', justifyContent: 'center', alignItems: 'center' } },
-	                    this.state.marketPicker
-	                ),
+	                this.state.marketPicker,
 	                _react2.default.createElement(_marketfundview2.default, null)
 	            );
 	        }
@@ -27973,7 +27970,7 @@
 
 
 	// module
-	exports.push([module.id, "#Title {\n\tfont-size: 4.7em;\n\tcolor: black;\n\tfont-weight: 900; \n\tfont-family: 'Courier New';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n\talign-text: center;\n\tmargin: 50;\n}\n\n#About-Me {\n\tcolor: black;\n\tfont-size: 2.1em;\n\tfont-weight: 700; \n\tfont-family: 'Courier New';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n}\n\n.app {\n\tdisplay: flex; \n\tflex-direction: column; \n\tbackground-color: transparent;\n\theight: 100%;\n}\n\n.paragraph {\n\tcolor: black;\n\tfont-size: 1.5em;\n\tfont-weight: 400;\n\tfont-family: 'Courier New';\n\tmargin-top: 2em;\n\tmargin: 50;\n}\n\n.table_row_parent { \n\tborder-width: 2; \n\tborder-style: solid; \n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n.section-title {\n\tmargin: 50;\n\tfont-size: 2em;\n\tfont-weight: 900;\n\tfont-family: 'Courier New';\n\tmargin-top: 2em;\n}\n\n.code-image {\n\tmargin: 0;\n\twidth: 100;\n}\n\n.header {\n\tflex-direction: row;\n\twidth: 100%;\n\theight: 3em; \n\tbackground-color: black; \n\talign-items: center; \n}\n\n.header-link {\n\tfont-weight: 900;\n\tfont-family: 'Courier New';\n\tfont-size: 18;\n\tcolor: white; \n\tposition: absolute;\n\ttop: 1em;\n\tleft: 2em;\n\tcursor: pointer; \n\ttext-decoration: none;  \n}\n\n.pickercontainer {\n    background-color: transparent;\n    align-items: center; \n    justify-content: center;\n    display: flex;\n    position: absolute;\n    top: 10em;\n}\n\n.picker-instructions {\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center; \n\tflex-direction: column;\n\tfont-size: 1.5em; \n\tfont-weight: 400; \n\tfont-family: 'Courier New';\n\tcolor: black;\n}\n\n.marketpicker {\n\tdisplay: flex;\n\tjustify-content: center;\n\tmargin-top: 2em;\n\t\n}\n\n.homepage-input {\n\t\tfont-size: 18; \n\t\tfont-weight: 700;\n\t\tfont-family: 'Courier New';\n\t\theight: 3em; \n\t\twidth: 17em;\n}\n\n.linegraph {\n\tdisplay: flex;\n\twidth: 25em;\n}\n\n.intradaypage {\n\tmargin-top: 3em;\n\tdisplay: flex; \n\tjustify-content: center;\n\talign-items: center;\n\tbackground-color: silver;\n\theight: 100%;\n}\n\n.intradaychild {\n\tmargin-top: 10em;\n}\n\n.intradaylinegraph {\n\n\tmargin-top: 0em;\n\twidth: 60em;\n\theight: 40em;\n\tbackground-color: transparent;\n}\n\n.intradaybargraph {\n\tdisplay: flex;\n\tmargin-top: 0.1em;\n\twidth: 49.5em;\n\theight: 15em; \n\tmargin-left: 5em;\n\tbackground-color: transparent;\n}\n\n\n.graph-page {\n\tdisplay: flex;\n\theight: 100%;\n    background-color: transparent;\n    align-items: center; \n    flex-direction: column;\n}\n\n.autocorrelationgraph {\n\tdisplay: flex;\n\tbackground-color: silver;\n\twidth: 40em;\n\theight: 15em;\n\tmargin-top: 4em;\n}\n\n.autocorrelationgraph_intraday {\n\twidth: 50em;\n\theight: 24em;\n\tmargin-left: 2em;\n\tmargin-top: 4em;\n}\n\n.candleStickGraph_intraday {\n\tdisplay: flex;\n\twidth: 50em;\n\theight: 20em;\n\tmargin-top: 5em;\n\tmargin-left: 3.5em;\n}\n\n.candleStickGraph {\n\tdisplay: flex;\n\theight: 15em;\n\twidth: 41em;\n\tmargin-top: 1em;\n\tbackground-color: transparent;\n}\n\n.marketgraph {\n\tbackground-color: silver;\n\talign-items: center;\n\twidth: 50em;\n\theight: 40em;\n\tjustify-content: center;\n}\n\n.graphViews {\n\tdisplay: flex;\n\tbackground-color: silver;\n}\n\n.graphViewChild {\n\tdisplay: flex;\n\tbackground-color: silver;\n\tflex-direction: column; \n\theight: 40em;\n\twidth: 50em;\n}\n\n.background-video {\n\tdisplay: flex;\n\theight: 100%;\n\twidth: 100%;\n\tbackground: transparent;\n}\n\n.videobanner {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n\theight: 100%;\n\twidth: 100%;\n\ttop: 0;\n\tposition: absolute;\n\tbackground-color: transparent;\n\tcolor: white;\n\tfont-family: 'Courier New';\n}\n\n.bannerchild {\n\tfont-size: 2em;\n\tmargin-left: 4em;\n\tmargin-top: 2.5em;\n}\n\n.bannerAd {\n\twidth: 90%;\n\theight: 40%;\n\tdisplay: flex;\n\tfont-size: 4.5vh;\n\talign-text: center;\n\talign-items: center;\n\tjustify-content: center;\n\tbackground-color: white;\n\tcolor: black;\n\topacity: 0.6;\n}\n\n", ""]);
+	exports.push([module.id, "#Title {\n\tfont-size: 4.7em;\n\tcolor: black;\n\tfont-weight: 900; \n\tfont-family: 'Courier New';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n\talign-text: center;\n\tmargin: 50;\n}\n\n#About-Me {\n\tcolor: black;\n\tfont-size: 2.1em;\n\tfont-weight: 700; \n\tfont-family: 'Courier New';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n}\n\n.app {\n\tdisplay: flex; \n\tflex-direction: column; \n\tbackground-color: transparent;\n\theight: 100%;\n}\n\n\n.marketpage {\n\tdisplay: flex;\n\tflex-direction: column;\n\tbackground-color: transparent; \n\talign-items: center;\n}\n\n.marketgraph {\n\tbackground-color: transparent;\n\talign-items: center;\n\twidth: 50em;\n\theight: 40em;\n\tjustify-content: center;\n}\n\n.paragraph {\n\tcolor: black;\n\tfont-size: 1.5em;\n\tfont-weight: 400;\n\tfont-family: 'Courier New';\n\tmargin-top: 2em;\n\tmargin: 50;\n}\n\n.table_row_parent { \n\tborder-width: 2; \n\tborder-style: solid; \n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n.section-title {\n\tmargin: 50;\n\tfont-size: 2em;\n\tfont-weight: 900;\n\tfont-family: 'Courier New';\n\tmargin-top: 2em;\n}\n\n.code-image {\n\tmargin: 0;\n\twidth: 100;\n}\n\n.header {\n\tdisplay: flex;\n\tflex-direction: row;\n\twidth: 100%;\n\theight: 3em; \n\tbackground-color: black; \n\talign-items: center; \n}\n\n.header-link {\n\tfont-weight: 900;\n\tfont-family: 'Courier New';\n\tfont-size: 18;\n\tcolor: white; \n\tposition: absolute;\n\ttop: 1em;\n\tleft: 2em;\n\tcursor: pointer; \n\ttext-decoration: none;  \n}\n\n\n.linegraph {\n\tdisplay: flex;\n\twidth: 25em;\n}\n\n.intradaypage {\n\tmargin-top: 3em;\n\tdisplay: flex; \n\tjustify-content: center;\n\talign-items: center;\n\tbackground-color: silver;\n\theight: 100%;\n}\n\n.intradaychild {\n\tmargin-top: 10em;\n}\n\n.intradaylinegraph {\n\n\tmargin-top: 0em;\n\twidth: 60em;\n\theight: 40em;\n\tbackground-color: transparent;\n}\n\n.intradaybargraph {\n\tdisplay: flex;\n\tmargin-top: 0.1em;\n\twidth: 49.5em;\n\theight: 15em; \n\tmargin-left: 5em;\n\tbackground-color: transparent;\n}\n\n.autocorrelationgraph {\n\tdisplay: flex;\n\tbackground-color: transparent;\n\twidth: 40em;\n\theight: 15em;\n\tmargin-top: 4em;\n}\n\n.autocorrelationgraph_intraday {\n\twidth: 50em;\n\theight: 24em;\n\tmargin-left: 2em;\n\tmargin-top: 4em;\n}\n\n.candleStickGraph_intraday {\n\tdisplay: flex;\n\twidth: 50em;\n\theight: 20em;\n\tmargin-top: 5em;\n\tmargin-left: 3.5em;\n}\n\n.candleStickGraph {\n\tdisplay: flex;\n\theight: 15em;\n\twidth: 41em;\n\tmargin-top: 1em;\n\tbackground-color: transparent;\n}\n\n.graphViews {\n\tdisplay: flex;\n\tbackground-color: Snow;\n\twidth: 90%;\n}\n\n.marketgraph-view {\n\tdisplay: flex;\n    background-color: Snow;\n    width: 90%;\n    align-items: center; \n    flex-direction: column;\n    margin-top: 10em;\n}\n\n\n.graphViewChild {\n\tdisplay: flex;\n\tbackground-color: transparent;\n\tflex-direction: column; \n\theight: 40em;\n\twidth: 50em;\n}\n\n.graph-page-title {\n\tfont-family: 'Courier New';\n\tfont-weight: 700; \n\tcolor: black;\n\tfont-size: 2.5em;\n}\n\n.background-video {\n\tdisplay: flex;\n\twidth: 100%;\n\tbackground-color: transparent;\n}\n\n.videobanner {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n\theight: 70%;\n\twidth: 100%;\n\ttop: 0;\n\tposition: absolute;\n\tbackground-color: transparent;\n\tcolor: white;\n\tfont-family: 'Courier New';\n}\n\n.bannerchild {\n\tfont-size: 4vh;\n\tmargin-left: 4em;\n\tmargin-top: 2.5em;\n}\n\n.bannerAd {\n\tposition: absolute;\n\ttop: 30%;\n\twidth: 90%;\n\theight: 30vh;\n\tdisplay: flex;\n\tfont-size: 4.5vh;\n\talign-text: center;\n\talign-items: center;\n\tjustify-content: center;\n\tbackground-color: transparent;\n\tcolor: black;\n\topacity: 0.6;\n\n}\n\n", ""]);
 
 	// exports
 
@@ -28452,10 +28449,10 @@
 
 				return _react2.default.createElement(
 					'div',
-					{ className: 'graph-page' },
+					{ className: 'marketgraph-view' },
 					_react2.default.createElement(
 						'h1',
-						{ style: { fontFamily: 'Courier New', fontWeight: '700', color: 'black' } },
+						{ className: 'graph-page-title' },
 						' ETF and Futures Markets'
 					),
 					_react2.default.createElement(
@@ -75126,12 +75123,8 @@
 
 				return _react2.default.createElement(
 					'div',
-					null,
-					_react2.default.createElement(
-						'div',
-						{ style: { display: 'flex', justifyContent: 'center' } },
-						this.setDatePicker()
-					),
+					{ style: { display: 'flex', justifyContent: 'center', flexDirection: 'column' } },
+					this.setDatePicker(),
 					_react2.default.createElement(
 						'div',
 						{ style: { display: 'flex', flexDirection: 'column' } },
@@ -75214,21 +75207,17 @@
 				this.companyPicker = _react2.default.createElement(
 					'div',
 					{ className: 'pickercontainer' },
+					_react2.default.createElement('input', { className: 'homepage-input', placeholder: 'Enter stock code', onChange: function onChange(e) {
+							return _this2.updatecompanyCode(e);
+						} }),
 					_react2.default.createElement(
-						'div',
-						{ className: 'marketpicker' },
-						_react2.default.createElement('input', { className: 'homepage-input', placeholder: 'Enter stock code', onChange: function onChange(e) {
-								return _this2.updatecompanyCode(e);
-							} }),
-						_react2.default.createElement(
-							_reactRouter.Link,
-							{ to: '/intradaypage', onClick: function onClick() {
-									return Actions.updatesendRequest();
-								} },
-							_react2.default.createElement('img', { src: 'https://s3-us-west-1.amazonaws.com/cointelmob/icons/enter_icon.png', style: { width: 30, height: 30, marginLeft: 10, marginTop: 4, cursor: 'pointer' } })
-						),
-						_react2.default.createElement(_marketpicker2.default, null)
-					)
+						_reactRouter.Link,
+						{ to: '/intradaypage', onClick: function onClick() {
+								return Actions.updatesendRequest();
+							} },
+						_react2.default.createElement('img', { src: 'https://s3-us-west-1.amazonaws.com/cointelmob/icons/enter_icon.png', style: { width: 30, height: 30, marginLeft: 10, marginTop: 4, cursor: 'pointer' } })
+					),
+					_react2.default.createElement(_marketpicker2.default, null)
 				);
 
 				return this.companyPicker;
@@ -77707,73 +77696,44 @@
 		}
 
 		_createClass(MarketPicker, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+
+				Actions.updateMarket('nyse');
+			}
+		}, {
 			key: 'marketPicked',
-			value: function marketPicked(i) {
+			value: function marketPicked(e) {
 
 				this.setState({
 					selecting: false,
-					selectedMarket: this.state.markets[i]
+					selectedMarket: e.target.value
 				});
-				Actions.updateMarket(this.state.markets[i]);
+				Actions.updateMarket(e.target.value);
 			}
 		}, {
 			key: 'render',
 			value: function render() {
 				var _this2 = this;
 
-				if (this.state.selecting == false) {
-					this.items = null;
-					this.items = _react2.default.createElement(
-						'div',
-						{ key: 0, className: 'market-picker-item', onClick: function onClick() {
-								return _this2.setState({ selecting: true });
-							} },
-						_react2.default.createElement(
-							'h4',
-							{
-								style: {
-
-									color: 'red'
-								}
-							},
-							this.state.selectedMarket
-						),
-						_react2.default.createElement('img', { src: 'https://s3-us-west-1.amazonaws.com/node-quandl/downarrow.png', className: 'dropdown-arrow' })
-					);
-				} else {
-					this.items = null;
-					this.items = this.state.markets.map(function (item, i) {
-						return _react2.default.createElement(
-							'div',
-							{ key: item, className: 'market-picker-item', onClick: function onClick() {
-									return _this2.marketPicked(i);
-								} },
-							_react2.default.createElement(
-								'h4',
-								{
-									key: i,
-									style: {
-										color: 'red',
-										':hover': {
-											color: 'blue'
-										}
-									} },
-								item
-							)
-						);
-					});
-				}
-
 				return _react2.default.createElement(
 					'div',
 					{ className: 'market-picker' },
 					_react2.default.createElement(
-						_reactAddonsCssTransitionGroup2.default,
-						{
-							transitionName: 'example',
-							transitionEnterTimeout: 500,
-							transitionLeaveTimeout: 1 },
-						this.items
+						'select',
+						{ className: 'market-picker-item', onClick: function onClick(e) {
+								return _this2.marketPicked(e);
+							} },
+						_react2.default.createElement(
+							'option',
+							{ value: 'nyse' },
+							'nyse'
+						),
+						_react2.default.createElement(
+							'option',
+							{ value: 'nasdaq' },
+							'nasdaq'
+						)
 					)
 				);
 			}
@@ -87769,12 +87729,7 @@
 		}, {
 			key: "render",
 			value: function render() {
-				return _react2.default.createElement(
-					"div",
-					null,
-					this.state.view,
-					this.state.banner
-				);
+				return this.state.view;
 			}
 		}]);
 
@@ -87860,7 +87815,7 @@
 
 
 	// module
-	exports.push([module.id, "\n.market-picker {\n\tmargin-left: 3em;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n\tcolor: black;\n}\n\n.market-picker-item {\n\tdisplay: flex; \n\tcursor: pointer; \n\tfont-family: 'Courier New';\n\tfont-size: 18;\n\tcolor: black;\n\t:hover { \n\t    color: blue;\n\t}\n}\n\n.dropdown-arrow {\n\twidth: 2.0em; \n\theight: 2.0em;\n\tmargin-top: 0.4em;\n\tcursor: pointer;\n}\n\n.market-date-picker-container {\n\tdisplay: flex;\n\tright: 1em;\n\talign-items: center;\n\tjustify-content: center;\n\talign-text: center; \n\tmargin-top: -1.5em;\n}\n\n.date-input {\n\twidth: 10em;\n\tmargin: 1em;\n}\n\n.submit-button {\n\tbackground-color: white;\n\twidth: 2.4em;\n\theight: 2.4em;\n\tmargin-top: 1.5em; \n\tmargin-left: 1em;\n\tcursor: pointer;\n\n}\n\n.date-text {\n\tmargin-left: 1.1em;\n\tfont-size: 12;\n\tmargin-bottom: 10; \n\tcolor: black;\n\tfont-family: 'Courier New';\n}", ""]);
+	exports.push([module.id, ".homepage-input {\n\t\tfont-size: 18; \n\t\tfont-weight: 700;\n\t\tfont-family: 'Courier New';\n\t\theight: 3em; \n\t\twidth: 17em;\n}\n\n.pickercontainer {\n\tdisplay: flex;\n    align-items: center; \n    justify-content: center;\n    background-color: transparent;\n    position: absolute;\n    top: 4em;\n}\n\n.picker-instructions {\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center; \n\tflex-direction: row;\n\tfont-size: 1.5em; \n\tfont-weight: 400; \n\tfont-family: 'Courier New';\n\tcolor: black;\n}\n\n.market-picker {\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: center;\n\tcolor: black;\n}\n\n.market-picker-item {\n\tdisplay: flex; \n\tcursor: pointer; \n\tfont-family: 'Courier New';\n\tfont-size: 24;\n\tcolor: black;\n\tmargin-left: 1em;\n\t:hover { \n\t    color: blue;\n\t}\n}\n\n.dropdown-arrow {\n\twidth: 2.0em; \n\theight: 2.0em;\n\tmargin-top: 0.4em;\n\tcursor: pointer;\n}\n\n.market-date-picker-container {\n\tdisplay: flex;\n\tright: 1em;\n\talign-items: center;\n\tjustify-content: center;\n\talign-text: center; \n\tmargin-top: -1.5em;\n}\n\n.date-input {\n\twidth: 10em;\n\tmargin: 1em;\n}\n\n.submit-button {\n\tbackground-color: white;\n\twidth: 2.4em;\n\theight: 2.4em;\n\tmargin-top: 1.5em; \n\tmargin-left: 1em;\n\tcursor: pointer;\n\n}\n\n.date-text {\n\tmargin-left: 1.1em;\n\tfont-size: 12;\n\tmargin-bottom: 10; \n\tcolor: black;\n\tfont-family: 'Courier New';\n}", ""]);
 
 	// exports
 

@@ -9,7 +9,6 @@ import { Router, Route, Link } from 'react-router';
 import { Chart } from 'react-google-charts';
 
 
-
 class MarketGraph {
 
 	constructor(){
@@ -165,10 +164,9 @@ class MarketGraph {
 
 
 					return (
-						<div>
-							<div style={{display: 'flex', justifyContent: 'center'}}>
+				
+					<div style={{display: 'flex', justifyContent: 'center',flexDirection: 'column'}}>
 									{this.setDatePicker()}
-							</div>
 							
 							<div style={{display: 'flex', flexDirection: 'column'}}>
 											<div className="intradaylinegraph">
@@ -228,16 +226,12 @@ class MarketGraph {
 
 		this.companyPicker = (
 					<div className="pickercontainer">
-						
-						<div className="marketpicker">
+		
 							<input className="homepage-input" placeholder="Enter stock code" onChange={(e) => this.updatecompanyCode(e) } />
-							
 							<Link to="/intradaypage" onClick={()=> Actions.updatesendRequest() }>
 								<img src="https://s3-us-west-1.amazonaws.com/cointelmob/icons/enter_icon.png" style={{width: 30, height: 30, marginLeft: 10,marginTop: 4, cursor: 'pointer'}} />
 							</Link>
 							<MarketPicker  />
-
-						</div>
 
 					</div>
 		);

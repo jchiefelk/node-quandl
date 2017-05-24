@@ -1,8 +1,34 @@
+.homepage-input {
+		font-size: 18; 
+		font-weight: 700;
+		font-family: 'Courier New';
+		height: 3em; 
+		width: 17em;
+}
+
+.pickercontainer {
+	display: flex;
+    align-items: center; 
+    justify-content: center;
+    background-color: transparent;
+    position: absolute;
+    top: 4em;
+}
+
+.picker-instructions {
+	display: flex;
+	justify-content: center;
+	align-items: center; 
+	flex-direction: row;
+	font-size: 1.5em; 
+	font-weight: 400; 
+	font-family: 'Courier New';
+	color: black;
+}
 
 .market-picker {
-	margin-left: 3em;
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	align-items: center;
 	justify-content: center;
 	color: black;
@@ -12,8 +38,9 @@
 	display: flex; 
 	cursor: pointer; 
 	font-family: 'Courier New';
-	font-size: 18;
+	font-size: 24;
 	color: black;
+	margin-left: 1em;
 	:hover { 
 	    color: blue;
 	}

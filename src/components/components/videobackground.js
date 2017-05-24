@@ -97,12 +97,7 @@ class VideoBackground extends Component {
 	}
 
 	render() {
-		return (
-			<div>
-				{this.state.view}
-				{this.state.banner}
-			</div>
-		);
+		return (this.state.view);
 	}
 };
 
