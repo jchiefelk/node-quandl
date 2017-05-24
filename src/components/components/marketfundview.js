@@ -135,7 +135,7 @@ export default class MarketFundView extends Component {
 				return (
 					<div className="marketgraph-view">
 
-							<h1 className="graph-page-title" > ETF and Futures Markets</h1>
+							<h1 className="graph-page-title" > ETF and Futures Market</h1>
 
 							<div className="graphViews">
 								{this.state.marketGraph}

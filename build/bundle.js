@@ -28453,7 +28453,7 @@
 					_react2.default.createElement(
 						'h1',
 						{ className: 'graph-page-title' },
-						' ETF and Futures Markets'
+						' ETF and Futures Market'
 					),
 					_react2.default.createElement(
 						'div',
