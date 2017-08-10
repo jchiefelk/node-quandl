@@ -195,7 +195,7 @@ Quandl.prototype.getIntraDayTicket = function(params){
 		url = quandl_url+params.db+'/'+params.market+'_'+params.code+'.json?api_key='+api_key;
 	}
 
-	return fetch(url, {
+	return fetch('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MSFT&interval=1min&apikey=JKH0X5U5HVN4DD1Y', {
 			  method: 'GET',
 			  mode: 'cors',
 			})

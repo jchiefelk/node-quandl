@@ -5,6 +5,7 @@ var Actions = require('../../actions/actions');
 var MarketGraph = require('../jsx/marketgraph');
 var CandleStickGraph = require('../jsx/candlestickplot');
 var Autocorrelation = require('../jsx/autocorrelationgraph');
+let API = require('../../api_utls/api');
 
 
 export default class IntraDayTicket extends Component {
@@ -40,16 +41,13 @@ export default class IntraDayTicket extends Component {
 							apiKey: 'oaWPkjrfz_aQmyPmE-WT',
 							startDate: this.state.startDate,
 							endDate: this.state.endDate
-
 						};
 						this.setState({	intraDayView: MarketGraph.setLoadingAnimation()	});
 						Actions.updatesendRequest();
-						Actions.makeFrontEndRequest(params);			
+						API.getStockPrice(params);			
 			}
 
 			componentDidUpdate(){
-
-
 
 				if(this.state.storeupdated==true &&	this.state.sendRequestStatus==true) {
 					this.setState({
@@ -63,7 +61,6 @@ export default class IntraDayTicket extends Component {
 				}
 
 				if(this.state.storeupdated==true && this.state.marketData.data.length>0){
-			
 						if(this.state.marketData.data.length>0){
 									this.setState({
 											storeupdated: false,
@@ -73,14 +70,12 @@ export default class IntraDayTicket extends Component {
 											
 									});	
 						}
-
 						if(this.state.marketData.autocorr.length > 0) {
 								this.setState({
 										intraDayAutocorrelation: Autocorrelation.setIntradayAutocorrelation(this.state.marketData.autocorr)
 								});
 
 						}
-
 				}
 
 

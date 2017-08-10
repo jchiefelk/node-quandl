@@ -89,17 +89,15 @@ app.get('/markets', function(req,res){
 app.post('/api', function(req,res){
     let market, autocorr;
     Quandl.getIntraDayTicket(req.body)
-           .then(function(value) {
+           .then(function(value) { 
                 market = value;
                 let request = req.body;
                 request.startDate = 'start';
                 request.endDate = 'end';
                 // 
-                return Quandl.getIntraDayTicket(request) // Get ALL Historicall Data for Autocorrelation
-            })
-            .then((value) =>{
-          
-                return Correlation.stockprice_autocorrelation(value)
+                // return Quandl.getIntraDayTicket(request) // Get ALL Historicall Data for Autocorrelation
+                console.log(value['Time Series (1min)']);
+                return Correlation.stockprice_autocorrelation(value['Time Series (1min)'])
             })
            .then((result) => {
                 autocorr=result;
@@ -112,7 +110,7 @@ app.post('/api', function(req,res){
                 console.log(error);
                 res.json({error: error});
                 next(error);
-            }); 
+            });
 });
 
 app.get('/frontenddata',function(req,res){

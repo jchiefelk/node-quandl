@@ -105,23 +105,21 @@ function StockData(){
 
 StockData.prototype.updateIntradayTicket = function(item){
   console.log('Update Intraday');
-  // console.log(item);
+
 
   this.IntraDay.data=[];
-  this.IntraDay.name = item.dataset.name;
-  for(var x = item.dataset.data.length-1; x >=0 ; x--){
+  this.IntraDay.name = item['Meta Data']['2. Symbol'];
+  for(let key in item['Time Series (1min)']){
+        let obj  = item['Time Series (1min)'][key];
+        let volume = parseInt(obj['5. volume']);
         let data = {
-          date: item.dataset.data[x][0],
-          open: item.dataset.data[x][1],
-          high: item.dataset.data[x][2],
-          low:  item.dataset.data[x][3],
-          close: item.dataset.data[x][4],
-          volume: null,
+          date: key,
+          open: parseFloat(obj['1. open']),
+          high: parseFloat(obj['2. high']),
+          low:  parseFloat(obj['3. low']),
+          close: parseFloat(obj['4. close']),
+          volume: volume.toExponential(2)
         }; 
-        if(item.dataset.data[x][5]!=null){
-          data.volume = item.dataset.data[x][5].toExponential(2);
-        } 
-
         this.IntraDay.data.push(data);
   };
 

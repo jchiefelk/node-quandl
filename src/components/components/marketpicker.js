@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 var StockDataStore = require('../../stores/stockdatastore');
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 let Actions = require('../../actions/actions');
-var Radium = require('radium');
+
 
 class MarketPicker extends Component {
 	
@@ -16,14 +16,10 @@ class MarketPicker extends Component {
 	}
 
 	componentDidMount(){
-
 		Actions.updateMarket('nyse');
-
 	}
 
 	marketPicked(e){
-
-
 		this.setState({
 			selecting: false,
 			selectedMarket: e.target.value
@@ -33,18 +29,15 @@ class MarketPicker extends Component {
 
 	render(){
 		
-
 		return(
 			<div className="market-picker">
-			
 				<select className="market-picker-item" onClick={(e)=> this.marketPicked(e) } >
 					<option value="nyse">nyse</option>
 					<option value="nasdaq">nasdaq</option>
 				</select>
-
 			</div>
 		);
 	}
 }
 
-export default Radium(MarketPicker)
+export default MarketPicker;

@@ -48,7 +48,6 @@ var makeMarketRequest = function() {
 // averages of major indexes 
 //
 var makeGeneralRequest = function() {
-
        fetch('/api', {
             method: 'post',
             headers: {
@@ -69,10 +68,6 @@ var makeGeneralRequest = function() {
               console.log(error);
           }); 
 };
-
-
-
-
 var getFrontEndData = function(){
 
   fetch('/frontenddata', {

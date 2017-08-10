@@ -11,12 +11,8 @@ require('../css/main.css');
 
 export default class MarketPage extends Component {
 
-
     constructor(){
         super();
-        this.state = {
-            marketPicker: MarketGraph.setCompanyPicker()
-        };
     }
 
 
@@ -26,9 +22,7 @@ export default class MarketPage extends Component {
           return(
             <div className="marketpage"> 
               <Header/>
-             
-              {this.state.marketPicker}
-              <MarketFundView />
+              {MarketGraph.setCompanyPicker()}
             </div>
           );
      }

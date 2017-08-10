@@ -228,11 +228,11 @@ class MarketGraph {
 					<div className="pickercontainer">
 		
 							<input className="homepage-input" placeholder="Enter stock code" onChange={(e) => this.updatecompanyCode(e) } />
+							
 							<Link to="/intradaypage" onClick={()=> Actions.updatesendRequest() }>
 								<img src="https://s3-us-west-1.amazonaws.com/cointelmob/icons/enter_icon.png" style={{width: 30, height: 30, marginLeft: 10,marginTop: 4, cursor: 'pointer'}} />
 							</Link>
 							<MarketPicker  />
-
 					</div>
 		);
 
