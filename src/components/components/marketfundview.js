@@ -41,31 +41,32 @@ export default class MarketFundView extends Component {
 				StockDataStore.addChangeListener(this._onChange.bind(this));
 				Actions.getDailyFrontEndData();
 			
-				
+				/**
 				if( this.state.dailymarketData.xValues.length>0 ){
 					this.setState({
 						marketGraph: MarketGraph.setMarketGoogleGraph(this.state.dailymarketData)
 					});
 				}
-
+	
 				if(this.state.dailyetfData.xValues.length>0  ){
 					this.setState({
 						etfGraph: MarketGraph.setMarketGoogleGraph(this.state.dailyetfData)
 					});
 				}
-				
+			
 				if(	this.state.dailymarketData.autocorrelation.xValues.length>0  ){
 					this.setState({
 						etfAutocorrelation: Autocorrelation.setGoogleAutocorr(this.state.dailyetfData),
 						etfCandleStick: CandleStickGraph.setGraph(this.state.dailyetfData)
 					});
 				}
-			
+	
 				if(	this.state.dailymarketData.autocorrelation.xValues.length>0 ){
 					this.setState({
 						marketAutocorrelation: Autocorrelation.setGoogleAutocorr(this.state.dailymarketData)
 					});
 				}
+				***/
 		
 			}
 
@@ -106,12 +107,14 @@ export default class MarketFundView extends Component {
 						});
 				}
 
+				/***
 				if(this.state.storeupdated==true && this.state.dailyetfData.xValues.length>0  && this.state.sendRequestStatus==false && this.state.viewMode=='markets'){
 					this.setState({
 							storeupdated: false,
 							etfGraph: MarketGraph.setMarketGoogleGraph(this.state.dailyetfData)
 						});
 				}
+				***/
 				
 				if(	this.state.storeupdated==true && this.state.dailymarketData.autocorrelation.xValues.length>0  && this.state.sendRequestStatus==false && this.state.viewMode=='markets'){
 					this.setState({

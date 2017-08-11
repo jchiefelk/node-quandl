@@ -30,19 +30,23 @@ function Interval(){
 Interval.prototype.startInterval = function(){
     Quandl.getMarketData()
              .then(function(value) {
-                     // console.log(value);
+                   //  console.log(value);
                     marketData =  value.data;
                     market_autocorrelation = value.correlation;
-                    return Quandl.getETFData();
+                    // return Quandl.getETFData();
                   })
+                  .catch(function(error){
+                      console.log(error);
+                  });
+                  /**
                   .then((result) => {
-         
                       etfData = result.data;
                       etf_autocorrelation = result.correlation;
                   })
                   .catch(function(error){
                       console.log(error);
                   });
+                  **/
 
 };
 let routine =  new Interval();

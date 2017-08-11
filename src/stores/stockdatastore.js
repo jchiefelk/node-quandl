@@ -5,7 +5,6 @@ var objectAssign = require('object-assign');
 var EventEmitter = require('events').EventEmitter;
 var CHANGE_EVENT = 'change';
 var moment = require('moment');
-
 function DailyData(){
       this.etfdata = null;
       this.marketdata = null;
@@ -13,10 +12,8 @@ function DailyData(){
       this.market=null;
 
 };
-
-
 DailyData.prototype.D3Graphs = function(item){
-    
+      console.log(item);
       //
       // Put in D3.js format
       //
@@ -50,20 +47,21 @@ DailyData.prototype.D3Graphs = function(item){
             yMax: null,
         }
       };
+      /**
       // autocorrelation graphs
       for(var x =0;x<item.etf_autocorrelation.length; x++){
           this.etf.autocorrelation.xValues.push(x); 
           this.etf.autocorrelation.yValues.push(item.etf_autocorrelation[x]); 
       };
       this.etf.autocorrelation.yMax = Math.max.apply(null, this.etf.autocorrelation.yValues); 
-      
+      **/
       for(var x =0;x<item.market_autocorrelation.length; x++){
           this.market.autocorrelation.xValues.push(x); 
           this.market.autocorrelation.yValues.push(item.market_autocorrelation[x]); 
       };
       this.market.autocorrelation.yMax = Math.max.apply(null, this.market.autocorrelation.yValues); 
-   
       // market/etf graphs
+      /****
       for(var x = 0; x < item.etfdata.length; x++){
           this.etf.xValues.push(item.etfdata[x].date); 
           this.etf.yValues.push(item.etfdata[x].close); 
@@ -73,11 +71,11 @@ DailyData.prototype.D3Graphs = function(item){
       };
       this.etf.yMax = Math.max.apply(null, this.etf.yValues); 
       this.etf['name'] = item.etfdata[0].name;
+      ****/
       //
       //
-
       for(var x = 0; x < item.marketdata.length; x++){
-          this.market.xValues.push(item.etfdata[x].date); 
+         //  this.market.xValues.push(item.etfdata[x].date); 
           this.market.yValues.push(item.marketdata[x].value); 
       };
       this.market.yMax = Math.max.apply(null, this.market.yValues); 
@@ -85,11 +83,8 @@ DailyData.prototype.D3Graphs = function(item){
       this.marketdata=null;
       this.etfdata = null;
       StockDataStore.emit(CHANGE_EVENT);
-
 };
-
 let FrontEndData = new DailyData();
-
 function StockData(){
     this.IntraDay = {
         name: null,
@@ -105,8 +100,6 @@ function StockData(){
 
 StockData.prototype.updateIntradayTicket = function(item){
   console.log('Update Intraday');
-
-
   this.IntraDay.data=[];
   this.IntraDay.name = item['Meta Data']['2. Symbol'];
   for(let key in item['Time Series (1min)']){

@@ -2,10 +2,10 @@
 1 verbose cli [ '/usr/local/Cellar/node/7.4.0/bin/node',
 1 verbose cli   '/usr/local/bin/npm',
 1 verbose cli   'run',
-1 verbose cli   'pro_start' ]
+1 verbose cli   'prod_Start' ]
 2 info using npm@4.0.5
 3 info using node@v7.4.0
-4 verbose stack Error: missing script: pro_start
+4 verbose stack Error: missing script: prod_Start
 4 verbose stack     at run (/usr/local/lib/node_modules/npm/lib/run-script.js:151:19)
 4 verbose stack     at /usr/local/lib/node_modules/npm/lib/run-script.js:61:5
 4 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:356:5
@@ -18,10 +18,10 @@
 4 verbose stack     at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:413:12)
 5 verbose cwd /Users/ggt/independent/node-quandl
 6 error Darwin 16.6.0
-7 error argv "/usr/local/Cellar/node/7.4.0/bin/node" "/usr/local/bin/npm" "run" "pro_start"
+7 error argv "/usr/local/Cellar/node/7.4.0/bin/node" "/usr/local/bin/npm" "run" "prod_Start"
 8 error node v7.4.0
 9 error npm  v4.0.5
-10 error missing script: pro_start
+10 error missing script: prod_Start
 11 error If you need help, you may report this error at:
 11 error     <https://github.com/npm/npm/issues>
 12 verbose exit [ 1, true ]

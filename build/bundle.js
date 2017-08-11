@@ -27833,13 +27833,12 @@
 	  _createClass(MarketPage, [{
 	    key: 'render',
 	    value: function render() {
-
-	      //  <VideoBackground />
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'marketpage' },
 	        _react2.default.createElement(_header2.default, null),
-	        MarketGraph.setCompanyPicker()
+	        MarketGraph.setCompanyPicker(),
+	        _react2.default.createElement(_marketfundview2.default, null)
 	      );
 	    }
 	  }]);
@@ -28351,30 +28350,29 @@
 				StockDataStore.addChangeListener(this._onChange.bind(this));
 				Actions.getDailyFrontEndData();
 
-				if (this.state.dailymarketData.xValues.length > 0) {
-					this.setState({
-						marketGraph: MarketGraph.setMarketGoogleGraph(this.state.dailymarketData)
-					});
-				}
-
-				if (this.state.dailyetfData.xValues.length > 0) {
-					this.setState({
-						etfGraph: MarketGraph.setMarketGoogleGraph(this.state.dailyetfData)
-					});
-				}
-
-				if (this.state.dailymarketData.autocorrelation.xValues.length > 0) {
-					this.setState({
-						etfAutocorrelation: Autocorrelation.setGoogleAutocorr(this.state.dailyetfData),
-						etfCandleStick: CandleStickGraph.setGraph(this.state.dailyetfData)
-					});
-				}
-
-				if (this.state.dailymarketData.autocorrelation.xValues.length > 0) {
-					this.setState({
-						marketAutocorrelation: Autocorrelation.setGoogleAutocorr(this.state.dailymarketData)
-					});
-				}
+				/**
+	   if( this.state.dailymarketData.xValues.length>0 ){
+	   	this.setState({
+	   		marketGraph: MarketGraph.setMarketGoogleGraph(this.state.dailymarketData)
+	   	});
+	   }
+	   		if(this.state.dailyetfData.xValues.length>0  ){
+	   	this.setState({
+	   		etfGraph: MarketGraph.setMarketGoogleGraph(this.state.dailyetfData)
+	   	});
+	   }
+	   				if(	this.state.dailymarketData.autocorrelation.xValues.length>0  ){
+	   	this.setState({
+	   		etfAutocorrelation: Autocorrelation.setGoogleAutocorr(this.state.dailyetfData),
+	   		etfCandleStick: CandleStickGraph.setGraph(this.state.dailyetfData)
+	   	});
+	   }
+	   		if(	this.state.dailymarketData.autocorrelation.xValues.length>0 ){
+	   	this.setState({
+	   		marketAutocorrelation: Autocorrelation.setGoogleAutocorr(this.state.dailymarketData)
+	   	});
+	   }
+	   ***/
 			}
 		}, {
 			key: 'componentWillUnmount',
@@ -28415,12 +28413,14 @@
 					});
 				}
 
-				if (this.state.storeupdated == true && this.state.dailyetfData.xValues.length > 0 && this.state.sendRequestStatus == false && this.state.viewMode == 'markets') {
-					this.setState({
-						storeupdated: false,
-						etfGraph: MarketGraph.setMarketGoogleGraph(this.state.dailyetfData)
-					});
-				}
+				/***
+	   if(this.state.storeupdated==true && this.state.dailyetfData.xValues.length>0  && this.state.sendRequestStatus==false && this.state.viewMode=='markets'){
+	   	this.setState({
+	   			storeupdated: false,
+	   			etfGraph: MarketGraph.setMarketGoogleGraph(this.state.dailyetfData)
+	   		});
+	   }
+	   ***/
 
 				if (this.state.storeupdated == true && this.state.dailymarketData.autocorrelation.xValues.length > 0 && this.state.sendRequestStatus == false && this.state.viewMode == 'markets') {
 					this.setState({
@@ -56835,16 +56835,14 @@
 	var EventEmitter = __webpack_require__(421).EventEmitter;
 	var CHANGE_EVENT = 'change';
 	var moment = __webpack_require__(285);
-
 	function DailyData() {
 	  this.etfdata = null;
 	  this.marketdata = null;
 	  this.etf = null;
 	  this.market = null;
 	};
-
 	DailyData.prototype.D3Graphs = function (item) {
-
+	  console.log(item);
 	  //
 	  // Put in D3.js format
 	  //
@@ -56878,32 +56876,35 @@
 	      yMax: null
 	    }
 	  };
+	  /**
 	  // autocorrelation graphs
-	  for (var x = 0; x < item.etf_autocorrelation.length; x++) {
-	    this.etf.autocorrelation.xValues.push(x);
-	    this.etf.autocorrelation.yValues.push(item.etf_autocorrelation[x]);
+	  for(var x =0;x<item.etf_autocorrelation.length; x++){
+	      this.etf.autocorrelation.xValues.push(x); 
+	      this.etf.autocorrelation.yValues.push(item.etf_autocorrelation[x]); 
 	  };
-	  this.etf.autocorrelation.yMax = Math.max.apply(null, this.etf.autocorrelation.yValues);
-
+	  this.etf.autocorrelation.yMax = Math.max.apply(null, this.etf.autocorrelation.yValues); 
+	  **/
 	  for (var x = 0; x < item.market_autocorrelation.length; x++) {
 	    this.market.autocorrelation.xValues.push(x);
 	    this.market.autocorrelation.yValues.push(item.market_autocorrelation[x]);
 	  };
 	  this.market.autocorrelation.yMax = Math.max.apply(null, this.market.autocorrelation.yValues);
-
 	  // market/etf graphs
-	  for (var x = 0; x < item.etfdata.length; x++) {
-	    this.etf.xValues.push(item.etfdata[x].date);
-	    this.etf.yValues.push(item.etfdata[x].close);
-	    this.etf.open.push(item.etfdata[x].open), this.etf.high.push(item.etfdata[x].high), this.etf.low.push(item.etfdata[x].low);
+	  /****
+	  for(var x = 0; x < item.etfdata.length; x++){
+	      this.etf.xValues.push(item.etfdata[x].date); 
+	      this.etf.yValues.push(item.etfdata[x].close); 
+	      this.etf.open.push(item.etfdata[x].open),
+	      this.etf.high.push(item.etfdata[x].high),
+	      this.etf.low.push(item.etfdata[x].low)
 	  };
-	  this.etf.yMax = Math.max.apply(null, this.etf.yValues);
+	  this.etf.yMax = Math.max.apply(null, this.etf.yValues); 
 	  this.etf['name'] = item.etfdata[0].name;
+	  ****/
 	  //
 	  //
-
 	  for (var x = 0; x < item.marketdata.length; x++) {
-	    this.market.xValues.push(item.etfdata[x].date);
+	    //  this.market.xValues.push(item.etfdata[x].date); 
 	    this.market.yValues.push(item.marketdata[x].value);
 	  };
 	  this.market.yMax = Math.max.apply(null, this.market.yValues);
@@ -56912,9 +56913,7 @@
 	  this.etfdata = null;
 	  StockDataStore.emit(CHANGE_EVENT);
 	};
-
 	var FrontEndData = new DailyData();
-
 	function StockData() {
 	  this.IntraDay = {
 	    name: null,
@@ -56930,7 +56929,6 @@
 
 	StockData.prototype.updateIntradayTicket = function (item) {
 	  console.log('Update Intraday');
-
 	  this.IntraDay.data = [];
 	  this.IntraDay.name = item['Meta Data']['2. Symbol'];
 	  for (var key in item['Time Series (1min)']) {
