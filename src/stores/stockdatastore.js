@@ -84,6 +84,7 @@ DailyData.prototype.D3Graphs = function(item){
       this.etfdata = null;
       StockDataStore.emit(CHANGE_EVENT);
 };
+
 let FrontEndData = new DailyData();
 function StockData(){
     this.IntraDay = {
@@ -139,6 +140,19 @@ StockData.prototype.updateCompanyCode = function(item) {
 
 var Stocks = new StockData();
 
+function BitcoinData(){
+  this.description = "Bitcoin Data Avg Object";
+  this.data = null;
+};
+
+BitcoinData.prototype.updateBitcoinData = function(item){
+  this.data = item;
+};
+let Bitcoin =  new BitcoinData();
+
+
+
+
 var StockDataStore = objectAssign({}, EventEmitter.prototype, {
   addChangeListener: function(cb){
     this.on(CHANGE_EVENT, cb);
@@ -175,8 +189,10 @@ var StockDataStore = objectAssign({}, EventEmitter.prototype, {
   },
   getDailyMarketData: function(){
     return FrontEndData.market;
+  },
+  getBitcoinHistory: function(){
+    return Bitcoin.data;
   }
-
 });
 
 AppDispatcher.register(function(payload){
@@ -220,6 +236,10 @@ AppDispatcher.register(function(payload){
         Stocks.IntraDay.autocorr = action.data;
         StockDataStore.emitChange(CHANGE_EVENT);
       break;
+    case appConstants.UPDATE_BITCOIN_AVG_HISTORY:
+        Bitcoin.updateBitcoinData(action.data);
+        StockDataStore.emitChange(CHANGE_EVENT);  
+        break;
     default:
       return true;
   }

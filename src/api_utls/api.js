@@ -27,5 +27,20 @@ API.prototype.getStockPrice = function(params){
               console.log(error);
           }); 
 };
-
+API.prototype.getBitcoinData = function(){
+  return fetch('https://apiv2.bitcoinaverage.com/indices/global/history/BTCUSD?period=daily&?format=json', {
+        method: 'GET',
+        mode: 'cors',
+      })
+      .then(function(response) {
+            if(response.status!=undefined){
+              Actions.setStatus(response.status);
+            }
+            return response.json();
+          }).then(function(data) {
+              Actions.updateBitcoinData(data);
+          }).catch(function(error) {
+              console.log(error);
+          }); 
+};
 module.exports = new API();

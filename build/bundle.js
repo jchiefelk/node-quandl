@@ -27799,7 +27799,7 @@
 
 	var _marketfundview2 = _interopRequireDefault(_marketfundview);
 
-	var _intradayticket = __webpack_require__(460);
+	var _intradayticket = __webpack_require__(461);
 
 	var _intradayticket2 = _interopRequireDefault(_intradayticket);
 
@@ -27817,7 +27817,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var MarketGraph = __webpack_require__(424);
+	var MarketGraph = __webpack_require__(425);
 
 	__webpack_require__(245);
 
@@ -28305,10 +28305,11 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var StockDataStore = __webpack_require__(416);
+	var API = __webpack_require__(424);
 	var Actions = __webpack_require__(422);
-	var MarketGraph = __webpack_require__(424);
-	var CandleStickGraph = __webpack_require__(458);
-	var Autocorrelation = __webpack_require__(459);
+	var MarketGraph = __webpack_require__(425);
+	var CandleStickGraph = __webpack_require__(459);
+	var Autocorrelation = __webpack_require__(460);
 	__webpack_require__(245);
 
 	var MarketFundView = function (_Component) {
@@ -28339,7 +28340,8 @@
 				marketAutocorrelation: null,
 				sendRequestStatus: false,
 				etfCandleStick: null,
-				viewMode: 'markets'
+				viewMode: 'markets',
+				bitcoinData: null
 			};
 			return _this;
 		}
@@ -28348,31 +28350,8 @@
 			key: 'componentDidMount',
 			value: function componentDidMount() {
 				StockDataStore.addChangeListener(this._onChange.bind(this));
-				Actions.getDailyFrontEndData();
-
-				/**
-	   if( this.state.dailymarketData.xValues.length>0 ){
-	   	this.setState({
-	   		marketGraph: MarketGraph.setMarketGoogleGraph(this.state.dailymarketData)
-	   	});
-	   }
-	   		if(this.state.dailyetfData.xValues.length>0  ){
-	   	this.setState({
-	   		etfGraph: MarketGraph.setMarketGoogleGraph(this.state.dailyetfData)
-	   	});
-	   }
-	   				if(	this.state.dailymarketData.autocorrelation.xValues.length>0  ){
-	   	this.setState({
-	   		etfAutocorrelation: Autocorrelation.setGoogleAutocorr(this.state.dailyetfData),
-	   		etfCandleStick: CandleStickGraph.setGraph(this.state.dailyetfData)
-	   	});
-	   }
-	   		if(	this.state.dailymarketData.autocorrelation.xValues.length>0 ){
-	   	this.setState({
-	   		marketAutocorrelation: Autocorrelation.setGoogleAutocorr(this.state.dailymarketData)
-	   	});
-	   }
-	   ***/
+				// Actions.getDailyFrontEndData();
+				API.getBitcoinData();
 			}
 		}, {
 			key: 'componentWillUnmount',
@@ -28386,90 +28365,85 @@
 					dailyetfData: StockDataStore.getDailyETFData(),
 					dailymarketData: StockDataStore.getDailyMarketData(),
 					sendRequestStatus: StockDataStore.getRequestSendStatus(),
+					bitcoinData: StockDataStore.getBitcoinHistory(),
 					storeupdated: true
 				});
 			}
 		}, {
-			key: 'componentDidUpdate',
-			value: function componentDidUpdate() {
+			key: 'renderMarketView',
+			value: function renderMarketView() {
+				var marketAutocorrelation = void 0,
+				    marketGraph = null;
 
-				if (this.state.storeupdated == true && this.state.sendRequestStatus == true) {
-					this.setState({
-						storeupdated: true,
-						marketGraph: null,
-						etfGraph: null,
-						etfAutocorrelation: null,
-						marketAutocorrelation: null,
-						etfCandleStick: null,
-						viewMode: 'intraday'
-					});
-					// Actions.updatesendRequest();
+				if (this.state.dailymarketData.autocorrelation != undefined && this.state.sendRequestStatus == false) {
+					marketAutocorrelation = Autocorrelation.setGoogleAutocorr(this.state.dailymarketData);
 				}
-
-				if (this.state.storeupdated == true && this.state.dailymarketData.xValues.length > 0 && this.state.sendRequestStatus == false && this.state.viewMode == 'markets') {
-					this.setState({
-						storeupdated: false,
-						marketGraph: MarketGraph.setMarketGoogleGraph(this.state.dailymarketData)
-					});
+				if (this.state.dailymarketData.xValues.length > 0 && this.state.sendRequestStatus == false) {
+					marketGraph = MarketGraph.setMarketGoogleGraph(this.state.dailymarketData);
 				}
+				return _react2.default.createElement(
+					'div',
+					{ className: 'graphViews' },
+					marketGraph,
+					_react2.default.createElement(
+						'div',
+						{ className: 'graphViewChild' },
+						marketAutocorrelation
+					)
+				);
+			}
+		}, {
+			key: 'renderETFView',
+			value: function renderETFView() {
 
-				/***
-	   if(this.state.storeupdated==true && this.state.dailyetfData.xValues.length>0  && this.state.sendRequestStatus==false && this.state.viewMode=='markets'){
-	   	this.setState({
-	   			storeupdated: false,
-	   			etfGraph: MarketGraph.setMarketGoogleGraph(this.state.dailyetfData)
-	   		});
-	   }
-	   ***/
-
-				if (this.state.storeupdated == true && this.state.dailymarketData.autocorrelation.xValues.length > 0 && this.state.sendRequestStatus == false && this.state.viewMode == 'markets') {
-					this.setState({
-						storeupdated: false,
-						etfAutocorrelation: Autocorrelation.setGoogleAutocorr(this.state.dailyetfData),
-						etfCandleStick: CandleStickGraph.setGraph(this.state.dailyetfData)
-					});
+				var etfGraph = void 0,
+				    marketAutocorrelation = void 0,
+				    etfCandleStick = void 0,
+				    etfAutocorrelation = null;
+				if (this.state.dailyetfData.xValues.length > 0 && this.state.sendRequestStatus == false && this.state.viewMode == 'markets') {
+					etfGraph = MarketGraph.setMarketGoogleGraph(this.state.dailyetfData);
 				}
-
-				if (this.state.storeupdated == true && this.state.dailymarketData.autocorrelation.xValues.length > 0 && this.state.sendRequestStatus == false && this.state.viewMode == 'markets') {
-					this.setState({
-						storeupdated: false,
-						marketAutocorrelation: Autocorrelation.setGoogleAutocorr(this.state.dailymarketData)
-					});
+				if (this.state.dailyetfData.autocorrelation != undefined && this.state.sendRequestStatus == false && this.state.viewMode == 'markets') {
+					etfAutocorrelation = Autocorrelation.setGoogleAutocorr(this.state.dailyetfData);
+					etfCandleStick = CandleStickGraph.setGraph(this.state.dailyetfData);
 				}
+				return _react2.default.createElement(
+					'div',
+					{ className: 'graphViews' },
+					etfGraph,
+					_react2.default.createElement(
+						'div',
+						{ className: 'graphViewChild' },
+						etfAutocorrelation,
+						etfCandleStick
+					)
+				);
+			}
+		}, {
+			key: 'renderBitCoinView',
+			value: function renderBitCoinView() {
+				var view = null;
+				if (this.state.bitcoinData != null) {
+					view = MarketGraph.setBitcoinGraph(this.state.bitcoinData);
+				}
+				return view;
 			}
 		}, {
 			key: 'render',
 			value: function render() {
-
+				//
+				// 	{this.renderMarketView()}
+				//	{this.renderETFView()}
+				//
 				return _react2.default.createElement(
 					'div',
 					{ className: 'marketgraph-view' },
 					_react2.default.createElement(
 						'h1',
 						{ className: 'graph-page-title' },
-						' ETF and Futures Market'
+						'Bitcoin'
 					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'graphViews' },
-						this.state.marketGraph,
-						_react2.default.createElement(
-							'div',
-							{ className: 'graphViewChild' },
-							this.state.marketAutocorrelation
-						)
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'graphViews' },
-						this.state.etfGraph,
-						_react2.default.createElement(
-							'div',
-							{ className: 'graphViewChild' },
-							this.state.etfAutocorrelation,
-							this.state.etfCandleStick
-						)
-					)
+					this.renderBitCoinView()
 				);
 			}
 		}]);
@@ -56913,6 +56887,7 @@
 	  this.etfdata = null;
 	  StockDataStore.emit(CHANGE_EVENT);
 	};
+
 	var FrontEndData = new DailyData();
 	function StockData() {
 	  this.IntraDay = {
@@ -56966,6 +56941,16 @@
 
 	var Stocks = new StockData();
 
+	function BitcoinData() {
+	  this.description = "Bitcoin Data Avg Object";
+	  this.data = null;
+	};
+
+	BitcoinData.prototype.updateBitcoinData = function (item) {
+	  this.data = item;
+	};
+	var Bitcoin = new BitcoinData();
+
 	var StockDataStore = objectAssign({}, EventEmitter.prototype, {
 	  addChangeListener: function addChangeListener(cb) {
 	    this.on(CHANGE_EVENT, cb);
@@ -57002,8 +56987,10 @@
 	  },
 	  getDailyMarketData: function getDailyMarketData() {
 	    return FrontEndData.market;
+	  },
+	  getBitcoinHistory: function getBitcoinHistory() {
+	    return Bitcoin.data;
 	  }
-
 	});
 
 	AppDispatcher.register(function (payload) {
@@ -57045,6 +57032,10 @@
 	    case appConstants.AUTOCORRELATION_INTRADAY:
 	      Stocks.IntraDay.autocorr = [];
 	      Stocks.IntraDay.autocorr = action.data;
+	      StockDataStore.emitChange(CHANGE_EVENT);
+	      break;
+	    case appConstants.UPDATE_BITCOIN_AVG_HISTORY:
+	      Bitcoin.updateBitcoinData(action.data);
 	      StockDataStore.emitChange(CHANGE_EVENT);
 	      break;
 	    default:
@@ -57345,7 +57336,8 @@
 	  COMPANY_CODE: "COMPANY_CODE",
 	  SEND_REQUEST: "SEND_REQUEST",
 	  AUTOCORRELATION_INTRADAY: "AUTOCORRELATION_INTRADAY",
-	  UPDATE_FRONTEND_DATA: "UPDATE_FRONTEND_DATA"
+	  UPDATE_FRONTEND_DATA: "UPDATE_FRONTEND_DATA",
+	  UPDATE_BITCOIN_AVG_HISTORY: "UPDATE_BITCOIN_AVG_HISTORY"
 	};
 	module.exports = appConstants;
 
@@ -57735,7 +57727,6 @@
 	  }).then(function (response) {
 	    return response.json();
 	  }).then(function (data) {
-
 	    Actions.updateFrontEndData(data);
 	  }).catch(function (error) {
 	    console.log(error);
@@ -57743,6 +57734,14 @@
 	};
 
 	var Actions = {
+
+	  updateBitcoinData: function updateBitcoinData(item) {
+
+	    AppDispatcher.handleAction({
+	      actionType: appConstants.UPDATE_BITCOIN_AVG_HISTORY,
+	      data: item
+	    });
+	  },
 
 	  getDailyFrontEndData: function getDailyFrontEndData() {
 	    getFrontEndData();
@@ -74930,21 +74929,72 @@
 
 	'use strict';
 
+	var Actions = __webpack_require__(422);
+
+	function API() {
+	  this.value = null;
+	};
+
+	API.prototype.getStockPrice = function (params) {
+
+	  return fetch('/api', {
+	    method: 'post',
+	    headers: {
+	      'Accept': 'application/json',
+	      'Content-Type': 'application/json'
+	    },
+	    body: JSON.stringify(params)
+	  }).then(function (response) {
+	    if (response.status != undefined) {
+	      Actions.setStatus(response.status);
+	    }
+	    return response.json();
+	  }).then(function (data) {
+
+	    Actions.updateIntradDayData(data.general);
+	    Actions.updateAutocorrelation(data.autocorr);
+	  }).catch(function (error) {
+	    console.log(error);
+	  });
+	};
+	API.prototype.getBitcoinData = function () {
+	  return fetch('https://apiv2.bitcoinaverage.com/indices/global/history/BTCUSD?period=daily&?format=json', {
+	    method: 'GET',
+	    mode: 'cors'
+	  }).then(function (response) {
+	    if (response.status != undefined) {
+	      Actions.setStatus(response.status);
+	    }
+	    return response.json();
+	  }).then(function (data) {
+	    Actions.updateBitcoinData(data);
+	  }).catch(function (error) {
+	    console.log(error);
+	  });
+	};
+	module.exports = new API();
+
+/***/ }),
+/* 425 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactChartjs = __webpack_require__(425);
+	var _reactChartjs = __webpack_require__(426);
 
-	var _marketpicker = __webpack_require__(427);
+	var _marketpicker = __webpack_require__(428);
 
 	var _marketpicker2 = _interopRequireDefault(_marketpicker);
 
 	var _reactRouter = __webpack_require__(183);
 
-	var _reactGoogleCharts = __webpack_require__(441);
+	var _reactGoogleCharts = __webpack_require__(442);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -74952,8 +75002,8 @@
 
 	var Actions = __webpack_require__(422);
 	var moment = __webpack_require__(285);
-	var Datetime = __webpack_require__(449);
-	var Loading = __webpack_require__(457);
+	var Datetime = __webpack_require__(450);
+	var Loading = __webpack_require__(458);
 
 	var MarketGraph = function () {
 		function MarketGraph() {
@@ -74974,6 +75024,66 @@
 		}
 
 		_createClass(MarketGraph, [{
+			key: 'setBitcoinGraph',
+			value: function setBitcoinGraph(data) {
+				console.log(data);
+
+				var line_data = [["DATE", "valuation"]];
+				for (var x = data.length - 1; x >= 0; x--) {
+					line_data.push([data[x].time, data[x].average]);
+				};
+
+				var options = {
+					title: data.name,
+					legend: "none",
+					backgroundColor: 'transparent',
+
+					vAxis: {
+						title: "",
+						titleTextStyle: { color: 'black' },
+						baselineColor: 'transparent',
+						textStyle: {
+							fontSize: 10,
+							fontName: 'Courier New',
+							color: 'black',
+							fontWeight: 700
+
+						},
+						gridlines: {
+							count: 5
+						}
+
+					},
+
+					hAxis: {
+						baselineColor: 'transparent',
+						textStyle: {
+							color: 'black',
+							fontName: 'Courier New',
+							fontWeight: 700,
+							fontSize: 10
+						},
+						gridlines: {
+							count: 5
+						}
+
+					}
+
+				};
+
+				return _react2.default.createElement(
+					'div',
+					{ className: 'marketgraph' },
+					_react2.default.createElement(_reactGoogleCharts.Chart, {
+						chartType: 'LineChart',
+						data: line_data,
+						width: '100%',
+						height: '100%',
+						options: options
+					})
+				);
+			}
+		}, {
 			key: 'setMarketGoogleGraph',
 			value: function setMarketGoogleGraph(data) {
 
@@ -75246,7 +75356,7 @@
 	module.exports = new MarketGraph();
 
 /***/ }),
-/* 425 */
+/* 426 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -75276,7 +75386,7 @@
 
 	var _chart2 = _interopRequireDefault(_chart);
 
-	var _lodash = __webpack_require__(426);
+	var _lodash = __webpack_require__(427);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
@@ -75779,7 +75889,7 @@
 	exports.Chart = _chart2.default;
 
 /***/ }),
-/* 426 */
+/* 427 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, module) {/**
@@ -77634,7 +77744,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(286)(module)))
 
 /***/ }),
-/* 427 */
+/* 428 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -77649,7 +77759,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactAddonsCssTransitionGroup = __webpack_require__(428);
+	var _reactAddonsCssTransitionGroup = __webpack_require__(429);
 
 	var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
 
@@ -77729,13 +77839,13 @@
 	exports.default = MarketPicker;
 
 /***/ }),
-/* 428 */
+/* 429 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(429);
+	module.exports = __webpack_require__(430);
 
 /***/ }),
-/* 429 */
+/* 430 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -77762,8 +77872,8 @@
 	var propTypesFactory = __webpack_require__(30);
 	var PropTypes = propTypesFactory(React.isValidElement);
 
-	var ReactTransitionGroup = __webpack_require__(430);
-	var ReactCSSTransitionGroupChild = __webpack_require__(433);
+	var ReactTransitionGroup = __webpack_require__(431);
+	var ReactCSSTransitionGroupChild = __webpack_require__(434);
 
 	function createTransitionTimeoutPropValidator(transitionType) {
 	  var timeoutPropName = 'transition' + transitionType + 'Timeout';
@@ -77846,7 +77956,7 @@
 	module.exports = ReactCSSTransitionGroup;
 
 /***/ }),
-/* 430 */
+/* 431 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -77870,7 +77980,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var React = __webpack_require__(2);
-	var ReactTransitionChildMapping = __webpack_require__(431);
+	var ReactTransitionChildMapping = __webpack_require__(432);
 
 	var propTypesFactory = __webpack_require__(30);
 	var PropTypes = propTypesFactory(React.isValidElement);
@@ -78082,7 +78192,7 @@
 	module.exports = ReactTransitionGroup;
 
 /***/ }),
-/* 431 */
+/* 432 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -78097,7 +78207,7 @@
 
 	'use strict';
 
-	var flattenChildren = __webpack_require__(432);
+	var flattenChildren = __webpack_require__(433);
 
 	var ReactTransitionChildMapping = {
 	  /**
@@ -78190,7 +78300,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
-/* 432 */
+/* 433 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -78271,7 +78381,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
-/* 433 */
+/* 434 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -78293,13 +78403,13 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var React = __webpack_require__(2);
-	var ReactAddonsDOMDependencies = __webpack_require__(434);
+	var ReactAddonsDOMDependencies = __webpack_require__(435);
 
 	var propTypesFactory = __webpack_require__(30);
 	var PropTypes = propTypesFactory(React.isValidElement);
 
-	var CSSCore = __webpack_require__(439);
-	var ReactTransitionEvents = __webpack_require__(440);
+	var CSSCore = __webpack_require__(440);
+	var ReactTransitionEvents = __webpack_require__(441);
 
 	var onlyChild = __webpack_require__(35);
 
@@ -78460,7 +78570,7 @@
 	module.exports = ReactCSSTransitionGroupChild;
 
 /***/ }),
-/* 434 */
+/* 435 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -78487,14 +78597,14 @@
 
 	  exports.getReactPerf = function () {
 	    if (!ReactPerf) {
-	      ReactPerf = __webpack_require__(435);
+	      ReactPerf = __webpack_require__(436);
 	    }
 	    return ReactPerf;
 	  };
 
 	  exports.getReactTestUtils = function () {
 	    if (!ReactTestUtils) {
-	      ReactTestUtils = __webpack_require__(436);
+	      ReactTestUtils = __webpack_require__(437);
 	    }
 	    return ReactTestUtils;
 	  };
@@ -78502,7 +78612,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
-/* 435 */
+/* 436 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -79008,7 +79118,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
-/* 436 */
+/* 437 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -79026,7 +79136,7 @@
 	var _prodInvariant = __webpack_require__(39),
 	    _assign = __webpack_require__(4);
 
-	var EventConstants = __webpack_require__(437);
+	var EventConstants = __webpack_require__(438);
 	var EventPluginHub = __webpack_require__(46);
 	var EventPluginRegistry = __webpack_require__(47);
 	var EventPropagators = __webpack_require__(45);
@@ -79037,7 +79147,7 @@
 	var ReactInstanceMap = __webpack_require__(120);
 	var ReactUpdates = __webpack_require__(60);
 	var SyntheticEvent = __webpack_require__(57);
-	var ReactShallowRenderer = __webpack_require__(438);
+	var ReactShallowRenderer = __webpack_require__(439);
 
 	var findDOMNode = __webpack_require__(176);
 	var invariant = __webpack_require__(8);
@@ -79435,7 +79545,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
-/* 437 */
+/* 438 */
 /***/ (function(module, exports) {
 
 	/**
@@ -79531,7 +79641,7 @@
 	module.exports = EventConstants;
 
 /***/ }),
-/* 438 */
+/* 439 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -79687,7 +79797,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
-/* 439 */
+/* 440 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -79814,7 +79924,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
-/* 440 */
+/* 441 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -79891,14 +80001,14 @@
 	module.exports = ReactTransitionEvents;
 
 /***/ }),
-/* 441 */
+/* 442 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _Chart = __webpack_require__(442);
+	var _Chart = __webpack_require__(443);
 
 	var _Chart2 = _interopRequireDefault(_Chart);
 
@@ -79908,7 +80018,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 442 */
+/* 443 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -79920,15 +80030,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _debug = __webpack_require__(443);
+	var _debug = __webpack_require__(444);
 
 	var _debug2 = _interopRequireDefault(_debug);
 
-	var _DEFAULT_CHART_COLORS = __webpack_require__(446);
+	var _DEFAULT_CHART_COLORS = __webpack_require__(447);
 
 	var _DEFAULT_CHART_COLORS2 = _interopRequireDefault(_DEFAULT_CHART_COLORS);
 
-	var _GoogleChartLoader = __webpack_require__(447);
+	var _GoogleChartLoader = __webpack_require__(448);
 
 	var _GoogleChartLoader2 = _interopRequireDefault(_GoogleChartLoader);
 
@@ -80396,7 +80506,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
-/* 443 */
+/* 444 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -80405,7 +80515,7 @@
 	 * Expose `debug()` as the module.
 	 */
 
-	exports = module.exports = __webpack_require__(444);
+	exports = module.exports = __webpack_require__(445);
 	exports.log = log;
 	exports.formatArgs = formatArgs;
 	exports.save = save;
@@ -80585,7 +80695,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
-/* 444 */
+/* 445 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	
@@ -80601,7 +80711,7 @@
 	exports.disable = disable;
 	exports.enable = enable;
 	exports.enabled = enabled;
-	exports.humanize = __webpack_require__(445);
+	exports.humanize = __webpack_require__(446);
 
 	/**
 	 * The currently active debug mode names, and names to skip.
@@ -80793,7 +80903,7 @@
 
 
 /***/ }),
-/* 445 */
+/* 446 */
 /***/ (function(module, exports) {
 
 	/**
@@ -80948,7 +81058,7 @@
 
 
 /***/ }),
-/* 446 */
+/* 447 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -80958,14 +81068,14 @@
 	module.exports = ['#3366CC', '#DC3912', '#FF9900', '#109618', '#990099', '#3B3EAC', '#0099C6', '#DD4477', '#66AA00', '#B82E2E', '#316395', '#994499', '#22AA99', '#AAAA11', '#6633CC', '#E67300', '#8B0707', '#329262', '#5574A6', '#3B3EAC'];
 
 /***/ }),
-/* 447 */
+/* 448 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _debug = __webpack_require__(443);
+	var _debug = __webpack_require__(444);
 
 	var _debug2 = _interopRequireDefault(_debug);
 
@@ -80975,7 +81085,7 @@
 
 	// Based on http://blog.arkency.com/2014/09/react-dot-js-and-google-charts/
 
-	var script = typeof window !== 'undefined' ? __webpack_require__(448) : function (link, _ref) {
+	var script = typeof window !== 'undefined' ? __webpack_require__(449) : function (link, _ref) {
 	  var callback = _ref.success;
 	  return callback();
 	};
@@ -81012,7 +81122,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 448 */
+/* 449 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function(root, factory) {
@@ -81293,17 +81403,17 @@
 
 
 /***/ }),
-/* 449 */
+/* 450 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var assign = __webpack_require__(450),
+	var assign = __webpack_require__(451),
 	        PropTypes = __webpack_require__(186),
 	        createClass = __webpack_require__(191),
 		moment = __webpack_require__(285),
 		React = __webpack_require__(1),
-		CalendarContainer = __webpack_require__(451)
+		CalendarContainer = __webpack_require__(452)
 	;
 
 	var TYPES = PropTypes;
@@ -81739,7 +81849,7 @@
 
 
 /***/ }),
-/* 450 */
+/* 451 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -81784,15 +81894,15 @@
 
 
 /***/ }),
-/* 451 */
+/* 452 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1),
 	  createClass = __webpack_require__(191),
-	  DaysView = __webpack_require__(452),
-	  MonthsView = __webpack_require__(454),
-	  YearsView = __webpack_require__(455),
-	  TimeView = __webpack_require__(456)
+	  DaysView = __webpack_require__(453),
+	  MonthsView = __webpack_require__(455),
+	  YearsView = __webpack_require__(456),
+	  TimeView = __webpack_require__(457)
 	;
 
 	var CalendarContainer = createClass({
@@ -81812,7 +81922,7 @@
 
 
 /***/ }),
-/* 452 */
+/* 453 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -81820,7 +81930,7 @@
 	var React = __webpack_require__(1),
 	    createClass = __webpack_require__(191),
 		moment = __webpack_require__(285),
-	  onClickOutside = __webpack_require__(453)
+	  onClickOutside = __webpack_require__(454)
 	;
 
 	var DOM = React.DOM;
@@ -81963,7 +82073,7 @@
 
 
 /***/ }),
-/* 453 */
+/* 454 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -82278,14 +82388,14 @@
 
 
 /***/ }),
-/* 454 */
+/* 455 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1),
 	    createClass = __webpack_require__(191),
-		onClickOutside = __webpack_require__(453)
+		onClickOutside = __webpack_require__(454)
 	;
 
 	var DOM = React.DOM;
@@ -82392,14 +82502,14 @@
 
 
 /***/ }),
-/* 455 */
+/* 456 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1),
 	    createClass = __webpack_require__(191),
-		onClickOutside = __webpack_require__(453)
+		onClickOutside = __webpack_require__(454)
 	;
 
 	var DOM = React.DOM;
@@ -82504,15 +82614,15 @@
 
 
 /***/ }),
-/* 456 */
+/* 457 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1),
 	    createClass = __webpack_require__(191),
-		assign = __webpack_require__(450),
-	  onClickOutside = __webpack_require__(453)
+		assign = __webpack_require__(451),
+	  onClickOutside = __webpack_require__(454)
 	;
 
 	var DOM = React.DOM;
@@ -82739,7 +82849,7 @@
 
 
 /***/ }),
-/* 457 */
+/* 458 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
@@ -83008,7 +83118,7 @@
 	;
 
 /***/ }),
-/* 458 */
+/* 459 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -83017,7 +83127,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactGoogleCharts = __webpack_require__(441);
+	var _reactGoogleCharts = __webpack_require__(442);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -83128,7 +83238,7 @@
 	module.exports = new CandleStickGraph();
 
 /***/ }),
-/* 459 */
+/* 460 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -83137,7 +83247,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactGoogleCharts = __webpack_require__(441);
+	var _reactGoogleCharts = __webpack_require__(442);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -83265,7 +83375,7 @@
 	module.exports = new Autocorrelation();
 
 /***/ }),
-/* 460 */
+/* 461 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -83290,10 +83400,10 @@
 
 	var StockDataStore = __webpack_require__(416);
 	var Actions = __webpack_require__(422);
-	var MarketGraph = __webpack_require__(424);
-	var CandleStickGraph = __webpack_require__(458);
-	var Autocorrelation = __webpack_require__(459);
-	var API = __webpack_require__(461);
+	var MarketGraph = __webpack_require__(425);
+	var CandleStickGraph = __webpack_require__(459);
+	var Autocorrelation = __webpack_require__(460);
+	var API = __webpack_require__(424);
 
 	var IntraDayTicket = function (_Component) {
 		_inherits(IntraDayTicket, _Component);
@@ -83420,43 +83530,6 @@
 	}(_react.Component);
 
 	exports.default = IntraDayTicket;
-
-/***/ }),
-/* 461 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var Actions = __webpack_require__(422);
-
-	function API() {
-	  this.value = null;
-	};
-
-	API.prototype.getStockPrice = function (params) {
-
-	  return fetch('/api', {
-	    method: 'post',
-	    headers: {
-	      'Accept': 'application/json',
-	      'Content-Type': 'application/json'
-	    },
-	    body: JSON.stringify(params)
-	  }).then(function (response) {
-	    if (response.status != undefined) {
-	      Actions.setStatus(response.status);
-	    }
-	    return response.json();
-	  }).then(function (data) {
-
-	    Actions.updateIntradDayData(data.general);
-	    Actions.updateAutocorrelation(data.autocorr);
-	  }).catch(function (error) {
-	    console.log(error);
-	  });
-	};
-
-	module.exports = new API();
 
 /***/ }),
 /* 462 */
@@ -83766,7 +83839,7 @@
 
 	var _reactRouter = __webpack_require__(183);
 
-	var _intradayticket = __webpack_require__(460);
+	var _intradayticket = __webpack_require__(461);
 
 	var _intradayticket2 = _interopRequireDefault(_intradayticket);
 

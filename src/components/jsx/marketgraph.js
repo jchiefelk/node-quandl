@@ -25,7 +25,65 @@ class MarketGraph {
 						</div>
 				);
 	}
+	setBitcoinGraph(data){
+				console.log(data);
+				
+				let line_data = [["DATE","valuation"]];
+				for(var x = data.length-1; x>=0; x--){
+					line_data.push([data[x].time, data[x].average ]);
+				};
 
+				let options = {
+						title: data.name,
+						legend: "none",
+						backgroundColor: 'transparent',
+						
+						vAxis: {
+							title: "",	
+							titleTextStyle: { color: 'black' },
+							baselineColor: 'transparent',
+				        	textStyle: {
+				        		fontSize: 10,
+				        		fontName: 'Courier New',
+				        		color: 'black',
+				        		fontWeight: 700,
+				       
+				        	},
+				        	gridlines: {
+						    	count: 5
+						   	}	
+
+				        },
+
+					 	hAxis: {
+					 		baselineColor: 'transparent',
+					 		textStyle:{
+					       	   	color: 'black',
+					       	   	fontName: 'Courier New',
+					       	   	fontWeight: 700,
+					       	   	fontSize: 10
+				       	   	},
+				       	   	gridlines: {
+						    	count: 5
+						   	}	 
+		
+					 	}
+					
+				};
+
+			return (
+				<div className="marketgraph">
+					<Chart
+						chartType="LineChart"
+						data={line_data}
+						width="100%"
+						height="100%"
+						options={options}
+						/>
+				</div>
+			);
+		
+	}
 	setMarketGoogleGraph(data){
 
 				let line_data = [["DATE","valuation"]];

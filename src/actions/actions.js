@@ -78,7 +78,6 @@ var getFrontEndData = function(){
     return response.json();
   })
   .then((data) =>{
-
       Actions.updateFrontEndData(data);
   })
   .catch((error)=>{
@@ -87,6 +86,16 @@ var getFrontEndData = function(){
 };
 
 var Actions = {
+
+
+  updateBitcoinData: function(item){
+
+    AppDispatcher.handleAction({
+      actionType: appConstants.UPDATE_BITCOIN_AVG_HISTORY,
+      data: item
+    });
+
+  },
 
   getDailyFrontEndData: function(){
       getFrontEndData();

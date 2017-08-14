@@ -2,6 +2,7 @@
 import React, {Component} from 'react';
 import Marketdata from '../components/marketdata';
 var StockDataStore = require('../../stores/stockdatastore');
+let API = require('../../api_utls/api');
 var Actions = require('../../actions/actions');
 var MarketGraph = require('../jsx/marketgraph');
 var CandleStickGraph = require('../jsx/candlestickplot');
@@ -10,7 +11,6 @@ require('../css/main.css');
 
 
 export default class MarketFundView extends Component {
-
 			constructor(){
 				super();
 				this.state = {
@@ -33,130 +33,84 @@ export default class MarketFundView extends Component {
 					marketAutocorrelation: null,
 					sendRequestStatus: false,
 					etfCandleStick: null,
-					viewMode: 'markets'
+					viewMode: 'markets',
+					bitcoinData: null
 				};
 			}
-
 			componentDidMount(){
 				StockDataStore.addChangeListener(this._onChange.bind(this));
-				Actions.getDailyFrontEndData();
-			
-				/**
-				if( this.state.dailymarketData.xValues.length>0 ){
-					this.setState({
-						marketGraph: MarketGraph.setMarketGoogleGraph(this.state.dailymarketData)
-					});
-				}
-	
-				if(this.state.dailyetfData.xValues.length>0  ){
-					this.setState({
-						etfGraph: MarketGraph.setMarketGoogleGraph(this.state.dailyetfData)
-					});
-				}
-			
-				if(	this.state.dailymarketData.autocorrelation.xValues.length>0  ){
-					this.setState({
-						etfAutocorrelation: Autocorrelation.setGoogleAutocorr(this.state.dailyetfData),
-						etfCandleStick: CandleStickGraph.setGraph(this.state.dailyetfData)
-					});
-				}
-	
-				if(	this.state.dailymarketData.autocorrelation.xValues.length>0 ){
-					this.setState({
-						marketAutocorrelation: Autocorrelation.setGoogleAutocorr(this.state.dailymarketData)
-					});
-				}
-				***/
-		
+				// Actions.getDailyFrontEndData();
+				API.getBitcoinData();
 			}
 
 			componentWillUnmount(){
 				StockDataStore.removeChangeListener(this._onChange.bind(this));
 			}
-
 			_onChange(){
 				this.setState({
 					dailyetfData: StockDataStore.getDailyETFData(),
 					dailymarketData: StockDataStore.getDailyMarketData(),
 					sendRequestStatus:	StockDataStore.getRequestSendStatus(),
+					bitcoinData: StockDataStore.getBitcoinHistory(),
 					storeupdated: true
 				});
+
 			}
-
-			componentDidUpdate(){
-
-			
-				if(this.state.storeupdated==true && this.state.sendRequestStatus==true){
-					this.setState({
-						storeupdated: true,
-						marketGraph: null,
-						etfGraph: null,
-						etfAutocorrelation: null,
-						marketAutocorrelation: null,
-						etfCandleStick: null,
-						viewMode: 'intraday'
-					});
-					// Actions.updatesendRequest();
-				}
-
-
-				if(this.state.storeupdated==true && this.state.dailymarketData.xValues.length>0 && this.state.sendRequestStatus==false && this.state.viewMode=='markets'){
-					this.setState({
-							storeupdated: false,
-							marketGraph: MarketGraph.setMarketGoogleGraph(this.state.dailymarketData)
-						});
-				}
-
-				/***
-				if(this.state.storeupdated==true && this.state.dailyetfData.xValues.length>0  && this.state.sendRequestStatus==false && this.state.viewMode=='markets'){
-					this.setState({
-							storeupdated: false,
-							etfGraph: MarketGraph.setMarketGoogleGraph(this.state.dailyetfData)
-						});
-				}
-				***/
+			renderMarketView(){
+				let marketAutocorrelation, marketGraph = null;
 				
-				if(	this.state.storeupdated==true && this.state.dailymarketData.autocorrelation.xValues.length>0  && this.state.sendRequestStatus==false && this.state.viewMode=='markets'){
-					this.setState({
-							storeupdated: false,
-							etfAutocorrelation: Autocorrelation.setGoogleAutocorr(this.state.dailyetfData),
-							etfCandleStick: CandleStickGraph.setGraph(this.state.dailyetfData)
-						});
+				if(this.state.dailymarketData.autocorrelation!=undefined && this.state.sendRequestStatus==false){
+					marketAutocorrelation = Autocorrelation.setGoogleAutocorr(this.state.dailymarketData);
 				}
-			
-				if(	this.state.storeupdated==true && this.state.dailymarketData.autocorrelation.xValues.length>0  && this.state.sendRequestStatus==false && this.state.viewMode=='markets'){
-						this.setState({
-							storeupdated: false,
-							marketAutocorrelation: Autocorrelation.setGoogleAutocorr(this.state.dailymarketData)
-						});
+				if(this.state.dailymarketData.xValues.length>0 && this.state.sendRequestStatus==false){	
+					marketGraph = MarketGraph.setMarketGoogleGraph(this.state.dailymarketData);
 				}
-				
+				return (
+					<div className="graphViews">
+						{marketGraph}
+						<div className="graphViewChild">
+							{marketAutocorrelation}
+						</div>
+					</div>
+				);
 			}
+			renderETFView(){
 
+				let etfGraph, marketAutocorrelation, etfCandleStick, etfAutocorrelation = null;
+				if(this.state.dailyetfData.xValues.length>0  && this.state.sendRequestStatus==false && this.state.viewMode=='markets'){
+					etfGraph = MarketGraph.setMarketGoogleGraph(this.state.dailyetfData);
+				}
+				if(this.state.dailyetfData.autocorrelation!=undefined  && this.state.sendRequestStatus==false && this.state.viewMode=='markets'){
+					etfAutocorrelation = Autocorrelation.setGoogleAutocorr(this.state.dailyetfData);
+					etfCandleStick = CandleStickGraph.setGraph(this.state.dailyetfData);
+				}
+				return (
+							<div className="graphViews">
+								{etfGraph}
+								<div className="graphViewChild">
+									{etfAutocorrelation}
+									{etfCandleStick}
+								</div>
+							</div>
+				);
+			}
+			renderBitCoinView(){
+					let view = null;
+					if(this.state.bitcoinData!=null){
+						view = MarketGraph.setBitcoinGraph(this.state.bitcoinData);
+					}
+					return view;
+			}
 			render(){
-
+				//
+				// 	{this.renderMarketView()}
+				//	{this.renderETFView()}
+				//
 				return (
 					<div className="marketgraph-view">
-
-							<h1 className="graph-page-title" > ETF and Futures Market</h1>
-
-							<div className="graphViews">
-								{this.state.marketGraph}
-								<div className="graphViewChild">
-									{this.state.marketAutocorrelation}
-								</div>
-							</div>
-
-							<div className="graphViews">
-								{this.state.etfGraph}
-								
-								<div className="graphViewChild">
-									{this.state.etfAutocorrelation}
-									{this.state.etfCandleStick}
-								</div>
-
-							</div>
+						<h1 className="graph-page-title">Bitcoin</h1>
+						{this.renderBitCoinView()}
 					</div>
-					);
+				);
 			}
 }
