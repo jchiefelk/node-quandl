@@ -162,10 +162,10 @@ Quandl.prototype.getMarketData = function(){
 	});
 };
 Quandl.prototype.getIntraDayTicket = function(params){
-	let url;
 	var startDate, endDate;
 	startDate =  moment(new Date().setFullYear(2016)).format('YYYY-MM-DD'),
 	endDate =  moment().format('YYYY-MM-DD');
+	/**
 	if( params.startDate==null || params.endDate==null) {
 		url = quandl_url+params.db+'/'+params.market+'_'+params.code+'.json?start_date='+startDate+'&end_date='+endDate+'&api_key='+api_key;
 	} else {
@@ -174,7 +174,11 @@ Quandl.prototype.getIntraDayTicket = function(params){
 	if(params.startDate=='start' && params.endDate=='end'){
 		url = quandl_url+params.db+'/'+params.market+'_'+params.code+'.json?api_key='+api_key;
 	}
-	return fetch('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MSFT&interval=1min&apikey=JKH0X5U5HVN4DD1Y', {
+	**/
+	console.log(params.code);
+	let url = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol='+params.code+'&interval=1min&apikey=JKH0X5U5HVN4DD1Y';
+	console.log(url);
+	return fetch(url, {
 			  method: 'GET',
 			  mode: 'cors',
 			})

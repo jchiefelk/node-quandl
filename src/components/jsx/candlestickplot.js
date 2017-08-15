@@ -14,22 +14,17 @@ function CandleStickGraph(){
             fallingColor: { strokeWidth: 0, fill: 'red' }, // red
             risingColor: { strokeWidth: 0, fill: 'black' }   // back
         },
-
 		hAxis: {
-
-		baselineColor: 'transparent',
+			baselineColor: 'transparent',
        	   textStyle:{
        	   	color: 'black',
        	   	fontName: 'Courier New',
        	   	fontWeight: 700,
        	   	fontSize: 8
        	   },
-
-	       format:'MMM d, y',
+	       format:'MMM d, y'
         },
-
        	vAxis: {
-
        	   baselineColor: 'transparent',
        	   textStyle:{
        	   	color: 'black',
@@ -43,7 +38,6 @@ function CandleStickGraph(){
 		    	count: 5
 		   }
         }
-	
 	};
 	this.data = [["DATE","low-high & open-close","open","close","high"]];
 };

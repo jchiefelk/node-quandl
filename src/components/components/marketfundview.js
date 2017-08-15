@@ -34,13 +34,14 @@ export default class MarketFundView extends Component {
 					sendRequestStatus: false,
 					etfCandleStick: null,
 					viewMode: 'markets',
-					bitcoinData: null
+					bitcoinData: null,
+					daterange: 'daily' 
 				};
 			}
 			componentDidMount(){
 				StockDataStore.addChangeListener(this._onChange.bind(this));
 				// Actions.getDailyFrontEndData();
-				API.getBitcoinData();
+				API.getBitcoinData("daily");
 			}
 
 			componentWillUnmount(){
@@ -97,9 +98,24 @@ export default class MarketFundView extends Component {
 			renderBitCoinView(){
 					let view = null;
 					if(this.state.bitcoinData!=null){
-						view = MarketGraph.setBitcoinGraph(this.state.bitcoinData);
+						view = MarketGraph.setBitcoinGraph(this.state.bitcoinData,this.state.daterange);
 					}
 					return view;
+			}
+			changeDateRange(e){
+				this.setState({daterange: e.target.value});
+				API.getBitcoinData(e.target.value);
+
+			}
+			renderAPIOptions(){
+
+				return(
+						<select className="bitcoinoptions" onChange={(e)=> this.changeDateRange(e)}>
+							<option value="daily">daily</option>
+							<option value="monthly">monthly</option>
+							<option value="alltime">alltime</option>
+						</select>
+				);
 			}
 			render(){
 				//
@@ -109,6 +125,7 @@ export default class MarketFundView extends Component {
 				return (
 					<div className="marketgraph-view">
 						<h1 className="graph-page-title">Bitcoin</h1>
+						{this.renderAPIOptions()}
 						{this.renderBitCoinView()}
 					</div>
 				);

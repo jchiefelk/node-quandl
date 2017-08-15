@@ -118,8 +118,6 @@ app.post('/api', function(req,res){
 });
 
 app.get('/frontenddata',function(req,res){
-
-  
     res.json({
       marketdata: marketData,
       etfdata: etfData,

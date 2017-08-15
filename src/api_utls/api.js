@@ -1,12 +1,8 @@
 let Actions = require('../actions/actions');
-
 function API() {
 	this.value = null;	
 };
-
 API.prototype.getStockPrice = function(params){
-
-
     return   fetch('/api', {
             method: 'post',
             headers: {
@@ -27,8 +23,12 @@ API.prototype.getStockPrice = function(params){
               console.log(error);
           }); 
 };
-API.prototype.getBitcoinData = function(){
-  return fetch('https://apiv2.bitcoinaverage.com/indices/global/history/BTCUSD?period=daily&?format=json', {
+API.prototype.getBitcoinData = function(daterange){
+
+  let url_since_timestamp =  'https://apiv2.bitcoinaverage.com/indices/global/history/BTCUSD?since=1405394590?format=json';
+  let url_period = 'https://apiv2.bitcoinaverage.com/indices/global/history/BTCUSD?period='+daterange+'&?format=json';
+
+  return fetch(url_period, {
         method: 'GET',
         mode: 'cors',
       })
@@ -38,6 +38,7 @@ API.prototype.getBitcoinData = function(){
             }
             return response.json();
           }).then(function(data) {
+
               Actions.updateBitcoinData(data);
           }).catch(function(error) {
               console.log(error);

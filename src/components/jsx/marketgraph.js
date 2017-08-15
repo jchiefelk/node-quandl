@@ -1,5 +1,4 @@
 import React from 'react';
-import {Line,Bar} from 'react-chartjs-2';
 var Actions = require('../../actions/actions');
 var moment = require('moment');
 var Datetime = require('react-datetime');
@@ -25,25 +24,22 @@ class MarketGraph {
 						</div>
 				);
 	}
-	setBitcoinGraph(data){
-				console.log(data);
-				
-				let line_data = [["DATE","valuation"]];
-				for(var x = data.length-1; x>=0; x--){
-					line_data.push([data[x].time, data[x].average ]);
-				};
-
-				let options = {
+	setBitcoinGraph(data,daterange){
+			console.log(data);
+			let line_data = [["DATE","valuation"]];
+			for(var x = data.length-1; x>=0; x--){
+					line_data.push([new Date(data[x].time), data[x].average ]);
+			};
+			let options = {
 						title: data.name,
 						legend: "none",
 						backgroundColor: 'transparent',
-						
 						vAxis: {
 							title: "",	
 							titleTextStyle: { color: 'black' },
 							baselineColor: 'transparent',
 				        	textStyle: {
-				        		fontSize: 10,
+				        		fontSize: 14,
 				        		fontName: 'Courier New',
 				        		color: 'black',
 				        		fontWeight: 700,
@@ -52,27 +48,31 @@ class MarketGraph {
 				        	gridlines: {
 						    	count: 5
 						   	}	
-
 				        },
-
 					 	hAxis: {
-					 		baselineColor: 'transparent',
-					 		textStyle:{
-					       	   	color: 'black',
-					       	   	fontName: 'Courier New',
-					       	   	fontWeight: 700,
-					       	   	fontSize: 10
-				       	   	},
-				       	   	gridlines: {
+							title: "",	
+							titleTextStyle: { color: 'black' },
+							baselineColor: 'transparent',
+				        	textStyle: {
+				        		fontSize: 14,
+				        		fontName: 'Courier New',
+				        		color: 'black',
+				        		fontWeight: 700,
+				       
+				        	},
+				        	gridlines: {
 						    	count: 5
-						   	}	 
-		
+						   	},
+						   	format:	null
 					 	}
-					
-				};
-
+			};
+			if(daterange=='monthly' || daterange=='alltime'){
+					options.format = 'MMM d, y'
+			} else if(daterange=='daily'){
+				options.format = ['HH:mm', 'ha']
+			}
 			return (
-				<div className="marketgraph">
+				<div className="bitcoingraph">
 					<Chart
 						chartType="LineChart"
 						data={line_data}
@@ -82,7 +82,6 @@ class MarketGraph {
 						/>
 				</div>
 			);
-		
 	}
 	setMarketGoogleGraph(data){
 
@@ -172,7 +171,6 @@ class MarketGraph {
 						    	count: 4
 						   }	  
 				        },
-
 					 	hAxis: {
 					 		baselineColor: 'transparent',
 					 		textStyle:{
@@ -281,7 +279,9 @@ class MarketGraph {
 
 
 	setCompanyPicker(){
-
+		//
+		// 	
+		//
 		this.companyPicker = (
 					<div className="pickercontainer">
 		
@@ -290,7 +290,8 @@ class MarketGraph {
 							<Link to="/intradaypage" onClick={()=> Actions.updatesendRequest() }>
 								<img src="https://s3-us-west-1.amazonaws.com/cointelmob/icons/enter_icon.png" style={{width: 30, height: 30, marginLeft: 10,marginTop: 4, cursor: 'pointer'}} />
 							</Link>
-							<MarketPicker  />
+						
+			
 					</div>
 		);
 
