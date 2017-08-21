@@ -8,7 +8,6 @@
 	align-text: center;
 	margin: 50;
 }
-
 #About-Me {
 	color: black;
 	font-size: 2.1em;
@@ -17,12 +16,39 @@
 	text-decoration: 'none';
 	margin-top: 5;
 }
-
 .app {
 	display: flex; 
 	flex-direction: column; 
 	background-color: transparent;
 	height: 100%;
+}
+.enter_icons {
+	width: 2.3em; 
+	height: 2.3em; 
+	margin-left: 1em;
+	margin-top: 0.05em; 
+	cursor: pointer;
+}
+.history_options {
+	display: flex;
+	flex-direction: row;
+	font-size: 12;
+	font-family: 'Courier New';
+	justify-content: center;
+}
+.history_options label {
+	display: flex;
+	flex-direction: column;
+	margin: 1em;
+	align-items: center;
+	cursor: pointer;
+}
+.history_options select {
+	width: 7em;
+	height: 2.5em;
+	background: Snow;
+	margin: 0.3em;
+	border-width: 0;
 }
 .marketpage {
 	display: flex;
@@ -59,14 +85,12 @@
 	margin-top: 2em;
 	margin: 50;
 }
-
 .table_row_parent { 
 	border-width: 2; 
 	border-style: solid; 
 	display: flex;
 	flex-direction: column;
 }
-
 .section-title {
 	margin: 50;
 	font-size: 2em;
@@ -74,12 +98,10 @@
 	font-family: 'Courier New';
 	margin-top: 2em;
 }
-
 .code-image {
 	margin: 0;
 	width: 100;
 }
-
 .header {
 	display: flex;
 	flex-direction: row;
@@ -88,7 +110,6 @@
 	background-color: black; 
 	align-items: center; 
 }
-
 .header-link {
 	font-weight: 900;
 	font-family: 'Courier New';
@@ -100,13 +121,10 @@
 	cursor: pointer; 
 	text-decoration: none;  
 }
-
-
 .linegraph {
 	display: flex;
 	width: 25em;
 }
-
 .intradaypage {
 	margin-top: 3em;
 	display: flex; 
@@ -115,9 +133,9 @@
 	background-color: Snow;
 	width: 90%;
 }
-
 .intradaychild {
 	margin-top: 10em;
+	display: flex;
 }
 
 .intradaylinegraph {

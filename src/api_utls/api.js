@@ -16,9 +16,9 @@ API.prototype.getStockPrice = function(params){
             }
             return response.json();
           }).then(function(data) {
-
              Actions.updateIntradDayData(data.general);
              Actions.updateAutocorrelation(data.autocorr);
+         
           }).catch(function(error) {
               console.log(error);
           }); 

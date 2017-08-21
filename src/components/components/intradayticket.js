@@ -32,66 +32,31 @@ export default class IntraDayTicket extends Component {
 			}
 
 			sendRequest(){
-				
 						let code = this.state.companyCode.split(' ');
 						let params = {
-							code: code[0],
-							market: this.state.market,
-							db: 'GOOG',
-							apiKey: 'oaWPkjrfz_aQmyPmE-WT',
-							startDate: this.state.startDate,
-							endDate: this.state.endDate
+							code: code[0]
 						};
-						this.setState({	intraDayView: MarketGraph.setLoadingAnimation()	});
-						Actions.updatesendRequest();
+						// 
 						API.getStockPrice(params);			
 			}
 
 			componentDidUpdate(){
 
+
 				if(this.state.storeupdated==true &&	this.state.sendRequestStatus==true) {
-					this.setState({
-						storeupdated: false,
-						sendRequestStatus: false,
-						intraDayView: null,
-						intraDayAutocorrelation: null,
-						intraDayCandleStick: null
-					});
-					this.sendRequest();
+					// this.sendRequest();
 				}
-
-				if(this.state.storeupdated==true && this.state.marketData.data.length>0){
-						if(this.state.marketData.data.length>0){
-									this.setState({
-											storeupdated: false,
-											marketData: null,
-											intraDayView: MarketGraph.setIntradayGraphGoogleView(this.state.marketData.data, this.state.marketData.autocorr, this.state.marketData.name),
-											intraDayCandleStick: CandleStickGraph.setIntraDayGraph(this.state.marketData),
-											
-									});	
-						}
-						if(this.state.marketData.autocorr.length > 0) {
-								this.setState({
-										intraDayAutocorrelation: Autocorrelation.setIntradayAutocorrelation(this.state.marketData.autocorr)
-								});
-
-						}
-				}
-
 
 			}
-
 			componentDidMount(){
 				StockDataStore.addChangeListener(this._onChange.bind(this));
 				if(this.state.sendRequestStatus==true) {
 					this.sendRequest();
 				} 
 			}
-
 			componentWillUnmount(){
 				StockDataStore.removeChangeListener(this._onChange.bind(this));
 			}
-
 			_onChange(){
 				this.setState({
 					market: StockDataStore.getMarket(),
@@ -103,22 +68,51 @@ export default class IntraDayTicket extends Component {
 					sendRequestStatus:	StockDataStore.getRequestSendStatus(),
 					storeupdated: true
 				});
+
+
+			}
+
+			setLoadingView(){
+
+				return MarketGraph.setLoadingAnimation();
+			}  
+
+
+			setMainView(){
+				
+				let autocorr= null;
+				if(this.state.marketData.autocorr.length > 0) {
+					autocorr = Autocorrelation.setIntradayAutocorrelation(this.state.marketData.autocorr)
+				}
+
+				return (
+					<div className="intradaychild">
+						<div>
+							{MarketGraph.setIntradayGraphGoogleView(this.state.marketData.data, this.state.marketData.name)}
+						</div>
+
+						<div>
+							{CandleStickGraph.setIntraDayGraph(this.state.marketData)}
+							{autocorr}
+						</div>
+					</div>
+				);
 			}
 
 			render(){
+				// 
+				let view; 
+				if(this.state.marketData.data==0) {
+					view = this.setLoadingView();
+				} 
+				if(this.state.marketData.data.length>0){
+					view = this.setMainView();
+				}
 				return (
 					<div className="intradaypage">
-					
-							{this.state.intraDayView}
-				
-						<div className="intradaychild">
-							{this.state.intraDayCandleStick}
-							{this.state.intraDayAutocorrelation}
-						</div>
-
+						{view}
 					</div>
 				);
-
 
 			}
 }

@@ -7,6 +7,13 @@ function CandleStickGraph(){
 	this.graph=null;
 	this.options = {
 		title: 'Intraday Price Variance',
+		titleTextStyle: {
+			color: 'black',    // any HTML string color ('red', '#cc00cc')
+			fontName: 'Courier New', // i.e. 'Times New Roman'
+			fontSize: 18, // 12, 18 whatever you want (don't specify px)
+			bold: false,    // true or false
+			italic: false   // true of false
+		},
 		legend: "none",
 		backgroundColor: 'transparent',
 		bar: { groupWidth: '100%' }, 
@@ -15,15 +22,21 @@ function CandleStickGraph(){
             risingColor: { strokeWidth: 0, fill: 'black' }   // back
         },
 		hAxis: {
-			baselineColor: 'transparent',
+		baselineColor: 'transparent',
        	   textStyle:{
        	   	color: 'black',
        	   	fontName: 'Courier New',
        	   	fontWeight: 700,
        	   	fontSize: 8
        	   },
-	       format:'MMM d, y'
+	       format:'MMM d, y',
+
+
+	       gridlines: {
+		    	count: 5
+		   }
         },
+
        	vAxis: {
        	   baselineColor: 'transparent',
        	   textStyle:{
@@ -41,8 +54,6 @@ function CandleStickGraph(){
 	};
 	this.data = [["DATE","low-high & open-close","open","close","high"]];
 };
-
-
 CandleStickGraph.prototype.setGraph = function(item){
 	this.data = [["DATE","low-high & open-close","open","close","high"]];
 	//
@@ -67,28 +78,22 @@ CandleStickGraph.prototype.setGraph = function(item){
 };
 
 CandleStickGraph.prototype.setIntraDayGraph = function(item){
-
 	this.data = [["DATE","low-high & open-close","open","close","high"]];
 	//
 	//
 	if(item.data.length>=60){
-		for(var x=0; x<60;x++){
+		for(let x=60; x>0;x--){
 				let data = [item.data[x].date, item.data[x].low, item.data[x].open, item.data[x].close, item.data[x].high];
-				
 				this.data.push(data);
 		};
 	} 
 	if(item.data.length<60){
-		for(var x=0; x<item.data.length;x++){
+		for(let x=item.data.length-1; x>=0;x--){
 				let data = [item.data[x].date, item.data[x].low, item.data[x].open, item.data[x].close, item.data[x].high];
-	
 				this.data.push(data);
 		};
-
-
 	}
-	//
-	this.graph = (
+	return (
       <div className="candleStickGraph_intraday">
         <Chart
 		  chartType="CandlestickChart"
@@ -98,8 +103,7 @@ CandleStickGraph.prototype.setIntraDayGraph = function(item){
 		  options={this.options}
         />
       </div>
-	);
-	return this.graph;
+		);
 };
 
 

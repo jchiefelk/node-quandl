@@ -13,7 +13,6 @@ function DailyData(){
 
 };
 DailyData.prototype.D3Graphs = function(item){
-      console.log(item);
       //
       // Put in D3.js format
       //
@@ -103,6 +102,7 @@ StockData.prototype.updateIntradayTicket = function(item){
   console.log('Update Intraday');
   this.IntraDay.data=[];
   this.IntraDay.name = item['Meta Data']['2. Symbol'];
+ /**
   for(let key in item['Time Series (1min)']){
         let obj  = item['Time Series (1min)'][key];
         let volume = parseInt(obj['5. volume']);
@@ -116,10 +116,23 @@ StockData.prototype.updateIntradayTicket = function(item){
         }; 
         this.IntraDay.data.push(data);
   };
-
-  StockDataStore.emit(CHANGE_EVENT);
+  **/
+  for(let key in item['Monthly Time Series']){
+          let obj  = item['Monthly Time Series'][key];
+          let volume = parseInt(obj['5. volume']);
+          let data = {
+            date: key,
+            open: parseFloat(obj['1. open']),
+            high: parseFloat(obj['2. high']),
+            low:  parseFloat(obj['3. low']),
+            close: parseFloat(obj['4. close']),
+            volume: volume.toExponential(2)
+          }; 
+          this.IntraDay.data.push(data);
+    };
+    // Actions.updatesendRequest();
+    StockDataStore.emit(CHANGE_EVENT);
 };
-
 
 StockData.prototype.updateMarket = function(item){
   this.IntraDay.market = item;
@@ -132,7 +145,6 @@ StockData.prototype.updateStartDate = function(item){
 StockData.prototype.updateEndDate = function(item){
   this.IntraDay.endDate = item;
 };
-
 
 StockData.prototype.updateCompanyCode = function(item) {
   this.IntraDay.companyCode = item;
@@ -149,9 +161,6 @@ BitcoinData.prototype.updateBitcoinData = function(item){
   this.data = item;
 };
 let Bitcoin =  new BitcoinData();
-
-
-
 
 var StockDataStore = objectAssign({}, EventEmitter.prototype, {
   addChangeListener: function(cb){
@@ -217,6 +226,10 @@ AppDispatcher.register(function(payload){
       break;
     case appConstants.ENDDATE:
       Stocks.updateEndDate(action.data);
+      StockDataStore.emitChange(CHANGE_EVENT);
+      break;
+    case appConstants.STOCK_HISTORY:
+      Stocks.setHistoryRange(action.data);
       StockDataStore.emitChange(CHANGE_EVENT);
       break;
     case appConstants.COMPANY_CODE: 

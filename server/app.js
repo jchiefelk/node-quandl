@@ -76,7 +76,6 @@ app.get('/etf', function(req,res){
                 next(error);
             });             
 });
-
 app.get('/markets', function(req,res){
   Quandl.getMarketData()
        .then(function(value) {
@@ -89,7 +88,6 @@ app.get('/markets', function(req,res){
             }); 
 
 });
-
 app.post('/api', function(req,res){
     let market, autocorr;
     Quandl.getIntraDayTicket(req.body)
@@ -100,10 +98,12 @@ app.post('/api', function(req,res){
                 request.endDate = 'end';
                 // 
                 // return Quandl.getIntraDayTicket(request) // Get ALL Historicall Data for Autocorrelation
-                console.log(value['Time Series (1min)']);
-                return Correlation.stockprice_autocorrelation(value['Time Series (1min)'])
+                // console.log(value['Time Series (1min)']);
+                // console.log(value['Monthly Time Series']);
+                return Correlation.stockprice_autocorrelation(value['Monthly Time Series']);
             })
            .then((result) => {
+
                 autocorr=result;
                 res.json({
                     general: market,

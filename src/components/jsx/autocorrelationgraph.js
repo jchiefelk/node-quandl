@@ -16,6 +16,7 @@ Autocorrelation.prototype.setGoogleAutocorr = function(data){
 
 			let options = {
 						title: 'Historical 1 year Momentum',
+						fontFamily: 'Courier New',
 						legend: "none",
 						backgroundColor: 'transparent',
 						vAxis: {
@@ -71,17 +72,21 @@ Autocorrelation.prototype.setIntradayAutocorrelation = function(data){
 				set.push(data[x]);
 			};
 			
-		
-
 			let options = {
-						title: 'Historical 1 year Momentum',
+						title: 'Price Autocorrelation',
+						fontFamily: 'Courier New',
+						titleTextStyle: {
+					        color: 'black',    // any HTML string color ('red', '#cc00cc')
+					        fontName: 'Courier New', // i.e. 'Times New Roman'
+					        fontSize: 18, // 12, 18 whatever you want (don't specify px)
+					        bold: false,    // true or false
+					        italic: false   // true of false
+					    },
 						legend: "none",
 						backgroundColor: 'transparent',
 						vAxis: {
 							title: "Correlation Coefficient",	
 							titleTextStyle: { color: 'black' },
-							// gridlineColor: 'transparent',
-
 							baselineColor: 'transparent',
 				        	minValue: Math.min.apply(null,set),
 				        	textStyle: {
@@ -98,6 +103,7 @@ Autocorrelation.prototype.setIntradayAutocorrelation = function(data){
 
 				        },
 					 	hAxis: {
+					 	title: 'Trading Days',
 						baselineColor: 'transparent',
         				 // gridlineColor: 'transparent',
 					 		textStyle:{

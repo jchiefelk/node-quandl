@@ -21814,7 +21814,7 @@
 
 	var _App2 = _interopRequireDefault(_App);
 
-	var _aboutpage = __webpack_require__(465);
+	var _aboutpage = __webpack_require__(466);
 
 	var _aboutpage2 = _interopRequireDefault(_aboutpage);
 
@@ -21822,7 +21822,7 @@
 
 	var _marketpage2 = _interopRequireDefault(_marketpage);
 
-	var _intradaypage = __webpack_require__(466);
+	var _intradaypage = __webpack_require__(467);
 
 	var _intradaypage2 = _interopRequireDefault(_intradaypage);
 
@@ -27751,8 +27751,8 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	__webpack_require__(245);
-	__webpack_require__(461);
-	__webpack_require__(463);
+	__webpack_require__(462);
+	__webpack_require__(464);
 
 	var App = function (_Component) {
 		_inherits(App, _Component);
@@ -27799,11 +27799,11 @@
 
 	var _marketfundview2 = _interopRequireDefault(_marketfundview);
 
-	var _intradayticket = __webpack_require__(459);
+	var _intradayticket = __webpack_require__(460);
 
 	var _intradayticket2 = _interopRequireDefault(_intradayticket);
 
-	var _videobackground = __webpack_require__(460);
+	var _videobackground = __webpack_require__(461);
 
 	var _videobackground2 = _interopRequireDefault(_videobackground);
 
@@ -27963,7 +27963,7 @@
 
 
 	// module
-	exports.push([module.id, "#Title {\n\tfont-size: 4.7em;\n\tcolor: black;\n\tfont-weight: 900; \n\tfont-family: 'Courier New';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n\talign-text: center;\n\tmargin: 50;\n}\n\n#About-Me {\n\tcolor: black;\n\tfont-size: 2.1em;\n\tfont-weight: 700; \n\tfont-family: 'Courier New';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n}\n\n.app {\n\tdisplay: flex; \n\tflex-direction: column; \n\tbackground-color: transparent;\n\theight: 100%;\n}\n.marketpage {\n\tdisplay: flex;\n\tflex-direction: column;\n\tbackground-color: transparent; \n\talign-items: center;\n}\n.marketgraph {\n\tbackground-color: transparent;\n\talign-items: center;\n\twidth: 50em;\n\theight: 40em;\n\tjustify-content: center;\n}\n.bitcoingraph {\n\tbackground-color: transparent;\n\talign-items: center;\n\twidth: 100%;\n\theight: 40vh;\n\tjustify-content: center;\n}\n.bitcoinoptions {\n\tposition: relative;\n\tright: 0;\n\twidth: 5vw;\n\tfont-size: 18px;\n\tborder-width: 0;\n}\n.paragraph {\n\tcolor: black;\n\tfont-size: 1.5em;\n\tfont-weight: 400;\n\tfont-family: 'Courier New';\n\tmargin-top: 2em;\n\tmargin: 50;\n}\n\n.table_row_parent { \n\tborder-width: 2; \n\tborder-style: solid; \n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n.section-title {\n\tmargin: 50;\n\tfont-size: 2em;\n\tfont-weight: 900;\n\tfont-family: 'Courier New';\n\tmargin-top: 2em;\n}\n\n.code-image {\n\tmargin: 0;\n\twidth: 100;\n}\n\n.header {\n\tdisplay: flex;\n\tflex-direction: row;\n\twidth: 100%;\n\theight: 3em; \n\tbackground-color: black; \n\talign-items: center; \n}\n\n.header-link {\n\tfont-weight: 900;\n\tfont-family: 'Courier New';\n\tfont-size: 18;\n\tcolor: white; \n\tposition: absolute;\n\ttop: 1em;\n\tleft: 2em;\n\tcursor: pointer; \n\ttext-decoration: none;  \n}\n\n\n.linegraph {\n\tdisplay: flex;\n\twidth: 25em;\n}\n\n.intradaypage {\n\tmargin-top: 3em;\n\tdisplay: flex; \n\tjustify-content: center;\n\talign-items: center;\n\tbackground-color: Snow;\n\twidth: 90%;\n}\n\n.intradaychild {\n\tmargin-top: 10em;\n}\n\n.intradaylinegraph {\n\n\tmargin-top: 0em;\n\twidth: 60em;\n\theight: 40em;\n\tbackground-color: transparent;\n}\n\n.intradaybargraph {\n\tdisplay: flex;\n\tmargin-top: 0.1em;\n\twidth: 49.5em;\n\theight: 15em; \n\tmargin-left: 5em;\n\tbackground-color: transparent;\n}\n\n.autocorrelationgraph {\n\tdisplay: flex;\n\tbackground-color: transparent;\n\twidth: 40em;\n\theight: 15em;\n\tmargin-top: 4em;\n}\n\n.autocorrelationgraph_intraday {\n\twidth: 50em;\n\theight: 24em;\n\tmargin-left: 2em;\n\tmargin-top: 4em;\n}\n\n.candleStickGraph_intraday {\n\tdisplay: flex;\n\twidth: 50em;\n\theight: 20em;\n\tmargin-top: 5em;\n\tmargin-left: 3.5em;\n}\n\n.candleStickGraph {\n\tdisplay: flex;\n\theight: 15em;\n\twidth: 41em;\n\tmargin-top: 1em;\n\tbackground-color: transparent;\n}\n\n.graphViews {\n\tdisplay: flex;\n\tbackground-color: Snow;\n\twidth: 90%;\n}\n\n.marketgraph-view {\n\tdisplay: flex;\n    background-color: Snow;\n    width: 90%;\n    flex-direction: column;\n    margin-top: 10em;\n}\n\n\n.graphViewChild {\n\tdisplay: flex;\n\tbackground-color: transparent;\n\tflex-direction: column; \n\theight: 40em;\n\twidth: 50em;\n}\n\n.graph-page-title {\n\tfont-family: 'Courier New';\n\tfont-weight: 700; \n\tcolor: black;\n\tfont-size: 2.5em;\n}\n\n.background-video {\n\tdisplay: flex;\n\twidth: 100%;\n\tbackground-color: transparent;\n}\n\n.videobanner {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n\theight: 70%;\n\twidth: 100%;\n\ttop: 0;\n\tposition: absolute;\n\tbackground-color: transparent;\n\tcolor: white;\n\tfont-family: 'Courier New';\n}\n\n.bannerchild {\n\tfont-size: 4vh;\n\tmargin-left: 4em;\n\tmargin-top: 2.5em;\n}\n\n.bannerAd {\n\tposition: absolute;\n\ttop: 30%;\n\twidth: 90%;\n\theight: 30vh;\n\tdisplay: flex;\n\tfont-size: 4.5vh;\n\talign-text: center;\n\talign-items: center;\n\tjustify-content: center;\n\tbackground-color: transparent;\n\tcolor: black;\n\topacity: 0.6;\n}\n\n", ""]);
+	exports.push([module.id, "#Title {\n\tfont-size: 4.7em;\n\tcolor: black;\n\tfont-weight: 900; \n\tfont-family: 'Courier New';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n\talign-text: center;\n\tmargin: 50;\n}\n#About-Me {\n\tcolor: black;\n\tfont-size: 2.1em;\n\tfont-weight: 700; \n\tfont-family: 'Courier New';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n}\n.app {\n\tdisplay: flex; \n\tflex-direction: column; \n\tbackground-color: transparent;\n\theight: 100%;\n}\n.enter_icons {\n\twidth: 2.3em; \n\theight: 2.3em; \n\tmargin-left: 1em;\n\tmargin-top: 0.05em; \n\tcursor: pointer;\n}\n.history_options {\n\tdisplay: flex;\n\tflex-direction: row;\n\tfont-size: 12;\n\tfont-family: 'Courier New';\n\tjustify-content: center;\n}\n.history_options label {\n\tdisplay: flex;\n\tflex-direction: column;\n\tmargin: 1em;\n\talign-items: center;\n\tcursor: pointer;\n}\n.history_options select {\n\twidth: 7em;\n\theight: 2.5em;\n\tbackground: Snow;\n\tmargin: 0.3em;\n\tborder-width: 0;\n}\n.marketpage {\n\tdisplay: flex;\n\tflex-direction: column;\n\tbackground-color: transparent; \n\talign-items: center;\n}\n.marketgraph {\n\tbackground-color: transparent;\n\talign-items: center;\n\twidth: 50em;\n\theight: 40em;\n\tjustify-content: center;\n}\n.bitcoingraph {\n\tbackground-color: transparent;\n\talign-items: center;\n\twidth: 100%;\n\theight: 40vh;\n\tjustify-content: center;\n}\n.bitcoinoptions {\n\tposition: relative;\n\tright: 0;\n\twidth: 5vw;\n\tfont-size: 18px;\n\tborder-width: 0;\n}\n.paragraph {\n\tcolor: black;\n\tfont-size: 1.5em;\n\tfont-weight: 400;\n\tfont-family: 'Courier New';\n\tmargin-top: 2em;\n\tmargin: 50;\n}\n.table_row_parent { \n\tborder-width: 2; \n\tborder-style: solid; \n\tdisplay: flex;\n\tflex-direction: column;\n}\n.section-title {\n\tmargin: 50;\n\tfont-size: 2em;\n\tfont-weight: 900;\n\tfont-family: 'Courier New';\n\tmargin-top: 2em;\n}\n.code-image {\n\tmargin: 0;\n\twidth: 100;\n}\n.header {\n\tdisplay: flex;\n\tflex-direction: row;\n\twidth: 100%;\n\theight: 3em; \n\tbackground-color: black; \n\talign-items: center; \n}\n.header-link {\n\tfont-weight: 900;\n\tfont-family: 'Courier New';\n\tfont-size: 18;\n\tcolor: white; \n\tposition: absolute;\n\ttop: 1em;\n\tleft: 2em;\n\tcursor: pointer; \n\ttext-decoration: none;  \n}\n.linegraph {\n\tdisplay: flex;\n\twidth: 25em;\n}\n.intradaypage {\n\tmargin-top: 3em;\n\tdisplay: flex; \n\tjustify-content: center;\n\talign-items: center;\n\tbackground-color: Snow;\n\twidth: 90%;\n}\n.intradaychild {\n\tmargin-top: 10em;\n\tdisplay: flex;\n}\n\n.intradaylinegraph {\n\n\tmargin-top: 0em;\n\twidth: 60em;\n\theight: 40em;\n\tbackground-color: transparent;\n}\n\n.intradaybargraph {\n\tdisplay: flex;\n\tmargin-top: 0.1em;\n\twidth: 49.5em;\n\theight: 15em; \n\tmargin-left: 5em;\n\tbackground-color: transparent;\n}\n\n.autocorrelationgraph {\n\tdisplay: flex;\n\tbackground-color: transparent;\n\twidth: 40em;\n\theight: 15em;\n\tmargin-top: 4em;\n}\n\n.autocorrelationgraph_intraday {\n\twidth: 50em;\n\theight: 24em;\n\tmargin-left: 2em;\n\tmargin-top: 4em;\n}\n\n.candleStickGraph_intraday {\n\tdisplay: flex;\n\twidth: 50em;\n\theight: 20em;\n\tmargin-top: 5em;\n\tmargin-left: 3.5em;\n}\n\n.candleStickGraph {\n\tdisplay: flex;\n\theight: 15em;\n\twidth: 41em;\n\tmargin-top: 1em;\n\tbackground-color: transparent;\n}\n\n.graphViews {\n\tdisplay: flex;\n\tbackground-color: Snow;\n\twidth: 90%;\n}\n\n.marketgraph-view {\n\tdisplay: flex;\n    background-color: Snow;\n    width: 90%;\n    flex-direction: column;\n    margin-top: 10em;\n}\n\n\n.graphViewChild {\n\tdisplay: flex;\n\tbackground-color: transparent;\n\tflex-direction: column; \n\theight: 40em;\n\twidth: 50em;\n}\n\n.graph-page-title {\n\tfont-family: 'Courier New';\n\tfont-weight: 700; \n\tcolor: black;\n\tfont-size: 2.5em;\n}\n\n.background-video {\n\tdisplay: flex;\n\twidth: 100%;\n\tbackground-color: transparent;\n}\n\n.videobanner {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n\theight: 70%;\n\twidth: 100%;\n\ttop: 0;\n\tposition: absolute;\n\tbackground-color: transparent;\n\tcolor: white;\n\tfont-family: 'Courier New';\n}\n\n.bannerchild {\n\tfont-size: 4vh;\n\tmargin-left: 4em;\n\tmargin-top: 2.5em;\n}\n\n.bannerAd {\n\tposition: absolute;\n\ttop: 30%;\n\twidth: 90%;\n\theight: 30vh;\n\tdisplay: flex;\n\tfont-size: 4.5vh;\n\talign-text: center;\n\talign-items: center;\n\tjustify-content: center;\n\tbackground-color: transparent;\n\tcolor: black;\n\topacity: 0.6;\n}\n\n", ""]);
 
 	// exports
 
@@ -28308,8 +28308,8 @@
 	var API = __webpack_require__(424);
 	var Actions = __webpack_require__(422);
 	var MarketGraph = __webpack_require__(425);
-	var CandleStickGraph = __webpack_require__(457);
-	var Autocorrelation = __webpack_require__(458);
+	var CandleStickGraph = __webpack_require__(458);
+	var Autocorrelation = __webpack_require__(459);
 	__webpack_require__(245);
 
 	var MarketFundView = function (_Component) {
@@ -28431,34 +28431,65 @@
 			}
 		}, {
 			key: 'changeDateRange',
-			value: function changeDateRange(e) {
-				this.setState({ daterange: e.target.value });
-				API.getBitcoinData(e.target.value);
+			value: function changeDateRange(range) {
+				this.setState({ daterange: range });
+				API.getBitcoinData(range);
 			}
 		}, {
 			key: 'renderAPIOptions',
 			value: function renderAPIOptions() {
 				var _this2 = this;
 
+				/**
+	   
+	   			<div className="history_options">
+	   				{this.setCompanyPicker()}
+	   				
+	   				<label onClick={() => this.setDateRange('intraday')}>
+	   					 Intraday
+	   				</label>
+	   				<label onClick={() => this.setDateRange('daily')}>
+	   					Daily
+	   				</label> 
+	   				<label onClick={() => this.setDateRange('weekly')}>
+	   					Weekly
+	   				</label>
+	   				<label onClick={() => this.setDateRange('monthly')}>
+	   					Monthly
+	   				</label>
+	   			
+	   			</div>
+	   			
+	   		<select className="bitcoinoptions" onChange={(e)=> this.changeDateRange(e)}>
+	   			<option value="daily">daily</option>
+	   			<option value="monthly">monthly</option>
+	   			<option value="alltime">alltime</option>
+	   		</select>
+	   			**/
+
 				return _react2.default.createElement(
-					'select',
-					{ className: 'bitcoinoptions', onChange: function onChange(e) {
-							return _this2.changeDateRange(e);
-						} },
+					'div',
+					{ className: 'history_options' },
 					_react2.default.createElement(
-						'option',
-						{ value: 'daily' },
-						'daily'
+						'label',
+						{ onClick: function onClick() {
+								return _this2.changeDateRange('daily');
+							} },
+						'Daily'
 					),
 					_react2.default.createElement(
-						'option',
-						{ value: 'monthly' },
-						'monthly'
+						'label',
+						{ onClick: function onClick() {
+								return _this2.changeDateRange('monthly');
+							} },
+						'Monthly'
 					),
 					_react2.default.createElement(
-						'option',
-						{ value: 'alltime' },
-						'alltime'
+						'label',
+						{ onClick: function onClick() {
+								return _this2.changeDateRange('alltime');
+							} },
+						'All-time'
 					)
 				);
 			}
@@ -56851,7 +56882,6 @@
 	  this.market = null;
 	};
 	DailyData.prototype.D3Graphs = function (item) {
-	  console.log(item);
 	  //
 	  // Put in D3.js format
 	  //
@@ -56941,8 +56971,23 @@
 	  console.log('Update Intraday');
 	  this.IntraDay.data = [];
 	  this.IntraDay.name = item['Meta Data']['2. Symbol'];
-	  for (var key in item['Time Series (1min)']) {
-	    var obj = item['Time Series (1min)'][key];
+	  /**
+	   for(let key in item['Time Series (1min)']){
+	         let obj  = item['Time Series (1min)'][key];
+	         let volume = parseInt(obj['5. volume']);
+	         let data = {
+	           date: key,
+	           open: parseFloat(obj['1. open']),
+	           high: parseFloat(obj['2. high']),
+	           low:  parseFloat(obj['3. low']),
+	           close: parseFloat(obj['4. close']),
+	           volume: volume.toExponential(2)
+	         }; 
+	         this.IntraDay.data.push(data);
+	   };
+	   **/
+	  for (var key in item['Monthly Time Series']) {
+	    var obj = item['Monthly Time Series'][key];
 	    var volume = parseInt(obj['5. volume']);
 	    var data = {
 	      date: key,
@@ -56954,7 +56999,7 @@
 	    };
 	    this.IntraDay.data.push(data);
 	  };
-
+	  // Actions.updatesendRequest();
 	  StockDataStore.emit(CHANGE_EVENT);
 	};
 
@@ -57050,6 +57095,10 @@
 	      break;
 	    case appConstants.ENDDATE:
 	      Stocks.updateEndDate(action.data);
+	      StockDataStore.emitChange(CHANGE_EVENT);
+	      break;
+	    case appConstants.STOCK_HISTORY:
+	      Stocks.setHistoryRange(action.data);
 	      StockDataStore.emitChange(CHANGE_EVENT);
 	      break;
 	    case appConstants.COMPANY_CODE:
@@ -57372,7 +57421,8 @@
 	  SEND_REQUEST: "SEND_REQUEST",
 	  AUTOCORRELATION_INTRADAY: "AUTOCORRELATION_INTRADAY",
 	  UPDATE_FRONTEND_DATA: "UPDATE_FRONTEND_DATA",
-	  UPDATE_BITCOIN_AVG_HISTORY: "UPDATE_BITCOIN_AVG_HISTORY"
+	  UPDATE_BITCOIN_AVG_HISTORY: "UPDATE_BITCOIN_AVG_HISTORY",
+	  STOCK_HISTORY: "STOCK_HISTORY"
 	};
 	module.exports = appConstants;
 
@@ -57845,6 +57895,13 @@
 	  setEndDate: function setEndDate(item) {
 	    AppDispatcher.handleAction({
 	      actionType: appConstants.ENDDATE,
+	      data: item
+	    });
+	  },
+
+	  setStockHistory: function setStockHistory(item) {
+	    AppDispatcher.handleAction({
+	      actionType: appConstants.STOCK_HISTORY,
 	      data: item
 	    });
 	  },
@@ -74982,7 +75039,6 @@
 	    }
 	    return response.json();
 	  }).then(function (data) {
-
 	    Actions.updateIntradDayData(data.general);
 	    Actions.updateAutocorrelation(data.autocorr);
 	  }).catch(function (error) {
@@ -75066,8 +75122,18 @@
 				for (var x = data.length - 1; x >= 0; x--) {
 					line_data.push([new Date(data[x].time), data[x].average]);
 				};
+				// title: data.name,
+
 				var options = {
-					title: data.name,
+
+					titleTextStyle: {
+						color: 'black', // any HTML string color ('red', '#cc00cc')
+						fontName: 'Courier New', // i.e. 'Times New Roman'
+						fontSize: 18, // 12, 18 whatever you want (don't specify px)
+						bold: false, // true or false
+						italic: false // true of false
+					},
+
 					legend: "none",
 					backgroundColor: 'transparent',
 					vAxis: {
@@ -75149,7 +75215,6 @@
 						}
 
 					},
-
 					hAxis: {
 						baselineColor: 'transparent',
 						textStyle: {
@@ -75163,7 +75228,6 @@
 						}
 
 					}
-
 				};
 
 				return _react2.default.createElement(
@@ -75179,18 +75243,39 @@
 				);
 			}
 		}, {
+			key: 'setDateRange',
+			value: function setDateRange(range) {
+
+				var params = {
+					code: null
+				};
+			}
+		}, {
 			key: 'setIntradayGraphGoogleView',
-			value: function setIntradayGraphGoogleView(data, autocorr, name) {
+			value: function setIntradayGraphGoogleView(data, name) {
+				var _this = this;
+
 				var line_data = [["DATE", "val1"]];
 				var bar_data = [['Month', 'Volume']];
-				for (var x = 0; x < data.length; x++) {
+				for (var x = data.length - 1; x >= 0; x--) {
 					line_data.push([data[x].date, data[x].close]);
 					bar_data.push([data[x].date, parseFloat(data[x].volume)]);
 				};
+
 				var options = {
+
 					title: name,
+					titleTextStyle: {
+						color: 'black', // any HTML string color ('red', '#cc00cc')
+						fontName: 'Courier New', // i.e. 'Times New Roman'
+						fontSize: 18, // 12, 18 whatever you want (don't specify px)
+						bold: false, // true or false
+						italic: false // true of false
+					},
+
 					legend: "none",
 					backgroundColor: 'transparent',
+
 					vAxis: {
 						title: "",
 						titleTextStyle: { color: 'black' },
@@ -75212,19 +75297,20 @@
 							color: 'black',
 							fontName: 'Courier New',
 							fontWeight: 700,
-							fontSize: 8
+							fontSize: 12
 						},
 						gridlines: {
 							count: 2
-						}
+						},
+						format: 'MMM d, y'
 					}
 				};
 				var baroptions = {
 					isStacked: true,
+					fontFamily: 'Courier New',
+					backgroundColor: 'transparent',
 					vAxis: {
 						baselineColor: 'transparent',
-						title: "",
-						titleTextStyle: { color: 'black' },
 						textStyle: {
 							fontSize: 0,
 							fontName: 'Courier New',
@@ -75236,7 +75322,6 @@
 							count: 0
 						}
 					},
-
 					hAxis: {
 						baselineColor: 'transparent',
 						textStyle: {
@@ -75246,17 +75331,54 @@
 							fontWeight: 700
 						},
 						gridlines: {
-							count: 5
-						}
+							count: 2
+						},
+						format: 'MMM d, y'
 					},
-					legend: { position: 'none' },
-					backgroundColor: 'transparent'
+					legend: { position: 'none' }
 				};
-
+				//
+				//
+				// 		<select>
+				//		<option>5days</option>
+				//		</select>
+				//
 				return _react2.default.createElement(
 					'div',
-					{ style: { display: 'flex', justifyContent: 'center', flexDirection: 'column' } },
-					this.setDatePicker(),
+					{ style: { display: 'flex', flexDirection: 'column' } },
+					_react2.default.createElement(
+						'div',
+						{ className: 'history_options' },
+						this.setCompanyPicker(),
+						_react2.default.createElement(
+							'label',
+							{ onClick: function onClick() {
+									return _this.setDateRange('intraday');
+								} },
+							'Intraday'
+						),
+						_react2.default.createElement(
+							'label',
+							{ onClick: function onClick() {
+									return _this.setDateRange('daily');
+								} },
+							'Daily'
+						),
+						_react2.default.createElement(
+							'label',
+							{ onClick: function onClick() {
+									return _this.setDateRange('weekly');
+								} },
+							'Weekly'
+						),
+						_react2.default.createElement(
+							'label',
+							{ onClick: function onClick() {
+									return _this.setDateRange('monthly');
+								} },
+							'Monthly'
+						)
+					),
 					_react2.default.createElement(
 						'div',
 						{ style: { display: 'flex', flexDirection: 'column' } },
@@ -75288,7 +75410,7 @@
 		}, {
 			key: 'setDatePicker',
 			value: function setDatePicker() {
-				var _this = this;
+				var _this2 = this;
 
 				this.datePicker = _react2.default.createElement(
 					'div',
@@ -75304,7 +75426,7 @@
 						_react2.default.createElement(Datetime, {
 							className: 'date-input',
 							onBlur: function onBlur(selectedDate) {
-								return _this.setStartDate(selectedDate);
+								return _this2.setStartDate(selectedDate);
 							},
 							dateFormat: 'YYYY-MM-DD', timeFormat: false
 						})
@@ -75320,12 +75442,12 @@
 						_react2.default.createElement(Datetime, {
 							className: 'date-input',
 							onBlur: function onBlur(selectedDate) {
-								return _this.setEndDate(selectedDate);
+								return _this2.setEndDate(selectedDate);
 							},
 							dateFormat: 'YYYY-MM-DD', timeFormat: false
 						})
 					),
-					_react2.default.createElement('img', { src: 'https://s3-us-west-1.amazonaws.com/cointelmob/icons/enter_icon.png', className: 'submit-button', onClick: function onClick() {
+					_react2.default.createElement('img', { s: true, className: 'submit-button', onClick: function onClick() {
 							return Actions.updatesendRequest();
 						} })
 				);
@@ -75334,23 +75456,24 @@
 		}, {
 			key: 'setCompanyPicker',
 			value: function setCompanyPicker() {
-				var _this2 = this;
+				var _this3 = this;
 
 				//
-				// 	
+				// 
+				var image = __webpack_require__(457);
 				//
 				this.companyPicker = _react2.default.createElement(
 					'div',
 					{ className: 'pickercontainer' },
 					_react2.default.createElement('input', { className: 'homepage-input', placeholder: 'Enter stock code', onChange: function onChange(e) {
-							return _this2.updatecompanyCode(e);
+							return _this3.updatecompanyCode(e);
 						} }),
 					_react2.default.createElement(
 						_reactRouter.Link,
 						{ to: '/intradaypage', onClick: function onClick() {
 								return Actions.updatesendRequest();
 							} },
-						_react2.default.createElement('img', { src: 'https://s3-us-west-1.amazonaws.com/cointelmob/icons/enter_icon.png', style: { width: 30, height: 30, marginLeft: 10, marginTop: 4, cursor: 'pointer' } })
+						_react2.default.createElement('img', { src: image, className: 'enter_icons' })
 					)
 				);
 
@@ -80768,6 +80891,12 @@
 
 /***/ }),
 /* 457 */
+/***/ (function(module, exports) {
+
+	module.exports = "data:image/png;base64,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"
+
+/***/ }),
+/* 458 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -80786,6 +80915,13 @@
 		this.graph = null;
 		this.options = {
 			title: 'Intraday Price Variance',
+			titleTextStyle: {
+				color: 'black', // any HTML string color ('red', '#cc00cc')
+				fontName: 'Courier New', // i.e. 'Times New Roman'
+				fontSize: 18, // 12, 18 whatever you want (don't specify px)
+				bold: false, // true or false
+				italic: false // true of false
+			},
 			legend: "none",
 			backgroundColor: 'transparent',
 			bar: { groupWidth: '100%' },
@@ -80801,8 +80937,13 @@
 					fontWeight: 700,
 					fontSize: 8
 				},
-				format: 'MMM d, y'
+				format: 'MMM d, y',
+
+				gridlines: {
+					count: 5
+				}
 			},
+
 			vAxis: {
 				baselineColor: 'transparent',
 				textStyle: {
@@ -80820,7 +80961,6 @@
 		};
 		this.data = [["DATE", "low-high & open-close", "open", "close", "high"]];
 	};
-
 	CandleStickGraph.prototype.setGraph = function (item) {
 		this.data = [["DATE", "low-high & open-close", "open", "close", "high"]];
 		//
@@ -80845,26 +80985,22 @@
 	};
 
 	CandleStickGraph.prototype.setIntraDayGraph = function (item) {
-
 		this.data = [["DATE", "low-high & open-close", "open", "close", "high"]];
 		//
 		//
 		if (item.data.length >= 60) {
-			for (var x = 0; x < 60; x++) {
+			for (var x = 60; x > 0; x--) {
 				var data = [item.data[x].date, item.data[x].low, item.data[x].open, item.data[x].close, item.data[x].high];
-
 				this.data.push(data);
 			};
 		}
 		if (item.data.length < 60) {
-			for (var x = 0; x < item.data.length; x++) {
-				var _data = [item.data[x].date, item.data[x].low, item.data[x].open, item.data[x].close, item.data[x].high];
-
+			for (var _x = item.data.length - 1; _x >= 0; _x--) {
+				var _data = [item.data[_x].date, item.data[_x].low, item.data[_x].open, item.data[_x].close, item.data[_x].high];
 				this.data.push(_data);
 			};
 		}
-		//
-		this.graph = _react2.default.createElement(
+		return _react2.default.createElement(
 			'div',
 			{ className: 'candleStickGraph_intraday' },
 			_react2.default.createElement(_reactGoogleCharts.Chart, {
@@ -80875,13 +81011,12 @@
 				options: this.options
 			})
 		);
-		return this.graph;
 	};
 
 	module.exports = new CandleStickGraph();
 
 /***/ }),
-/* 458 */
+/* 459 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -80908,6 +81043,7 @@
 
 		var options = {
 			title: 'Historical 1 year Momentum',
+			fontFamily: 'Courier New',
 			legend: "none",
 			backgroundColor: 'transparent',
 			vAxis: {
@@ -80963,14 +81099,20 @@
 		};
 
 		var options = {
-			title: 'Historical 1 year Momentum',
+			title: 'Price Autocorrelation',
+			fontFamily: 'Courier New',
+			titleTextStyle: {
+				color: 'black', // any HTML string color ('red', '#cc00cc')
+				fontName: 'Courier New', // i.e. 'Times New Roman'
+				fontSize: 18, // 12, 18 whatever you want (don't specify px)
+				bold: false, // true or false
+				italic: false // true of false
+			},
 			legend: "none",
 			backgroundColor: 'transparent',
 			vAxis: {
 				title: "Correlation Coefficient",
 				titleTextStyle: { color: 'black' },
-				// gridlineColor: 'transparent',
-
 				baselineColor: 'transparent',
 				minValue: Math.min.apply(null, set),
 				textStyle: {
@@ -80987,6 +81129,7 @@
 
 			},
 			hAxis: {
+				title: 'Trading Days',
 				baselineColor: 'transparent',
 				// gridlineColor: 'transparent',
 				textStyle: {
@@ -81018,7 +81161,7 @@
 	module.exports = new Autocorrelation();
 
 /***/ }),
-/* 459 */
+/* 460 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -81044,8 +81187,8 @@
 	var StockDataStore = __webpack_require__(416);
 	var Actions = __webpack_require__(422);
 	var MarketGraph = __webpack_require__(425);
-	var CandleStickGraph = __webpack_require__(457);
-	var Autocorrelation = __webpack_require__(458);
+	var CandleStickGraph = __webpack_require__(458);
+	var Autocorrelation = __webpack_require__(459);
 	var API = __webpack_require__(424);
 
 	var IntraDayTicket = function (_Component) {
@@ -81079,18 +81222,11 @@
 		_createClass(IntraDayTicket, [{
 			key: 'sendRequest',
 			value: function sendRequest() {
-
 				var code = this.state.companyCode.split(' ');
 				var params = {
-					code: code[0],
-					market: this.state.market,
-					db: 'GOOG',
-					apiKey: 'oaWPkjrfz_aQmyPmE-WT',
-					startDate: this.state.startDate,
-					endDate: this.state.endDate
+					code: code[0]
 				};
-				this.setState({ intraDayView: MarketGraph.setLoadingAnimation() });
-				Actions.updatesendRequest();
+				// 
 				API.getStockPrice(params);
 			}
 		}, {
@@ -81098,31 +81234,7 @@
 			value: function componentDidUpdate() {
 
 				if (this.state.storeupdated == true && this.state.sendRequestStatus == true) {
-					this.setState({
-						storeupdated: false,
-						sendRequestStatus: false,
-						intraDayView: null,
-						intraDayAutocorrelation: null,
-						intraDayCandleStick: null
-					});
-					this.sendRequest();
-				}
-
-				if (this.state.storeupdated == true && this.state.marketData.data.length > 0) {
-					if (this.state.marketData.data.length > 0) {
-						this.setState({
-							storeupdated: false,
-							marketData: null,
-							intraDayView: MarketGraph.setIntradayGraphGoogleView(this.state.marketData.data, this.state.marketData.autocorr, this.state.marketData.name),
-							intraDayCandleStick: CandleStickGraph.setIntraDayGraph(this.state.marketData)
-
-						});
-					}
-					if (this.state.marketData.autocorr.length > 0) {
-						this.setState({
-							intraDayAutocorrelation: Autocorrelation.setIntradayAutocorrelation(this.state.marketData.autocorr)
-						});
-					}
+					// this.sendRequest();
 				}
 			}
 		}, {
@@ -81153,18 +81265,51 @@
 				});
 			}
 		}, {
+			key: 'setLoadingView',
+			value: function setLoadingView() {
+
+				return MarketGraph.setLoadingAnimation();
+			}
+		}, {
+			key: 'setMainView',
+			value: function setMainView() {
+
+				var autocorr = null;
+				if (this.state.marketData.autocorr.length > 0) {
+					autocorr = Autocorrelation.setIntradayAutocorrelation(this.state.marketData.autocorr);
+				}
+
+				return _react2.default.createElement(
+					'div',
+					{ className: 'intradaychild' },
+					_react2.default.createElement(
+						'div',
+						null,
+						MarketGraph.setIntradayGraphGoogleView(this.state.marketData.data, this.state.marketData.name)
+					),
+					_react2.default.createElement(
+						'div',
+						null,
+						CandleStickGraph.setIntraDayGraph(this.state.marketData),
+						autocorr
+					)
+				);
+			}
+		}, {
 			key: 'render',
 			value: function render() {
+				// 
+				var view = void 0;
+				if (this.state.marketData.data == 0) {
+					view = this.setLoadingView();
+				}
+				if (this.state.marketData.data.length > 0) {
+					view = this.setMainView();
+				}
 				return _react2.default.createElement(
 					'div',
 					{ className: 'intradaypage' },
-					this.state.intraDayView,
-					_react2.default.createElement(
-						'div',
-						{ className: 'intradaychild' },
-						this.state.intraDayCandleStick,
-						this.state.intraDayAutocorrelation
-					)
+					view
 				);
 			}
 		}]);
@@ -81175,7 +81320,7 @@
 	exports.default = IntraDayTicket;
 
 /***/ }),
-/* 460 */
+/* 461 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -81314,13 +81459,13 @@
 	exports.default = VideoBackground;
 
 /***/ }),
-/* 461 */
+/* 462 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(462);
+	var content = __webpack_require__(463);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(248)(content, {});
@@ -81340,7 +81485,7 @@
 	}
 
 /***/ }),
-/* 462 */
+/* 463 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(247)();
@@ -81354,13 +81499,13 @@
 
 
 /***/ }),
-/* 463 */
+/* 464 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(464);
+	var content = __webpack_require__(465);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(248)(content, {});
@@ -81380,7 +81525,7 @@
 	}
 
 /***/ }),
-/* 464 */
+/* 465 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(247)();
@@ -81388,13 +81533,13 @@
 
 
 	// module
-	exports.push([module.id, ".homepage-input {\n\t\tfont-size: 18; \n\t\tfont-weight: 700;\n\t\tfont-family: 'Courier New';\n\t\theight: 3em; \n\t\twidth: 17em;\n}\n\n.pickercontainer {\n\tdisplay: flex;\n    align-items: center; \n    justify-content: center;\n    background-color: transparent;\n    position: absolute;\n    top: 4em;\n}\n\n.picker-instructions {\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center; \n\tflex-direction: row;\n\tfont-size: 1.5em; \n\tfont-weight: 400; \n\tfont-family: 'Courier New';\n\tcolor: black;\n}\n\n.market-picker {\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: center;\n\tcolor: black;\n}\n\n.market-picker-item {\n\tdisplay: flex; \n\tcursor: pointer; \n\tfont-family: 'Courier New';\n\tfont-size: 24;\n\tcolor: black;\n\tmargin-left: 1em;\n\t:hover { \n\t    color: blue;\n\t}\n}\n\n.dropdown-arrow {\n\twidth: 2.0em; \n\theight: 2.0em;\n\tmargin-top: 0.4em;\n\tcursor: pointer;\n}\n\n.market-date-picker-container {\n\tdisplay: flex;\n\tright: 1em;\n\talign-items: center;\n\tjustify-content: center;\n\talign-text: center; \n\tmargin-top: -1.5em;\n}\n\n.date-input {\n\twidth: 10em;\n\tmargin: 1em;\n}\n\n.submit-button {\n\tbackground-color: white;\n\twidth: 2.4em;\n\theight: 2.4em;\n\tmargin-top: 1.5em; \n\tmargin-left: 1em;\n\tcursor: pointer;\n\n}\n\n.date-text {\n\tmargin-left: 1.1em;\n\tfont-size: 12;\n\tmargin-bottom: 10; \n\tcolor: black;\n\tfont-family: 'Courier New';\n}", ""]);
+	exports.push([module.id, ".homepage-input {\n\t\tfont-size: 18; \n\t\tfont-weight: 700;\n\t\tfont-family: 'Courier New';\n\t\theight: 3.2em; \n\t\twidth: 17em;\n\t\tborder-radius: 0.7em;\n}\n\n.pickercontainer {\n\tdisplay: flex;\n    align-items: center; \n    background-color: transparent;\n    position: relative;\n    top: 0.3em;\n}\n\n.picker-instructions {\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center; \n\tflex-direction: row;\n\tfont-size: 1.5em; \n\tfont-weight: 400; \n\tfont-family: 'Courier New';\n\tcolor: black;\n}\n\n.market-picker {\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: center;\n\tcolor: black;\n}\n\n.market-picker-item {\n\tdisplay: flex; \n\tcursor: pointer; \n\tfont-family: 'Courier New';\n\tfont-size: 24;\n\tcolor: black;\n\tmargin-left: 1em;\n\t:hover { \n\t    color: blue;\n\t}\n}\n\n.dropdown-arrow {\n\twidth: 2.0em; \n\theight: 2.0em;\n\tmargin-top: 0.4em;\n\tcursor: pointer;\n}\n\n.market-date-picker-container {\n\tdisplay: flex;\n\tright: 1em;\n\talign-items: center;\n\tjustify-content: center;\n\talign-text: center; \n\tmargin-top: -1.5em;\n}\n\n.date-input {\n\twidth: 10em;\n\tmargin: 1em;\n}\n\n.submit-button {\n\tbackground-color: white;\n\twidth: 2.4em;\n\theight: 2.4em;\n\tmargin-top: 1.5em; \n\tmargin-left: 1em;\n\tcursor: pointer;\n}\n\n.date-text {\n\tmargin-left: 1.1em;\n\tfont-size: 12;\n\tmargin-bottom: 10; \n\tcolor: black;\n\tfont-family: 'Courier New';\n}", ""]);
 
 	// exports
 
 
 /***/ }),
-/* 465 */
+/* 466 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -81461,7 +81606,7 @@
 	exports.default = AboutPage;
 
 /***/ }),
-/* 466 */
+/* 467 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -81482,7 +81627,7 @@
 
 	var _reactRouter = __webpack_require__(183);
 
-	var _intradayticket = __webpack_require__(459);
+	var _intradayticket = __webpack_require__(460);
 
 	var _intradayticket2 = _interopRequireDefault(_intradayticket);
 

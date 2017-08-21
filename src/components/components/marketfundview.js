@@ -102,19 +102,54 @@ export default class MarketFundView extends Component {
 					}
 					return view;
 			}
-			changeDateRange(e){
-				this.setState({daterange: e.target.value});
-				API.getBitcoinData(e.target.value);
+			changeDateRange(range){
+				this.setState({daterange: range});
+				API.getBitcoinData(range);
 
 			}
 			renderAPIOptions(){
 
-				return(
+				/**
+
+			
+							<div className="history_options">
+								{this.setCompanyPicker()}
+								
+								<label onClick={() => this.setDateRange('intraday')}>
+									 Intraday
+								</label>
+								<label onClick={() => this.setDateRange('daily')}>
+									Daily
+								</label> 
+								<label onClick={() => this.setDateRange('weekly')}>
+									Weekly
+								</label>
+								<label onClick={() => this.setDateRange('monthly')}>
+									Monthly
+								</label>
+ 						
+							</div>
+							
 						<select className="bitcoinoptions" onChange={(e)=> this.changeDateRange(e)}>
 							<option value="daily">daily</option>
 							<option value="monthly">monthly</option>
 							<option value="alltime">alltime</option>
 						</select>
+		
+				**/
+
+				return(
+						<div className="history_options">
+								<label onClick={()=> this.changeDateRange('daily')}>
+									 Daily
+								</label>
+								<label onClick={()=> this.changeDateRange('monthly')}>
+									Monthly
+								</label> 
+								<label onClick={()=> this.changeDateRange('alltime')}>
+									All-time
+								</label>
+						</div>
 				);
 			}
 			render(){

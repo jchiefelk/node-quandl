@@ -170,7 +170,13 @@ var Actions = {
       actionType: appConstants.ENDDATE,
       data: item
     });
+  },
 
+  setStockHistory: function(item){
+    AppDispatcher.handleAction({
+      actionType: appConstants.STOCK_HISTORY,
+      data: item
+    });
   },
 
   updatesendRequest: function(item){

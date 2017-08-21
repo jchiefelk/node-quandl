@@ -30,8 +30,18 @@ class MarketGraph {
 			for(var x = data.length-1; x>=0; x--){
 					line_data.push([new Date(data[x].time), data[x].average ]);
 			};
+			// title: data.name,
+
 			let options = {
-						title: data.name,
+
+					    titleTextStyle: {
+					        color: 'black',    // any HTML string color ('red', '#cc00cc')
+					        fontName: 'Courier New', // i.e. 'Times New Roman'
+					        fontSize: 18, // 12, 18 whatever you want (don't specify px)
+					        bold: false,    // true or false
+					        italic: false   // true of false
+					    },
+
 						legend: "none",
 						backgroundColor: 'transparent',
 						vAxis: {
@@ -85,12 +95,13 @@ class MarketGraph {
 	}
 	setMarketGoogleGraph(data){
 
-				let line_data = [["DATE","valuation"]];
-				for(var x =0; x<data.xValues.length;x++){
+			let line_data = [["DATE","valuation"]];
+			for(var x =0; x<data.xValues.length;x++){
 					line_data.push([data.xValues[x], data.yValues[x] ]);
-				};
+			};
 
-				let options = {
+
+			let options = {
 						title: data.name,
 						legend: "none",
 						backgroundColor: 'transparent',
@@ -111,7 +122,6 @@ class MarketGraph {
 						   	}	
 
 				        },
-
 					 	hAxis: {
 					 		baselineColor: 'transparent',
 					 		textStyle:{
@@ -125,8 +135,7 @@ class MarketGraph {
 						   	}	 
 		
 					 	}
-					
-				};
+			};
 
 			return (
 				<div className="marketgraph">
@@ -142,20 +151,41 @@ class MarketGraph {
 
 	}
 
+	setDateRange(range){
+		
+			let params = {
+				code: null
+			};
+	}
 
-	setIntradayGraphGoogleView(data,autocorr,name){
+	setIntradayGraphGoogleView(data,name){
 				let line_data = [["DATE","val1"]];
 	      		let bar_data = [
 				        ['Month', 'Volume']
 			    ];
-				for(var x =0; x<data.length;x++){
+				for(var x =data.length-1; x>=0;x--){
 						line_data.push([data[x].date, data[x].close ]);
 						bar_data.push([data[x].date, parseFloat(data[x].volume) ]);
 				};
+	
+
 				let options = {
+
 						title: name,
+					    titleTextStyle: {
+					        color: 'black',    // any HTML string color ('red', '#cc00cc')
+					        fontName: 'Courier New', // i.e. 'Times New Roman'
+					        fontSize: 18, // 12, 18 whatever you want (don't specify px)
+					        bold: false,    // true or false
+					        italic: false   // true of false
+					    },
+
+
+						
 						legend: "none",
 						backgroundColor: 'transparent',
+
+
 						vAxis: {
 							title: "",	
 							titleTextStyle: { color: 'black' },
@@ -177,19 +207,20 @@ class MarketGraph {
 					       	   	color: 'black',
 					       	   	fontName: 'Courier New',
 					       	   	fontWeight: 700,
-					       	   	fontSize: 8
+					       	   	fontSize: 12
 				       	   	},
 				        	gridlines: {
 						    	count: 2
-						   }
+						   },
+						   format: 'MMM d, y'
 					 	}
 				};
 				let baroptions = {
 						isStacked:true,
+						fontFamily: 'Courier New',
+						backgroundColor: 'transparent',
 						vAxis: {
 							baselineColor: 'transparent',
-							title: "",	
-							titleTextStyle: { color: 'black' },
 				        	textStyle: {
 				        		fontSize: 0,
 				        		fontName: 'Courier New',
@@ -201,7 +232,6 @@ class MarketGraph {
 						    	count: 0
 						   }	  
 				        },
-
 				        hAxis: {
 							baselineColor: 'transparent',
 				        	textStyle: {
@@ -210,20 +240,43 @@ class MarketGraph {
 				        		color: 'black',
 				        		fontWeight: 700,
 				        	},
-	   	   					gridlines: {
-						    	count: 5
-						   	}	
+				        	gridlines: {
+						    	count: 2
+						   },
+						   format: 'MMM d, y'
 				        },
-				        legend: {position: 'none'},
-				  		backgroundColor: 'transparent'
+				        legend: {position: 'none'}
 				   };
-
-
+				   	//
+				   	//
+				   	// 		<select>
+					//		<option>5days</option>
+					//		</select>
+				   	//
 					return (
-				
-					<div style={{display: 'flex', justifyContent: 'center',flexDirection: 'column'}}>
-									{this.setDatePicker()}
+						<div style={{display: 'flex',  flexDirection: 'column'}}>	
 							
+
+
+
+							<div className="history_options">
+								{this.setCompanyPicker()}
+								
+								<label onClick={() => this.setDateRange('intraday')}>
+									 Intraday
+								</label>
+								<label onClick={() => this.setDateRange('daily')}>
+									Daily
+								</label> 
+								<label onClick={() => this.setDateRange('weekly')}>
+									Weekly
+								</label>
+								<label onClick={() => this.setDateRange('monthly')}>
+									Monthly
+								</label>
+ 						
+							</div>
+
 							<div style={{display: 'flex', flexDirection: 'column'}}>
 											<div className="intradaylinegraph">
 											        <Chart
@@ -252,6 +305,7 @@ class MarketGraph {
 
 	setDatePicker(){
 
+
 		this.datePicker = (
 					<div className="market-date-picker-container">
 								<div className="date-input">
@@ -271,7 +325,7 @@ class MarketGraph {
 													dateFormat="YYYY-MM-DD" timeFormat={false}
 												/>
 								</div>
-							<img src="https://s3-us-west-1.amazonaws.com/cointelmob/icons/enter_icon.png" className="submit-button" onClick={()=> Actions.updatesendRequest() }	/>
+							<img s className="submit-button" onClick={()=> Actions.updatesendRequest() }	/>
 					</div>
 		);
 		return this.datePicker;
@@ -280,18 +334,15 @@ class MarketGraph {
 
 	setCompanyPicker(){
 		//
-		// 	
+		// 
+		let image = require("../img/enter_icon.png");	
 		//
 		this.companyPicker = (
 					<div className="pickercontainer">
-		
 							<input className="homepage-input" placeholder="Enter stock code" onChange={(e) => this.updatecompanyCode(e) } />
-							
 							<Link to="/intradaypage" onClick={()=> Actions.updatesendRequest() }>
-								<img src="https://s3-us-west-1.amazonaws.com/cointelmob/icons/enter_icon.png" style={{width: 30, height: 30, marginLeft: 10,marginTop: 4, cursor: 'pointer'}} />
+								<img src={image}  className="enter_icons" />
 							</Link>
-						
-			
 					</div>
 		);
 

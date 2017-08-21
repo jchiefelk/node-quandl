@@ -2,17 +2,17 @@
 		font-size: 18; 
 		font-weight: 700;
 		font-family: 'Courier New';
-		height: 3em; 
+		height: 3.2em; 
 		width: 17em;
+		border-radius: 0.7em;
 }
 
 .pickercontainer {
 	display: flex;
     align-items: center; 
-    justify-content: center;
     background-color: transparent;
-    position: absolute;
-    top: 4em;
+    position: relative;
+    top: 0.3em;
 }
 
 .picker-instructions {
@@ -74,7 +74,6 @@
 	margin-top: 1.5em; 
 	margin-left: 1em;
 	cursor: pointer;
-
 }
 
 .date-text {

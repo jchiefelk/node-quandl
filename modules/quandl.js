@@ -47,7 +47,7 @@ Quandl.prototype.fetchETFData = function(){
 					 	}
 			})
 			.then(function(value) {
-					console.log(value);
+
 
                     for(var x=0;x <365;x++) {
                           results.data.push({
@@ -175,15 +175,16 @@ Quandl.prototype.getIntraDayTicket = function(params){
 		url = quandl_url+params.db+'/'+params.market+'_'+params.code+'.json?api_key='+api_key;
 	}
 	**/
-	console.log(params.code);
-	let url = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol='+params.code+'&interval=1min&apikey=JKH0X5U5HVN4DD1Y';
-	console.log(url);
+	// let url = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol='+params.code+'&interval=1min&apikey=JKH0X5U5HVN4DD1Y';
+	let url = 'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol='+params.code+'&apikey=JKH0X5U5HVN4DD1Y';
+	
 	return fetch(url, {
 			  method: 'GET',
 			  mode: 'cors',
 			})
 			.then((response) => typeof response == 'object' ? response.json() : {} )
 			.then( ( responseJson ) => {
+
 				   	return responseJson;
 			})
 };
