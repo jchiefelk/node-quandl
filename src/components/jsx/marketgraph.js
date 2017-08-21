@@ -6,6 +6,7 @@ var Loading = require('react-loading');
 import MarketPicker from '../components/marketpicker';
 import { Router, Route, Link } from 'react-router';
 import { Chart } from 'react-google-charts';
+let API = require('../../api_utls/api');
 
 
 class MarketGraph {
@@ -31,7 +32,6 @@ class MarketGraph {
 					line_data.push([new Date(data[x].time), data[x].average ]);
 			};
 			// title: data.name,
-
 			let options = {
 
 					    titleTextStyle: {
@@ -325,12 +325,21 @@ class MarketGraph {
 													dateFormat="YYYY-MM-DD" timeFormat={false}
 												/>
 								</div>
-							<img s className="submit-button" onClick={()=> Actions.updatesendRequest() }	/>
+							<img  className="submit-button" onClick={()=> Actions.updatesendRequest() }	/>
 					</div>
 		);
 		return this.datePicker;
 	}
 
+	sendRequest(){
+		console.log('send request');
+		Actions.updatesendRequest();
+		let code = this.companyCode.split(' ');
+		let params = {
+			code: code[0]
+		};
+		API.getStockPrice(params);			
+	}
 
 	setCompanyPicker(){
 		//
@@ -340,12 +349,11 @@ class MarketGraph {
 		this.companyPicker = (
 					<div className="pickercontainer">
 							<input className="homepage-input" placeholder="Enter stock code" onChange={(e) => this.updatecompanyCode(e) } />
-							<Link to="/intradaypage" onClick={()=> Actions.updatesendRequest() }>
+							<Link to="/intradaypage" onClick={()=> this.sendRequest() }>
 								<img src={image}  className="enter_icons" />
 							</Link>
 					</div>
 		);
-
 		return this.companyPicker;
 	}
 

@@ -237,11 +237,17 @@ AppDispatcher.register(function(payload){
       StockDataStore.emitChange(CHANGE_EVENT);
       break;
     case appConstants.SEND_REQUEST:
-      Stocks.IntraDay.sendRequestStatus = !Stocks.IntraDay.sendRequestStatus;
+      console.log('Stock data Store');
+     // Stocks.IntraDay.sendRequestStatus = !Stocks.IntraDay.sendRequestStatus;
+      // console.log(Stocks.IntraDay.sendRequestStatus);
+      /***
       if(Stocks.IntraDay.sendRequestStatus==true){
         Stocks.IntraDay.data=[];
         Stocks.IntraDay.name=null;
       }
+      ***/
+      Stocks.IntraDay.data=[];
+      Stocks.IntraDay.name=null;
       StockDataStore.emitChange(CHANGE_EVENT);
       break;
     case appConstants.AUTOCORRELATION_INTRADAY:

@@ -7,13 +7,9 @@ function Autocorrelation(){
 
 Autocorrelation.prototype.setGoogleAutocorr = function(data){
 			let line_data = [["DATE","correlation coefficient"]];
-
-			// data.xValues.length
 			for(var x =0; x<200; x++){
 					line_data.push([x, data.autocorrelation.yValues[x] ]);
 			};
-
-
 			let options = {
 						title: 'Historical 1 year Momentum',
 						fontFamily: 'Courier New',
@@ -46,8 +42,7 @@ Autocorrelation.prototype.setGoogleAutocorr = function(data){
 				
 						    	count: 10
 						   	}	 
-					 	}
-					
+					 	}	
 			};
 
 			return (
@@ -71,7 +66,6 @@ Autocorrelation.prototype.setIntradayAutocorrelation = function(data){
 				line_data.push([x, data[x] ]);
 				set.push(data[x]);
 			};
-			
 			let options = {
 						title: 'Price Autocorrelation',
 						fontFamily: 'Courier New',
@@ -96,11 +90,9 @@ Autocorrelation.prototype.setIntradayAutocorrelation = function(data){
 				        		fontWeight: 700,
 				       
 				        	},
-
 				        	gridlines: {
 						    	count: 5
 						   }	
-
 				        },
 					 	hAxis: {
 					 	title: 'Trading Days',

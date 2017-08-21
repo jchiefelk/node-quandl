@@ -57106,11 +57106,17 @@
 	      StockDataStore.emitChange(CHANGE_EVENT);
 	      break;
 	    case appConstants.SEND_REQUEST:
-	      Stocks.IntraDay.sendRequestStatus = !Stocks.IntraDay.sendRequestStatus;
-	      if (Stocks.IntraDay.sendRequestStatus == true) {
-	        Stocks.IntraDay.data = [];
-	        Stocks.IntraDay.name = null;
+	      console.log('Stock data Store');
+	      // Stocks.IntraDay.sendRequestStatus = !Stocks.IntraDay.sendRequestStatus;
+	      // console.log(Stocks.IntraDay.sendRequestStatus);
+	      /***
+	      if(Stocks.IntraDay.sendRequestStatus==true){
+	        Stocks.IntraDay.data=[];
+	        Stocks.IntraDay.name=null;
 	      }
+	      ***/
+	      Stocks.IntraDay.data = [];
+	      Stocks.IntraDay.name = null;
 	      StockDataStore.emitChange(CHANGE_EVENT);
 	      break;
 	    case appConstants.AUTOCORRELATION_INTRADAY:
@@ -75096,6 +75102,8 @@
 	var Datetime = __webpack_require__(448);
 	var Loading = __webpack_require__(456);
 
+	var API = __webpack_require__(424);
+
 	var MarketGraph = function () {
 		function MarketGraph() {
 			_classCallCheck(this, MarketGraph);
@@ -75123,7 +75131,6 @@
 					line_data.push([new Date(data[x].time), data[x].average]);
 				};
 				// title: data.name,
-
 				var options = {
 
 					titleTextStyle: {
@@ -75447,11 +75454,22 @@
 							dateFormat: 'YYYY-MM-DD', timeFormat: false
 						})
 					),
-					_react2.default.createElement('img', { s: true, className: 'submit-button', onClick: function onClick() {
+					_react2.default.createElement('img', { className: 'submit-button', onClick: function onClick() {
 							return Actions.updatesendRequest();
 						} })
 				);
 				return this.datePicker;
+			}
+		}, {
+			key: 'sendRequest',
+			value: function sendRequest() {
+				console.log('send request');
+				Actions.updatesendRequest();
+				var code = this.companyCode.split(' ');
+				var params = {
+					code: code[0]
+				};
+				API.getStockPrice(params);
 			}
 		}, {
 			key: 'setCompanyPicker',
@@ -75471,12 +75489,11 @@
 					_react2.default.createElement(
 						_reactRouter.Link,
 						{ to: '/intradaypage', onClick: function onClick() {
-								return Actions.updatesendRequest();
+								return _this3.sendRequest();
 							} },
 						_react2.default.createElement('img', { src: image, className: 'enter_icons' })
 					)
 				);
-
 				return this.companyPicker;
 			}
 		}, {
@@ -81035,12 +81052,9 @@
 
 	Autocorrelation.prototype.setGoogleAutocorr = function (data) {
 		var line_data = [["DATE", "correlation coefficient"]];
-
-		// data.xValues.length
 		for (var x = 0; x < 200; x++) {
 			line_data.push([x, data.autocorrelation.yValues[x]]);
 		};
-
 		var options = {
 			title: 'Historical 1 year Momentum',
 			fontFamily: 'Courier New',
@@ -81074,7 +81088,6 @@
 					count: 10
 				}
 			}
-
 		};
 
 		return _react2.default.createElement(
@@ -81097,7 +81110,6 @@
 			line_data.push([x, data[x]]);
 			set.push(data[x]);
 		};
-
 		var options = {
 			title: 'Price Autocorrelation',
 			fontFamily: 'Courier New',
@@ -81122,11 +81134,9 @@
 					fontWeight: 700
 
 				},
-
 				gridlines: {
 					count: 5
 				}
-
 			},
 			hAxis: {
 				title: 'Trading Days',
@@ -81220,30 +81230,9 @@
 		}
 
 		_createClass(IntraDayTicket, [{
-			key: 'sendRequest',
-			value: function sendRequest() {
-				var code = this.state.companyCode.split(' ');
-				var params = {
-					code: code[0]
-				};
-				// 
-				API.getStockPrice(params);
-			}
-		}, {
-			key: 'componentDidUpdate',
-			value: function componentDidUpdate() {
-
-				if (this.state.storeupdated == true && this.state.sendRequestStatus == true) {
-					// this.sendRequest();
-				}
-			}
-		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
 				StockDataStore.addChangeListener(this._onChange.bind(this));
-				if (this.state.sendRequestStatus == true) {
-					this.sendRequest();
-				}
 			}
 		}, {
 			key: 'componentWillUnmount',
@@ -81267,13 +81256,11 @@
 		}, {
 			key: 'setLoadingView',
 			value: function setLoadingView() {
-
 				return MarketGraph.setLoadingAnimation();
 			}
 		}, {
 			key: 'setMainView',
 			value: function setMainView() {
-
 				var autocorr = null;
 				if (this.state.marketData.autocorr.length > 0) {
 					autocorr = Autocorrelation.setIntradayAutocorrelation(this.state.marketData.autocorr);
