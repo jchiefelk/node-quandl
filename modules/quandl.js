@@ -175,14 +175,13 @@ Quandl.prototype.getIntraDayTicket = function(params){
                   if(params.timeSteps=='30min') timeSteps = 'Time Series (30min)';
                   if(params.timeSteps=='60min') timeSteps = 'Time Series (60min)';
      }
+
      if(params.timeSteps!=null){
-     	 url = 'https://www.alphavantage.co/query?function='+timeSeries+'&symbol='+params.code+'&interval='+params.timeSteps+'&outputsize=full&apikey=JKH0X5U5HVN4DD1Y';
+     	url = 'https://www.alphavantage.co/query?function='+timeSeries+'&symbol='+params.code+'&interval='+params.timeSteps+'&outputsize=full&apikey=JKH0X5U5HVN4DD1Y';
      } else {
      	url = 'https://www.alphavantage.co/query?function='+timeSeries+'&symbol='+params.code+'&apikey=JKH0X5U5HVN4DD1Y';
      }
-
-     console.log(url);
-
+    console.log(url);
 	return fetch(url, {
 			  method: 'GET',
 			  mode: 'cors',
