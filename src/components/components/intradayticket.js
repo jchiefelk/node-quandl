@@ -14,59 +14,41 @@ export default class IntraDayTicket extends Component {
 				super();
 				this.state = {
 					data: null,
-					intraday: [],
-					intraDayView: null,
-					companyName: null,
-					startDate: null,
-					endDate: null, 
 					rangeSelected: false,
-					market: StockDataStore.getMarket(),
 					companyCode: StockDataStore.getCompanyCode(),
-					autocorrelation: null,
-					storeupdated: false,
-					intraDayAutocorrelation: null,
-					intraDayCandleStick: null,
-					sendRequestStatus:	StockDataStore.getRequestSendStatus(),
 					marketData: StockDataStore.getInradayTicketData()
 				};
 			}
-
 			componentDidMount(){
 				StockDataStore.addChangeListener(this._onChange.bind(this));
-			 
 			}
 			componentWillUnmount(){
 				StockDataStore.removeChangeListener(this._onChange.bind(this));
 			}
 			_onChange(){
 				this.setState({
-					market: StockDataStore.getMarket(),
-					marketSelected: true, 
 					marketData: StockDataStore.getInradayTicketData(),
 					startDate: StockDataStore.getStartDate(),
 					endDate: StockDataStore.getEndDate(),
 					companyCode: StockDataStore.getCompanyCode(),
 					sendRequestStatus:	StockDataStore.getRequestSendStatus(),
-					storeupdated: true
 				});
-			}
 
+
+			}
 			setLoadingView(){
 				return MarketGraph.setLoadingAnimation();
 			}  
-
 			setMainView(){
 				let autocorr= null;
 				if(this.state.marketData.autocorr.length > 0) {
 					autocorr = Autocorrelation.setIntradayAutocorrelation(this.state.marketData.autocorr)
 				}
-
 				return (
 					<div className="intradaychild">
 						<div>
 							{MarketGraph.setIntradayGraphGoogleView(this.state.marketData.data, this.state.marketData.name)}
 						</div>
-
 						<div>
 							{CandleStickGraph.setIntraDayGraph(this.state.marketData)}
 							{autocorr}
@@ -74,9 +56,7 @@ export default class IntraDayTicket extends Component {
 					</div>
 				);
 			}
-
 			render(){
-				// 
 				let view; 
 				if(this.state.marketData.data==0) {
 					view = this.setLoadingView();
@@ -89,6 +69,5 @@ export default class IntraDayTicket extends Component {
 						{view}
 					</div>
 				);
-
 			}
 }

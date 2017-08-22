@@ -56963,31 +56963,34 @@
 	    endDate: null,
 	    companyCode: null,
 	    sendRequestStatus: false,
-	    autocorr: []
+	    autocorr: [],
+	    historyOptions: null,
+	    timeSteps: null
 	  };
+	};
+
+	StockData.prototype.updateStockHistoryOptions = function (item, timeSteps) {
+	  this.IntraDay.historyOptions = item;
+	  this.IntraDay.timeSteps = timeSteps;
 	};
 
 	StockData.prototype.updateIntradayTicket = function (item) {
 	  console.log('Update Intraday');
 	  this.IntraDay.data = [];
 	  this.IntraDay.name = item['Meta Data']['2. Symbol'];
-	  /**
-	   for(let key in item['Time Series (1min)']){
-	         let obj  = item['Time Series (1min)'][key];
-	         let volume = parseInt(obj['5. volume']);
-	         let data = {
-	           date: key,
-	           open: parseFloat(obj['1. open']),
-	           high: parseFloat(obj['2. high']),
-	           low:  parseFloat(obj['3. low']),
-	           close: parseFloat(obj['4. close']),
-	           volume: volume.toExponential(2)
-	         }; 
-	         this.IntraDay.data.push(data);
-	   };
-	   **/
-	  for (var key in item['Monthly Time Series']) {
-	    var obj = item['Monthly Time Series'][key];
+	  var timeSeries = 'Weekly Time Series';
+	  console.log(item);
+	  if (this.IntraDay.historyOptions) {
+	    if (this.IntraDay.historyOptions == 'intraday') timeSeries = 'Time Series (' + this.IntraDay.timeSteps + ')';
+	    if (this.IntraDay.historyOptions == 'daily') timeSeries = 'Time Series (Daily)';
+	    if (this.IntraDay.historyOptions == 'weekly') timeSeries = 'Weekly Time Series';
+	    if (this.IntraDay.historyOptions == 'monthly') timeSeries = 'Monthly Time Series';
+	  }
+
+	  console.log(timeSeries);
+
+	  for (var key in item[timeSeries]) {
+	    var obj = item[timeSeries][key];
 	    var volume = parseInt(obj['5. volume']);
 	    var data = {
 	      date: key,
@@ -56999,7 +57002,6 @@
 	    };
 	    this.IntraDay.data.push(data);
 	  };
-	  // Actions.updatesendRequest();
 	  StockDataStore.emit(CHANGE_EVENT);
 	};
 
@@ -57106,15 +57108,6 @@
 	      StockDataStore.emitChange(CHANGE_EVENT);
 	      break;
 	    case appConstants.SEND_REQUEST:
-	      console.log('Stock data Store');
-	      // Stocks.IntraDay.sendRequestStatus = !Stocks.IntraDay.sendRequestStatus;
-	      // console.log(Stocks.IntraDay.sendRequestStatus);
-	      /***
-	      if(Stocks.IntraDay.sendRequestStatus==true){
-	        Stocks.IntraDay.data=[];
-	        Stocks.IntraDay.name=null;
-	      }
-	      ***/
 	      Stocks.IntraDay.data = [];
 	      Stocks.IntraDay.name = null;
 	      StockDataStore.emitChange(CHANGE_EVENT);
@@ -57126,6 +57119,10 @@
 	      break;
 	    case appConstants.UPDATE_BITCOIN_AVG_HISTORY:
 	      Bitcoin.updateBitcoinData(action.data);
+	      StockDataStore.emitChange(CHANGE_EVENT);
+	      break;
+	    case appConstants.STOCK_HISTORY_OPTION:
+	      Stocks.updateStockHistoryOptions(action.data, action.timeSteps);
 	      StockDataStore.emitChange(CHANGE_EVENT);
 	      break;
 	    default:
@@ -57428,7 +57425,8 @@
 	  AUTOCORRELATION_INTRADAY: "AUTOCORRELATION_INTRADAY",
 	  UPDATE_FRONTEND_DATA: "UPDATE_FRONTEND_DATA",
 	  UPDATE_BITCOIN_AVG_HISTORY: "UPDATE_BITCOIN_AVG_HISTORY",
-	  STOCK_HISTORY: "STOCK_HISTORY"
+	  STOCK_HISTORY: "STOCK_HISTORY",
+	  STOCK_HISTORY_OPTION: "STOCK_HISTORY_OPTION"
 	};
 	module.exports = appConstants;
 
@@ -57826,8 +57824,15 @@
 
 	var Actions = {
 
-	  updateBitcoinData: function updateBitcoinData(item) {
+	  updateStockHistoryOption: function updateStockHistoryOption(item, timeSteps) {
+	    AppDispatcher.handleAction({
+	      actionType: appConstants.STOCK_HISTORY_OPTION,
+	      data: item,
+	      timeSteps: timeSteps
+	    });
+	  },
 
+	  updateBitcoinData: function updateBitcoinData(item) {
 	    AppDispatcher.handleAction({
 	      actionType: appConstants.UPDATE_BITCOIN_AVG_HISTORY,
 	      data: item
@@ -75125,14 +75130,13 @@
 		_createClass(MarketGraph, [{
 			key: 'setBitcoinGraph',
 			value: function setBitcoinGraph(data, daterange) {
-				console.log(data);
+
 				var line_data = [["DATE", "valuation"]];
 				for (var x = data.length - 1; x >= 0; x--) {
 					line_data.push([new Date(data[x].time), data[x].average]);
 				};
 				// title: data.name,
 				var options = {
-
 					titleTextStyle: {
 						color: 'black', // any HTML string color ('red', '#cc00cc')
 						fontName: 'Courier New', // i.e. 'Times New Roman'
@@ -75140,7 +75144,6 @@
 						bold: false, // true or false
 						italic: false // true of false
 					},
-
 					legend: "none",
 					backgroundColor: 'transparent',
 					vAxis: {
@@ -75251,11 +75254,17 @@
 			}
 		}, {
 			key: 'setDateRange',
-			value: function setDateRange(range) {
-
+			value: function setDateRange(dateRange, timeSteps) {
+				console.log(dateRange, timeSteps);
+				Actions.updateStockHistoryOption(dateRange, timeSteps);
+				Actions.updatesendRequest();
+				var code = this.companyCode.split(' ');
 				var params = {
-					code: null
+					code: code[0],
+					daterange: dateRange,
+					timeSteps: timeSteps
 				};
+				API.getStockPrice(params);
 			}
 		}, {
 			key: 'setIntradayGraphGoogleView',
@@ -75346,10 +75355,8 @@
 				};
 				//
 				//
-				// 		<select>
-				//		<option>5days</option>
-				//		</select>
 				//
+				// 
 				return _react2.default.createElement(
 					'div',
 					{ style: { display: 'flex', flexDirection: 'column' } },
@@ -75359,31 +75366,53 @@
 						this.setCompanyPicker(),
 						_react2.default.createElement(
 							'label',
-							{ onClick: function onClick() {
-									return _this.setDateRange('intraday');
-								} },
-							'Intraday'
+							null,
+							'Intraday',
+							_react2.default.createElement(
+								'select',
+								{ onChange: function onChange(e) {
+										return _this.setDateRange('intraday', e.target.value);
+									} },
+								_react2.default.createElement(
+									'option',
+									null,
+									'1min'
+								),
+								_react2.default.createElement(
+									'option',
+									null,
+									'5min'
+								),
+								_react2.default.createElement(
+									'option',
+									null,
+									'15min'
+								),
+								_react2.default.createElement(
+									'option',
+									null,
+									'30min'
+								),
+								_react2.default.createElement(
+									'option',
+									null,
+									'60min'
+								)
+							)
 						),
 						_react2.default.createElement(
 							'label',
 							{ onClick: function onClick() {
-									return _this.setDateRange('daily');
+									return _this.setDateRange('daily', null);
 								} },
 							'Daily'
 						),
 						_react2.default.createElement(
 							'label',
 							{ onClick: function onClick() {
-									return _this.setDateRange('weekly');
+									return _this.setDateRange('weekly', null);
 								} },
 							'Weekly'
-						),
-						_react2.default.createElement(
-							'label',
-							{ onClick: function onClick() {
-									return _this.setDateRange('monthly');
-								} },
-							'Monthly'
 						)
 					),
 					_react2.default.createElement(
@@ -75467,7 +75496,8 @@
 				Actions.updatesendRequest();
 				var code = this.companyCode.split(' ');
 				var params = {
-					code: code[0]
+					code: code[0],
+					timeSteps: null
 				};
 				API.getStockPrice(params);
 			}
@@ -81211,19 +81241,8 @@
 
 			_this.state = {
 				data: null,
-				intraday: [],
-				intraDayView: null,
-				companyName: null,
-				startDate: null,
-				endDate: null,
 				rangeSelected: false,
-				market: StockDataStore.getMarket(),
 				companyCode: StockDataStore.getCompanyCode(),
-				autocorrelation: null,
-				storeupdated: false,
-				intraDayAutocorrelation: null,
-				intraDayCandleStick: null,
-				sendRequestStatus: StockDataStore.getRequestSendStatus(),
 				marketData: StockDataStore.getInradayTicketData()
 			};
 			return _this;
@@ -81243,14 +81262,11 @@
 			key: '_onChange',
 			value: function _onChange() {
 				this.setState({
-					market: StockDataStore.getMarket(),
-					marketSelected: true,
 					marketData: StockDataStore.getInradayTicketData(),
 					startDate: StockDataStore.getStartDate(),
 					endDate: StockDataStore.getEndDate(),
 					companyCode: StockDataStore.getCompanyCode(),
-					sendRequestStatus: StockDataStore.getRequestSendStatus(),
-					storeupdated: true
+					sendRequestStatus: StockDataStore.getRequestSendStatus()
 				});
 			}
 		}, {
@@ -81265,7 +81281,6 @@
 				if (this.state.marketData.autocorr.length > 0) {
 					autocorr = Autocorrelation.setIntradayAutocorrelation(this.state.marketData.autocorr);
 				}
-
 				return _react2.default.createElement(
 					'div',
 					{ className: 'intradaychild' },
@@ -81285,7 +81300,6 @@
 		}, {
 			key: 'render',
 			value: function render() {
-				// 
 				var view = void 0;
 				if (this.state.marketData.data == 0) {
 					view = this.setLoadingView();

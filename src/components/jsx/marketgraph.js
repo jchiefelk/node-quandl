@@ -26,14 +26,13 @@ class MarketGraph {
 				);
 	}
 	setBitcoinGraph(data,daterange){
-			console.log(data);
+
 			let line_data = [["DATE","valuation"]];
 			for(var x = data.length-1; x>=0; x--){
 					line_data.push([new Date(data[x].time), data[x].average ]);
 			};
 			// title: data.name,
 			let options = {
-
 					    titleTextStyle: {
 					        color: 'black',    // any HTML string color ('red', '#cc00cc')
 					        fontName: 'Courier New', // i.e. 'Times New Roman'
@@ -41,7 +40,6 @@ class MarketGraph {
 					        bold: false,    // true or false
 					        italic: false   // true of false
 					    },
-
 						legend: "none",
 						backgroundColor: 'transparent',
 						vAxis: {
@@ -151,11 +149,17 @@ class MarketGraph {
 
 	}
 
-	setDateRange(range){
-		
-			let params = {
-				code: null
-			};
+	setDateRange(dateRange,timeSteps){
+		console.log(dateRange,timeSteps);
+		Actions.updateStockHistoryOption(dateRange,timeSteps);
+		Actions.updatesendRequest();
+		let code = this.companyCode.split(' ');
+		let params = {
+			code: code[0],	
+			daterange: dateRange,
+			timeSteps: timeSteps
+		};
+		API.getStockPrice(params);	
 	}
 
 	setIntradayGraphGoogleView(data,name){
@@ -168,7 +172,6 @@ class MarketGraph {
 						bar_data.push([data[x].date, parseFloat(data[x].volume) ]);
 				};
 	
-
 				let options = {
 
 						title: name,
@@ -179,9 +182,7 @@ class MarketGraph {
 					        bold: false,    // true or false
 					        italic: false   // true of false
 					    },
-
-
-						
+	
 						legend: "none",
 						backgroundColor: 'transparent',
 
@@ -249,32 +250,35 @@ class MarketGraph {
 				   };
 				   	//
 				   	//
-				   	// 		<select>
-					//		<option>5days</option>
-					//		</select>
 				   	//
+				   	// 
 					return (
 						<div style={{display: 'flex',  flexDirection: 'column'}}>	
 							
-
-
-
 							<div className="history_options">
 								{this.setCompanyPicker()}
 								
-								<label onClick={() => this.setDateRange('intraday')}>
+								<label>
 									 Intraday
+									 <select onChange={(e) => this.setDateRange('intraday',e.target.value)}>
+									 	<option>1min</option>
+									 	<option>5min</option>
+									 	<option>15min</option>
+									 	<option>30min</option>
+									 	<option>60min</option>
+									 </select>
+
 								</label>
-								<label onClick={() => this.setDateRange('daily')}>
+								
+
+								<label onClick={() => this.setDateRange('daily',null)}>
 									Daily
 								</label> 
-								<label onClick={() => this.setDateRange('weekly')}>
+
+								<label onClick={() => this.setDateRange('weekly',null)}>
 									Weekly
 								</label>
-								<label onClick={() => this.setDateRange('monthly')}>
-									Monthly
-								</label>
- 						
+
 							</div>
 
 							<div style={{display: 'flex', flexDirection: 'column'}}>
@@ -336,7 +340,8 @@ class MarketGraph {
 		Actions.updatesendRequest();
 		let code = this.companyCode.split(' ');
 		let params = {
-			code: code[0]
+			code: code[0],
+			timeSteps: null	
 		};
 		API.getStockPrice(params);			
 	}

@@ -47,8 +47,6 @@ Quandl.prototype.fetchETFData = function(){
 					 	}
 			})
 			.then(function(value) {
-
-
                     for(var x=0;x <365;x++) {
                           results.data.push({
                                 name: value[0].dataset.name,
@@ -60,11 +58,9 @@ Quandl.prototype.fetchETFData = function(){
                                 volume: value[0].dataset.data[x][5]
                           });
                     };
-
                     for(var x = 0; x < value[0].dataset.data.length ; x++){
                             correlate.push(value[0].dataset.data[x][1]);
                     };
-
                      return Correlation.market_fund_autocorrelatation(correlate);    
             })
 			.then((result)=>{
@@ -162,22 +158,31 @@ Quandl.prototype.getMarketData = function(){
 	});
 };
 Quandl.prototype.getIntraDayTicket = function(params){
-	var startDate, endDate;
-	startDate =  moment(new Date().setFullYear(2016)).format('YYYY-MM-DD'),
-	endDate =  moment().format('YYYY-MM-DD');
-	/**
-	if( params.startDate==null || params.endDate==null) {
-		url = quandl_url+params.db+'/'+params.market+'_'+params.code+'.json?start_date='+startDate+'&end_date='+endDate+'&api_key='+api_key;
-	} else {
-		url = quandl_url+params.db+'/'+params.market+'_'+params.code+'.json?start_date='+params.startDate+'&end_date='+params.endDate+'&api_key='+api_key;
+	let timeSteps=null;
+	let timeSeries =  'TIME_SERIES_WEEKLY';
+	let url; 
+	if(params.daterange){
+		if(params.daterange=='intraday') timeSeries = 'TIME_SERIES_INTRADAY';
+		if(params.daterange=='daily') timeSeries = 'TIME_SERIES_DAILY';
+		if(params.daterange=='weekly') timeSeries = 'TIME_SERIES_WEEKLY';
+		if(params.daterange=='monthly') timeSeries = 'TIME_SERIES_MONTHLY';
 	}
-	if(params.startDate=='start' && params.endDate=='end'){
-		url = quandl_url+params.db+'/'+params.market+'_'+params.code+'.json?api_key='+api_key;
-	}
-	**/
-	// let url = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol='+params.code+'&interval=1min&apikey=JKH0X5U5HVN4DD1Y';
-	let url = 'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol='+params.code+'&apikey=JKH0X5U5HVN4DD1Y';
-	
+
+	if(params.timeSteps){
+                  if(params.timeSteps=='1min') timeSteps = 'Time Series (1min)';
+                  if(params.timeSteps=='5min') timeSteps = 'Time Series (5min)';
+                  if(params.timeSteps=='15min') timeSteps = 'Time Series (15min)';
+                  if(params.timeSteps=='30min') timeSteps = 'Time Series (30min)';
+                  if(params.timeSteps=='60min') timeSteps = 'Time Series (60min)';
+     }
+     if(params.timeSteps!=null){
+     	 url = 'https://www.alphavantage.co/query?function='+timeSeries+'&symbol='+params.code+'&interval='+params.timeSteps+'&outputsize=full&apikey=JKH0X5U5HVN4DD1Y';
+     } else {
+     	url = 'https://www.alphavantage.co/query?function='+timeSeries+'&symbol='+params.code+'&apikey=JKH0X5U5HVN4DD1Y';
+     }
+
+     console.log(url);
+
 	return fetch(url, {
 			  method: 'GET',
 			  mode: 'cors',

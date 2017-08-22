@@ -90,6 +90,8 @@ app.get('/markets', function(req,res){
 });
 app.post('/api', function(req,res){
     let market, autocorr;
+    console.log(req.body);
+
     Quandl.getIntraDayTicket(req.body)
            .then(function(value) { 
                 market = value;
@@ -100,7 +102,21 @@ app.post('/api', function(req,res){
                 // return Quandl.getIntraDayTicket(request) // Get ALL Historicall Data for Autocorrelation
                 // console.log(value['Time Series (1min)']);
                 // console.log(value['Monthly Time Series']);
-                return Correlation.stockprice_autocorrelation(value['Monthly Time Series']);
+                let timeSeries = 'Weekly Time Series';
+                if(req.body.daterange){
+
+                  if(req.body.daterange=='intraday' && req.body.timeSteps=='1min') timeSeries = 'Time Series (1min)';
+                  if(req.body.daterange=='intraday' && req.body.timeSteps=='5min') timeSeries = 'Time Series (5min)';
+                  if(req.body.daterange=='intraday' && req.body.timeSteps=='15min') timeSeries = 'Time Series (15min)';
+                  if(req.body.daterange=='intraday' && req.body.timeSteps=='30min') timeSeries = 'Time Series (30min)';
+                  if(req.body.daterange=='intraday' && req.body.timeSteps=='60min') timeSeries = 'Time Series (60min)';
+
+                  if(req.body.daterange=='daily') timeSeries = 'Time Series (Daily)';
+                  if(req.body.daterange=='weekly') timeSeries = 'Weekly Time Series';
+                  if(req.body.daterange=='monthly') timeSeries = 'Monthly Time Series';
+
+                }
+                return Correlation.stockprice_autocorrelation(value[timeSeries]);
             })
            .then((result) => {
 

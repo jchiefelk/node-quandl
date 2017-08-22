@@ -94,31 +94,35 @@ function StockData(){
         endDate: null,
         companyCode: null,
         sendRequestStatus: false, 
-        autocorr: []
+        autocorr: [],
+        historyOptions: null,
+        timeSteps: null
     };
+};
+
+StockData.prototype.updateStockHistoryOptions = function(item,timeSteps){
+      this.IntraDay.historyOptions = item;
+      this.IntraDay.timeSteps = timeSteps;
 };
 
 StockData.prototype.updateIntradayTicket = function(item){
   console.log('Update Intraday');
   this.IntraDay.data=[];
   this.IntraDay.name = item['Meta Data']['2. Symbol'];
- /**
-  for(let key in item['Time Series (1min)']){
-        let obj  = item['Time Series (1min)'][key];
-        let volume = parseInt(obj['5. volume']);
-        let data = {
-          date: key,
-          open: parseFloat(obj['1. open']),
-          high: parseFloat(obj['2. high']),
-          low:  parseFloat(obj['3. low']),
-          close: parseFloat(obj['4. close']),
-          volume: volume.toExponential(2)
-        }; 
-        this.IntraDay.data.push(data);
-  };
-  **/
-  for(let key in item['Monthly Time Series']){
-          let obj  = item['Monthly Time Series'][key];
+  let timeSeries = 'Weekly Time Series';
+  console.log(item);
+  if(this.IntraDay.historyOptions){
+          if(this.IntraDay.historyOptions=='intraday') timeSeries = 'Time Series ('+ this.IntraDay.timeSteps+')';
+          if(this.IntraDay.historyOptions=='daily') timeSeries = 'Time Series (Daily)';
+          if(this.IntraDay.historyOptions=='weekly') timeSeries = 'Weekly Time Series';
+          if(this.IntraDay.historyOptions=='monthly') timeSeries = 'Monthly Time Series';
+  }
+
+  console.log(timeSeries);
+
+
+  for(let key in item[timeSeries]){
+          let obj  = item[timeSeries][key];
           let volume = parseInt(obj['5. volume']);
           let data = {
             date: key,
@@ -130,7 +134,6 @@ StockData.prototype.updateIntradayTicket = function(item){
           }; 
           this.IntraDay.data.push(data);
     };
-    // Actions.updatesendRequest();
     StockDataStore.emit(CHANGE_EVENT);
 };
 
@@ -237,15 +240,6 @@ AppDispatcher.register(function(payload){
       StockDataStore.emitChange(CHANGE_EVENT);
       break;
     case appConstants.SEND_REQUEST:
-      console.log('Stock data Store');
-     // Stocks.IntraDay.sendRequestStatus = !Stocks.IntraDay.sendRequestStatus;
-      // console.log(Stocks.IntraDay.sendRequestStatus);
-      /***
-      if(Stocks.IntraDay.sendRequestStatus==true){
-        Stocks.IntraDay.data=[];
-        Stocks.IntraDay.name=null;
-      }
-      ***/
       Stocks.IntraDay.data=[];
       Stocks.IntraDay.name=null;
       StockDataStore.emitChange(CHANGE_EVENT);
@@ -258,6 +252,10 @@ AppDispatcher.register(function(payload){
     case appConstants.UPDATE_BITCOIN_AVG_HISTORY:
         Bitcoin.updateBitcoinData(action.data);
         StockDataStore.emitChange(CHANGE_EVENT);  
+        break;
+    case appConstants.STOCK_HISTORY_OPTION:
+        Stocks.updateStockHistoryOptions(action.data,action.timeSteps);
+        StockDataStore.emitChange(CHANGE_EVENT);
         break;
     default:
       return true;
