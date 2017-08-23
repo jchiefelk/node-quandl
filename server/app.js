@@ -90,7 +90,7 @@ app.get('/markets', function(req,res){
 });
 app.post('/api', function(req,res){
     let market, autocorr;
-    console.log(req.body);
+
 
     Quandl.getIntraDayTicket(req.body)
            .then(function(value) { 
@@ -132,6 +132,32 @@ app.post('/api', function(req,res){
                 next(error);
             });
 });
+
+
+app.post('/bitcoin', function(req,res){
+
+  let url = 'https://apiv2.bitcoinaverage.com/indices/global/history/BTCUSD?period='+req.body.daterange+'&?format=json';
+   return fetch(url, {
+            method: 'get',
+            mode: 'cors'
+      })
+      .then((response) => typeof response == 'object' ? response.json() : {} )
+      .then( ( responseJson ) => {
+            console.log(responseJson);
+            res.json({
+              data: responseJson
+            });
+      })
+      .catch((err) => {
+            console.log(err);
+            res.json({
+              error: err
+            });
+
+      });
+
+});
+
 
 app.get('/frontenddata',function(req,res){
     res.json({
