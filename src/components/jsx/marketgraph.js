@@ -20,9 +20,11 @@ class MarketGraph {
 				this.companyCode = null;
 				this.test=(<div id="chart_div"/>);
 				this.loadingAnimation = (
+					<div className="intradaypage">
 						<div style={{display: 'flex',  justifyContent: 'center', marginTop: 100 }}>
 							<Loading type='bubbles' color='#909090' style={{height: 500, width:500}}/>
 						</div>
+					</div>
 				);
 	}
 	setBitcoinGraph(data,daterange){
@@ -185,8 +187,6 @@ class MarketGraph {
 	
 						legend: "none",
 						backgroundColor: 'transparent',
-
-
 						vAxis: {
 							title: "",	
 							titleTextStyle: { color: 'black' },
@@ -253,11 +253,34 @@ class MarketGraph {
 				   	//
 				   	// 
 					return (
-						<div style={{display: 'flex',  flexDirection: 'column'}}>	
+						<div>	
 							
-							<div className="history_options">
-								{this.setCompanyPicker()}
-								
+						
+
+
+							
+
+					
+							<div className="intradaylinegraph">
+											        <Chart
+													  chartType="LineChart"
+													  data={line_data}
+													  width="100%"
+													  height="100%"
+													  options={options}
+											        />
+						    </div>
+
+				    	
+						</div>
+	    			);
+	}
+
+	setHistoryRangePicker(){
+
+			return (
+					<div className="history_options">
+					{this.setCompanyPicker()}		
 								<label>
 									 Intraday
 									 <select onChange={(e) => this.setDateRange('intraday',e.target.value)}>
@@ -269,30 +292,63 @@ class MarketGraph {
 									 </select>
 
 								</label>
-								
-
 								<label onClick={() => this.setDateRange('daily',null)}>
 									Daily
 								</label> 
-
 								<label onClick={() => this.setDateRange('weekly',null)}>
-									Weekly
+									Weekly								
 								</label>
+					</div>
+				);
+	}
 
-							</div>
 
-							<div style={{display: 'flex', flexDirection: 'column'}}>
-											<div className="intradaylinegraph">
-											        <Chart
-													  chartType="LineChart"
-													  data={line_data}
-													  width="100%"
-													  height="100%"
-													  options={options}
-											        />
-						    				</div>
+	setIntraDayBarGraph(data,name){
+	      		let bar_data = [
+				        ['Month', 'Volume']
+			    ];
 
-											<div className="intradaybargraph">
+			    for(var x =data.length-1; x>=0;x--){
+					bar_data.push([data[x].date, parseFloat(data[x].volume) ]);
+				};
+
+			    let baroptions = {
+						isStacked:true,
+						fontFamily: 'Courier New',
+						backgroundColor: 'transparent',
+						vAxis: {
+							baselineColor: 'transparent',
+				        	textStyle: {
+				        		fontSize: 0,
+				        		fontName: 'Courier New',
+				        		color: 'black',
+				        		fontWeight: 700,
+				       
+				        	},
+				        	gridlines: {
+						    	count: 0
+						   }	  
+				        },
+				        hAxis: {
+							baselineColor: 'transparent',
+				        	textStyle: {
+				        		fontSize: 8,
+				        		fontName: 'Courier New',
+				        		color: 'black',
+				        		fontWeight: 700,
+				        	},
+				        	gridlines: {
+						    	count: 2
+						   },
+						   format: 'MMM d, y'
+				        },
+				        legend: {position: 'none'}
+				   };
+
+
+				   return(
+				
+							<div className="intradaybargraph">
 											        <Chart
 													  chartType="ColumnChart"
 													  data={bar_data}
@@ -300,17 +356,16 @@ class MarketGraph {
 													  height="100%"
 													  options={baroptions}
 											        />
-						    				</div>
-				    			</div>
-						</div>
-	    			);
+						    </div>
+			
+				   	);
+
 	}
 
 
 	setDatePicker(){
 
-
-		this.datePicker = (
+		return (
 					<div className="market-date-picker-container">
 								<div className="date-input">
 									<p className="date-text">Start Date</p>
@@ -332,7 +387,6 @@ class MarketGraph {
 							<img  className="submit-button" onClick={()=> Actions.updatesendRequest() }	/>
 					</div>
 		);
-		return this.datePicker;
 	}
 
 	sendRequest(){
@@ -348,18 +402,18 @@ class MarketGraph {
 
 	setCompanyPicker(){
 		//
-		// 
-		let image = require("../img/enter_icon.png");	
+		// 	
 		//
-		this.companyPicker = (
+
+		return (
 					<div className="pickercontainer">
 							<input className="homepage-input" placeholder="Enter stock code" onChange={(e) => this.updatecompanyCode(e) } />
 							<Link to="/intradaypage" onClick={()=> this.sendRequest() }>
-								<img src={image}  className="enter_icons" />
+								<img src={require("../img/enter_icon.png")}  className="enter_icons" />
 							</Link>
 					</div>
+
 		);
-		return this.companyPicker;
 	}
 
 	setLoadingAnimation(){

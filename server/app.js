@@ -143,7 +143,6 @@ app.post('/bitcoin', function(req,res){
       })
       .then((response) => typeof response == 'object' ? response.json() : {} )
       .then( ( responseJson ) => {
-            console.log(responseJson);
             res.json({
               data: responseJson
             });

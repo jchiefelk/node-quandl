@@ -27963,7 +27963,7 @@
 
 
 	// module
-	exports.push([module.id, "#Title {\n\tfont-size: 4.7em;\n\tcolor: black;\n\tfont-weight: 900; \n\tfont-family: 'Courier New';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n\talign-text: center;\n\tmargin: 50;\n}\n#About-Me {\n\tcolor: black;\n\tfont-size: 2.1em;\n\tfont-weight: 700; \n\tfont-family: 'Courier New';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n}\n.app {\n\tdisplay: flex; \n\tflex-direction: column; \n\tbackground-color: transparent;\n\theight: 100%;\n}\n.enter_icons {\n\twidth: 2.3em; \n\theight: 2.3em; \n\tmargin-left: 1em;\n\tmargin-top: 0.05em; \n\tcursor: pointer;\n}\n.history_options {\n\tdisplay: flex;\n\tflex-direction: row;\n\tfont-size: 12;\n\tfont-family: 'Courier New';\n\tjustify-content: center;\n}\n.history_options label {\n\tdisplay: flex;\n\tflex-direction: column;\n\tmargin: 1em;\n\talign-items: center;\n\tcursor: pointer;\n}\n.history_options select {\n\twidth: 7em;\n\theight: 2.5em;\n\tbackground: Snow;\n\tmargin: 0.3em;\n\tborder-width: 0;\n}\n.marketpage {\n\tdisplay: flex;\n\tflex-direction: column;\n\tbackground-color: transparent; \n\talign-items: center;\n}\n.marketgraph {\n\tbackground-color: transparent;\n\talign-items: center;\n\twidth: 50em;\n\theight: 40em;\n\tjustify-content: center;\n}\n.bitcoingraph {\n\tbackground-color: transparent;\n\talign-items: center;\n\twidth: 100%;\n\theight: 40vh;\n\tjustify-content: center;\n}\n.bitcoinoptions {\n\tposition: relative;\n\tright: 0;\n\twidth: 5vw;\n\tfont-size: 18px;\n\tborder-width: 0;\n}\n.paragraph {\n\tcolor: black;\n\tfont-size: 1.5em;\n\tfont-weight: 400;\n\tfont-family: 'Courier New';\n\tmargin-top: 2em;\n\tmargin: 50;\n}\n.table_row_parent { \n\tborder-width: 2; \n\tborder-style: solid; \n\tdisplay: flex;\n\tflex-direction: column;\n}\n.section-title {\n\tmargin: 50;\n\tfont-size: 2em;\n\tfont-weight: 900;\n\tfont-family: 'Courier New';\n\tmargin-top: 2em;\n}\n.code-image {\n\tmargin: 0;\n\twidth: 100;\n}\n.header {\n\tdisplay: flex;\n\tflex-direction: row;\n\twidth: 100%;\n\theight: 3em; \n\tbackground-color: black; \n\talign-items: center; \n}\n.header-link {\n\tfont-weight: 900;\n\tfont-family: 'Courier New';\n\tfont-size: 18;\n\tcolor: white; \n\tposition: absolute;\n\ttop: 1em;\n\tleft: 2em;\n\tcursor: pointer; \n\ttext-decoration: none;  \n}\n.linegraph {\n\tdisplay: flex;\n\twidth: 25em;\n}\n.intradaypage {\n\tmargin-top: 3em;\n\tdisplay: flex; \n\tjustify-content: center;\n\talign-items: center;\n\tbackground-color: Snow;\n\twidth: 90%;\n}\n.intradaychild {\n\tmargin-top: 10em;\n\tdisplay: flex;\n}\n\n.intradaylinegraph {\n\n\tmargin-top: 0em;\n\twidth: 60em;\n\theight: 40em;\n\tbackground-color: transparent;\n}\n\n.intradaybargraph {\n\tdisplay: flex;\n\tmargin-top: 0.1em;\n\twidth: 49.5em;\n\theight: 15em; \n\tmargin-left: 5em;\n\tbackground-color: transparent;\n}\n\n.autocorrelationgraph {\n\tdisplay: flex;\n\tbackground-color: transparent;\n\twidth: 40em;\n\theight: 15em;\n\tmargin-top: 4em;\n}\n\n.autocorrelationgraph_intraday {\n\twidth: 50em;\n\theight: 24em;\n\tmargin-left: 2em;\n\tmargin-top: 4em;\n}\n\n.candleStickGraph_intraday {\n\tdisplay: flex;\n\twidth: 50em;\n\theight: 20em;\n\tmargin-top: 5em;\n\tmargin-left: 3.5em;\n}\n\n.candleStickGraph {\n\tdisplay: flex;\n\theight: 15em;\n\twidth: 41em;\n\tmargin-top: 1em;\n\tbackground-color: transparent;\n}\n\n.graphViews {\n\tdisplay: flex;\n\tbackground-color: Snow;\n\twidth: 90%;\n}\n\n.marketgraph-view {\n\tdisplay: flex;\n    background-color: Snow;\n    width: 90%;\n    flex-direction: column;\n    margin-top: 10em;\n}\n\n\n.graphViewChild {\n\tdisplay: flex;\n\tbackground-color: transparent;\n\tflex-direction: column; \n\theight: 40em;\n\twidth: 50em;\n}\n\n.graph-page-title {\n\tfont-family: 'Courier New';\n\tfont-weight: 700; \n\tcolor: black;\n\tfont-size: 2.5em;\n}\n\n.background-video {\n\tdisplay: flex;\n\twidth: 100%;\n\tbackground-color: transparent;\n}\n\n.videobanner {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n\theight: 70%;\n\twidth: 100%;\n\ttop: 0;\n\tposition: absolute;\n\tbackground-color: transparent;\n\tcolor: white;\n\tfont-family: 'Courier New';\n}\n\n.bannerchild {\n\tfont-size: 4vh;\n\tmargin-left: 4em;\n\tmargin-top: 2.5em;\n}\n\n.bannerAd {\n\tposition: absolute;\n\ttop: 30%;\n\twidth: 90%;\n\theight: 30vh;\n\tdisplay: flex;\n\tfont-size: 4.5vh;\n\talign-text: center;\n\talign-items: center;\n\tjustify-content: center;\n\tbackground-color: transparent;\n\tcolor: black;\n\topacity: 0.6;\n}\n\n", ""]);
+	exports.push([module.id, "#Title {\n\tfont-size: 4.7em;\n\tcolor: black;\n\tfont-weight: 900; \n\tfont-family: 'Courier New';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n\talign-text: center;\n\tmargin: 50;\n}\n#About-Me {\n\tcolor: black;\n\tfont-size: 2.1em;\n\tfont-weight: 700; \n\tfont-family: 'Courier New';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n}\n.app {\n\tdisplay: flex; \n\tflex-direction: column; \n\tbackground-color: transparent;\n\theight: 100%;\n}\n.enter_icons {\n\twidth: 2.3em; \n\theight: 2.3em; \n\tmargin-left: 1em;\n\tmargin-top: 0.05em; \n\tcursor: pointer;\n}\n.history_options {\n\tdisplay: flex;\n\tflex-direction: row;\n\tfont-size: 12;\n\tfont-family: 'Courier New';\n\tjustify-content: center;\n}\n.history_options label {\n\tdisplay: flex;\n\tflex-direction: column;\n\tmargin: 1em;\n\talign-items: center;\n\tcursor: pointer;\n}\n.history_options select {\n\twidth: 7em;\n\theight: 2.5em;\n\tbackground: Snow;\n\tmargin: 0.3em;\n\tborder-width: 0;\n}\n.marketpage {\n\tdisplay: flex;\n\tflex-direction: column;\n\tbackground-color: transparent; \n\talign-items: center;\n}\n.marketgraph {\n\tbackground-color: transparent;\n\talign-items: center;\n\twidth: 50em;\n\theight: 40em;\n\tjustify-content: center;\n}\n.bitcoingraph {\n\tbackground-color: transparent;\n\talign-items: center;\n\twidth: 100%;\n\theight: 40vh;\n\tjustify-content: center;\n}\n.bitcoinoptions {\n\tposition: relative;\n\tright: 0;\n\twidth: 5vw;\n\tfont-size: 18px;\n\tborder-width: 0;\n}\n.paragraph {\n\tcolor: black;\n\tfont-size: 1.5em;\n\tfont-weight: 400;\n\tfont-family: 'Courier New';\n\tmargin-top: 2em;\n\tmargin: 50;\n}\n.table_row_parent { \n\tborder-width: 2; \n\tborder-style: solid; \n\tdisplay: flex;\n\tflex-direction: column;\n}\n.section-title {\n\tmargin: 50;\n\tfont-size: 2em;\n\tfont-weight: 900;\n\tfont-family: 'Courier New';\n\tmargin-top: 2em;\n}\n.code-image {\n\tmargin: 0;\n\twidth: 100;\n}\n.header {\n\tdisplay: flex;\n\tflex-direction: row;\n\twidth: 100%;\n\theight: 3em; \n\tbackground-color: black; \n\talign-items: center; \n}\n.header-link {\n\tfont-weight: 900;\n\tfont-family: 'Courier New';\n\tfont-size: 18;\n\tcolor: white; \n\tposition: absolute;\n\ttop: 1em;\n\tleft: 2em;\n\tcursor: pointer; \n\ttext-decoration: none;  \n}\n.linegraph {\n\tdisplay: flex;\n\twidth: 25em;\n}\n.intradaypage {\n\tmargin-top: 3em;\n\tdisplay: flex;\n\tflex-direction: column; \n\tbackground-color: Snow;\n\twidth: 90%;\n\theight: 100%;\n}\n.intradaychild {\n\n\tdisplay: flex;\n\tflex-direction: row;\n\n}\n\n.intradaylinegraph {\n\twidth: 60em;\n\theight: 40em;\n\tbackground-color: transparent;\n}\n\n.intradaybargraph {\n\tdisplay: flex;\n\twidth: 50em;\n\theight: 15em; \n\tbackground-color: transparent;\n\tmargin-left: 5em;\n}\n\n.autocorrelationgraph {\n\tdisplay: flex;\n\tbackground-color: transparent;\n\twidth: 50em;\n\theight: 15em;\n}\n\n.autocorrelationgraph_intraday {\n\tdisplay: flex;\n\twidth: 45em;\n\theight: 20em;\n\tmargin-left: 6em;\n}\n\n.candleStickGraph_intraday {\n\tdisplay: flex;\n\twidth: 50em;\n\theight: 30em;\n\tmargin-top: 2em;\n\t\n}\n\n.candleStickGraph {\n\tdisplay: flex;\n\theight: 15em;\n\twidth: 41em;\n\tbackground-color: transparent;\n}\n\n.graphViews {\n\tdisplay: flex;\n\tbackground-color: Snow;\n\twidth: 90%;\n}\n\n.marketgraph-view {\n\tdisplay: flex;\n    background-color: Snow;\n    width: 90%;\n    flex-direction: column;\n    margin-top: 10em;\n}\n\n.graphViewChild {\n\tdisplay: flex;\n\tbackground-color: transparent;\n\tflex-direction: column; \n\theight: 40em;\n\twidth: 50em;\n}\n\n.graph-page-title {\n\tfont-family: 'Courier New';\n\tfont-weight: 700; \n\tcolor: black;\n\tfont-size: 2.5em;\n}\n\n.background-video {\n\tdisplay: flex;\n\twidth: 100%;\n\tbackground-color: transparent;\n}\n\n.videobanner {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n\theight: 70%;\n\twidth: 100%;\n\ttop: 0;\n\tposition: absolute;\n\tbackground-color: transparent;\n\tcolor: white;\n\tfont-family: 'Courier New';\n}\n\n.bannerchild {\n\tfont-size: 4vh;\n\tmargin-left: 4em;\n\tmargin-top: 2.5em;\n}\n\n.bannerAd {\n\tposition: absolute;\n\ttop: 30%;\n\twidth: 90%;\n\theight: 30vh;\n\tdisplay: flex;\n\tfont-size: 4.5vh;\n\talign-text: center;\n\talign-items: center;\n\tjustify-content: center;\n\tbackground-color: transparent;\n\tcolor: black;\n\topacity: 0.6;\n}\n\n", ""]);
 
 	// exports
 
@@ -75062,10 +75062,7 @@
 	  var data = {
 	    daterange: daterange
 	  };
-
 	  //  
-
-
 	  return fetch('/bitcoin', {
 	    method: 'post',
 	    headers: {
@@ -75079,7 +75076,6 @@
 	    }
 	    return response.json();
 	  }).then(function (data) {
-	    console.log(data.data);
 	    Actions.updateBitcoinData(data.data);
 	  }).catch(function (error) {
 	    console.log(error);
@@ -75132,8 +75128,12 @@
 			this.test = _react2.default.createElement('div', { id: 'chart_div' });
 			this.loadingAnimation = _react2.default.createElement(
 				'div',
-				{ style: { display: 'flex', justifyContent: 'center', marginTop: 100 } },
-				_react2.default.createElement(Loading, { type: 'bubbles', color: '#909090', style: { height: 500, width: 500 } })
+				{ className: 'intradaypage' },
+				_react2.default.createElement(
+					'div',
+					{ style: { display: 'flex', justifyContent: 'center', marginTop: 100 } },
+					_react2.default.createElement(Loading, { type: 'bubbles', color: '#909090', style: { height: 500, width: 500 } })
+				)
 			);
 		}
 
@@ -75279,8 +75279,6 @@
 		}, {
 			key: 'setIntradayGraphGoogleView',
 			value: function setIntradayGraphGoogleView(data, name) {
-				var _this = this;
-
 				var line_data = [["DATE", "val1"]];
 				var bar_data = [['Month', 'Volume']];
 				for (var x = data.length - 1; x >= 0; x--) {
@@ -75301,7 +75299,6 @@
 
 					legend: "none",
 					backgroundColor: 'transparent',
-
 					vAxis: {
 						title: "",
 						titleTextStyle: { color: 'black' },
@@ -75369,88 +75366,133 @@
 				// 
 				return _react2.default.createElement(
 					'div',
-					{ style: { display: 'flex', flexDirection: 'column' } },
+					null,
 					_react2.default.createElement(
 						'div',
-						{ className: 'history_options' },
-						this.setCompanyPicker(),
+						{ className: 'intradaylinegraph' },
+						_react2.default.createElement(_reactGoogleCharts.Chart, {
+							chartType: 'LineChart',
+							data: line_data,
+							width: '100%',
+							height: '100%',
+							options: options
+						})
+					)
+				);
+			}
+		}, {
+			key: 'setHistoryRangePicker',
+			value: function setHistoryRangePicker() {
+				var _this = this;
+
+				return _react2.default.createElement(
+					'div',
+					{ className: 'history_options' },
+					this.setCompanyPicker(),
+					_react2.default.createElement(
+						'label',
+						null,
+						'Intraday',
 						_react2.default.createElement(
-							'label',
-							null,
-							'Intraday',
+							'select',
+							{ onChange: function onChange(e) {
+									return _this.setDateRange('intraday', e.target.value);
+								} },
 							_react2.default.createElement(
-								'select',
-								{ onChange: function onChange(e) {
-										return _this.setDateRange('intraday', e.target.value);
-									} },
-								_react2.default.createElement(
-									'option',
-									null,
-									'1min'
-								),
-								_react2.default.createElement(
-									'option',
-									null,
-									'5min'
-								),
-								_react2.default.createElement(
-									'option',
-									null,
-									'15min'
-								),
-								_react2.default.createElement(
-									'option',
-									null,
-									'30min'
-								),
-								_react2.default.createElement(
-									'option',
-									null,
-									'60min'
-								)
+								'option',
+								null,
+								'1min'
+							),
+							_react2.default.createElement(
+								'option',
+								null,
+								'5min'
+							),
+							_react2.default.createElement(
+								'option',
+								null,
+								'15min'
+							),
+							_react2.default.createElement(
+								'option',
+								null,
+								'30min'
+							),
+							_react2.default.createElement(
+								'option',
+								null,
+								'60min'
 							)
-						),
-						_react2.default.createElement(
-							'label',
-							{ onClick: function onClick() {
-									return _this.setDateRange('daily', null);
-								} },
-							'Daily'
-						),
-						_react2.default.createElement(
-							'label',
-							{ onClick: function onClick() {
-									return _this.setDateRange('weekly', null);
-								} },
-							'Weekly'
 						)
 					),
 					_react2.default.createElement(
-						'div',
-						{ style: { display: 'flex', flexDirection: 'column' } },
-						_react2.default.createElement(
-							'div',
-							{ className: 'intradaylinegraph' },
-							_react2.default.createElement(_reactGoogleCharts.Chart, {
-								chartType: 'LineChart',
-								data: line_data,
-								width: '100%',
-								height: '100%',
-								options: options
-							})
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'intradaybargraph' },
-							_react2.default.createElement(_reactGoogleCharts.Chart, {
-								chartType: 'ColumnChart',
-								data: bar_data,
-								width: '100%',
-								height: '100%',
-								options: baroptions
-							})
-						)
+						'label',
+						{ onClick: function onClick() {
+								return _this.setDateRange('daily', null);
+							} },
+						'Daily'
+					),
+					_react2.default.createElement(
+						'label',
+						{ onClick: function onClick() {
+								return _this.setDateRange('weekly', null);
+							} },
+						'Weekly'
 					)
+				);
+			}
+		}, {
+			key: 'setIntraDayBarGraph',
+			value: function setIntraDayBarGraph(data, name) {
+				var bar_data = [['Month', 'Volume']];
+
+				for (var x = data.length - 1; x >= 0; x--) {
+					bar_data.push([data[x].date, parseFloat(data[x].volume)]);
+				};
+
+				var baroptions = {
+					isStacked: true,
+					fontFamily: 'Courier New',
+					backgroundColor: 'transparent',
+					vAxis: {
+						baselineColor: 'transparent',
+						textStyle: {
+							fontSize: 0,
+							fontName: 'Courier New',
+							color: 'black',
+							fontWeight: 700
+
+						},
+						gridlines: {
+							count: 0
+						}
+					},
+					hAxis: {
+						baselineColor: 'transparent',
+						textStyle: {
+							fontSize: 8,
+							fontName: 'Courier New',
+							color: 'black',
+							fontWeight: 700
+						},
+						gridlines: {
+							count: 2
+						},
+						format: 'MMM d, y'
+					},
+					legend: { position: 'none' }
+				};
+
+				return _react2.default.createElement(
+					'div',
+					{ className: 'intradaybargraph' },
+					_react2.default.createElement(_reactGoogleCharts.Chart, {
+						chartType: 'ColumnChart',
+						data: bar_data,
+						width: '100%',
+						height: '100%',
+						options: baroptions
+					})
 				);
 			}
 		}, {
@@ -75458,7 +75500,7 @@
 			value: function setDatePicker() {
 				var _this2 = this;
 
-				this.datePicker = _react2.default.createElement(
+				return _react2.default.createElement(
 					'div',
 					{ className: 'market-date-picker-container' },
 					_react2.default.createElement(
@@ -75497,7 +75539,6 @@
 							return Actions.updatesendRequest();
 						} })
 				);
-				return this.datePicker;
 			}
 		}, {
 			key: 'sendRequest',
@@ -75517,10 +75558,10 @@
 				var _this3 = this;
 
 				//
-				// 
-				var image = __webpack_require__(457);
+				// 	
 				//
-				this.companyPicker = _react2.default.createElement(
+
+				return _react2.default.createElement(
 					'div',
 					{ className: 'pickercontainer' },
 					_react2.default.createElement('input', { className: 'homepage-input', placeholder: 'Enter stock code', onChange: function onChange(e) {
@@ -75531,10 +75572,9 @@
 						{ to: '/intradaypage', onClick: function onClick() {
 								return _this3.sendRequest();
 							} },
-						_react2.default.createElement('img', { src: image, className: 'enter_icons' })
+						_react2.default.createElement('img', { src: __webpack_require__(457), className: 'enter_icons' })
 					)
 				);
-				return this.companyPicker;
 			}
 		}, {
 			key: 'setLoadingAnimation',
@@ -81291,18 +81331,21 @@
 				if (this.state.marketData.autocorr.length > 0) {
 					autocorr = Autocorrelation.setIntradayAutocorrelation(this.state.marketData.autocorr);
 				}
+
 				return _react2.default.createElement(
 					'div',
-					{ className: 'intradaychild' },
+					{ className: 'intradaypage' },
+					MarketGraph.setHistoryRangePicker(),
 					_react2.default.createElement(
 						'div',
-						null,
-						MarketGraph.setIntradayGraphGoogleView(this.state.marketData.data, this.state.marketData.name)
+						{ className: 'intradaychild' },
+						MarketGraph.setIntradayGraphGoogleView(this.state.marketData.data, this.state.marketData.name),
+						CandleStickGraph.setIntraDayGraph(this.state.marketData)
 					),
 					_react2.default.createElement(
 						'div',
-						null,
-						CandleStickGraph.setIntraDayGraph(this.state.marketData),
+						{ className: 'intradaychild' },
+						MarketGraph.setIntraDayBarGraph(this.state.marketData.data, this.state.marketData.name),
 						autocorr
 					)
 				);
@@ -81317,11 +81360,7 @@
 				if (this.state.marketData.data.length > 0) {
 					view = this.setMainView();
 				}
-				return _react2.default.createElement(
-					'div',
-					{ className: 'intradaypage' },
-					view
-				);
+				return view;
 			}
 		}]);
 
