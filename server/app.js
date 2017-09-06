@@ -7,7 +7,6 @@ const path = require('path');
 const fetch = require('node-fetch');
 const http = require('http');
 const https = require('https');
-const fs = require('fs');
 const app = express();
 let Correlation = require('../modules/correlation');
 let _store;

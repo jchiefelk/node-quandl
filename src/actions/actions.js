@@ -138,7 +138,7 @@ var Actions = {
   },
 
   updateIntradDayData: function(item){
-    // console.log(item)
+
     AppDispatcher.handleAction({
       actionType: appConstants.INTRADAYTICKET,
       data: item

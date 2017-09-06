@@ -33,8 +33,6 @@ export default class IntraDayTicket extends Component {
 					companyCode: StockDataStore.getCompanyCode(),
 					sendRequestStatus:	StockDataStore.getRequestSendStatus(),
 				});
-
-
 			}
 			setLoadingView(){
 				return MarketGraph.setLoadingAnimation();
@@ -44,22 +42,17 @@ export default class IntraDayTicket extends Component {
 				if(this.state.marketData.autocorr.length > 0) {
 					autocorr = Autocorrelation.setIntradayAutocorrelation(this.state.marketData.autocorr)
 				}
-
 				return (
 					<div className="intradaypage">
-
 						{MarketGraph.setHistoryRangePicker()}
-
 						<div className="intradaychild">
 							{MarketGraph.setIntradayGraphGoogleView(this.state.marketData.data, this.state.marketData.name)}	
 							{CandleStickGraph.setIntraDayGraph(this.state.marketData)}
 						</div>
-						
 						<div className="intradaychild">
 							{MarketGraph.setIntraDayBarGraph(this.state.marketData.data, this.state.marketData.name)}
 							{autocorr}
 						</div>
-
 					</div>
 				);
 			}

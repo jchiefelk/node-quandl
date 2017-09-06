@@ -2,7 +2,7 @@
 	font-size: 4.7em;
 	color: black;
 	font-weight: 900; 
-	font-family: 'Courier New';
+	font-family: 'Arial';
 	text-decoration: 'none';
 	margin-top: 5;
 	align-text: center;
@@ -11,8 +11,8 @@
 #About-Me {
 	color: black;
 	font-size: 2.1em;
-	font-weight: 700; 
-	font-family: 'Courier New';
+	font-weight: 500; 
+	font-family: 'Arial';
 	text-decoration: 'none';
 	margin-top: 5;
 }
@@ -33,7 +33,7 @@
 	display: flex;
 	flex-direction: row;
 	font-size: 12;
-	font-family: 'Courier New';
+	font-family: 'Arial';
 	justify-content: center;
 }
 .history_options label {
@@ -77,11 +77,19 @@
 	font-size: 18px;
 	border-width: 0;
 }
+.bitcoinCandleStickPlot {
+	background-color: transparent;
+	align-items: center;
+	width: 100%;
+	height: 40vh;
+	justify-content: center;
+}
+
 .paragraph {
 	color: black;
 	font-size: 1.5em;
-	font-weight: 400;
-	font-family: 'Courier New';
+	font-weight: 500;
+	font-family: 'Arial';
 	margin-top: 2em;
 	margin: 50;
 }
@@ -95,7 +103,7 @@
 	margin: 50;
 	font-size: 2em;
 	font-weight: 900;
-	font-family: 'Courier New';
+	font-family: 'Arial';
 	margin-top: 2em;
 }
 .code-image {
@@ -111,8 +119,8 @@
 	align-items: center; 
 }
 .header-link {
-	font-weight: 900;
-	font-family: 'Courier New';
+	font-weight: 700;
+	font-family: 'Arial';
 	font-size: 18;
 	color: white; 
 	position: absolute;
@@ -134,10 +142,8 @@
 	height: 100%;
 }
 .intradaychild {
-
 	display: flex;
 	flex-direction: row;
-
 }
 
 .intradaylinegraph {
@@ -206,8 +212,8 @@
 }
 
 .graph-page-title {
-	font-family: 'Courier New';
-	font-weight: 700; 
+	font-family: 'Arial';
+	font-weight: 500; 
 	color: black;
 	font-size: 2.5em;
 }
@@ -229,7 +235,7 @@
 	position: absolute;
 	background-color: transparent;
 	color: white;
-	font-family: 'Courier New';
+	font-family: 'Arial';
 }
 
 .bannerchild {
@@ -252,4 +258,6 @@
 	color: black;
 	opacity: 0.6;
 }
+
+
 

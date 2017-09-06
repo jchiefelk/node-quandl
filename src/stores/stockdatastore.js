@@ -12,7 +12,7 @@ function DailyData(){
       this.market=null;
 
 };
-DailyData.prototype.D3Graphs = function(item){
+DailyData.prototype.intraDayGraphs = function(item){
       //
       // Put in D3.js format
       //
@@ -33,7 +33,6 @@ DailyData.prototype.D3Graphs = function(item){
         high: [],
         low:  []
       };
-
       this.market={
         xValues: [], // dates
         yValues: [],
@@ -106,20 +105,16 @@ StockData.prototype.updateStockHistoryOptions = function(item,timeSteps){
 };
 
 StockData.prototype.updateIntradayTicket = function(item){
-  console.log('Update Intraday');
+  console.log('Update Intraday Data in Store');
   this.IntraDay.data=[];
   this.IntraDay.name = item['Meta Data']['2. Symbol'];
   let timeSeries = 'Weekly Time Series';
-  console.log(item);
   if(this.IntraDay.historyOptions){
           if(this.IntraDay.historyOptions=='intraday') timeSeries = 'Time Series ('+ this.IntraDay.timeSteps+')';
           if(this.IntraDay.historyOptions=='daily') timeSeries = 'Time Series (Daily)';
           if(this.IntraDay.historyOptions=='weekly') timeSeries = 'Weekly Time Series';
           if(this.IntraDay.historyOptions=='monthly') timeSeries = 'Monthly Time Series';
   }
-
-  console.log(timeSeries);
-
 
   for(let key in item[timeSeries]){
           let obj  = item[timeSeries][key];
@@ -213,7 +208,7 @@ AppDispatcher.register(function(payload){
     case appConstants.UPDATE_FRONTEND_DATA:
       FrontEndData.etfdata = action.data.etfdata;
       FrontEndData.marketdata = action.data.marketdata;
-      FrontEndData.D3Graphs(action.data);
+      FrontEndData.intraDayGraphs(action.data);
       StockDataStore.emitChange(CHANGE_EVENT);
       break;
     case appConstants.MARKET:

@@ -40,7 +40,6 @@ export default class MarketFundView extends Component {
 			}
 			componentDidMount(){
 				StockDataStore.addChangeListener(this._onChange.bind(this));
-				// Actions.getDailyFrontEndData();
 				API.getBitcoinData("daily");
 			}
 
@@ -95,48 +94,28 @@ export default class MarketFundView extends Component {
 							</div>
 				);
 			}
-			renderBitCoinView(){
-					let view = null;
+			renderBitCoinPriceView(){
+					let priceview = null;
 					if(this.state.bitcoinData!=null){
-						view = MarketGraph.setBitcoinGraph(this.state.bitcoinData,this.state.daterange);
+						priceview = MarketGraph.setBitcoinGraph(this.state.bitcoinData, this.state.daterange);
 					}
-					return view;
+					return priceview;
 			}
+
+			renderBitcoinVarianceView(){
+					let varianceview = null;
+					if(this.state.bitcoinData!=null){
+						if(this.state.bitcoinData[0].open!=undefined) varianceview = CandleStickGraph.setBitcoinVarianceView(this.state.bitcoinData)
+					}
+					return varianceview;
+			}
+
 			changeDateRange(range){
 				this.setState({daterange: range});
 				API.getBitcoinData(range);
-
 			}
+
 			renderAPIOptions(){
-
-				/**
-
-			
-							<div className="history_options">
-								{this.setCompanyPicker()}
-								
-								<label onClick={() => this.setDateRange('intraday')}>
-									 Intraday
-								</label>
-								<label onClick={() => this.setDateRange('daily')}>
-									Daily
-								</label> 
-								<label onClick={() => this.setDateRange('weekly')}>
-									Weekly
-								</label>
-								<label onClick={() => this.setDateRange('monthly')}>
-									Monthly
-								</label>
- 						
-							</div>
-							
-						<select className="bitcoinoptions" onChange={(e)=> this.changeDateRange(e)}>
-							<option value="daily">daily</option>
-							<option value="monthly">monthly</option>
-							<option value="alltime">alltime</option>
-						</select>
-		
-				**/
 
 				return(
 						<div className="history_options">
@@ -154,14 +133,14 @@ export default class MarketFundView extends Component {
 			}
 			render(){
 				//
-				// 	{this.renderMarketView()}
-				//	{this.renderETFView()}
+				// 			
 				//
 				return (
 					<div className="marketgraph-view">
 						<h1 className="graph-page-title">Bitcoin</h1>
 						{this.renderAPIOptions()}
-						{this.renderBitCoinView()}
+						{this.renderBitCoinPriceView()}
+						{this.renderBitcoinVarianceView()}
 					</div>
 				);
 			}

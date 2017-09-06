@@ -15,6 +15,13 @@ Autocorrelation.prototype.setGoogleAutocorr = function(data){
 						fontFamily: 'Courier New',
 						legend: "none",
 						backgroundColor: 'transparent',
+
+						chartArea: {
+						    backgroundColor: {
+						        stroke: 'black',
+						        strokeWidth: 1
+						    }
+						},
 						vAxis: {
 							title: "Correlation Coefficient",	
 							titleTextStyle: { color: 'black' },
@@ -27,8 +34,8 @@ Autocorrelation.prototype.setGoogleAutocorr = function(data){
 				       
 				        	},
 				        	gridlines: {
-		 
-						    	count: 5
+						    	count: 5,
+						    	color: 'transparent'
 						   }	
 				        },
 					 	hAxis: {
@@ -39,8 +46,8 @@ Autocorrelation.prototype.setGoogleAutocorr = function(data){
 					       	   	fontWeight: 700
 				       	   	},
 				       	   	gridlines: {
-				
-						    	count: 10
+						    	count: 10,
+						    	color: 'transparent'
 						   	}	 
 					 	}	
 			};
@@ -77,6 +84,12 @@ Autocorrelation.prototype.setIntradayAutocorrelation = function(data){
 					        italic: false   // true of false
 					    },
 						legend: "none",
+						chartArea: {
+						    backgroundColor: {
+						        stroke: 'black',
+						        strokeWidth: 1
+						    }
+						},
 						backgroundColor: 'transparent',
 						vAxis: {
 							title: "Correlation Coefficient",	
@@ -91,7 +104,8 @@ Autocorrelation.prototype.setIntradayAutocorrelation = function(data){
 				       
 				        	},
 				        	gridlines: {
-						    	count: 5
+						    	count: 2,
+						    	color: 'transparent'
 						   }	
 				        },
 					 	hAxis: {
@@ -105,8 +119,8 @@ Autocorrelation.prototype.setIntradayAutocorrelation = function(data){
 				       	   	},
 
 				       	   	gridlines: {
-						    	// color: 'transparent', 
-						    	count: 5
+						    	color: 'transparent', 
+						    	count: 2
 						   	}	 
 					 	}
 			};
