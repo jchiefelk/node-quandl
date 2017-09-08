@@ -28342,7 +28342,8 @@
 				etfCandleStick: null,
 				viewMode: 'markets',
 				bitcoinData: null,
-				daterange: 'daily'
+				daterange: 'daily',
+				bitcoinHistoryOptions: StockDataStore.getBitcoinHistoryOption()
 			};
 			return _this;
 		}
@@ -28366,7 +28367,8 @@
 					dailymarketData: StockDataStore.getDailyMarketData(),
 					sendRequestStatus: StockDataStore.getRequestSendStatus(),
 					bitcoinData: StockDataStore.getBitcoinHistory(),
-					storeupdated: true
+					storeupdated: true,
+					bitcoinHistoryOptions: StockDataStore.getBitcoinHistoryOption()
 				});
 			}
 		}, {
@@ -28424,7 +28426,8 @@
 			value: function renderBitCoinPriceView() {
 				var priceview = null;
 				if (this.state.bitcoinData != null) {
-					priceview = MarketGraph.setBitcoinGraph(this.state.bitcoinData, this.state.daterange);
+
+					priceview = MarketGraph.setBitcoinGraph(this.state.bitcoinData, this.state.bitcoinHistoryOptions);
 				}
 				return priceview;
 			}
@@ -28433,46 +28436,10 @@
 			value: function renderBitcoinVarianceView() {
 				var varianceview = null;
 				if (this.state.bitcoinData != null) {
-					if (this.state.bitcoinData[0].open != undefined) varianceview = CandleStickGraph.setBitcoinVarianceView(this.state.bitcoinData);
+					if (this.state.bitcoinHistoryOptions == 'monthly') varianceview = CandleStickGraph.setBitcoinVarianceView(this.state.bitcoinData, this.state.bitcoinHistoryOptions);
+					if (this.state.bitcoinHistoryOptions == 'alltime') varianceview = MarketGraph.setBitcoinVolumeGraph(this.state.bitcoinData, this.state.bitcoinHistoryOptions);
 				}
 				return varianceview;
-			}
-		}, {
-			key: 'changeDateRange',
-			value: function changeDateRange(range) {
-				this.setState({ daterange: range });
-				API.getBitcoinData(range);
-			}
-		}, {
-			key: 'renderAPIOptions',
-			value: function renderAPIOptions() {
-				var _this2 = this;
-
-				return _react2.default.createElement(
-					'div',
-					{ className: 'history_options' },
-					_react2.default.createElement(
-						'label',
-						{ onClick: function onClick() {
-								return _this2.changeDateRange('daily');
-							} },
-						'Daily'
-					),
-					_react2.default.createElement(
-						'label',
-						{ onClick: function onClick() {
-								return _this2.changeDateRange('monthly');
-							} },
-						'Monthly'
-					),
-					_react2.default.createElement(
-						'label',
-						{ onClick: function onClick() {
-								return _this2.changeDateRange('alltime');
-							} },
-						'All-time'
-					)
-				);
 			}
 		}, {
 			key: 'render',
@@ -28488,7 +28455,7 @@
 						{ className: 'graph-page-title' },
 						'Bitcoin'
 					),
-					this.renderAPIOptions(),
+					MarketGraph.renderBitcoinAPIOptions(),
 					this.renderBitCoinPriceView(),
 					this.renderBitcoinVarianceView()
 				);
@@ -56856,6 +56823,7 @@
 	var EventEmitter = __webpack_require__(421).EventEmitter;
 	var CHANGE_EVENT = 'change';
 	var moment = __webpack_require__(285);
+	//
 	function DailyData() {
 	  this.etfdata = null;
 	  this.marketdata = null;
@@ -56944,7 +56912,7 @@
 	    companyCode: null,
 	    sendRequestStatus: false,
 	    autocorr: [],
-	    historyOptions: null,
+	    historyOptions: 'weekly',
 	    timeSteps: null
 	  };
 	};
@@ -57003,11 +56971,17 @@
 	function BitcoinData() {
 	  this.description = "Bitcoin Data Avg Object";
 	  this.data = null;
+	  this.historyOption = 'daily';
 	};
 
 	BitcoinData.prototype.updateBitcoinData = function (item) {
 	  this.data = item;
 	};
+
+	BitcoinData.prototype.updateBitcoinHistoryOptions = function (item) {
+	  this.historyOption = item;
+	};
+
 	var Bitcoin = new BitcoinData();
 
 	var StockDataStore = objectAssign({}, EventEmitter.prototype, {
@@ -57049,7 +57023,15 @@
 	  },
 	  getBitcoinHistory: function getBitcoinHistory() {
 	    return Bitcoin.data;
+	  },
+	  getBitcoinHistoryOption: function getBitcoinHistoryOption() {
+	    return Bitcoin.historyOption;
+	  },
+
+	  getStockHistoryOption: function getStockHistoryOption() {
+	    return Stocks.IntraDay.historyOptions;
 	  }
+
 	});
 
 	AppDispatcher.register(function (payload) {
@@ -57100,6 +57082,10 @@
 	      break;
 	    case appConstants.STOCK_HISTORY_OPTION:
 	      Stocks.updateStockHistoryOptions(action.data, action.timeSteps);
+	      StockDataStore.emitChange(CHANGE_EVENT);
+	      break;
+	    case appConstants.BITCOIN_HISTORY_OPTIONS:
+	      Bitcoin.updateBitcoinHistoryOptions(action.data);
 	      StockDataStore.emitChange(CHANGE_EVENT);
 	      break;
 	    default:
@@ -57403,7 +57389,8 @@
 	  UPDATE_FRONTEND_DATA: "UPDATE_FRONTEND_DATA",
 	  UPDATE_BITCOIN_AVG_HISTORY: "UPDATE_BITCOIN_AVG_HISTORY",
 	  STOCK_HISTORY: "STOCK_HISTORY",
-	  STOCK_HISTORY_OPTION: "STOCK_HISTORY_OPTION"
+	  STOCK_HISTORY_OPTION: "STOCK_HISTORY_OPTION",
+	  BITCOIN_HISTORY_OPTIONS: "BITCOIN_HISTORY_OPTIONS"
 	};
 	module.exports = appConstants;
 
@@ -57800,6 +57787,13 @@
 	};
 
 	var Actions = {
+
+	  updateBitcoinHistoryOptions: function updateBitcoinHistoryOptions(item) {
+	    AppDispatcher.handleAction({
+	      actionType: appConstants.BITCOIN_HISTORY_OPTIONS,
+	      data: item
+	    });
+	  },
 
 	  updateStockHistoryOption: function updateStockHistoryOption(item, timeSteps) {
 	    AppDispatcher.handleAction({
@@ -75115,8 +75109,116 @@
 		}
 
 		_createClass(MarketGraph, [{
+			key: 'changeBitcoinOptions',
+			value: function changeBitcoinOptions(range) {
+				Actions.updateBitcoinHistoryOptions(range);
+				API.getBitcoinData(range);
+			}
+		}, {
+			key: 'renderBitcoinAPIOptions',
+			value: function renderBitcoinAPIOptions() {
+				var _this = this;
+
+				return _react2.default.createElement(
+					'div',
+					{ className: 'history_options' },
+					_react2.default.createElement(
+						'label',
+						{ onClick: function onClick() {
+								return _this.changeBitcoinOptions('daily');
+							} },
+						'Daily'
+					),
+					_react2.default.createElement(
+						'label',
+						{ onClick: function onClick() {
+								return _this.changeBitcoinOptions('monthly');
+							} },
+						'Monthly'
+					),
+					_react2.default.createElement(
+						'label',
+						{ onClick: function onClick() {
+								return _this.changeBitcoinOptions('alltime');
+							} },
+						'All-time'
+					)
+				);
+			}
+		}, {
+			key: 'setBitcoinVolumeGraph',
+			value: function setBitcoinVolumeGraph(data, historyoptions) {
+
+				var volume_data = [["DATE", 'Volume']];
+
+				for (var x = data.length - 1; x >= 0; x--) {
+					volume_data.push([new Date(data[x].time), data[x].volume]);
+				};
+
+				var options = {
+
+					title: "Volume",
+
+					titleTextStyle: {
+						color: 'black', // any HTML string color ('red', '#cc00cc')
+						fontName: 'Courier New', // i.e. 'Times New Roman'
+						fontSize: 18, // 12, 18 whatever you want (don't specify px)
+						bold: false, // true or false
+						italic: false // true of false
+					},
+
+					isStacked: true,
+					fontFamily: 'Courier New',
+					backgroundColor: 'transparent',
+
+					vAxis: {
+						baselineColor: 'transparent',
+						textStyle: {
+							fontSize: 12,
+							fontName: 'Courier New',
+							color: 'black',
+							fontWeight: 700
+
+						},
+						gridlines: {
+							count: 2,
+							color: 'transparent'
+						}
+					},
+					hAxis: {
+						baselineColor: 'transparent',
+						textStyle: {
+							fontSize: 12,
+							fontName: 'Courier New',
+							color: 'black',
+							fontWeight: 700
+
+						},
+						gridlines: {
+							count: 5,
+							color: 'transparent'
+						}
+					},
+					legend: { position: 'none' }
+				};
+
+				options.format = 'MMM d, y';
+
+				return _react2.default.createElement(
+					'div',
+					{ className: 'bitcoinCandleStickPlot' },
+					_react2.default.createElement(_reactGoogleCharts.Chart, {
+						chartType: 'ColumnChart',
+						data: volume_data,
+						width: '100%',
+						height: '100%',
+						options: options
+					})
+				);
+			}
+		}, {
 			key: 'setBitcoinGraph',
-			value: function setBitcoinGraph(data, daterange) {
+			value: function setBitcoinGraph(data, historyoptions) {
 
 				var line_data = [["DATE", "valuation"]];
 				for (var x = data.length - 1; x >= 0; x--) {
@@ -75124,10 +75226,12 @@
 				};
 
 				var options = {
+					title: "Price",
+
 					titleTextStyle: {
 						color: 'black', // any HTML string color ('red', '#cc00cc')
 						fontName: 'Courier New', // i.e. 'Times New Roman'
-						fontSize: 12, // 12, 18 whatever you want (don't specify px)
+						fontSize: 18, // 12, 18 whatever you want (don't specify px)
 						bold: false, // true or false
 						italic: false // true of false
 					},
@@ -75167,11 +75271,14 @@
 						format: null
 					}
 				};
-				if (daterange == 'monthly' || daterange == 'alltime') {
+
+				if (historyoptions == 'monthly' || historyoptions == 'alltime') {
 					options.format = 'MMM d, y';
-				} else if (daterange == 'daily') {
+				}
+				if (historyoptions == 'daily') {
 					options.format = ['HH:mm', 'ha'];
 				}
+
 				return _react2.default.createElement(
 					'div',
 					{ className: 'bitcoingraph' },
@@ -75237,20 +75344,6 @@
 				);
 			}
 		}, {
-			key: 'setDateRange',
-			value: function setDateRange(dateRange, timeSteps) {
-
-				Actions.updateStockHistoryOption(dateRange, timeSteps);
-				Actions.updatesendRequest();
-				var code = this.companyCode.split(' ');
-				var params = {
-					code: code[0],
-					daterange: dateRange,
-					timeSteps: timeSteps
-				};
-				API.getStockPrice(params);
-			}
-		}, {
 			key: 'setIntradayGraphGoogleView',
 			value: function setIntradayGraphGoogleView(data, name) {
 				var line_data = [["DATE", "val1"]];
@@ -75259,14 +75352,12 @@
 				};
 				var options = {
 					title: name,
-
 					chartArea: {
 						backgroundColor: {
 							stroke: 'black',
 							strokeWidth: 1
 						}
 					},
-
 					titleTextStyle: {
 						color: 'black', // any HTML string color ('red', '#cc00cc')
 						fontName: 'Courier New', // i.e. 'Times New Roman'
@@ -75324,9 +75415,22 @@
 				);
 			}
 		}, {
+			key: 'setDateRange',
+			value: function setDateRange(dateRange, timeSteps) {
+				Actions.updateStockHistoryOption(dateRange, timeSteps);
+				Actions.updatesendRequest();
+				var code = this.companyCode.split(' ');
+				var params = {
+					code: code[0],
+					daterange: dateRange,
+					timeSteps: timeSteps
+				};
+				API.getStockPrice(params);
+			}
+		}, {
 			key: 'setHistoryRangePicker',
-			value: function setHistoryRangePicker() {
-				var _this = this;
+			value: function setHistoryRangePicker(historyoptions) {
+				var _this2 = this;
 
 				return _react2.default.createElement(
 					'div',
@@ -75339,7 +75443,7 @@
 						_react2.default.createElement(
 							'select',
 							{ onChange: function onChange(e) {
-									return _this.setDateRange('intraday', e.target.value);
+									return _this2.setDateRange('intraday', e.target.value);
 								} },
 							_react2.default.createElement(
 								'option',
@@ -75371,14 +75475,14 @@
 					_react2.default.createElement(
 						'label',
 						{ onClick: function onClick() {
-								return _this.setDateRange('daily', null);
+								return _this2.setDateRange('daily', null);
 							} },
 						'Daily'
 					),
 					_react2.default.createElement(
 						'label',
 						{ onClick: function onClick() {
-								return _this.setDateRange('weekly', null);
+								return _this2.setDateRange('weekly', null);
 							} },
 						'Weekly'
 					)
@@ -75388,11 +75492,9 @@
 			key: 'setIntraDayBarGraph',
 			value: function setIntraDayBarGraph(data, name) {
 				var bar_data = [["DATE", 'Volume']];
-
 				for (var x = data.length - 1; x >= 0; x--) {
 					bar_data.push([new Date(data[x].date), parseFloat(data[x].volume)]);
 				};
-
 				var baroptions = {
 					isStacked: true,
 					fontFamily: 'Courier New',
@@ -75450,7 +75552,7 @@
 		}, {
 			key: 'setDatePicker',
 			value: function setDatePicker() {
-				var _this2 = this;
+				var _this3 = this;
 
 				return _react2.default.createElement(
 					'div',
@@ -75466,7 +75568,7 @@
 						_react2.default.createElement(Datetime, {
 							className: 'date-input',
 							onBlur: function onBlur(selectedDate) {
-								return _this2.setStartDate(selectedDate);
+								return _this3.setStartDate(selectedDate);
 							},
 							dateFormat: 'YYYY-MM-DD', timeFormat: false
 						})
@@ -75482,7 +75584,7 @@
 						_react2.default.createElement(Datetime, {
 							className: 'date-input',
 							onBlur: function onBlur(selectedDate) {
-								return _this2.setEndDate(selectedDate);
+								return _this3.setEndDate(selectedDate);
 							},
 							dateFormat: 'YYYY-MM-DD', timeFormat: false
 						})
@@ -75507,18 +75609,18 @@
 		}, {
 			key: 'setCompanyPicker',
 			value: function setCompanyPicker() {
-				var _this3 = this;
+				var _this4 = this;
 
 				return _react2.default.createElement(
 					'div',
 					{ className: 'pickercontainer' },
 					_react2.default.createElement('input', { className: 'homepage-input', placeholder: 'Enter stock code', onChange: function onChange(e) {
-							return _this3.updatecompanyCode(e);
+							return _this4.updatecompanyCode(e);
 						} }),
 					_react2.default.createElement(
 						_reactRouter.Link,
 						{ to: '/intradaypage', onClick: function onClick() {
-								return _this3.sendRequest();
+								return _this4.sendRequest();
 							} },
 						_react2.default.createElement('img', { src: __webpack_require__(457), className: 'enter_icons' })
 					)
@@ -81070,19 +81172,20 @@
 		);
 	};
 
-	CandleStickGraph.prototype.setBitcoinVarianceView = function (data) {
+	CandleStickGraph.prototype.setBitcoinVarianceView = function (data, historyoptions) {
 
-		this.data = [["DATE", "low-high & open-close", "open", "close", "average"]];
+		var vardata = [["DATE", "low-high & open-close", "open", "close", "average"]];
+
 		console.log('setting bit variance plot');
-		for (var x = data.length - 1; x >= data.length - 61; x--) {
-			//console.log(data[x].average);
+		;
+		for (var x = data.length - 1; x >= 0; x--) {
 
-			//console.log(data[x].time, data[x].low, data[x].open, data[x].average, data[x].high);
 			var d = [new Date(data[x].time), data[x].low, data[x].open, data[x].average, data[x].high];
-			this.data.push(d);
+			vardata.push(d);
 		};
 
-		this.options = {
+		var options = {
+			title: "Interday Price Vairence",
 			titleTextStyle: {
 				color: 'black', // any HTML string color ('red', '#cc00cc')
 				fontName: 'Courier New', // i.e. 'Times New Roman'
@@ -81127,19 +81230,32 @@
 				gridlines: {
 					count: 5,
 					color: 'transparent'
-				}
+				},
+				format: null
 			}
 		};
+
+		console.log(historyoptions);
+		/**
+	 	if(historyoptions=='monthly' || historyoptions=='alltime'){
+	 		options.hAxis.format = 'MMM d, y'
+	 	}
+	 	**/
+		/**
+	 if(historyoptions=='daily'){
+	 	options.hAxis.format = ['HH:mm', 'ha']
+	 }
+	 **/
 
 		return _react2.default.createElement(
 			'div',
 			{ className: 'bitcoinCandleStickPlot' },
 			_react2.default.createElement(_reactGoogleCharts.Chart, {
 				chartType: 'CandlestickChart',
-				data: this.data,
+				data: vardata,
 				width: '100%',
 				height: '100%',
-				options: this.options
+				options: options
 			})
 		);
 	};
@@ -81340,7 +81456,8 @@
 				data: null,
 				rangeSelected: false,
 				companyCode: StockDataStore.getCompanyCode(),
-				marketData: StockDataStore.getInradayTicketData()
+				marketData: StockDataStore.getInradayTicketData(),
+				stockHistoryOptions: 'weekly'
 			};
 			return _this;
 		}
@@ -81363,7 +81480,8 @@
 					startDate: StockDataStore.getStartDate(),
 					endDate: StockDataStore.getEndDate(),
 					companyCode: StockDataStore.getCompanyCode(),
-					sendRequestStatus: StockDataStore.getRequestSendStatus()
+					sendRequestStatus: StockDataStore.getRequestSendStatus(),
+					stockHistoryOptions: StockDataStore.getStockHistoryOption()
 				});
 			}
 		}, {
@@ -81376,22 +81494,22 @@
 			value: function setMainView() {
 				var autocorr = null;
 				if (this.state.marketData.autocorr.length > 0) {
-					autocorr = Autocorrelation.setIntradayAutocorrelation(this.state.marketData.autocorr);
+					autocorr = Autocorrelation.setIntradayAutocorrelation(this.state.marketData.autocorr, this.state.stockHistoryOptions);
 				}
 				return _react2.default.createElement(
 					'div',
 					{ className: 'intradaypage' },
-					MarketGraph.setHistoryRangePicker(),
+					MarketGraph.setHistoryRangePicker(this.state.stockHistoryOptions),
 					_react2.default.createElement(
 						'div',
 						{ className: 'intradaychild' },
-						MarketGraph.setIntradayGraphGoogleView(this.state.marketData.data, this.state.marketData.name),
-						CandleStickGraph.setIntraDayGraph(this.state.marketData)
+						MarketGraph.setIntradayGraphGoogleView(this.state.marketData.data, this.state.marketData.name, this.state.stockHistoryOptions),
+						CandleStickGraph.setIntraDayGraph(this.state.marketData, this.state.stockHistoryOptions)
 					),
 					_react2.default.createElement(
 						'div',
 						{ className: 'intradaychild' },
-						MarketGraph.setIntraDayBarGraph(this.state.marketData.data, this.state.marketData.name),
+						MarketGraph.setIntraDayBarGraph(this.state.marketData.data, this.state.marketData.name, this.state.stockHistoryOptions),
 						autocorr
 					)
 				);

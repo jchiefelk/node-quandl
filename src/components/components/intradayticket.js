@@ -7,7 +7,6 @@ var CandleStickGraph = require('../jsx/candlestickplot');
 var Autocorrelation = require('../jsx/autocorrelationgraph');
 let API = require('../../api_utls/api');
 
-
 export default class IntraDayTicket extends Component {
 
 			constructor(){
@@ -16,7 +15,8 @@ export default class IntraDayTicket extends Component {
 					data: null,
 					rangeSelected: false,
 					companyCode: StockDataStore.getCompanyCode(),
-					marketData: StockDataStore.getInradayTicketData()
+					marketData: StockDataStore.getInradayTicketData(),
+					stockHistoryOptions: 'weekly'
 				};
 			}
 			componentDidMount(){
@@ -32,7 +32,9 @@ export default class IntraDayTicket extends Component {
 					endDate: StockDataStore.getEndDate(),
 					companyCode: StockDataStore.getCompanyCode(),
 					sendRequestStatus:	StockDataStore.getRequestSendStatus(),
+					stockHistoryOptions:	StockDataStore.getStockHistoryOption()
 				});
+
 			}
 			setLoadingView(){
 				return MarketGraph.setLoadingAnimation();
@@ -40,17 +42,17 @@ export default class IntraDayTicket extends Component {
 			setMainView(){
 				let autocorr= null;
 				if(this.state.marketData.autocorr.length > 0) {
-					autocorr = Autocorrelation.setIntradayAutocorrelation(this.state.marketData.autocorr)
+					autocorr = Autocorrelation.setIntradayAutocorrelation(this.state.marketData.autocorr, this.state.stockHistoryOptions);
 				}
 				return (
 					<div className="intradaypage">
-						{MarketGraph.setHistoryRangePicker()}
+						{MarketGraph.setHistoryRangePicker(this.state.stockHistoryOptions)}
 						<div className="intradaychild">
-							{MarketGraph.setIntradayGraphGoogleView(this.state.marketData.data, this.state.marketData.name)}	
-							{CandleStickGraph.setIntraDayGraph(this.state.marketData)}
+							{MarketGraph.setIntradayGraphGoogleView(this.state.marketData.data, this.state.marketData.name, this.state.stockHistoryOptions)}	
+							{CandleStickGraph.setIntraDayGraph(this.state.marketData, this.state.stockHistoryOptions)}
 						</div>
 						<div className="intradaychild">
-							{MarketGraph.setIntraDayBarGraph(this.state.marketData.data, this.state.marketData.name)}
+							{MarketGraph.setIntraDayBarGraph(this.state.marketData.data, this.state.marketData.name, this.state.stockHistoryOptions)}
 							{autocorr}
 						</div>
 					</div>

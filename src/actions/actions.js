@@ -87,6 +87,14 @@ var getFrontEndData = function(){
 
 var Actions = {
 
+
+  updateBitcoinHistoryOptions: function(item){
+    AppDispatcher.handleAction({
+        actionType:   appConstants.BITCOIN_HISTORY_OPTIONS,
+        data: item
+    });
+  },
+  
   updateStockHistoryOption: function(item,timeSteps){
       AppDispatcher.handleAction({
           actionType: appConstants.STOCK_HISTORY_OPTION,

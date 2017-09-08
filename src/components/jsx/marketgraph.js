@@ -27,7 +27,104 @@ class MarketGraph {
 					</div>
 				);
 	}
-	setBitcoinGraph(data,daterange){
+
+	changeBitcoinOptions(range) {
+		Actions.updateBitcoinHistoryOptions(range);
+		API.getBitcoinData(range);
+	}
+
+	renderBitcoinAPIOptions(){
+		return(
+				<div className="history_options">
+								<label onClick={()=> this.changeBitcoinOptions('daily')}>
+									 Daily
+								</label>
+								<label onClick={()=> this.changeBitcoinOptions('monthly')}>
+									Monthly
+								</label> 
+								<label onClick={()=> this.changeBitcoinOptions('alltime')}>
+									All-time
+								</label>
+				</div>
+		);
+	}
+
+
+
+	setBitcoinVolumeGraph(data,historyoptions){
+
+	      		let volume_data = [["DATE", 'Volume']];
+			    
+			    for(var x =data.length-1; x>=0;x--){
+					volume_data.push([ new Date(data[x].time), data[x].volume ]);
+				};
+
+			    let options = {
+
+				    	title: "Volume",
+
+						titleTextStyle: {
+							color: 'black',    // any HTML string color ('red', '#cc00cc')
+							fontName: 'Courier New', // i.e. 'Times New Roman'
+							fontSize: 18, // 12, 18 whatever you want (don't specify px)
+							bold: false,    // true or false
+							italic: false   // true of false
+						},
+
+						isStacked:true,
+						fontFamily: 'Courier New',
+						backgroundColor: 'transparent',
+
+						vAxis: {
+							baselineColor: 'transparent',
+				        	textStyle: {
+				        		fontSize: 12,
+				        		fontName: 'Courier New',
+				        		color: 'black',
+				        		fontWeight: 700,
+				       
+				        	},
+				        	gridlines: {
+						    	count: 2,
+						    	color: 'transparent'
+						   }	  
+				        },
+				        hAxis: {
+							baselineColor: 'transparent',
+				        	textStyle: {
+				        		fontSize: 12,
+				        		fontName: 'Courier New',
+				        		color: 'black',
+				        		fontWeight: 700,
+				       
+				        	},
+				        	gridlines: {
+						    	count: 5, 
+						    	color: 'transparent'
+						   }
+				        },
+				       legend: {position: 'none'}
+				   };
+
+			
+					options.format = 'MMM d, y'
+			
+				   return(
+							<div className="bitcoinCandleStickPlot">
+											        <Chart
+													  chartType="ColumnChart"
+													  data={volume_data}
+													  width="100%"
+													  height="100%"
+													  options={options}
+											        />
+						    </div>
+				   	);
+	}
+
+
+
+	setBitcoinGraph(data,historyoptions){
 
 			let line_data = [["DATE","valuation"]];
 			for(var x = data.length-1; x>=0; x--){
@@ -35,13 +132,15 @@ class MarketGraph {
 			};
 
 			let options = {
-					    titleTextStyle: {
-					        color: 'black',    // any HTML string color ('red', '#cc00cc')
-					        fontName: 'Courier New', // i.e. 'Times New Roman'
-					        fontSize: 12, // 12, 18 whatever you want (don't specify px)
-					        bold: false,    // true or false
-					        italic: false   // true of false
-					    },
+				    	title: "Price",
+
+						titleTextStyle: {
+							color: 'black',    // any HTML string color ('red', '#cc00cc')
+							fontName: 'Courier New', // i.e. 'Times New Roman'
+							fontSize: 18, // 12, 18 whatever you want (don't specify px)
+							bold: false,    // true or false
+							italic: false   // true of false
+						},
 						legend: "none",
 						backgroundColor: 'transparent',
 						vAxis: {
@@ -58,7 +157,7 @@ class MarketGraph {
 				        	gridlines: {
 						    	count: 5,
 						    	color: 'transparent'
-						   	}	
+						   	}
 				        },
 					 	hAxis: {
 							title: "",	
@@ -78,11 +177,20 @@ class MarketGraph {
 						   	format:	null
 					 	}
 			};
-			if(daterange=='monthly' || daterange=='alltime'){
+
+
+
+
+
+			if(historyoptions=='monthly' || historyoptions=='alltime'){
 				options.format = 'MMM d, y'
-			} else if(daterange=='daily'){
+			}
+			if(historyoptions=='daily'){
 				options.format = ['HH:mm', 'ha']
 			}
+
+
+
 			return (
 				<div className="bitcoingraph">
 					<Chart
@@ -148,19 +256,6 @@ class MarketGraph {
 			);
 	}
 
-	setDateRange(dateRange,timeSteps){
-
-		Actions.updateStockHistoryOption(dateRange,timeSteps);
-		Actions.updatesendRequest();
-		let code = this.companyCode.split(' ');
-		let params = {
-			code: code[0],	
-			daterange: dateRange,
-			timeSteps: timeSteps
-		};
-		API.getStockPrice(params);	
-	}
-
 	setIntradayGraphGoogleView(data,name){
 				let line_data = [["DATE","val1"]];
 				for(var x =data.length-1; x>=0;x--){
@@ -168,14 +263,12 @@ class MarketGraph {
 				};
 				let options = {
 						title: name,
-
 						chartArea: {
 						    backgroundColor: {
 						        stroke: 'black',
 						        strokeWidth: 1
 						    }
 						},
-
 					    titleTextStyle: {
 					        color: 'black',    // any HTML string color ('red', '#cc00cc')
 					        fontName: 'Courier New', // i.e. 'Times New Roman'
@@ -233,7 +326,21 @@ class MarketGraph {
 	    			);
 	}
 
-	setHistoryRangePicker(){
+	setDateRange(dateRange,timeSteps){
+		Actions.updateStockHistoryOption(dateRange,timeSteps);
+		Actions.updatesendRequest();
+		let code = this.companyCode.split(' ');
+		let params = {
+			code: code[0],	
+			daterange: dateRange,
+			timeSteps: timeSteps
+		};
+		API.getStockPrice(params);	
+	}
+
+	setHistoryRangePicker(historyoptions){
+
+
 			return (
 					<div className="history_options">
 								{this.setCompanyPicker()}		
@@ -260,11 +367,9 @@ class MarketGraph {
 
 	setIntraDayBarGraph(data,name){
 	      		let bar_data = [["DATE", 'Volume']];
-			    
 			    for(var x =data.length-1; x>=0;x--){
 					bar_data.push([ new Date(data[x].date), parseFloat(data[x].volume) ]);
 				};
-
 			    let baroptions = {
 						isStacked:true,
 						fontFamily: 'Courier New',
@@ -370,6 +475,8 @@ class MarketGraph {
 
 		);
 	}
+
+
 
 	setLoadingAnimation(){
 		return this.loadingAnimation;

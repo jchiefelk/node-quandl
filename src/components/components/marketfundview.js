@@ -35,9 +35,11 @@ export default class MarketFundView extends Component {
 					etfCandleStick: null,
 					viewMode: 'markets',
 					bitcoinData: null,
-					daterange: 'daily' 
+					daterange: 'daily',
+					bitcoinHistoryOptions:	StockDataStore.getBitcoinHistoryOption()
 				};
 			}
+
 			componentDidMount(){
 				StockDataStore.addChangeListener(this._onChange.bind(this));
 				API.getBitcoinData("daily");
@@ -46,16 +48,18 @@ export default class MarketFundView extends Component {
 			componentWillUnmount(){
 				StockDataStore.removeChangeListener(this._onChange.bind(this));
 			}
+
 			_onChange(){
 				this.setState({
 					dailyetfData: StockDataStore.getDailyETFData(),
 					dailymarketData: StockDataStore.getDailyMarketData(),
 					sendRequestStatus:	StockDataStore.getRequestSendStatus(),
 					bitcoinData: StockDataStore.getBitcoinHistory(),
-					storeupdated: true
+					storeupdated: true,
+					bitcoinHistoryOptions:	StockDataStore.getBitcoinHistoryOption()
 				});
-
 			}
+
 			renderMarketView(){
 				let marketAutocorrelation, marketGraph = null;
 				
@@ -74,6 +78,7 @@ export default class MarketFundView extends Component {
 					</div>
 				);
 			}
+
 			renderETFView(){
 
 				let etfGraph, marketAutocorrelation, etfCandleStick, etfAutocorrelation = null;
@@ -94,10 +99,15 @@ export default class MarketFundView extends Component {
 							</div>
 				);
 			}
+
 			renderBitCoinPriceView(){
 					let priceview = null;
 					if(this.state.bitcoinData!=null){
-						priceview = MarketGraph.setBitcoinGraph(this.state.bitcoinData, this.state.daterange);
+						
+							priceview = MarketGraph.setBitcoinGraph(this.state.bitcoinData, this.state.bitcoinHistoryOptions);
+					
+						
+
 					}
 					return priceview;
 			}
@@ -105,32 +115,12 @@ export default class MarketFundView extends Component {
 			renderBitcoinVarianceView(){
 					let varianceview = null;
 					if(this.state.bitcoinData!=null){
-						if(this.state.bitcoinData[0].open!=undefined) varianceview = CandleStickGraph.setBitcoinVarianceView(this.state.bitcoinData)
+						if(this.state.bitcoinHistoryOptions=='monthly') varianceview = CandleStickGraph.setBitcoinVarianceView(this.state.bitcoinData, this.state.bitcoinHistoryOptions);
+						if(this.state.bitcoinHistoryOptions=='alltime') varianceview = MarketGraph.setBitcoinVolumeGraph(this.state.bitcoinData, this.state.bitcoinHistoryOptions);
 					}
 					return varianceview;
 			}
 
-			changeDateRange(range){
-				this.setState({daterange: range});
-				API.getBitcoinData(range);
-			}
-
-			renderAPIOptions(){
-
-				return(
-						<div className="history_options">
-								<label onClick={()=> this.changeDateRange('daily')}>
-									 Daily
-								</label>
-								<label onClick={()=> this.changeDateRange('monthly')}>
-									Monthly
-								</label> 
-								<label onClick={()=> this.changeDateRange('alltime')}>
-									All-time
-								</label>
-						</div>
-				);
-			}
 			render(){
 				//
 				// 			
@@ -138,7 +128,7 @@ export default class MarketFundView extends Component {
 				return (
 					<div className="marketgraph-view">
 						<h1 className="graph-page-title">Bitcoin</h1>
-						{this.renderAPIOptions()}
+						{MarketGraph.renderBitcoinAPIOptions()}
 						{this.renderBitCoinPriceView()}
 						{this.renderBitcoinVarianceView()}
 					</div>

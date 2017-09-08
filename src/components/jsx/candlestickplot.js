@@ -118,75 +118,92 @@ CandleStickGraph.prototype.setIntraDayGraph = function(item){
 };
 
 
-CandleStickGraph.prototype.setBitcoinVarianceView = function(data){
+CandleStickGraph.prototype.setBitcoinVarianceView = function(data, historyoptions){
 
-		this.data = [["DATE","low-high & open-close","open","close","average"]];
+
+
+		let vardata = [["DATE","low-high & open-close", "open", "close", "average"]];
+
+
 		console.log('setting bit variance plot');
-		for(let x=data.length-1; x>=data.length-61;x--){
-				//console.log(data[x].average);
+;
+		for(let x=data.length-1; x>=0;x--){
 
-				//console.log(data[x].time, data[x].low, data[x].open, data[x].average, data[x].high);
 				var d = [ new Date(data[x].time), data[x].low, data[x].open, data[x].average, data[x].high];
-				this.data.push(d);
+				vardata.push(d);
 		};
 		
-		this.options = {
-		titleTextStyle: {
-			color: 'black',    // any HTML string color ('red', '#cc00cc')
-			fontName: 'Courier New', // i.e. 'Times New Roman'
-			fontSize: 18, // 12, 18 whatever you want (don't specify px)
-			bold: false,    // true or false
-			italic: false   // true of false
-		},
-		legend: "none",
-		backgroundColor: 'transparent',
-		bar: { groupWidth: '100%' }, 
-        candlestick: {
-            fallingColor: { strokeWidth: 0, fill: 'red' }, // red
-            risingColor: { strokeWidth: 0, fill: 'black' }   // back
-        },
-       	vAxis: {
-       	   baselineColor: 'transparent',
-       	   textStyle:{
-       	   	color: 'black',
-       	   	fontName: 'Courier New',
-       	   	fontWeight: 700,
-       	   	fontSize: 12
-       	   },
-		   labels: {
-		       enabled: true
-		   },
-		   gridlines: {
-		    	count: 2,
-		    	color: 'transparent'
-		   }
-        },
-        hAxis: {
-				title: "",	
-				titleTextStyle: { color: 'black' },
-				baselineColor: 'transparent',
-				textStyle: {
-				        		fontSize: 12,
-				        		fontName: 'Courier New',
-				        		color: 'black',
-				        		fontWeight: 700,
-				       
-				},
-				gridlines: {
-					count: 5,
-					color: 'transparent'
-				},
-		}
+		let options = {
+					title: "Interday Price Vairence",
+					titleTextStyle: {
+						color: 'black',    // any HTML string color ('red', '#cc00cc')
+						fontName: 'Courier New', // i.e. 'Times New Roman'
+						fontSize: 18, // 12, 18 whatever you want (don't specify px)
+						bold: false,    // true or false
+						italic: false   // true of false
+					},
+					legend: "none",
+					backgroundColor: 'transparent',
+					bar: { groupWidth: '100%' }, 
+			        candlestick: {
+			            fallingColor: { strokeWidth: 0, fill: 'red' }, // red
+			            risingColor: { strokeWidth: 0, fill: 'black' }   // back
+			        },
+			       	vAxis: {
+			       	   baselineColor: 'transparent',
+			       	   textStyle:{
+			       	   	color: 'black',
+			       	   	fontName: 'Courier New',
+			       	   	fontWeight: 700,
+			       	   	fontSize: 12
+			       	   },
+					   labels: {
+					       enabled: true
+					   },
+					   gridlines: {
+					    	count: 2,
+					    	color: 'transparent'
+					   }
+			        },
+			        hAxis: {
+							title: "",	
+							titleTextStyle: { color: 'black' },
+							baselineColor: 'transparent',
+							textStyle: {
+							        		fontSize: 12,
+							        		fontName: 'Courier New',
+							        		color: 'black',
+							        		fontWeight: 700,
+							       
+							},
+							gridlines: {
+								count: 5,
+								color: 'transparent'
+							},
+							format: null
+					}
 	};
+
+	console.log(historyoptions);
+/**
+	if(historyoptions=='monthly' || historyoptions=='alltime'){
+		options.hAxis.format = 'MMM d, y'
+	}
+	**/
+	/**
+	if(historyoptions=='daily'){
+		options.hAxis.format = ['HH:mm', 'ha']
+	}
+	**/
 
 	return (
 		<div className="bitcoinCandleStickPlot">
 		        <Chart
 				  chartType="CandlestickChart"
-				  data={this.data}
+				  data={vardata}
 				  width="100%"
 				  height="100%"
-				  options={this.options}
+				  options={options}
 		        />
 	      </div>
 	);

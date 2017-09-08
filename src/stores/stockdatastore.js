@@ -5,6 +5,7 @@ var objectAssign = require('object-assign');
 var EventEmitter = require('events').EventEmitter;
 var CHANGE_EVENT = 'change';
 var moment = require('moment');
+//
 function DailyData(){
       this.etfdata = null;
       this.marketdata = null;
@@ -94,7 +95,7 @@ function StockData(){
         companyCode: null,
         sendRequestStatus: false, 
         autocorr: [],
-        historyOptions: null,
+        historyOptions: 'weekly',
         timeSteps: null
     };
 };
@@ -153,11 +154,17 @@ var Stocks = new StockData();
 function BitcoinData(){
   this.description = "Bitcoin Data Avg Object";
   this.data = null;
+  this.historyOption = 'daily';
 };
 
 BitcoinData.prototype.updateBitcoinData = function(item){
   this.data = item;
 };
+
+BitcoinData.prototype.updateBitcoinHistoryOptions = function(item){
+  this.historyOption = item;
+};
+
 let Bitcoin =  new BitcoinData();
 
 var StockDataStore = objectAssign({}, EventEmitter.prototype, {
@@ -199,7 +206,15 @@ var StockDataStore = objectAssign({}, EventEmitter.prototype, {
   },
   getBitcoinHistory: function(){
     return Bitcoin.data;
+  },
+  getBitcoinHistoryOption: function(){
+    return Bitcoin.historyOption;
+  },
+
+  getStockHistoryOption: function(){
+    return Stocks.IntraDay.historyOptions;
   }
+
 });
 
 AppDispatcher.register(function(payload){
@@ -250,6 +265,10 @@ AppDispatcher.register(function(payload){
         break;
     case appConstants.STOCK_HISTORY_OPTION:
         Stocks.updateStockHistoryOptions(action.data,action.timeSteps);
+        StockDataStore.emitChange(CHANGE_EVENT);
+        break;
+    case appConstants.BITCOIN_HISTORY_OPTIONS:
+        Bitcoin.updateBitcoinHistoryOptions(action.data);
         StockDataStore.emitChange(CHANGE_EVENT);
         break;
     default:
