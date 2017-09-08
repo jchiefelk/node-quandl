@@ -47,10 +47,13 @@ export default class IntraDayTicket extends Component {
 				return (
 					<div className="intradaypage">
 						{MarketGraph.setHistoryRangePicker(this.state.stockHistoryOptions)}
+						
 						<div className="intradaychild">
 							{MarketGraph.setIntradayGraphGoogleView(this.state.marketData.data, this.state.marketData.name, this.state.stockHistoryOptions)}	
 							{CandleStickGraph.setIntraDayGraph(this.state.marketData, this.state.stockHistoryOptions)}
 						</div>
+
+						
 						<div className="intradaychild">
 							{MarketGraph.setIntraDayBarGraph(this.state.marketData.data, this.state.marketData.name, this.state.stockHistoryOptions)}
 							{autocorr}

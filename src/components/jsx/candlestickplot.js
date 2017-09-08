@@ -21,13 +21,14 @@ function CandleStickGraph(){
             fallingColor: { strokeWidth: 0, fill: 'red' }, // red
             risingColor: { strokeWidth: 0, fill: 'black' }   // back
         },
-		
+		/**
 		chartArea: {
 			backgroundColor: {
 				stroke: 'black',
 				strokeWidth: 1
 			}
 		},
+		***/
 
        	vAxis: {
        	   baselineColor: 'transparent',
@@ -74,7 +75,7 @@ CandleStickGraph.prototype.setGraph = function(item){
 	};
 	//
 	this.graph = (
-      <div className="candleStickGraph">
+      <div  className="intradaylinegraph">
         <Chart
 		  chartType="CandlestickChart"
 		  data={this.data}
@@ -105,7 +106,7 @@ CandleStickGraph.prototype.setIntraDayGraph = function(item){
 		};
 	}
 	return (
-	      <div className="candleStickGraph_intraday">
+	      <div  className="intradaylinegraph">
 		        <Chart
 				  chartType="CandlestickChart"
 				  data={this.data}

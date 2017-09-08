@@ -15,13 +15,14 @@ Autocorrelation.prototype.setGoogleAutocorr = function(data){
 						fontFamily: 'Courier New',
 						legend: "none",
 						backgroundColor: 'transparent',
-
+						/**
 						chartArea: {
 						    backgroundColor: {
 						        stroke: 'black',
 						        strokeWidth: 1
 						    }
 						},
+						**/
 						vAxis: {
 							title: "Correlation Coefficient",	
 							titleTextStyle: { color: 'black' },
@@ -84,12 +85,14 @@ Autocorrelation.prototype.setIntradayAutocorrelation = function(data){
 					        italic: false   // true of false
 					    },
 						legend: "none",
+						/**
 						chartArea: {
 						    backgroundColor: {
 						        stroke: 'black',
 						        strokeWidth: 1
 						    }
 						},
+						**/
 						backgroundColor: 'transparent',
 						vAxis: {
 							title: "Correlation Coefficient",	
@@ -126,7 +129,7 @@ Autocorrelation.prototype.setIntradayAutocorrelation = function(data){
 			};
 
 				return (				
-					<div className="autocorrelationgraph_intraday">
+					<div  className="intradaylinegraph">
 							<Chart
 								chartType="LineChart"
 								data={line_data}

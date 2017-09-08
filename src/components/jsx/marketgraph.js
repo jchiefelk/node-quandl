@@ -263,12 +263,14 @@ class MarketGraph {
 				};
 				let options = {
 						title: name,
+						/**
 						chartArea: {
 						    backgroundColor: {
 						        stroke: 'black',
 						        strokeWidth: 1
 						    }
 						},
+						***/
 					    titleTextStyle: {
 					        color: 'black',    // any HTML string color ('red', '#cc00cc')
 					        fontName: 'Courier New', // i.e. 'Times New Roman'
@@ -374,14 +376,14 @@ class MarketGraph {
 						isStacked:true,
 						fontFamily: 'Courier New',
 						backgroundColor: 'transparent',
-
+						/***
 						chartArea: {
 						    backgroundColor: {
 						        stroke: 'black',
 						        strokeWidth: 1
 						    }
 						},
-
+						***/
 						vAxis: {
 							baselineColor: 'transparent',
 				        	textStyle: {
@@ -413,7 +415,7 @@ class MarketGraph {
 				   };
 
 				   return(
-							<div className="intradaybargraph">
+							<div  className="intradaylinegraph">
 											        <Chart
 													  chartType="ColumnChart"
 													  data={bar_data}

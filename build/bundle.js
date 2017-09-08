@@ -75352,12 +75352,14 @@
 				};
 				var options = {
 					title: name,
-					chartArea: {
-						backgroundColor: {
-							stroke: 'black',
-							strokeWidth: 1
-						}
-					},
+					/**
+	    chartArea: {
+	        backgroundColor: {
+	            stroke: 'black',
+	            strokeWidth: 1
+	        }
+	    },
+	    ***/
 					titleTextStyle: {
 						color: 'black', // any HTML string color ('red', '#cc00cc')
 						fontName: 'Courier New', // i.e. 'Times New Roman'
@@ -75499,14 +75501,14 @@
 					isStacked: true,
 					fontFamily: 'Courier New',
 					backgroundColor: 'transparent',
-
-					chartArea: {
-						backgroundColor: {
-							stroke: 'black',
-							strokeWidth: 1
-						}
-					},
-
+					/***
+	    chartArea: {
+	        backgroundColor: {
+	            stroke: 'black',
+	            strokeWidth: 1
+	        }
+	    },
+	    ***/
 					vAxis: {
 						baselineColor: 'transparent',
 						textStyle: {
@@ -75539,7 +75541,7 @@
 
 				return _react2.default.createElement(
 					'div',
-					{ className: 'intradaybargraph' },
+					{ className: 'intradaylinegraph' },
 					_react2.default.createElement(_reactGoogleCharts.Chart, {
 						chartType: 'ColumnChart',
 						data: bar_data,
@@ -81076,13 +81078,14 @@
 				fallingColor: { strokeWidth: 0, fill: 'red' }, // red
 				risingColor: { strokeWidth: 0, fill: 'black' } // back
 			},
-
-			chartArea: {
-				backgroundColor: {
-					stroke: 'black',
-					strokeWidth: 1
-				}
-			},
+			/**
+	  chartArea: {
+	  	backgroundColor: {
+	  		stroke: 'black',
+	  		strokeWidth: 1
+	  	}
+	  },
+	  ***/
 
 			vAxis: {
 				baselineColor: 'transparent',
@@ -81130,7 +81133,7 @@
 		//
 		this.graph = _react2.default.createElement(
 			'div',
-			{ className: 'candleStickGraph' },
+			{ className: 'intradaylinegraph' },
 			_react2.default.createElement(_reactGoogleCharts.Chart, {
 				chartType: 'CandlestickChart',
 				data: this.data,
@@ -81161,7 +81164,7 @@
 		}
 		return _react2.default.createElement(
 			'div',
-			{ className: 'candleStickGraph_intraday' },
+			{ className: 'intradaylinegraph' },
 			_react2.default.createElement(_reactGoogleCharts.Chart, {
 				chartType: 'CandlestickChart',
 				data: this.data,
@@ -81289,13 +81292,14 @@
 			fontFamily: 'Courier New',
 			legend: "none",
 			backgroundColor: 'transparent',
-
-			chartArea: {
-				backgroundColor: {
-					stroke: 'black',
-					strokeWidth: 1
-				}
-			},
+			/**
+	  chartArea: {
+	      backgroundColor: {
+	          stroke: 'black',
+	          strokeWidth: 1
+	      }
+	  },
+	  **/
 			vAxis: {
 				title: "Correlation Coefficient",
 				titleTextStyle: { color: 'black' },
@@ -81357,12 +81361,14 @@
 				italic: false // true of false
 			},
 			legend: "none",
-			chartArea: {
-				backgroundColor: {
-					stroke: 'black',
-					strokeWidth: 1
-				}
-			},
+			/**
+	  chartArea: {
+	      backgroundColor: {
+	          stroke: 'black',
+	          strokeWidth: 1
+	      }
+	  },
+	  **/
 			backgroundColor: 'transparent',
 			vAxis: {
 				title: "Correlation Coefficient",
@@ -81400,7 +81406,7 @@
 
 		return _react2.default.createElement(
 			'div',
-			{ className: 'autocorrelationgraph_intraday' },
+			{ className: 'intradaylinegraph' },
 			_react2.default.createElement(_reactGoogleCharts.Chart, {
 				chartType: 'LineChart',
 				data: line_data,
