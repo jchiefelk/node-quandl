@@ -3,6 +3,7 @@ function API() {
 	this.value = null;	
 };
 API.prototype.getStockPrice = function(params){
+    console.log(params);
     return   fetch('/api', {
             method: 'post',
             headers: {

@@ -67,7 +67,7 @@ Autocorrelation.prototype.setGoogleAutocorr = function(data){
 };
 
 
-Autocorrelation.prototype.setIntradayAutocorrelation = function(data){
+Autocorrelation.prototype.setIntradayAutocorrelation = function(data,historyoptions){
 			let line_data = [["DATE","correlation coefficient"]];
 			let set = [];
 			for(var x =0; x<365;x++){
@@ -112,7 +112,7 @@ Autocorrelation.prototype.setIntradayAutocorrelation = function(data){
 						   }	
 				        },
 					 	hAxis: {
-					 	title: 'Trading Days',
+					 	title: null,
 						baselineColor: 'transparent',
         				 // gridlineColor: 'transparent',
 					 		textStyle:{
@@ -127,6 +127,16 @@ Autocorrelation.prototype.setIntradayAutocorrelation = function(data){
 						   	}	 
 					 	}
 			};
+
+				// console.log(historyoptions);
+				if(historyoptions.history=='weekly') options.hAxis.title = 'trading days - weekly lag';
+				if(historyoptions.history=='daily') options.hAxis.title = 'trading days - daily lag';
+				if(historyoptions.history=='intraday') options.hAxis.title = 'intraday -'+historyoptions.timesteps+' lag'; // 1min
+				if(historyoptions=='intraday') options.hAxis.title = 'intraday -'+historyoptions.timesteps+' lag'; //5 min
+				if(historyoptions=='intraday') options.hAxis.title = 'intraday -'+historyoptions.timesteps+' lag'; //15 min
+				if(historyoptions=='intraday') options.hAxis.title = 'intraday -'+historyoptions.timesteps+' lag'; //30 min
+				if(historyoptions=='intraday') options.hAxis.title = 'intraday -'+historyoptions.timesteps+' lag'; //60 min
+		
 
 				return (				
 					<div  className="intradaylinegraph">

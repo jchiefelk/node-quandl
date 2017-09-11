@@ -42,20 +42,22 @@ export default class IntraDayTicket extends Component {
 			setMainView(){
 				let autocorr= null;
 				if(this.state.marketData.autocorr.length > 0) {
-					autocorr = Autocorrelation.setIntradayAutocorrelation(this.state.marketData.autocorr, this.state.stockHistoryOptions);
+				  autocorr = Autocorrelation.setIntradayAutocorrelation(this.state.marketData.autocorr, this.state.stockHistoryOptions);
 				}
+
+				console.log(this.state.stockHistoryOptions);
+
+
 				return (
 					<div className="intradaypage">
 						{MarketGraph.setHistoryRangePicker(this.state.stockHistoryOptions)}
-						
 						<div className="intradaychild">
-							{MarketGraph.setIntradayGraphGoogleView(this.state.marketData.data, this.state.marketData.name, this.state.stockHistoryOptions)}	
+							{MarketGraph.setIntradayGraphGoogleView(this.state.marketData.data, this.state.marketData.name)}	
 							{CandleStickGraph.setIntraDayGraph(this.state.marketData, this.state.stockHistoryOptions)}
 						</div>
-
-						
+	
 						<div className="intradaychild">
-							{MarketGraph.setIntraDayBarGraph(this.state.marketData.data, this.state.marketData.name, this.state.stockHistoryOptions)}
+							{MarketGraph.setIntraDayBarGraph(this.state.marketData.data, this.state.marketData.name)}
 							{autocorr}
 						</div>
 					</div>

@@ -95,27 +95,35 @@ function StockData(){
         companyCode: null,
         sendRequestStatus: false, 
         autocorr: [],
-        historyOptions: 'weekly',
-        timeSteps: null
+        historyOptions: {
+          history: 'weekly',
+          timesteps: null
+        },
+
     };
 };
 
 StockData.prototype.updateStockHistoryOptions = function(item,timeSteps){
-      this.IntraDay.historyOptions = item;
-      this.IntraDay.timeSteps = timeSteps;
+      console.log('updating stock history options');
+      this.IntraDay.historyOptions.history = item;
+      this.IntraDay.historyOptions.timesteps = timeSteps;
 };
 
 StockData.prototype.updateIntradayTicket = function(item){
-  console.log('Update Intraday Data in Store');
+  // console.log('Update Intraday Data in Store');
   this.IntraDay.data=[];
   this.IntraDay.name = item['Meta Data']['2. Symbol'];
   let timeSeries = 'Weekly Time Series';
-  if(this.IntraDay.historyOptions){
-          if(this.IntraDay.historyOptions=='intraday') timeSeries = 'Time Series ('+ this.IntraDay.timeSteps+')';
-          if(this.IntraDay.historyOptions=='daily') timeSeries = 'Time Series (Daily)';
-          if(this.IntraDay.historyOptions=='weekly') timeSeries = 'Weekly Time Series';
-          if(this.IntraDay.historyOptions=='monthly') timeSeries = 'Monthly Time Series';
-  }
+  //console.log(this.IntraDay.historyOptions);
+   if(this.IntraDay.historyOptions.history=='intraday') timeSeries = 'Time Series ('+ this.IntraDay.historyOptions.timesteps+')';
+   if(this.IntraDay.historyOptions.history=='daily') timeSeries = 'Time Series (Daily)';
+   if(this.IntraDay.historyOptions.history=='weekly') timeSeries = 'Weekly Time Series';
+   if(this.IntraDay.historyOptions.history=='monthly') timeSeries = 'Monthly Time Series';
+
+   if(this.IntraDay.historyOptions.history=='intraday') {
+      console.log(item);
+      console.log(timeSeries);
+   }
 
   for(let key in item[timeSeries]){
           let obj  = item[timeSeries][key];
@@ -210,7 +218,6 @@ var StockDataStore = objectAssign({}, EventEmitter.prototype, {
   getBitcoinHistoryOption: function(){
     return Bitcoin.historyOption;
   },
-
   getStockHistoryOption: function(){
     return Stocks.IntraDay.historyOptions;
   }

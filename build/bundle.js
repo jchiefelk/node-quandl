@@ -56912,26 +56912,34 @@
 	    companyCode: null,
 	    sendRequestStatus: false,
 	    autocorr: [],
-	    historyOptions: 'weekly',
-	    timeSteps: null
+	    historyOptions: {
+	      history: 'weekly',
+	      timesteps: null
+	    }
+
 	  };
 	};
 
 	StockData.prototype.updateStockHistoryOptions = function (item, timeSteps) {
-	  this.IntraDay.historyOptions = item;
-	  this.IntraDay.timeSteps = timeSteps;
+	  console.log('updating stock history options');
+	  this.IntraDay.historyOptions.history = item;
+	  this.IntraDay.historyOptions.timesteps = timeSteps;
 	};
 
 	StockData.prototype.updateIntradayTicket = function (item) {
-	  console.log('Update Intraday Data in Store');
+	  // console.log('Update Intraday Data in Store');
 	  this.IntraDay.data = [];
 	  this.IntraDay.name = item['Meta Data']['2. Symbol'];
 	  var timeSeries = 'Weekly Time Series';
-	  if (this.IntraDay.historyOptions) {
-	    if (this.IntraDay.historyOptions == 'intraday') timeSeries = 'Time Series (' + this.IntraDay.timeSteps + ')';
-	    if (this.IntraDay.historyOptions == 'daily') timeSeries = 'Time Series (Daily)';
-	    if (this.IntraDay.historyOptions == 'weekly') timeSeries = 'Weekly Time Series';
-	    if (this.IntraDay.historyOptions == 'monthly') timeSeries = 'Monthly Time Series';
+	  //console.log(this.IntraDay.historyOptions);
+	  if (this.IntraDay.historyOptions.history == 'intraday') timeSeries = 'Time Series (' + this.IntraDay.historyOptions.timesteps + ')';
+	  if (this.IntraDay.historyOptions.history == 'daily') timeSeries = 'Time Series (Daily)';
+	  if (this.IntraDay.historyOptions.history == 'weekly') timeSeries = 'Weekly Time Series';
+	  if (this.IntraDay.historyOptions.history == 'monthly') timeSeries = 'Monthly Time Series';
+
+	  if (this.IntraDay.historyOptions.history == 'intraday') {
+	    console.log(item);
+	    console.log(timeSeries);
 	  }
 
 	  for (var key in item[timeSeries]) {
@@ -57027,7 +57035,6 @@
 	  getBitcoinHistoryOption: function getBitcoinHistoryOption() {
 	    return Bitcoin.historyOption;
 	  },
-
 	  getStockHistoryOption: function getStockHistoryOption() {
 	    return Stocks.IntraDay.historyOptions;
 	  }
@@ -75005,52 +75012,53 @@
 
 	var Actions = __webpack_require__(422);
 	function API() {
-	  this.value = null;
+	    this.value = null;
 	};
 	API.prototype.getStockPrice = function (params) {
-	  return fetch('/api', {
-	    method: 'post',
-	    headers: {
-	      'Accept': 'application/json',
-	      'Content-Type': 'application/json'
-	    },
-	    body: JSON.stringify(params)
-	  }).then(function (response) {
-	    if (response.status != undefined) {
-	      Actions.setStatus(response.status);
-	    }
-	    return response.json();
-	  }).then(function (data) {
-	    Actions.updateIntradDayData(data.general);
-	    Actions.updateAutocorrelation(data.autocorr);
-	  }).catch(function (error) {
-	    console.log(error);
-	  });
+	    console.log(params);
+	    return fetch('/api', {
+	        method: 'post',
+	        headers: {
+	            'Accept': 'application/json',
+	            'Content-Type': 'application/json'
+	        },
+	        body: JSON.stringify(params)
+	    }).then(function (response) {
+	        if (response.status != undefined) {
+	            Actions.setStatus(response.status);
+	        }
+	        return response.json();
+	    }).then(function (data) {
+	        Actions.updateIntradDayData(data.general);
+	        Actions.updateAutocorrelation(data.autocorr);
+	    }).catch(function (error) {
+	        console.log(error);
+	    });
 	};
 
 	API.prototype.getBitcoinData = function (daterange) {
 
-	  var data = {
-	    daterange: daterange
-	  };
-	  //  
-	  return fetch('/bitcoin', {
-	    method: 'post',
-	    headers: {
-	      'Accept': 'application/json',
-	      'Content-Type': 'application/json'
-	    },
-	    body: JSON.stringify(data)
-	  }).then(function (response) {
-	    if (response.status != undefined) {
-	      Actions.setStatus(response.status);
-	    }
-	    return response.json();
-	  }).then(function (data) {
-	    Actions.updateBitcoinData(data.data);
-	  }).catch(function (error) {
-	    console.log(error);
-	  });
+	    var data = {
+	        daterange: daterange
+	    };
+	    //  
+	    return fetch('/bitcoin', {
+	        method: 'post',
+	        headers: {
+	            'Accept': 'application/json',
+	            'Content-Type': 'application/json'
+	        },
+	        body: JSON.stringify(data)
+	    }).then(function (response) {
+	        if (response.status != undefined) {
+	            Actions.setStatus(response.status);
+	        }
+	        return response.json();
+	    }).then(function (data) {
+	        Actions.updateBitcoinData(data.data);
+	    }).catch(function (error) {
+	        console.log(error);
+	    });
 	};
 
 	module.exports = new API();
@@ -75150,15 +75158,12 @@
 			value: function setBitcoinVolumeGraph(data, historyoptions) {
 
 				var volume_data = [["DATE", 'Volume']];
-
 				for (var x = data.length - 1; x >= 0; x--) {
 					volume_data.push([new Date(data[x].time), data[x].volume]);
 				};
 
 				var options = {
-
 					title: "Volume",
-
 					titleTextStyle: {
 						color: 'black', // any HTML string color ('red', '#cc00cc')
 						fontName: 'Courier New', // i.e. 'Times New Roman'
@@ -75220,7 +75225,7 @@
 			key: 'setBitcoinGraph',
 			value: function setBitcoinGraph(data, historyoptions) {
 
-				var line_data = [["DATE", "valuation"]];
+				var line_data = [["DATE", "Price"]];
 				for (var x = data.length - 1; x >= 0; x--) {
 					line_data.push([new Date(data[x].time), data[x].average]);
 				};
@@ -75271,14 +75276,12 @@
 						format: null
 					}
 				};
-
 				if (historyoptions == 'monthly' || historyoptions == 'alltime') {
 					options.format = 'MMM d, y';
 				}
 				if (historyoptions == 'daily') {
 					options.format = ['HH:mm', 'ha'];
 				}
-
 				return _react2.default.createElement(
 					'div',
 					{ className: 'bitcoingraph' },
@@ -75292,61 +75295,10 @@
 				);
 			}
 		}, {
-			key: 'setMarketGoogleGraph',
-			value: function setMarketGoogleGraph(data) {
-				var line_data = [["DATE", "valuation"]];
-				for (var x = 0; x < data.xValues.length; x++) {
-					line_data.push([data.xValues[x], data.yValues[x]]);
-				};
-				var options = {
-					title: data.name,
-					legend: "none",
-					backgroundColor: 'transparent',
-					vAxis: {
-						title: "",
-						titleTextStyle: { color: 'black' },
-						baselineColor: 'transparent',
-						textStyle: {
-							fontSize: 10,
-							fontName: 'Courier New',
-							color: 'black',
-							fontWeight: 700
-
-						},
-						gridlines: {
-							count: 5
-						}
-
-					},
-					hAxis: {
-						baselineColor: 'transparent',
-						textStyle: {
-							color: 'black',
-							fontName: 'Courier New',
-							fontWeight: 700,
-							fontSize: 10
-						},
-						gridlines: {
-							count: 5
-						}
-					}
-				};
-				return _react2.default.createElement(
-					'div',
-					{ className: 'marketgraph' },
-					_react2.default.createElement(_reactGoogleCharts.Chart, {
-						chartType: 'LineChart',
-						data: line_data,
-						width: '100%',
-						height: '100%',
-						options: options
-					})
-				);
-			}
-		}, {
 			key: 'setIntradayGraphGoogleView',
 			value: function setIntradayGraphGoogleView(data, name) {
-				var line_data = [["DATE", "val1"]];
+				var line_data = [["DATE", "Price"]];
+
 				for (var x = data.length - 1; x >= 0; x--) {
 					line_data.push([new Date(data[x].date), data[x].close]);
 				};
@@ -75378,7 +75330,6 @@
 							fontName: 'Courier New',
 							color: 'black',
 							fontWeight: 700
-
 						},
 						gridlines: {
 							count: 2,
@@ -75394,7 +75345,6 @@
 							fontName: 'Courier New',
 							color: 'black',
 							fontWeight: 700
-
 						},
 						gridlines: {
 							count: 3,
@@ -75431,7 +75381,7 @@
 			}
 		}, {
 			key: 'setHistoryRangePicker',
-			value: function setHistoryRangePicker(historyoptions) {
+			value: function setHistoryRangePicker() {
 				var _this2 = this;
 
 				return _react2.default.createElement(
@@ -81343,7 +81293,7 @@
 		);
 	};
 
-	Autocorrelation.prototype.setIntradayAutocorrelation = function (data) {
+	Autocorrelation.prototype.setIntradayAutocorrelation = function (data, historyoptions) {
 		var line_data = [["DATE", "correlation coefficient"]];
 		var set = [];
 		for (var x = 0; x < 365; x++) {
@@ -81388,7 +81338,7 @@
 				}
 			},
 			hAxis: {
-				title: 'Trading Days',
+				title: null,
 				baselineColor: 'transparent',
 				// gridlineColor: 'transparent',
 				textStyle: {
@@ -81403,6 +81353,16 @@
 				}
 			}
 		};
+
+		// console.log(historyoptions);
+		if (historyoptions.history == 'weekly') options.hAxis.title = 'trading days - weekly lag';
+		if (historyoptions.history == 'daily') options.hAxis.title = 'trading days - daily lag';
+		if (historyoptions.history == 'intraday') options.hAxis.title = 'intraday -' + historyoptions.timesteps + ' lag'; // 1min
+		if (historyoptions == 'intraday') options.hAxis.title = 'intraday -' + historyoptions.timesteps + ' lag'; //5 min
+		if (historyoptions == 'intraday') options.hAxis.title = 'intraday -' + historyoptions.timesteps + ' lag'; //15 min
+		if (historyoptions == 'intraday') options.hAxis.title = 'intraday -' + historyoptions.timesteps + ' lag'; //30 min
+		if (historyoptions == 'intraday') options.hAxis.title = 'intraday -' + historyoptions.timesteps + ' lag'; //60 min
+
 
 		return _react2.default.createElement(
 			'div',
@@ -81502,6 +81462,9 @@
 				if (this.state.marketData.autocorr.length > 0) {
 					autocorr = Autocorrelation.setIntradayAutocorrelation(this.state.marketData.autocorr, this.state.stockHistoryOptions);
 				}
+
+				console.log(this.state.stockHistoryOptions);
+
 				return _react2.default.createElement(
 					'div',
 					{ className: 'intradaypage' },
@@ -81509,13 +81472,13 @@
 					_react2.default.createElement(
 						'div',
 						{ className: 'intradaychild' },
-						MarketGraph.setIntradayGraphGoogleView(this.state.marketData.data, this.state.marketData.name, this.state.stockHistoryOptions),
+						MarketGraph.setIntradayGraphGoogleView(this.state.marketData.data, this.state.marketData.name),
 						CandleStickGraph.setIntraDayGraph(this.state.marketData, this.state.stockHistoryOptions)
 					),
 					_react2.default.createElement(
 						'div',
 						{ className: 'intradaychild' },
-						MarketGraph.setIntraDayBarGraph(this.state.marketData.data, this.state.marketData.name, this.state.stockHistoryOptions),
+						MarketGraph.setIntraDayBarGraph(this.state.marketData.data, this.state.marketData.name),
 						autocorr
 					)
 				);
