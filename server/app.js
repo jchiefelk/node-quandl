@@ -9,6 +9,7 @@ const http = require('http');
 const https = require('https');
 const app = express();
 let Correlation = require('../modules/correlation');
+let PubliclyTradedCompanies = require('../modules/publiclytradedcompanies');
 let _store;
 let Promise = require('bluebird');
 let marketData = null;
@@ -89,8 +90,6 @@ app.get('/markets', function(req,res){
 });
 app.post('/api', function(req,res){
     let market, autocorr;
-
-
     Quandl.getIntraDayTicket(req.body)
            .then(function(value) { 
                 market = value;
@@ -156,6 +155,18 @@ app.post('/bitcoin', function(req,res){
 
 });
 
+
+app.get('/stocklisting', function(req, res){
+
+    return PubliclyTradedCompanies.symbolLookupNYSE()
+          .then((response) => typeof response == 'object' ? response.json() : {} )
+          .then( ( responseJson ) => {
+              console.log(responseJson)
+          })
+          .catch((err) => {
+            console.log(err);   
+          });
+});
 
 app.get('/frontenddata',function(req,res){
     res.json({

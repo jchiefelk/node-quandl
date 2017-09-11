@@ -421,6 +421,7 @@ class MarketGraph {
 	}
 
 	updatecompanyCode(e){
+		API.getStockistings();
 		this.companyCode = e.target.value.toUpperCase();
 		Actions.updateCompanyCode(this.companyCode);
 	}

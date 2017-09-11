@@ -53,5 +53,15 @@ API.prototype.getBitcoinData = function(daterange){
 
 };
 
+API.prototype.getStockistings = function(){
+
+
+    return fetch('/stocklisting',{
+              method: 'get'
+          })
+          .then((response) => {return response.json() })
+          .then((data) => {console.log(data)})
+
+};
 
 module.exports = new API();

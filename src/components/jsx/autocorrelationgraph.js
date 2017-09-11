@@ -136,8 +136,7 @@ Autocorrelation.prototype.setIntradayAutocorrelation = function(data,historyopti
 				if(historyoptions=='intraday') options.hAxis.title = 'intraday -'+historyoptions.timesteps+' lag'; //15 min
 				if(historyoptions=='intraday') options.hAxis.title = 'intraday -'+historyoptions.timesteps+' lag'; //30 min
 				if(historyoptions=='intraday') options.hAxis.title = 'intraday -'+historyoptions.timesteps+' lag'; //60 min
-		
-
+	
 				return (				
 					<div  className="intradaylinegraph">
 							<Chart

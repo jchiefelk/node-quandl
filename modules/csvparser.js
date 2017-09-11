@@ -4,13 +4,13 @@ var parse = require('csv-parse');
 var async = require('async');//
 var nyse = [];
 
-fs.createReadStream(__dirname+'/NYSE.csv')
+fs.createReadStream(__dirname+'/data/NYSE.csv')
 		.pipe(parse({delimiter: ','}))
 	   	.on('data', function(csvrow) {
 	   		let company = {
 				code: csvrow[0],
 				name: csvrow[1],
-				ticker: csvrow[2]
+				marketcap: csvrow[3]
 			};
 	        nyse.push(company);      
 	    })
@@ -19,3 +19,5 @@ fs.createReadStream(__dirname+'/NYSE.csv')
 		      console.log('End Fetching');
 		      console.log(nyse);
 		 });
+
+

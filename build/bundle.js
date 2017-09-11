@@ -75061,6 +75061,17 @@
 	    });
 	};
 
+	API.prototype.getStockistings = function () {
+
+	    return fetch('/stocklisting', {
+	        method: 'get'
+	    }).then(function (response) {
+	        return response.json();
+	    }).then(function (data) {
+	        console.log(data);
+	    });
+	};
+
 	module.exports = new API();
 
 /***/ }),
@@ -75586,6 +75597,7 @@
 		}, {
 			key: 'updatecompanyCode',
 			value: function updatecompanyCode(e) {
+				API.getStockistings();
 				this.companyCode = e.target.value.toUpperCase();
 				Actions.updateCompanyCode(this.companyCode);
 			}
@@ -81362,7 +81374,6 @@
 		if (historyoptions == 'intraday') options.hAxis.title = 'intraday -' + historyoptions.timesteps + ' lag'; //15 min
 		if (historyoptions == 'intraday') options.hAxis.title = 'intraday -' + historyoptions.timesteps + ' lag'; //30 min
 		if (historyoptions == 'intraday') options.hAxis.title = 'intraday -' + historyoptions.timesteps + ' lag'; //60 min
-
 
 		return _react2.default.createElement(
 			'div',
