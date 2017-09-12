@@ -200,27 +200,25 @@ app.post('/bitcoin', function(req,res){
 });
 
 app.post('/stocklisting', function(req, res){
-        // Hash table lookup
-        // console.log(req.body.companycode);
+
+
         let stocklisting=[];
         let code = req.body.companycode.split('');
-        // console.log(code);
-        // console.log(routine.stocklistings)
-       // console.log(routine.stocklistings.length);
+
 
         for(let x=0; x<routine.stocklistings.length; x++){
             let index=0;
             for(let key in routine.stocklistings[x]){
-                let stockcode = key; 
+                let stockcode = routine.stocklistings[x][key]; 
                 let autocomplete = function(){
                   if(code[index]!=undefined && stockcode[index]==code[index].toUpperCase() && index < code.length-1){
-                    
                       let data = {
                         companycode: key,
                         name: routine.stocklistings[x][key]
                       };
                       stocklisting.push(data);
                       index+=1;
+                      autocomplete();
                   }
                 };
                 autocomplete();

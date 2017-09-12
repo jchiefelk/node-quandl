@@ -281,7 +281,8 @@ class MarketGraph {
 
 			return (
 					<div className="history_options">
-								{this.setCompanyPicker()}		
+								{this.setCompanyPicker([])}		
+								
 								<label>
 									 Intraday
 									 <select onChange={(e) => this.setDateRange('intraday', e.target.value)}>
@@ -401,22 +402,27 @@ class MarketGraph {
 		API.getStockPrice(params);			
 	}
 
+	pickCode(data){
+		console.log('Picking A Company');
+		console.log(data);
+		this.companyCode = data;
+	}
+
 	setCompanyPicker(stocklistings){
-		// data structure {companycode: "DDD", name: "3D Systems Corporation"}
+
 		console.log('company picker');
-		console.log(stocklistings);
+
 		let stockchoices=[];
 		if(stocklistings.stocklisting!=undefined){
 				for(let x=0; x<stocklistings.stocklisting.length; x++){
 					let choice = (
-						<div style={{height: 40, width: 200, fontSize: 12, cursor: 'pointer', display: 'flex'}}>
+						<div key={Math.random(x)} style={{height: 40, width: 200, fontSize: 12, cursor: 'pointer', display: 'flex', borderBottomWidth: 1, borderBottomStyle: 'solid'}} onClick={() => this.pickCode(stocklistings.stocklisting[x].companycode) }>
 							{stocklistings.stocklisting[x].companycode} - {stocklistings.stocklisting[x].name}
 						</div>
 					);
 					stockchoices.push(choice);
 				};
 		}
-
 		return (
 					<div className="pickercontainer">
 						<div style={{display: 'flex', flexDirection: 'column'}}>

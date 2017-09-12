@@ -75448,7 +75448,7 @@
 				return _react2.default.createElement(
 					'div',
 					{ className: 'history_options' },
-					this.setCompanyPicker(),
+					this.setCompanyPicker([]),
 					_react2.default.createElement(
 						'label',
 						null,
@@ -75620,27 +75620,38 @@
 				API.getStockPrice(params);
 			}
 		}, {
+			key: 'pickCode',
+			value: function pickCode(data) {
+				console.log('Picking A Company');
+				console.log(data);
+				this.companyCode = data;
+			}
+		}, {
 			key: 'setCompanyPicker',
 			value: function setCompanyPicker(stocklistings) {
 				var _this4 = this;
 
-				// data structure {companycode: "DDD", name: "3D Systems Corporation"}
 				console.log('company picker');
-				console.log(stocklistings);
+
 				var stockchoices = [];
 				if (stocklistings.stocklisting != undefined) {
-					for (var x = 0; x < stocklistings.stocklisting.length; x++) {
+					var _loop = function _loop(x) {
 						var choice = _react2.default.createElement(
 							'div',
-							{ style: { height: 40, width: 200, fontSize: 12, cursor: 'pointer', display: 'flex' } },
+							{ key: Math.random(x), style: { height: 40, width: 200, fontSize: 12, cursor: 'pointer', display: 'flex', borderBottomWidth: 1, borderBottomStyle: 'solid' }, onClick: function onClick() {
+									return _this4.pickCode(stocklistings.stocklisting[x].companycode);
+								} },
 							stocklistings.stocklisting[x].companycode,
 							' - ',
 							stocklistings.stocklisting[x].name
 						);
 						stockchoices.push(choice);
 					};
-				}
 
+					for (var x = 0; x < stocklistings.stocklisting.length; x++) {
+						_loop(x);
+					};
+				}
 				return _react2.default.createElement(
 					'div',
 					{ className: 'pickercontainer' },
