@@ -50,17 +50,26 @@ API.prototype.getBitcoinData = function(daterange){
           }).catch(function(error) {
               console.log(error);
           }); 
-
 };
 
-API.prototype.getStockistings = function(){
-
+API.prototype.getStockistings = function(data){
 
     return fetch('/stocklisting',{
-              method: 'get'
+              method: 'post',
+              mode: 'cors',
+              headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(data)
           })
           .then((response) => {return response.json() })
-          .then((data) => {console.log(data)})
+          .then((data) => {
+              Actions.updateStockListings(data);
+          })
+          .catch(function(error) {
+              console.log(error);
+          }); 
 
 };
 

@@ -18,16 +18,19 @@ let etf=[];
 let market=[];
 let etf_autocorrelation=[];
 let market_autocorrelation=[];
+
+
 /**
   Quandl Calls that are made once per day
 **/
-function Interval(){
+function BackgroundProcesses(){
   this.etfData = null;
   this.marketData = null;
   this.etf=[];
   this.market=[];
+  this.stocklistings = [];
 };
-Interval.prototype.startInterval = function(){
+BackgroundProcesses.prototype.startInterval = function(){
     Quandl.getMarketData()
              .then(function(value) {
                    //  console.log(value);
@@ -49,8 +52,51 @@ Interval.prototype.startInterval = function(){
                   **/
 
 };
-let routine =  new Interval();
-routine.startInterval();
+
+BackgroundProcesses.prototype.getNYSEListings = function(){
+   
+    return PubliclyTradedCompanies.symbolLookupNYSE()
+          .then( ( data ) => {
+              for(let x=1;x<data.length;x++){
+                 let stocklisting = {};
+                 stocklisting[data[x].code] = data[x].name;
+                 this.stocklistings.push(stocklisting); 
+              };
+               
+              return this.stocklistings;
+          })
+          .catch((err) => {
+            console.log(err);   
+          });
+
+};
+
+BackgroundProcesses.prototype.getNASDAQListings = function(){
+
+    return PubliclyTradedCompanies.symbolLookupNASDAQ()
+          .then( ( data ) => {
+              for(let x=1;x<data.length;x++){
+                let stocklisting = {};
+                 stocklisting[data[x].code] = data[x].name;
+                 this.stocklistings.push(stocklisting); 
+              };
+              return this.stocklistings; 
+          })
+          .catch((err) => {
+            console.log(err);   
+          });
+
+};
+let routine = new BackgroundProcesses();
+routine.getNYSEListings()
+.then(function(value){
+      // console.log(value);
+  return routine.getNASDAQListings();
+})
+.then(function(value){
+  // console.log(routine.stocklistings);
+});
+//
 // setInterval( routine.startInterval, 86400000 );
 //
 // Required for POST Requests
@@ -117,7 +163,6 @@ app.post('/api', function(req,res){
                 return Correlation.stockprice_autocorrelation(value[timeSeries]);
             })
            .then((result) => {
-
                 autocorr=result;
                 res.json({
                     general: market,
@@ -152,20 +197,39 @@ app.post('/bitcoin', function(req,res){
             });
 
       });
-
 });
 
+app.post('/stocklisting', function(req, res){
+        // Hash table lookup
+        // console.log(req.body.companycode);
+        let stocklisting=[];
+        let code = req.body.companycode.split('');
+        // console.log(code);
+        // console.log(routine.stocklistings)
+       // console.log(routine.stocklistings.length);
 
-app.get('/stocklisting', function(req, res){
+        for(let x=0; x<routine.stocklistings.length; x++){
+            let index=0;
+            for(let key in routine.stocklistings[x]){
+                let stockcode = key; 
+                let autocomplete = function(){
+                  if(code[index]!=undefined && stockcode[index]==code[index].toUpperCase() && index < code.length-1){
+                    
+                      let data = {
+                        companycode: key,
+                        name: routine.stocklistings[x][key]
+                      };
+                      stocklisting.push(data);
+                      index+=1;
+                  }
+                };
+                autocomplete();
+            };
 
-    return PubliclyTradedCompanies.symbolLookupNYSE()
-          .then((response) => typeof response == 'object' ? response.json() : {} )
-          .then( ( responseJson ) => {
-              console.log(responseJson)
-          })
-          .catch((err) => {
-            console.log(err);   
-          });
+        };
+        res.json({
+          stocklisting: stocklisting
+        });
 });
 
 app.get('/frontenddata',function(req,res){

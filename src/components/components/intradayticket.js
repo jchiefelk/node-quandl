@@ -16,7 +16,8 @@ export default class IntraDayTicket extends Component {
 					rangeSelected: false,
 					companyCode: StockDataStore.getCompanyCode(),
 					marketData: StockDataStore.getInradayTicketData(),
-					stockHistoryOptions: 'weekly'
+					stockHistoryOptions: 'weekly',
+					stocklistings: StockDataStore.getStockListings()
 				};
 			}
 			componentDidMount(){
@@ -32,21 +33,19 @@ export default class IntraDayTicket extends Component {
 					endDate: StockDataStore.getEndDate(),
 					companyCode: StockDataStore.getCompanyCode(),
 					sendRequestStatus:	StockDataStore.getRequestSendStatus(),
-					stockHistoryOptions:	StockDataStore.getStockHistoryOption()
+					stockHistoryOptions:	StockDataStore.getStockHistoryOption(),
+					stocklistings: StockDataStore.getStockListings()
 				});
-
 			}
 			setLoadingView(){
 				return MarketGraph.setLoadingAnimation();
 			}  
 			setMainView(){
+
 				let autocorr= null;
 				if(this.state.marketData.autocorr.length > 0) {
 				  autocorr = Autocorrelation.setIntradayAutocorrelation(this.state.marketData.autocorr, this.state.stockHistoryOptions);
 				}
-
-				console.log(this.state.stockHistoryOptions);
-
 
 				return (
 					<div className="intradaypage">

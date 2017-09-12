@@ -401,19 +401,39 @@ class MarketGraph {
 		API.getStockPrice(params);			
 	}
 
-	setCompanyPicker(){
+	setCompanyPicker(stocklistings){
+		// data structure {companycode: "DDD", name: "3D Systems Corporation"}
+		console.log('company picker');
+		console.log(stocklistings);
+		let stockchoices=[];
+		if(stocklistings.stocklisting!=undefined){
+				for(let x=0; x<stocklistings.stocklisting.length; x++){
+					let choice = (
+						<div style={{height: 40, width: 200, fontSize: 12, cursor: 'pointer', display: 'flex'}}>
+							{stocklistings.stocklisting[x].companycode} - {stocklistings.stocklisting[x].name}
+						</div>
+					);
+					stockchoices.push(choice);
+				};
+		}
 
 		return (
 					<div className="pickercontainer">
+						<div style={{display: 'flex', flexDirection: 'column'}}>
 							<input className="homepage-input" placeholder="Enter stock code" onChange={(e) => this.updatecompanyCode(e) } />
+							<div style={{positon: 'relative'}}>
+								{stockchoices}
+							</div>
+						</div>
+
 							<Link to="/intradaypage" onClick={()=> this.sendRequest() }>
 								<img src={require("../img/enter_icon.png")}  className="enter_icons" />
 							</Link>
 					</div>
 
 		);
-	}
 
+	}
 
 
 	setLoadingAnimation(){
@@ -421,7 +441,10 @@ class MarketGraph {
 	}
 
 	updatecompanyCode(e){
-		API.getStockistings();
+		let apiInput = {
+			companycode: e.target.value
+		};
+		API.getStockistings(apiInput);
 		this.companyCode = e.target.value.toUpperCase();
 		Actions.updateCompanyCode(this.companyCode);
 	}

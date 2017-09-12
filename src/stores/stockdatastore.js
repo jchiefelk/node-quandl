@@ -99,7 +99,7 @@ function StockData(){
           history: 'weekly',
           timesteps: null
         },
-
+        stocklistings: []
     };
 };
 
@@ -155,6 +155,10 @@ StockData.prototype.updateEndDate = function(item){
 
 StockData.prototype.updateCompanyCode = function(item) {
   this.IntraDay.companyCode = item;
+};
+
+StockData.prototype.updateStockListing = function(item){
+  this.IntraDay.stocklistings = item;
 };
 
 var Stocks = new StockData();
@@ -220,6 +224,9 @@ var StockDataStore = objectAssign({}, EventEmitter.prototype, {
   },
   getStockHistoryOption: function(){
     return Stocks.IntraDay.historyOptions;
+  },
+  getStockListings: function(){
+    return Stocks.IntraDay.stocklistings;
   }
 
 });
@@ -276,6 +283,10 @@ AppDispatcher.register(function(payload){
         break;
     case appConstants.BITCOIN_HISTORY_OPTIONS:
         Bitcoin.updateBitcoinHistoryOptions(action.data);
+        StockDataStore.emitChange(CHANGE_EVENT);
+        break;
+    case appConstants.STOCK_LISTINGS:
+        Stocks.updateStockListing(action.data);
         StockDataStore.emitChange(CHANGE_EVENT);
         break;
     default:

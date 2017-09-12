@@ -27817,6 +27817,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	var StockDataStore = __webpack_require__(416);
 	var MarketGraph = __webpack_require__(425);
 
 	__webpack_require__(245);
@@ -27827,17 +27828,39 @@
 	  function MarketPage() {
 	    _classCallCheck(this, MarketPage);
 
-	    return _possibleConstructorReturn(this, (MarketPage.__proto__ || Object.getPrototypeOf(MarketPage)).call(this));
+	    var _this = _possibleConstructorReturn(this, (MarketPage.__proto__ || Object.getPrototypeOf(MarketPage)).call(this));
+
+	    _this.state = {
+	      stocklistings: StockDataStore.getStockListings()
+	    };
+	    return _this;
 	  }
 
 	  _createClass(MarketPage, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      StockDataStore.addChangeListener(this._onChange.bind(this));
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      StockDataStore.removeChangeListener(this._onChange.bind(this));
+	    }
+	  }, {
+	    key: '_onChange',
+	    value: function _onChange() {
+	      this.setState({
+	        stocklistings: StockDataStore.getStockListings()
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'marketpage' },
 	        _react2.default.createElement(_header2.default, null),
-	        MarketGraph.setCompanyPicker(),
+	        MarketGraph.setCompanyPicker(this.state.stocklistings),
 	        _react2.default.createElement(_marketfundview2.default, null)
 	      );
 	    }
@@ -56915,8 +56938,8 @@
 	    historyOptions: {
 	      history: 'weekly',
 	      timesteps: null
-	    }
-
+	    },
+	    stocklistings: []
 	  };
 	};
 
@@ -56972,6 +56995,10 @@
 
 	StockData.prototype.updateCompanyCode = function (item) {
 	  this.IntraDay.companyCode = item;
+	};
+
+	StockData.prototype.updateStockListing = function (item) {
+	  this.IntraDay.stocklistings = item;
 	};
 
 	var Stocks = new StockData();
@@ -57037,6 +57064,9 @@
 	  },
 	  getStockHistoryOption: function getStockHistoryOption() {
 	    return Stocks.IntraDay.historyOptions;
+	  },
+	  getStockListings: function getStockListings() {
+	    return Stocks.IntraDay.stocklistings;
 	  }
 
 	});
@@ -57093,6 +57123,10 @@
 	      break;
 	    case appConstants.BITCOIN_HISTORY_OPTIONS:
 	      Bitcoin.updateBitcoinHistoryOptions(action.data);
+	      StockDataStore.emitChange(CHANGE_EVENT);
+	      break;
+	    case appConstants.STOCK_LISTINGS:
+	      Stocks.updateStockListing(action.data);
 	      StockDataStore.emitChange(CHANGE_EVENT);
 	      break;
 	    default:
@@ -57397,7 +57431,8 @@
 	  UPDATE_BITCOIN_AVG_HISTORY: "UPDATE_BITCOIN_AVG_HISTORY",
 	  STOCK_HISTORY: "STOCK_HISTORY",
 	  STOCK_HISTORY_OPTION: "STOCK_HISTORY_OPTION",
-	  BITCOIN_HISTORY_OPTIONS: "BITCOIN_HISTORY_OPTIONS"
+	  BITCOIN_HISTORY_OPTIONS: "BITCOIN_HISTORY_OPTIONS",
+	  STOCK_LISTINGS: "STOCK_LISTINGS"
 	};
 	module.exports = appConstants;
 
@@ -57794,6 +57829,13 @@
 	};
 
 	var Actions = {
+
+	  updateStockListings: function updateStockListings(item) {
+	    AppDispatcher.handleAction({
+	      actionType: appConstants.STOCK_LISTINGS,
+	      data: item
+	    });
+	  },
 
 	  updateBitcoinHistoryOptions: function updateBitcoinHistoryOptions(item) {
 	    AppDispatcher.handleAction({
@@ -75061,14 +75103,22 @@
 	    });
 	};
 
-	API.prototype.getStockistings = function () {
+	API.prototype.getStockistings = function (data) {
 
 	    return fetch('/stocklisting', {
-	        method: 'get'
+	        method: 'post',
+	        mode: 'cors',
+	        headers: {
+	            'Accept': 'application/json',
+	            'Content-Type': 'application/json'
+	        },
+	        body: JSON.stringify(data)
 	    }).then(function (response) {
 	        return response.json();
 	    }).then(function (data) {
-	        console.log(data);
+	        Actions.updateStockListings(data);
+	    }).catch(function (error) {
+	        console.log(error);
 	    });
 	};
 
@@ -75571,15 +75621,41 @@
 			}
 		}, {
 			key: 'setCompanyPicker',
-			value: function setCompanyPicker() {
+			value: function setCompanyPicker(stocklistings) {
 				var _this4 = this;
+
+				// data structure {companycode: "DDD", name: "3D Systems Corporation"}
+				console.log('company picker');
+				console.log(stocklistings);
+				var stockchoices = [];
+				if (stocklistings.stocklisting != undefined) {
+					for (var x = 0; x < stocklistings.stocklisting.length; x++) {
+						var choice = _react2.default.createElement(
+							'div',
+							{ style: { height: 40, width: 200, fontSize: 12, cursor: 'pointer', display: 'flex' } },
+							stocklistings.stocklisting[x].companycode,
+							' - ',
+							stocklistings.stocklisting[x].name
+						);
+						stockchoices.push(choice);
+					};
+				}
 
 				return _react2.default.createElement(
 					'div',
 					{ className: 'pickercontainer' },
-					_react2.default.createElement('input', { className: 'homepage-input', placeholder: 'Enter stock code', onChange: function onChange(e) {
-							return _this4.updatecompanyCode(e);
-						} }),
+					_react2.default.createElement(
+						'div',
+						{ style: { display: 'flex', flexDirection: 'column' } },
+						_react2.default.createElement('input', { className: 'homepage-input', placeholder: 'Enter stock code', onChange: function onChange(e) {
+								return _this4.updatecompanyCode(e);
+							} }),
+						_react2.default.createElement(
+							'div',
+							{ style: { positon: 'relative' } },
+							stockchoices
+						)
+					),
 					_react2.default.createElement(
 						_reactRouter.Link,
 						{ to: '/intradaypage', onClick: function onClick() {
@@ -75597,7 +75673,10 @@
 		}, {
 			key: 'updatecompanyCode',
 			value: function updatecompanyCode(e) {
-				API.getStockistings();
+				var apiInput = {
+					companycode: e.target.value
+				};
+				API.getStockistings(apiInput);
 				this.companyCode = e.target.value.toUpperCase();
 				Actions.updateCompanyCode(this.companyCode);
 			}
@@ -81434,7 +81513,8 @@
 				rangeSelected: false,
 				companyCode: StockDataStore.getCompanyCode(),
 				marketData: StockDataStore.getInradayTicketData(),
-				stockHistoryOptions: 'weekly'
+				stockHistoryOptions: 'weekly',
+				stocklistings: StockDataStore.getStockListings()
 			};
 			return _this;
 		}
@@ -81458,7 +81538,8 @@
 					endDate: StockDataStore.getEndDate(),
 					companyCode: StockDataStore.getCompanyCode(),
 					sendRequestStatus: StockDataStore.getRequestSendStatus(),
-					stockHistoryOptions: StockDataStore.getStockHistoryOption()
+					stockHistoryOptions: StockDataStore.getStockHistoryOption(),
+					stocklistings: StockDataStore.getStockListings()
 				});
 			}
 		}, {
@@ -81469,12 +81550,11 @@
 		}, {
 			key: 'setMainView',
 			value: function setMainView() {
+
 				var autocorr = null;
 				if (this.state.marketData.autocorr.length > 0) {
 					autocorr = Autocorrelation.setIntradayAutocorrelation(this.state.marketData.autocorr, this.state.stockHistoryOptions);
 				}
-
-				console.log(this.state.stockHistoryOptions);
 
 				return _react2.default.createElement(
 					'div',
