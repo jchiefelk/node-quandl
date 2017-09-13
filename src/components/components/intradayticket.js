@@ -46,10 +46,22 @@ export default class IntraDayTicket extends Component {
 				if(this.state.marketData.autocorr.length > 0) {
 				  autocorr = Autocorrelation.setIntradayAutocorrelation(this.state.marketData.autocorr, this.state.stockHistoryOptions);
 				}
+				/**
+			<div className="gridcontainer">
+ 				<CuratedActivitiesEditNewHeader curatedActivityDBID={ this.state.curatedActivityDBID } />
+			    <div className="gridwrapper">
+			        	<div className="gridbox gridmenu">
+			       			<CuratedActivity/>
+			        	</div>
+					    <div className="gridbox gridmain">
+					        <CuratedActivityInstancesContainer />
+						</div>
+			   </div>
+			</div>    
 
-				return (
+
 					<div className="intradaypage">
-							{MarketGraph.setHistoryRangePicker(this.state.stocklistings)}
+							
 						<div className="intradaychild">
 							{MarketGraph.setIntradayGraphGoogleView(this.state.marketData.data, this.state.marketData.name)}	
 							{CandleStickGraph.setIntraDayGraph(this.state.marketData, this.state.stockHistoryOptions)}
@@ -60,6 +72,29 @@ export default class IntraDayTicket extends Component {
 							{autocorr}
 						</div>
 					</div>
+
+				**/
+
+				return (
+
+					<div className="gridcontainer">
+
+					    {MarketGraph.setCompanyPicker(this.state.stocklistings)}
+		 				{MarketGraph.setHistoryRangePicker(this.state.stocklistings)}
+					    
+					    <div className="gridwrapper">
+					        	<div className="gridbox gridmain">
+								      	{MarketGraph.setIntradayGraphGoogleView(this.state.marketData.data, this.state.marketData.name)}	
+										{MarketGraph.setIntraDayBarGraph(this.state.marketData.data, this.state.marketData.name)}
+					        	</div>
+
+							    <div className="gridbox gridmain">
+							    		{CandleStickGraph.setIntraDayGraph(this.state.marketData, this.state.stockHistoryOptions)}
+										{autocorr}
+								</div>
+					   </div>
+					</div>    
+
 				);
 			}
 			render(){

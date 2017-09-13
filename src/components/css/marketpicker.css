@@ -1,5 +1,4 @@
 .stockpickerinput {
-		position: relative;
 		font-size: 18; 
 		font-weight: 700;
 		font-family: 'Arial';
@@ -9,7 +8,8 @@
 }
 
 .pickercontainer {
-    align-items: center; 
+	display: flex;
+	justify-content: center;
     background-color: transparent;
     position: relative;
     top: 0.3em;
@@ -20,7 +20,8 @@
 }
 
 .stockchoices {
-	position: absolute
+	position: absolute;
+	top: 4em;
 }
 
 .stockcompany {

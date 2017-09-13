@@ -49,8 +49,6 @@ class MarketGraph {
 		);
 	}
 
-
-
 	setBitcoinVolumeGraph(data,historyoptions){
 
 	      		let volume_data = [["DATE", 'Volume']];
@@ -62,21 +60,21 @@ class MarketGraph {
 				    	title: "Volume",
 						titleTextStyle: {
 							color: 'black',    // any HTML string color ('red', '#cc00cc')
-							fontName: 'Courier New', // i.e. 'Times New Roman'
+							fontName: 'Arial', // i.e. 'Times New Roman'
 							fontSize: 18, // 12, 18 whatever you want (don't specify px)
 							bold: false,    // true or false
 							italic: false   // true of false
 						},
 
 						isStacked:true,
-						fontFamily: 'Courier New',
+						fontFamily: 'Arial',
 						backgroundColor: 'transparent',
 
 						vAxis: {
 							baselineColor: 'transparent',
 				        	textStyle: {
 				        		fontSize: 12,
-				        		fontName: 'Courier New',
+				        		fontName: 'Arial',
 				        		color: 'black',
 				        		fontWeight: 700,
 				       
@@ -90,7 +88,7 @@ class MarketGraph {
 							baselineColor: 'transparent',
 				        	textStyle: {
 				        		fontSize: 12,
-				        		fontName: 'Courier New',
+				        		fontName: 'Arial',
 				        		color: 'black',
 				        		fontWeight: 700,
 				       
@@ -133,7 +131,7 @@ class MarketGraph {
 
 						titleTextStyle: {
 							color: 'black',    // any HTML string color ('red', '#cc00cc')
-							fontName: 'Courier New', // i.e. 'Times New Roman'
+							fontName: 'Arial', // i.e. 'Times New Roman'
 							fontSize: 18, // 12, 18 whatever you want (don't specify px)
 							bold: false,    // true or false
 							italic: false   // true of false
@@ -146,7 +144,7 @@ class MarketGraph {
 							baselineColor: 'transparent',
 				        	textStyle: {
 				        		fontSize: 12,
-				        		fontName: 'Courier New',
+				        		fontName: 'Arial',
 				        		color: 'black',
 				        		fontWeight: 700,
 				       
@@ -162,7 +160,7 @@ class MarketGraph {
 							baselineColor: 'transparent',
 				        	textStyle: {
 				        		fontSize: 12,
-				        		fontName: 'Courier New',
+				        		fontName: 'Arial',
 				        		color: 'black',
 				        		fontWeight: 700,
 				       
@@ -211,7 +209,7 @@ class MarketGraph {
 						***/
 					    titleTextStyle: {
 					        color: 'black',    // any HTML string color ('red', '#cc00cc')
-					        fontName: 'Courier New', // i.e. 'Times New Roman'
+					        fontName: 'Arial', // i.e. 'Times New Roman'
 					        fontSize: 18, // 12, 18 whatever you want (don't specify px)
 					        bold: false,    // true or false
 					        italic: false   // true of false
@@ -224,7 +222,7 @@ class MarketGraph {
 							baselineColor: 'transparent',
 				        	textStyle: {
 				        		fontSize: 12,
-				        		fontName: 'Courier New',
+				        		fontName: 'Arial',
 				        		color: 'black',
 				        		fontWeight: 700
 				        	},
@@ -239,7 +237,7 @@ class MarketGraph {
 							baselineColor: 'transparent',
 				        	textStyle: {
 				        		fontSize: 12,
-				        		fontName: 'Courier New',
+				        		fontName: 'Arial',
 				        		color: 'black',
 				        		fontWeight: 700,
 				        	},
@@ -279,9 +277,11 @@ class MarketGraph {
 	setHistoryRangePicker(stocklistings){
 
 			return (
+
+
+
 					<div className="history_options">
-								{this.setCompanyPicker(stocklistings)}		
-								
+									
 								<label>
 									 Intraday
 									 <select onChange={(e) => this.setDateRange('intraday', e.target.value)}>
@@ -300,6 +300,7 @@ class MarketGraph {
 									Weekly								
 								</label>
 					</div>
+
 				);
 	}
 
@@ -310,7 +311,7 @@ class MarketGraph {
 				};
 			    let baroptions = {
 						isStacked:true,
-						fontFamily: 'Courier New',
+						fontFamily: 'Arial',
 						backgroundColor: 'transparent',
 						/***
 						chartArea: {
@@ -324,7 +325,7 @@ class MarketGraph {
 							baselineColor: 'transparent',
 				        	textStyle: {
 				        		fontSize: 12,
-				        		fontName: 'Courier New',
+				        		fontName: 'Arial',
 				        		color: 'black',
 				        		fontWeight: 700,
 				       
@@ -338,7 +339,7 @@ class MarketGraph {
 							baselineColor: 'transparent',
 				        	textStyle: {
 				        		fontSize: 12,
-				        		fontName: 'Courier New',
+				        		fontName: 'Arial',
 				        		color: 'black',
 				        		fontWeight: 700,
 				        	},
@@ -392,14 +393,16 @@ class MarketGraph {
 
 	sendRequest(){
 	
-		Actions.updatesendRequest();
+		
 		let code = this.companyCode.split(' ');
+		this.companyCode = null;	
+		Actions.updateStockListings([]);
 		let params = {
 			code: code[0],
 			timeSteps: null	
 		};
 		API.getStockPrice(params);	
-		this.companyCode = null;		
+		Actions.updatesendRequest();
 	}
 
 	pickCode(data){

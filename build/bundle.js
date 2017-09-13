@@ -27986,7 +27986,7 @@
 
 
 	// module
-	exports.push([module.id, "#Title {\n\tfont-size: 4.7em;\n\tcolor: black;\n\tfont-weight: 900; \n\tfont-family: 'Arial';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n\talign-text: center;\n\tmargin: 50;\n}\n#About-Me {\n\tcolor: black;\n\tfont-size: 2.1em;\n\tfont-weight: 500; \n\tfont-family: 'Arial';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n}\n.app {\n\tdisplay: flex; \n\tflex-direction: column; \n\tbackground-color: transparent;\n\theight: 100%;\n}\n.enter_icons {\n\twidth: 2.3em; \n\theight: 2.3em; \n\tmargin-left: 1em;\n\tmargin-top: 0.05em; \n\tcursor: pointer;\n}\n.history_options {\n\tdisplay: flex;\n\tflex-direction: row;\n\tfont-size: 12;\n\tfont-family: 'Arial';\n\tjustify-content: center;\n}\n.history_options label {\n\tdisplay: flex;\n\tflex-direction: column;\n\tmargin: 1em;\n\talign-items: center;\n\tcursor: pointer;\n}\n.history_options select {\n\twidth: 7em;\n\theight: 2.5em;\n\tbackground: Snow;\n\tmargin: 0.3em;\n\tborder-width: 0;\n}\n.marketpage {\n\tdisplay: flex;\n\tflex-direction: column;\n\tbackground-color: transparent; \n\talign-items: center;\n}\n.marketgraph {\n\tbackground-color: transparent;\n\talign-items: center;\n\twidth: 50em;\n\theight: 40em;\n\tjustify-content: center;\n}\n.bitcoingraph {\n\tbackground-color: transparent;\n\talign-items: center;\n\twidth: 100%;\n\theight: 40vh;\n\tjustify-content: center;\n}\n.bitcoinoptions {\n\tposition: relative;\n\tright: 0;\n\twidth: 5vw;\n\tfont-size: 18px;\n\tborder-width: 0;\n}\n.bitcoinCandleStickPlot {\n\tbackground-color: transparent;\n\talign-items: center;\n\twidth: 100%;\n\theight: 40vh;\n\tjustify-content: center;\n}\n.paragraph {\n\tcolor: black;\n\tfont-size: 1.5em;\n\tfont-weight: 500;\n\tfont-family: 'Arial';\n\tmargin-top: 2em;\n\tmargin: 50;\n}\n.table_row_parent { \n\tborder-width: 2; \n\tborder-style: solid; \n\tdisplay: flex;\n\tflex-direction: column;\n}\n.section-title {\n\tmargin: 50;\n\tfont-size: 2em;\n\tfont-weight: 900;\n\tfont-family: 'Arial';\n\tmargin-top: 2em;\n}\n.code-image {\n\tmargin: 0;\n\twidth: 100;\n}\n.header {\n\tdisplay: flex;\n\tflex-direction: row;\n\twidth: 100%;\n\theight: 3em; \n\tbackground-color: black; \n\talign-items: center; \n}\n.header-link {\n\tfont-weight: 700;\n\tfont-family: 'Arial';\n\tfont-size: 18;\n\tcolor: white; \n\tposition: absolute;\n\ttop: 1em;\n\tleft: 2em;\n\tcursor: pointer; \n\ttext-decoration: none;  \n}\n.linegraph {\n\tdisplay: flex;\n\twidth: 25em;\n}\n.intradaypage {\n\tmargin-top: 3em;\n\tdisplay: flex;\n\tflex-direction: column; \n\tbackground-color: Snow;\n\twidth: 90%;\n\theight: 100%;\n}\n.intradaychild {\n\tdisplay: flex;\n\tflex-direction: row;\n}\n.intradaylinegraph {\n\twidth: 50vw;\n\theight: 40vh;\n\tbackground-color: transparent;\n}\n.intradaybargraph {\n\tdisplay: flex;\n\twidth: 50em;\n\theight: 15em; \n\tbackground-color: transparent;\n\tmargin-left: 5em;\n}\n.autocorrelationgraph {\n\tdisplay: flex;\n\tbackground-color: transparent;\n\twidth: 50em;\n\theight: 15em;\n}\n.autocorrelationgraph_intraday {\n\tdisplay: flex;\n\twidth: 45em;\n\theight: 20em;\n\tmargin-left: 6em;\n}\n.candleStickGraph_intraday {\n\tdisplay: flex;\n\twidth: 50em;\n\theight: 30em;\n\tmargin-top: 2em;\t\n}\n.candleStickGraph {\n\tdisplay: flex;\n\theight: 15em;\n\twidth: 41em;\n\tbackground-color: transparent;\n}\n\n.graphViews {\n\tdisplay: flex;\n\tbackground-color: Snow;\n\twidth: 90%;\n}\n\n.marketgraph-view {\n    background-color: Snow;\n    width: 90%;\n    flex-direction: column;\n    margin-top: 10em;\n}\n\n.graphViewChild {\n\tdisplay: flex;\n\tbackground-color: transparent;\n\tflex-direction: column; \n\theight: 40em;\n\twidth: 50em;\n}\n\n.graph-page-title {\n\tfont-family: 'Arial';\n\tfont-weight: 500; \n\tcolor: black;\n\tfont-size: 2.5em;\n}\n\n.background-video {\n\tdisplay: flex;\n\twidth: 100%;\n\tbackground-color: transparent;\n}\n\n.videobanner {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n\theight: 70%;\n\twidth: 100%;\n\ttop: 0;\n\tposition: absolute;\n\tbackground-color: transparent;\n\tcolor: white;\n\tfont-family: 'Arial';\n}\n\n.bannerchild {\n\tfont-size: 4vh;\n\tmargin-left: 4em;\n\tmargin-top: 2.5em;\n}\n\n.bannerAd {\n\tposition: absolute;\n\ttop: 30%;\n\twidth: 90%;\n\theight: 30vh;\n\tdisplay: flex;\n\tfont-size: 4.5vh;\n\talign-text: center;\n\talign-items: center;\n\tjustify-content: center;\n\tbackground-color: transparent;\n\tcolor: black;\n\topacity: 0.6;\n}", ""]);
+	exports.push([module.id, "#Title {\n\tfont-size: 4.7em;\n\tcolor: black;\n\tfont-weight: 900; \n\tfont-family: 'Arial';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n\talign-text: center;\n\tmargin: 50;\n}\n#About-Me {\n\tcolor: black;\n\tfont-size: 2.1em;\n\tfont-weight: 500; \n\tfont-family: 'Arial';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n}\n.app {\n\tdisplay: flex; \n\tflex-direction: column; \n\tbackground-color: transparent;\n\theight: 100%;\n}\n.enter_icons {\n\twidth: 2.3em; \n\theight: 2.3em; \n\tmargin-left: 1em;\n\tmargin-top: 0.05em; \n\tcursor: pointer;\n}\n.history_options {\n\tdisplay: flex;\n\tflex-direction: row;\n\tfont-size: 12;\n\tfont-family: 'Arial';\n\tjustify-content: center;\n}\n.history_options label {\n\tdisplay: flex;\n\tflex-direction: column;\n\tmargin: 1em;\n\talign-items: center;\n\tcursor: pointer;\n}\n.history_options select {\n\twidth: 7em;\n\theight: 2.5em;\n\tbackground: Snow;\n\tmargin: 0.3em;\n\tborder-width: 0;\n}\n.marketpage {\n\tdisplay: flex;\n\tflex-direction: column;\n\tbackground-color: transparent; \n\talign-items: center;\n}\n.marketgraph {\n\tbackground-color: transparent;\n\talign-items: center;\n\twidth: 50em;\n\theight: 40em;\n\tjustify-content: center;\n}\n.bitcoingraph {\n\tbackground-color: transparent;\n\talign-items: center;\n\twidth: 100%;\n\theight: 40vh;\n\tjustify-content: center;\n}\n.bitcoinoptions {\n\tposition: relative;\n\tright: 0;\n\twidth: 5vw;\n\tfont-size: 18px;\n\tborder-width: 0;\n}\n.bitcoinCandleStickPlot {\n\tbackground-color: transparent;\n\talign-items: center;\n\twidth: 100%;\n\theight: 40vh;\n\tjustify-content: center;\n}\n.paragraph {\n\tcolor: black;\n\tfont-size: 1.5em;\n\tfont-weight: 500;\n\tfont-family: 'Arial';\n\tmargin-top: 2em;\n\tmargin: 50;\n}\n.table_row_parent { \n\tborder-width: 2; \n\tborder-style: solid; \n\tdisplay: flex;\n\tflex-direction: column;\n}\n.section-title {\n\tmargin: 50;\n\tfont-size: 2em;\n\tfont-weight: 900;\n\tfont-family: 'Arial';\n\tmargin-top: 2em;\n}\n.code-image {\n\tmargin: 0;\n\twidth: 100;\n}\n.header {\n\tdisplay: flex;\n\tflex-direction: row;\n\twidth: 100%;\n\theight: 3em; \n\tbackground-color: black; \n\talign-items: center; \n}\n.header-link {\n\tfont-weight: 700;\n\tfont-family: 'Arial';\n\tfont-size: 18;\n\tcolor: white; \n\tposition: absolute;\n\ttop: 1em;\n\tleft: 2em;\n\tcursor: pointer; \n\ttext-decoration: none;  \n}\n.linegraph {\n\tdisplay: flex;\n\twidth: 25em;\n}\n.intradaypage {\n\tmargin-top: 3em;\n\tdisplay: flex;\n\tflex-direction: column; \n\tbackground-color: Snow;\n\twidth: 90%;\n\theight: 100%;\n}\n.intradaychild {\n\tdisplay: flex;\n\tflex-direction: row;\n}\n.intradaylinegraph {\n\twidth: 50em;\n\theight: 27em;\n\tbackground-color: transparent;\n}\n.intradaybargraph {\n\tdisplay: flex;\n\twidth: 50em;\n\theight: 15em; \n\tbackground-color: transparent;\n\tmargin-left: 5em;\n}\n.autocorrelationgraph {\n\tdisplay: flex;\n\tbackground-color: transparent;\n\twidth: 50em;\n\theight: 15em;\n}\n.autocorrelationgraph_intraday {\n\tdisplay: flex;\n\twidth: 45em;\n\theight: 20em;\n\tmargin-left: 6em;\n}\n.candleStickGraph_intraday {\n\tdisplay: flex;\n\twidth: 50em;\n\theight: 30em;\n\tmargin-top: 2em;\t\n}\n.candleStickGraph {\n\tdisplay: flex;\n\theight: 15em;\n\twidth: 41em;\n\tbackground-color: transparent;\n}\n\n.graphViews {\n\tdisplay: flex;\n\tbackground-color: Snow;\n\twidth: 90%;\n}\n\n.marketgraph-view {\n    background-color: Snow;\n    width: 90%;\n    flex-direction: column;\n    margin-top: 10em;\n}\n\n.graphViewChild {\n\tdisplay: flex;\n\tbackground-color: transparent;\n\tflex-direction: column; \n\theight: 40em;\n\twidth: 50em;\n}\n\n.graph-page-title {\n\tfont-family: 'Arial';\n\tfont-weight: 500; \n\tcolor: black;\n\tfont-size: 2.5em;\n}\n\n.background-video {\n\tdisplay: flex;\n\twidth: 100%;\n\tbackground-color: transparent;\n}\n\n.videobanner {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n\theight: 70%;\n\twidth: 100%;\n\ttop: 0;\n\tposition: absolute;\n\tbackground-color: transparent;\n\tcolor: white;\n\tfont-family: 'Arial';\n}\n\n.bannerchild {\n\tfont-size: 4vh;\n\tmargin-left: 4em;\n\tmargin-top: 2.5em;\n}\n\n.bannerAd {\n\tposition: absolute;\n\ttop: 30%;\n\twidth: 90%;\n\theight: 30vh;\n\tdisplay: flex;\n\tfont-size: 4.5vh;\n\talign-text: center;\n\talign-items: center;\n\tjustify-content: center;\n\tbackground-color: transparent;\n\tcolor: black;\n\topacity: 0.6;\n}\n\n/**\n  responsive container\n**/\n.gridcontainer {\n  min-width: 100%;\n  align-items: center;\n}\n.gridwrapper {\n  overflow: hidden;\n  display: flex;\n  flex-direction: row;\n}\n.gridbox {\n    margin-left: 2.0242914979757085020242914979757%;\n    /* margin-right: 2.0242914979757085020242914979757%;*/\n}\n.gridmain {\n  /*width: 48.987854251012145748987854251012%;*/\n    width: 100%;\n}\n\n\n@media only screen and (max-width: 700px){\n\n\t.gridwrapper {\n\t\tdisplay: flex;\n\t\tflex-direction: column;\n\t}\n\n    .gridmain {\n      width: 100%;\n    }\n\n    .gridbox {\n      float: left;\n    }\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 	// exports
 
@@ -75082,6 +75082,7 @@
 	    var data = {
 	        daterange: daterange
 	    };
+
 	    //  
 	    return fetch('/bitcoin', {
 	        method: 'post',
@@ -75096,6 +75097,7 @@
 	        }
 	        return response.json();
 	    }).then(function (data) {
+	        console.log(data);
 	        Actions.updateBitcoinData(data.data);
 	    }).catch(function (error) {
 	        console.log(error);
@@ -75226,21 +75228,21 @@
 					title: "Volume",
 					titleTextStyle: {
 						color: 'black', // any HTML string color ('red', '#cc00cc')
-						fontName: 'Courier New', // i.e. 'Times New Roman'
+						fontName: 'Arial', // i.e. 'Times New Roman'
 						fontSize: 18, // 12, 18 whatever you want (don't specify px)
 						bold: false, // true or false
 						italic: false // true of false
 					},
 
 					isStacked: true,
-					fontFamily: 'Courier New',
+					fontFamily: 'Arial',
 					backgroundColor: 'transparent',
 
 					vAxis: {
 						baselineColor: 'transparent',
 						textStyle: {
 							fontSize: 12,
-							fontName: 'Courier New',
+							fontName: 'Arial',
 							color: 'black',
 							fontWeight: 700
 
@@ -75254,7 +75256,7 @@
 						baselineColor: 'transparent',
 						textStyle: {
 							fontSize: 12,
-							fontName: 'Courier New',
+							fontName: 'Arial',
 							color: 'black',
 							fontWeight: 700
 
@@ -75295,7 +75297,7 @@
 
 					titleTextStyle: {
 						color: 'black', // any HTML string color ('red', '#cc00cc')
-						fontName: 'Courier New', // i.e. 'Times New Roman'
+						fontName: 'Arial', // i.e. 'Times New Roman'
 						fontSize: 18, // 12, 18 whatever you want (don't specify px)
 						bold: false, // true or false
 						italic: false // true of false
@@ -75308,7 +75310,7 @@
 						baselineColor: 'transparent',
 						textStyle: {
 							fontSize: 12,
-							fontName: 'Courier New',
+							fontName: 'Arial',
 							color: 'black',
 							fontWeight: 700
 
@@ -75324,7 +75326,7 @@
 						baselineColor: 'transparent',
 						textStyle: {
 							fontSize: 12,
-							fontName: 'Courier New',
+							fontName: 'Arial',
 							color: 'black',
 							fontWeight: 700
 
@@ -75374,7 +75376,7 @@
 	    ***/
 					titleTextStyle: {
 						color: 'black', // any HTML string color ('red', '#cc00cc')
-						fontName: 'Courier New', // i.e. 'Times New Roman'
+						fontName: 'Arial', // i.e. 'Times New Roman'
 						fontSize: 18, // 12, 18 whatever you want (don't specify px)
 						bold: false, // true or false
 						italic: false // true of false
@@ -75387,7 +75389,7 @@
 						baselineColor: 'transparent',
 						textStyle: {
 							fontSize: 12,
-							fontName: 'Courier New',
+							fontName: 'Arial',
 							color: 'black',
 							fontWeight: 700
 						},
@@ -75402,7 +75404,7 @@
 						baselineColor: 'transparent',
 						textStyle: {
 							fontSize: 12,
-							fontName: 'Courier New',
+							fontName: 'Arial',
 							color: 'black',
 							fontWeight: 700
 						},
@@ -75447,7 +75449,6 @@
 				return _react2.default.createElement(
 					'div',
 					{ className: 'history_options' },
-					this.setCompanyPicker(stocklistings),
 					_react2.default.createElement(
 						'label',
 						null,
@@ -75509,7 +75510,7 @@
 				};
 				var baroptions = {
 					isStacked: true,
-					fontFamily: 'Courier New',
+					fontFamily: 'Arial',
 					backgroundColor: 'transparent',
 					/***
 	    chartArea: {
@@ -75523,7 +75524,7 @@
 						baselineColor: 'transparent',
 						textStyle: {
 							fontSize: 12,
-							fontName: 'Courier New',
+							fontName: 'Arial',
 							color: 'black',
 							fontWeight: 700
 
@@ -75537,7 +75538,7 @@
 						baselineColor: 'transparent',
 						textStyle: {
 							fontSize: 12,
-							fontName: 'Courier New',
+							fontName: 'Arial',
 							color: 'black',
 							fontWeight: 700
 						},
@@ -75610,14 +75611,15 @@
 			key: 'sendRequest',
 			value: function sendRequest() {
 
-				Actions.updatesendRequest();
 				var code = this.companyCode.split(' ');
+				this.companyCode = null;
+				Actions.updateStockListings([]);
 				var params = {
 					code: code[0],
 					timeSteps: null
 				};
 				API.getStockPrice(params);
-				this.companyCode = null;
+				Actions.updatesendRequest();
 			}
 		}, {
 			key: 'pickCode',
@@ -81563,22 +81565,51 @@
 				if (this.state.marketData.autocorr.length > 0) {
 					autocorr = Autocorrelation.setIntradayAutocorrelation(this.state.marketData.autocorr, this.state.stockHistoryOptions);
 				}
+				/**
+	   <div className="gridcontainer">
+	   	<CuratedActivitiesEditNewHeader curatedActivityDBID={ this.state.curatedActivityDBID } />
+	      <div className="gridwrapper">
+	          	<div className="gridbox gridmenu">
+	         			<CuratedActivity/>
+	          	</div>
+	   	    <div className="gridbox gridmain">
+	   	        <CuratedActivityInstancesContainer />
+	   		</div>
+	     </div>
+	   </div>    
+	   			<div className="intradaypage">
+	   			
+	   		<div className="intradaychild">
+	   			{MarketGraph.setIntradayGraphGoogleView(this.state.marketData.data, this.state.marketData.name)}	
+	   			{CandleStickGraph.setIntraDayGraph(this.state.marketData, this.state.stockHistoryOptions)}
+	   		</div>
+	   				<div className="intradaychild">
+	   			{MarketGraph.setIntraDayBarGraph(this.state.marketData.data, this.state.marketData.name)}
+	   			{autocorr}
+	   		</div>
+	   	</div>
+	   	**/
 
 				return _react2.default.createElement(
 					'div',
-					{ className: 'intradaypage' },
+					{ className: 'gridcontainer' },
+					MarketGraph.setCompanyPicker(this.state.stocklistings),
 					MarketGraph.setHistoryRangePicker(this.state.stocklistings),
 					_react2.default.createElement(
 						'div',
-						{ className: 'intradaychild' },
-						MarketGraph.setIntradayGraphGoogleView(this.state.marketData.data, this.state.marketData.name),
-						CandleStickGraph.setIntraDayGraph(this.state.marketData, this.state.stockHistoryOptions)
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'intradaychild' },
-						MarketGraph.setIntraDayBarGraph(this.state.marketData.data, this.state.marketData.name),
-						autocorr
+						{ className: 'gridwrapper' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'gridbox gridmain' },
+							MarketGraph.setIntradayGraphGoogleView(this.state.marketData.data, this.state.marketData.name),
+							MarketGraph.setIntraDayBarGraph(this.state.marketData.data, this.state.marketData.name)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'gridbox gridmain' },
+							CandleStickGraph.setIntraDayGraph(this.state.marketData, this.state.stockHistoryOptions),
+							autocorr
+						)
 					)
 				);
 			}
@@ -81815,7 +81846,7 @@
 
 
 	// module
-	exports.push([module.id, ".stockpickerinput {\n\t\tposition: relative;\n\t\tfont-size: 18; \n\t\tfont-weight: 700;\n\t\tfont-family: 'Arial';\n\t\theight: 3.2em; \n\t\twidth: 17em;\n\t\tborder-radius: 0.7em;\n}\n\n.pickercontainer {\n    align-items: center; \n    background-color: transparent;\n    position: relative;\n    top: 0.3em;\n}\n\n.stockpicker {\n\tflex-direction: column;\n}\n\n.stockchoices {\n\tposition: absolute\n}\n\n.stockcompany {\n\theight: 40; \n\twidth: 200; \n\tfont-size: 1em; \n\tcursor: pointer;\n\tdisplay: flex; \n\tborder-bottom-width: 0.01;\n\tborder-bottom-style: solid;\n\tfont-family: 'Arial';\n}\n\n.stockcompany:hover{\n\tbackground-color: yellow;\n}\n\n.picker-instructions {\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center; \n\tflex-direction: row;\n\tfont-size: 1.5em; \n\tfont-weight: 400; \n\tfont-family: 'Arial';\n\tcolor: black;\n}\n\n.market-picker {\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: center;\n\tcolor: black;\n}\n\n.market-picker-item {\n\tdisplay: flex; \n\tcursor: pointer; \n\tfont-family: 'Arial';\n\tfont-size: 24;\n\tcolor: black;\n\tmargin-left: 1em;\n\t:hover { \n\t    color: blue;\n\t}\n}\n\n.dropdown-arrow {\n\twidth: 2.0em; \n\theight: 2.0em;\n\tmargin-top: 0.4em;\n\tcursor: pointer;\n}\n\n.market-date-picker-container {\n\tdisplay: flex;\n\tright: 1em;\n\talign-items: center;\n\tjustify-content: center;\n\talign-text: center; \n\tmargin-top: -1.5em;\n}\n\n.date-input {\n\twidth: 10em;\n\tmargin: 1em;\n}\n\n.submit-button {\n\tbackground-color: white;\n\twidth: 2.4em;\n\theight: 2.4em;\n\tmargin-top: 1.5em; \n\tmargin-left: 1em;\n\tcursor: pointer;\n}\n\n.date-text {\n\tmargin-left: 1.1em;\n\tfont-size: 12;\n\tmargin-bottom: 10; \n\tcolor: black;\n\tfont-family: 'Arial';\n}", ""]);
+	exports.push([module.id, ".stockpickerinput {\n\t\tfont-size: 18; \n\t\tfont-weight: 700;\n\t\tfont-family: 'Arial';\n\t\theight: 3.2em; \n\t\twidth: 17em;\n\t\tborder-radius: 0.7em;\n}\n\n.pickercontainer {\n\tdisplay: flex;\n\tjustify-content: center;\n    background-color: transparent;\n    position: relative;\n    top: 0.3em;\n}\n\n.stockpicker {\n\tflex-direction: column;\n}\n\n.stockchoices {\n\tposition: absolute;\n\ttop: 4em;\n}\n\n.stockcompany {\n\theight: 40; \n\twidth: 200; \n\tfont-size: 1em; \n\tcursor: pointer;\n\tdisplay: flex; \n\tborder-bottom-width: 0.01;\n\tborder-bottom-style: solid;\n\tfont-family: 'Arial';\n}\n\n.stockcompany:hover{\n\tbackground-color: yellow;\n}\n\n.picker-instructions {\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center; \n\tflex-direction: row;\n\tfont-size: 1.5em; \n\tfont-weight: 400; \n\tfont-family: 'Arial';\n\tcolor: black;\n}\n\n.market-picker {\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: center;\n\tcolor: black;\n}\n\n.market-picker-item {\n\tdisplay: flex; \n\tcursor: pointer; \n\tfont-family: 'Arial';\n\tfont-size: 24;\n\tcolor: black;\n\tmargin-left: 1em;\n\t:hover { \n\t    color: blue;\n\t}\n}\n\n.dropdown-arrow {\n\twidth: 2.0em; \n\theight: 2.0em;\n\tmargin-top: 0.4em;\n\tcursor: pointer;\n}\n\n.market-date-picker-container {\n\tdisplay: flex;\n\tright: 1em;\n\talign-items: center;\n\tjustify-content: center;\n\talign-text: center; \n\tmargin-top: -1.5em;\n}\n\n.date-input {\n\twidth: 10em;\n\tmargin: 1em;\n}\n\n.submit-button {\n\tbackground-color: white;\n\twidth: 2.4em;\n\theight: 2.4em;\n\tmargin-top: 1.5em; \n\tmargin-left: 1em;\n\tcursor: pointer;\n}\n\n.date-text {\n\tmargin-left: 1.1em;\n\tfont-size: 12;\n\tmargin-bottom: 10; \n\tcolor: black;\n\tfont-family: 'Arial';\n}", ""]);
 
 	// exports
 

@@ -184,7 +184,9 @@ app.post('/bitcoin', function(req,res){
             method: 'get',
             mode: 'cors'
       })
-      .then((response) => typeof response == 'object' ? response.json() : {} )
+      .then((response) => console.log(response) )
+      /**
+       .then((response) => typeof response == 'object' ? response.json() : {} )
       .then( ( responseJson ) => {
             res.json({
               data: responseJson
@@ -197,6 +199,7 @@ app.post('/bitcoin', function(req,res){
             });
 
       });
+      ***/
 });
 
 app.post('/stocklisting', function(req, res){

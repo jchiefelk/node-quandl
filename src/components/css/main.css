@@ -145,8 +145,8 @@
 	flex-direction: row;
 }
 .intradaylinegraph {
-	width: 50vw;
-	height: 40vh;
+	width: 50em;
+	height: 27em;
 	background-color: transparent;
 }
 .intradaybargraph {
@@ -249,3 +249,54 @@
 	color: black;
 	opacity: 0.6;
 }
+
+/**
+  responsive container
+**/
+.gridcontainer {
+  min-width: 100%;
+  align-items: center;
+}
+.gridwrapper {
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+}
+.gridbox {
+    margin-left: 2.0242914979757085020242914979757%;
+    /* margin-right: 2.0242914979757085020242914979757%;*/
+}
+.gridmain {
+  /*width: 48.987854251012145748987854251012%;*/
+    width: 100%;
+}
+
+
+@media only screen and (max-width: 700px){
+
+	.gridwrapper {
+		display: flex;
+		flex-direction: column;
+	}
+
+    .gridmain {
+      width: 100%;
+    }
+
+    .gridbox {
+      float: left;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
