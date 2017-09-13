@@ -55,7 +55,6 @@ class MarketGraph {
 			    for(var x =data.length-1; x>=0;x--){
 					volume_data.push([ new Date(data[x].time), data[x].volume ]);
 				};
-
 			    let options = {
 				    	title: "Volume",
 						titleTextStyle: {
@@ -65,11 +64,9 @@ class MarketGraph {
 							bold: false,    // true or false
 							italic: false   // true of false
 						},
-
 						isStacked:true,
 						fontFamily: 'Arial',
 						backgroundColor: 'transparent',
-
 						vAxis: {
 							baselineColor: 'transparent',
 				        	textStyle: {
@@ -310,10 +307,10 @@ class MarketGraph {
 					bar_data.push([ new Date(data[x].date), parseFloat(data[x].volume) ]);
 				};
 			    let baroptions = {
-						isStacked:true,
-						fontFamily: 'Arial',
-						backgroundColor: 'transparent',
-						/***
+
+
+						title: 'Volume',
+						/**
 						chartArea: {
 						    backgroundColor: {
 						        stroke: 'black',
@@ -321,6 +318,18 @@ class MarketGraph {
 						    }
 						},
 						***/
+					    titleTextStyle: {
+					        color: 'black',    // any HTML string color ('red', '#cc00cc')
+					        fontName: 'Arial', // i.e. 'Times New Roman'
+					        fontSize: 18, // 12, 18 whatever you want (don't specify px)
+					        bold: false,    // true or false
+					        italic: false   // true of false
+					    },
+
+
+						isStacked:true,
+						fontFamily: 'Arial',
+						backgroundColor: 'transparent',
 						vAxis: {
 							baselineColor: 'transparent',
 				        	textStyle: {
@@ -417,7 +426,7 @@ class MarketGraph {
 				for(let x=0; x<stocklistings.stocklisting.length; x++){
 					let choice = (
 						<div key={Math.random(x)} onClick={() => this.pickCode(stocklistings.stocklisting[x].companycode)} className="stockcompany">
-							{stocklistings.stocklisting[x].companycode} - {stocklistings.stocklisting[x].name}
+							<p>{stocklistings.stocklisting[x].companycode} - {stocklistings.stocklisting[x].name}</p>
 						</div>
 					);
 					stockchoices.push(choice);

@@ -136,7 +136,7 @@
 	margin-top: 3em;
 	display: flex;
 	flex-direction: column; 
-	background-color: Snow;
+	background-color: transparent;
 	width: 90%;
 	height: 100%;
 }
@@ -147,7 +147,8 @@
 .intradaylinegraph {
 	width: 50em;
 	height: 27em;
-	background-color: transparent;
+	background-color: Snow;
+	margin: 1.5em;
 }
 .intradaybargraph {
 	display: flex;
@@ -263,7 +264,7 @@
   flex-direction: row;
 }
 .gridbox {
-    margin-left: 2.0242914979757085020242914979757%;
+    /*margin-left: 2.0242914979757085020242914979757%;*/
     /* margin-right: 2.0242914979757085020242914979757%;*/
 }
 .gridmain {
@@ -284,7 +285,7 @@
     }
 
     .gridbox {
-      float: left;
+      
     }
 }
 

@@ -12,7 +12,7 @@ Autocorrelation.prototype.setGoogleAutocorr = function(data){
 			};
 			let options = {
 						title: 'Historical 1 year Momentum',
-						fontFamily: 'Courier New',
+						fontFamily: 'Arial',
 						legend: "none",
 						backgroundColor: 'transparent',
 						/**
@@ -29,7 +29,7 @@ Autocorrelation.prototype.setGoogleAutocorr = function(data){
 							baselineColor: 'transparent',
 				        	textStyle: {
 				        		fontSize: 12,
-				        		fontName: 'Courier New',
+				        		fontName: 'Arial',
 				        		color: 'black',
 				        		fontWeight: 700,
 				       
@@ -43,7 +43,7 @@ Autocorrelation.prototype.setGoogleAutocorr = function(data){
 					 		baselineColor: 'transparent',
 					 		textStyle:{
 					       	   	color: 'black',
-					       	   	fontName: 'Courier New',
+					       	   	fontName: 'Arial',
 					       	   	fontWeight: 700
 				       	   	},
 				       	   	gridlines: {
@@ -76,10 +76,10 @@ Autocorrelation.prototype.setIntradayAutocorrelation = function(data,historyopti
 			};
 			let options = {
 						title: 'Price Autocorrelation',
-						fontFamily: 'Courier New',
+						fontFamily: 'Arial',
 						titleTextStyle: {
 					        color: 'black',    // any HTML string color ('red', '#cc00cc')
-					        fontName: 'Courier New', // i.e. 'Times New Roman'
+					        fontName: 'Arial', // i.e. 'Times New Roman'
 					        fontSize: 18, // 12, 18 whatever you want (don't specify px)
 					        bold: false,    // true or false
 					        italic: false   // true of false
@@ -101,7 +101,7 @@ Autocorrelation.prototype.setIntradayAutocorrelation = function(data,historyopti
 				        	minValue: Math.min.apply(null,set),
 				        	textStyle: {
 				        		fontSize: 12,
-				        		fontName: 'Courier New',
+				        		fontName: 'Arial',
 				        		color: 'black',
 				        		fontWeight: 700,
 				       
@@ -117,7 +117,7 @@ Autocorrelation.prototype.setIntradayAutocorrelation = function(data,historyopti
         				 // gridlineColor: 'transparent',
 					 		textStyle:{
 					       	   	color: 'black',
-					       	   	fontName: 'Courier New',
+					       	   	fontName: 'Arial',
 					       	   	fontWeight: 700
 				       	   	},
 

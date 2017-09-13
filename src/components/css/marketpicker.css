@@ -1,6 +1,6 @@
 .stockpickerinput {
 		font-size: 18; 
-		font-weight: 700;
+		font-weight: 400;
 		font-family: 'Arial';
 		height: 3.2em; 
 		width: 17em;
@@ -22,15 +22,21 @@
 .stockchoices {
 	position: absolute;
 	top: 4em;
+	width: 25em; 
+	overflow-y: scroll; 
+	height: 10em;
 }
 
 .stockcompany {
-	height: 40; 
-	width: 200; 
+	display: flex;
+	justify-content: center;
+	align-text: center;
+	height: 2.5em; 
 	font-size: 1em; 
+	font-weight: 400;
 	cursor: pointer;
 	display: flex; 
-	border-bottom-width: 0.01;
+	border-bottom-width: 0.001;
 	border-bottom-style: solid;
 	font-family: 'Arial';
 }
