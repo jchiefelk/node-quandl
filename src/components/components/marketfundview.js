@@ -62,7 +62,6 @@ export default class MarketFundView extends Component {
 
 			renderMarketView(){
 				let marketAutocorrelation, marketGraph = null;
-				
 				if(this.state.dailymarketData.autocorrelation!=undefined && this.state.sendRequestStatus==false){
 					marketAutocorrelation = Autocorrelation.setGoogleAutocorr(this.state.dailymarketData);
 				}
@@ -103,11 +102,7 @@ export default class MarketFundView extends Component {
 			renderBitCoinPriceView(){
 					let priceview = null;
 					if(this.state.bitcoinData!=null){
-						
-							priceview = MarketGraph.setBitcoinGraph(this.state.bitcoinData, this.state.bitcoinHistoryOptions);
-					
-						
-
+						priceview = MarketGraph.setBitcoinGraph(this.state.bitcoinData, this.state.bitcoinHistoryOptions);
 					}
 					return priceview;
 			}

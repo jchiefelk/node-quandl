@@ -276,12 +276,11 @@ class MarketGraph {
 		API.getStockPrice(params);	
 	}
 
-	setHistoryRangePicker(){
-
+	setHistoryRangePicker(stocklistings){
 
 			return (
 					<div className="history_options">
-								{this.setCompanyPicker([])}		
+								{this.setCompanyPicker(stocklistings)}		
 								
 								<label>
 									 Intraday
@@ -399,24 +398,22 @@ class MarketGraph {
 			code: code[0],
 			timeSteps: null	
 		};
-		API.getStockPrice(params);			
+		API.getStockPrice(params);	
+		this.companyCode = null;		
 	}
 
 	pickCode(data){
-		console.log('Picking A Company');
-		console.log(data);
 		this.companyCode = data;
+		Actions.updateStockListings([]);
 	}
 
 	setCompanyPicker(stocklistings){
-
-		console.log('company picker');
 
 		let stockchoices=[];
 		if(stocklistings.stocklisting!=undefined){
 				for(let x=0; x<stocklistings.stocklisting.length; x++){
 					let choice = (
-						<div key={Math.random(x)} style={{height: 40, width: 200, fontSize: 12, cursor: 'pointer', display: 'flex', borderBottomWidth: 1, borderBottomStyle: 'solid'}} onClick={() => this.pickCode(stocklistings.stocklisting[x].companycode) }>
+						<div key={Math.random(x)} onClick={() => this.pickCode(stocklistings.stocklisting[x].companycode)} className="stockcompany">
 							{stocklistings.stocklisting[x].companycode} - {stocklistings.stocklisting[x].name}
 						</div>
 					);
@@ -424,21 +421,19 @@ class MarketGraph {
 				};
 		}
 		return (
-					<div className="pickercontainer">
-						<div style={{display: 'flex', flexDirection: 'column'}}>
-							<input className="homepage-input" placeholder="Enter stock code" onChange={(e) => this.updatecompanyCode(e) } />
-							<div style={{positon: 'relative'}}>
-								{stockchoices}
-							</div>
-						</div>
-
-							<Link to="/intradaypage" onClick={()=> this.sendRequest() }>
+			<div className="pickercontainer">
+						<div className="stockpicker">
+							<input className="stockpickerinput" placeholder="Enter stock code" onChange={(e) => this.updatecompanyCode(e) } value={this.companyCode}/>
+							<Link to="/intradaypage" onClick={()=> this.sendRequest()}>
 								<img src={require("../img/enter_icon.png")}  className="enter_icons" />
 							</Link>
-					</div>
+						</div>
 
+						<div className="stockchoices">
+							{stockchoices}
+						</div>
+			</div>
 		);
-
 	}
 
 

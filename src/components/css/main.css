@@ -84,7 +84,6 @@
 	height: 40vh;
 	justify-content: center;
 }
-
 .paragraph {
 	color: black;
 	font-size: 1.5em;
@@ -145,13 +144,11 @@
 	display: flex;
 	flex-direction: row;
 }
-
 .intradaylinegraph {
-	width: 60em;
-	height: 40em;
+	width: 50vw;
+	height: 40vh;
 	background-color: transparent;
 }
-
 .intradaybargraph {
 	display: flex;
 	width: 50em;
@@ -159,29 +156,24 @@
 	background-color: transparent;
 	margin-left: 5em;
 }
-
 .autocorrelationgraph {
 	display: flex;
 	background-color: transparent;
 	width: 50em;
 	height: 15em;
 }
-
 .autocorrelationgraph_intraday {
 	display: flex;
 	width: 45em;
 	height: 20em;
 	margin-left: 6em;
 }
-
 .candleStickGraph_intraday {
 	display: flex;
 	width: 50em;
 	height: 30em;
-	margin-top: 2em;
-	
+	margin-top: 2em;	
 }
-
 .candleStickGraph {
 	display: flex;
 	height: 15em;
@@ -196,7 +188,6 @@
 }
 
 .marketgraph-view {
-	display: flex;
     background-color: Snow;
     width: 90%;
     flex-direction: column;
@@ -258,6 +249,3 @@
 	color: black;
 	opacity: 0.6;
 }
-
-
-
