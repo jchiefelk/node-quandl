@@ -29,21 +29,57 @@
 	margin-top: 0.05em; 
 	cursor: pointer;
 }
-.history_options {
+
+.bitcoin_history_options {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	font-size: 12;
+	font-family: 'Arial';
+	justify-content: center;
+
+}
+
+.bitcoin_history_options_label {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	margin: 1.5em;
+}
+
+.bitcoin_history_options_label:hover{
+	border-bottom-style: solid;
+	border-bottom-width: 0.01em;
+	border-bottom-color: black;
+	opacity: 0.7;
+}
+
+.bitcoin_history_options_label_selected {
+	margin: 1.5em;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	border-bottom-style: solid;
+	border-bottom-width: 0.01em;
+	border-bottom-color: black;
+}
+
+.stock_history_options {
+	position: relative;
 	display: flex;
 	flex-direction: row;
 	font-size: 12;
 	font-family: 'Arial';
 	justify-content: center;
 }
-.history_options label {
+.stock_history_options label {
 	display: flex;
 	flex-direction: column;
 	margin: 1em;
 	align-items: center;
 	cursor: pointer;
 }
-.history_options select {
+.stock_history_options select {
 	width: 7em;
 	height: 2.5em;
 	background: Snow;

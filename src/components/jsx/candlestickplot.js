@@ -5,11 +5,36 @@ require('../css/main.css');
 
 function CandleStickGraph(){
 	this.graph=null;
-	this.options = {
+
+	this.data = [["DATE","low-high & open-close","open","close","high"]];
+};
+
+CandleStickGraph.prototype.setIntraDayGraph = function(item){
+	this.data = [["DATE","low-high & open-close","open","close","high"]];
+
+	let prices = [];
+
+				for(let x=0; x<item.data.length; x++){
+					prices.push(item.data[x].close);
+				};
+
+				let max = Math.max.apply(null, prices );
+				let min = Math.min.apply(null, prices);
+
+
+
+	//
+	let	options = {
 		title: 'Intraday Price Variance',
+
+		viewWindowMode:'explicit',
+		 viewWindow:{
+				                max: max,
+				                min: min
+		},
 		titleTextStyle: {
 			color: 'black',    // any HTML string color ('red', '#cc00cc')
-			fontName: 'Courier New', // i.e. 'Times New Roman'
+			fontName: 'Arial', // i.e. 'Times New Roman'
 			fontSize: 18, // 12, 18 whatever you want (don't specify px)
 			bold: false,    // true or false
 			italic: false   // true of false
@@ -34,7 +59,7 @@ function CandleStickGraph(){
        	   baselineColor: 'transparent',
        	   textStyle:{
        	   	color: 'black',
-       	   	fontName: 'Courier New',
+       	   	fontName: 'Arial',
        	   	fontWeight: 700
        	   },
 		   labels: {
@@ -42,7 +67,7 @@ function CandleStickGraph(){
 		   },
 		   gridlines: {
 		    	count: 2,
-		    	color: 'transparent'
+		    	color: 'black'
 		   }
         },
 		hAxis: {
@@ -51,7 +76,7 @@ function CandleStickGraph(){
 				baselineColor: 'transparent',
 				textStyle: {
 				        		fontSize: 10,
-				        		fontName: 'Courier New',
+				        		fontName: 'Arial',
 				        		color: 'black',
 				        		fontWeight: 700,
 				       
@@ -63,34 +88,11 @@ function CandleStickGraph(){
 
 		}
 	};
-	this.data = [["DATE","low-high & open-close","open","close","high"]];
-};
-CandleStickGraph.prototype.setGraph = function(item){
-	this.data = [["DATE","low-high & open-close","open","close","high"]];
-	//
-	//
-	for(var x=30; x >=0; x--){
-			let data = [ new Date(item.xValues[x]), item.low[x], item.open[x], item.yValues[x], item.high[x]];
-			this.data.push(data);
-	};
-	//
-	this.graph = (
-      <div  className="intradaylinegraph">
-        <Chart
-		  chartType="CandlestickChart"
-		  data={this.data}
-		  width="100%"
-		  height="100%"
-		  options={this.options}
-        />
-      </div>
-	);
-	return this.graph;
-};
 
-CandleStickGraph.prototype.setIntraDayGraph = function(item){
-	this.data = [["DATE","low-high & open-close","open","close","high"]];
-	//
+
+
+
+
 	//
 	//	
 	if(item.data.length>=60){
@@ -112,7 +114,7 @@ CandleStickGraph.prototype.setIntraDayGraph = function(item){
 				  data={this.data}
 				  width="100%"
 				  height="100%"
-				  options={this.options}
+				  options={options}
 		        />
 	      </div>
 		);
@@ -124,21 +126,33 @@ CandleStickGraph.prototype.setBitcoinVarianceView = function(data, historyoption
 
 
 		let vardata = [["DATE","low-high & open-close", "open", "close", "average"]];
-
-
 		console.log('setting bit variance plot');
-;
 		for(let x=data.length-1; x>=0;x--){
-
 				var d = [ new Date(data[x].time), data[x].low, data[x].open, data[x].average, data[x].high];
 				vardata.push(d);
 		};
-		
+
+
+				let prices = [];
+
+				for(let x=0; x<data.length; x++){
+					prices.push(data[x].average);
+				};
+
+				let max = Math.max.apply(null, prices );
+				let min = Math.min.apply(null, prices);
+
+
 		let options = {
 					title: "Interday Price Vairence",
+				    viewWindowMode:'explicit',
+				    viewWindow:{
+				                max: max,
+				                min: min
+				    },
 					titleTextStyle: {
 						color: 'black',    // any HTML string color ('red', '#cc00cc')
-						fontName: 'Courier New', // i.e. 'Times New Roman'
+						fontName: 'Arial', // i.e. 'Times New Roman'
 						fontSize: 18, // 12, 18 whatever you want (don't specify px)
 						bold: false,    // true or false
 						italic: false   // true of false
@@ -154,7 +168,7 @@ CandleStickGraph.prototype.setBitcoinVarianceView = function(data, historyoption
 			       	   baselineColor: 'transparent',
 			       	   textStyle:{
 			       	   	color: 'black',
-			       	   	fontName: 'Courier New',
+			       	   	fontName: 'Arial',
 			       	   	fontWeight: 700,
 			       	   	fontSize: 12
 			       	   },
@@ -163,7 +177,7 @@ CandleStickGraph.prototype.setBitcoinVarianceView = function(data, historyoption
 					   },
 					   gridlines: {
 					    	count: 2,
-					    	color: 'transparent'
+					    	color: 'black'
 					   }
 			        },
 			        hAxis: {
@@ -172,7 +186,7 @@ CandleStickGraph.prototype.setBitcoinVarianceView = function(data, historyoption
 							baselineColor: 'transparent',
 							textStyle: {
 							        		fontSize: 12,
-							        		fontName: 'Courier New',
+							        		fontName: 'Arial',
 							        		color: 'black',
 							        		fontWeight: 700,
 							       
@@ -185,7 +199,7 @@ CandleStickGraph.prototype.setBitcoinVarianceView = function(data, historyoption
 					}
 	};
 
-	console.log(historyoptions);
+
 /**
 	if(historyoptions=='monthly' || historyoptions=='alltime'){
 		options.hAxis.format = 'MMM d, y'

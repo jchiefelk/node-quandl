@@ -24,7 +24,7 @@
 	top: 4em;
 	width: 25em; 
 	overflow-y: scroll; 
-	height: 10em;
+	height: 8em;
 }
 
 .stockcompany {
@@ -36,7 +36,7 @@
 	font-weight: 400;
 	cursor: pointer;
 	display: flex; 
-	border-bottom-width: 0.001;
+	border-bottom-width: 0.001em;
 	border-bottom-style: solid;
 	font-family: 'Arial';
 }

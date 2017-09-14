@@ -80,9 +80,11 @@ export default class IntraDayTicket extends Component {
 					<div className="gridcontainer">
 
 					    {MarketGraph.setCompanyPicker(this.state.stocklistings)}
-		 				{MarketGraph.setHistoryRangePicker(this.state.stocklistings)}
+		 				
+		 				{MarketGraph.setHistoryRangePicker(this.state.stockHistoryOptions)}
 					    
 					    <div className="gridwrapper">
+
 					        	<div className="gridbox gridmain">
 								      	{MarketGraph.setIntradayGraphGoogleView(this.state.marketData.data, this.state.marketData.name)}	
 										{MarketGraph.setIntraDayBarGraph(this.state.marketData.data, this.state.marketData.name)}

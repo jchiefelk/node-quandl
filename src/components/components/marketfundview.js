@@ -123,7 +123,7 @@ export default class MarketFundView extends Component {
 				return (
 					<div className="marketgraph-view">
 						<h1 className="graph-page-title">Bitcoin</h1>
-						{MarketGraph.renderBitcoinAPIOptions()}
+						{MarketGraph.renderBitcoinAPIOptions(this.state.bitcoinHistoryOptions)}
 						{this.renderBitCoinPriceView()}
 						{this.renderBitcoinVarianceView()}
 					</div>

@@ -33,18 +33,37 @@ class MarketGraph {
 		API.getBitcoinData(range);
 	}
 
-	renderBitcoinAPIOptions(){
+	renderBitcoinAPIOptions(historyoptions){
+
+
+
+		let daily = "bitcoin_history_options_label";
+	    let	monthly = "bitcoin_history_options_label"; 
+		let alltime = "bitcoin_history_options_label";
+
+		
+		if(historyoptions=='daily'){
+			daily = "bitcoin_history_options_label_selected";
+		}
+	   	if(historyoptions=='monthly'){
+			monthly = "bitcoin_history_options_label_selected";
+	   	}
+	   	if(historyoptions=='alltime'){
+			alltime = "bitcoin_history_options_label_selected";
+	   	}
+	  
+
 		return(
-				<div className="history_options">
-								<label onClick={()=> this.changeBitcoinOptions('daily')}>
+				<div className="bitcoin_history_options">
+								<div onClick={()=> this.changeBitcoinOptions('daily')} className={daily}>
 									 Daily
-								</label>
-								<label onClick={()=> this.changeBitcoinOptions('monthly')}>
+								</div>
+								<div onClick={()=> this.changeBitcoinOptions('monthly')} className={monthly}>
 									Monthly
-								</label> 
-								<label onClick={()=> this.changeBitcoinOptions('alltime')}>
+								</div> 
+								<div onClick={()=> this.changeBitcoinOptions('alltime')} className={alltime}>
 									All-time
-								</label>
+								</div>
 				</div>
 		);
 	}
@@ -55,7 +74,23 @@ class MarketGraph {
 			    for(var x =data.length-1; x>=0;x--){
 					volume_data.push([ new Date(data[x].time), data[x].volume ]);
 				};
+				let volume = [];
+				for(let x=0; x<data.length; x++){
+					volume.push(data[x].close);
+				};
+
+				let max = Math.max.apply(null, volume );
+				let min = Math.min.apply(null, volume );
+
 			    let options = {
+
+
+				        viewWindowMode:'explicit',
+				        viewWindow:{
+				                max: max,
+				                min: min
+				       },
+
 				    	title: "Volume",
 						titleTextStyle: {
 							color: 'black',    // any HTML string color ('red', '#cc00cc')
@@ -114,11 +149,14 @@ class MarketGraph {
 				   	);
 	}
 
-
-
 	setBitcoinGraph(data,historyoptions){
-
 			let line_data = [["DATE","Price"]];
+			let prices=[];
+			for(let x =0;x<data.length;x++){
+				prices.push(data[x].average);
+			};
+			let max = Math.max.apply(null,prices);
+			let min = Math.min.apply(null,prices);
 			for(var x = data.length-1; x>=0; x--){
 					line_data.push([new Date(data[x].time), data[x].average ]);
 			};
@@ -138,6 +176,13 @@ class MarketGraph {
 						vAxis: {
 							title: "",	
 							titleTextStyle: { color: 'black' },
+				            
+				            viewWindowMode:'explicit',
+				            viewWindow:{
+				                max: max,
+				                min: min
+				              },
+
 							baselineColor: 'transparent',
 				        	textStyle: {
 				        		fontSize: 12,
@@ -147,8 +192,8 @@ class MarketGraph {
 				       
 				        	},
 				        	gridlines: {
-						    	count: 5,
-						    	color: 'transparent'
+						    	count: 2,
+						    	color: 'black'
 						   	}
 				        },
 					 	hAxis: {
@@ -163,7 +208,7 @@ class MarketGraph {
 				       
 				        	},
 				        	gridlines: {
-						    	count: 5,
+						    	count: 2,
 						    	color: 'transparent'
 						   	},
 						   	format:	null
@@ -194,6 +239,16 @@ class MarketGraph {
 				for(var x =data.length-1; x>=0;x--){
 						line_data.push([new Date(data[x].date), data[x].close ]);
 				};
+
+				let prices = [];
+
+				for(let x=0; x<data.length; x++){
+					prices.push(data[x].close);
+				};
+
+				let max = Math.max.apply(null, prices );
+				let min = Math.min.apply(null, prices);
+
 				let options = {
 						title: name,
 						/**
@@ -204,6 +259,13 @@ class MarketGraph {
 						    }
 						},
 						***/
+
+            			viewWindowMode:'explicit',
+				            viewWindow:{
+				                max: max,
+				                min: min
+				              },
+
 					    titleTextStyle: {
 					        color: 'black',    // any HTML string color ('red', '#cc00cc')
 					        fontName: 'Arial', // i.e. 'Times New Roman'
@@ -225,7 +287,7 @@ class MarketGraph {
 				        	},
 				        	gridlines: {
 						    	count: 2,
-						    	color: 'transparent'
+						    	color: 'black'
 						   }	  
 				        },
 					 	hAxis: {
@@ -245,7 +307,6 @@ class MarketGraph {
 						   	format:	null
 					 	}
 				};
-
 					return (
 							<div className="intradaylinegraph">
 									<Chart
@@ -271,15 +332,28 @@ class MarketGraph {
 		API.getStockPrice(params);	
 	}
 
-	setHistoryRangePicker(stocklistings){
+	setHistoryRangePicker(historyoptions){
+
+			console.log(historyoptions.history);
+
+			let intraday = "bitcoin_history_options_label";
+		    let	daily = "bitcoin_history_options_label"; 
+			let weekly = "bitcoin_history_options_label";
+
+			
+			if(historyoptions.history=='intraday'){
+				intraday = "bitcoin_history_options_label_selected";
+			}
+		   	if(historyoptions.history=='daily'){
+				daily = "bitcoin_history_options_label_selected";
+		   	}
+		   	if(historyoptions.history=='weekly'){
+				weekly = "bitcoin_history_options_label_selected";
+		   	}
 
 			return (
-
-
-
-					<div className="history_options">
-									
-								<label>
+					<div className="stock_history_options">
+								<label className={intraday}>
 									 Intraday
 									 <select onChange={(e) => this.setDateRange('intraday', e.target.value)}>
 									 	<option>1min</option>
@@ -290,10 +364,10 @@ class MarketGraph {
 									 </select>
 
 								</label>
-								<label onClick={() => this.setDateRange('daily',null)}>
+								<label onClick={() => this.setDateRange('daily',null)} className={daily}>
 									Daily
 								</label> 
-								<label onClick={() => this.setDateRange('weekly',null)}>
+								<label onClick={() => this.setDateRange('weekly',null)} className={weekly}>
 									Weekly								
 								</label>
 					</div>
@@ -306,9 +380,17 @@ class MarketGraph {
 			    for(var x =data.length-1; x>=0;x--){
 					bar_data.push([ new Date(data[x].date), parseFloat(data[x].volume) ]);
 				};
+
+				let volume = [];
+
+				for(let x=0; x<data.length; x++){
+					volume.push(data[x].volume);
+				};
+
+				let max = Math.max.apply(null, volume );
+				let min = Math.min.apply(null, volume );
+
 			    let baroptions = {
-
-
 						title: 'Volume',
 						/**
 						chartArea: {
@@ -318,6 +400,11 @@ class MarketGraph {
 						    }
 						},
 						***/
+            			viewWindowMode:'explicit',
+				        viewWindow:{
+				                max: max,
+				                min: min
+				        },
 					    titleTextStyle: {
 					        color: 'black',    // any HTML string color ('red', '#cc00cc')
 					        fontName: 'Arial', // i.e. 'Times New Roman'
@@ -341,7 +428,7 @@ class MarketGraph {
 				        	},
 				        	gridlines: {
 						    	count: 2,
-						    	color: 'transparent'
+						    	color: 'black'
 						   }	  
 				        },
 				        hAxis: {
@@ -404,7 +491,7 @@ class MarketGraph {
 	
 		
 		let code = this.companyCode.split(' ');
-		this.companyCode = null;	
+	
 		Actions.updateStockListings([]);
 		let params = {
 			code: code[0],

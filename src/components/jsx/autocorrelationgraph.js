@@ -35,8 +35,8 @@ Autocorrelation.prototype.setGoogleAutocorr = function(data){
 				       
 				        	},
 				        	gridlines: {
-						    	count: 5,
-						    	color: 'transparent'
+						    	count: 2,
+						    	color: 'black'
 						   }	
 				        },
 					 	hAxis: {
@@ -74,9 +74,18 @@ Autocorrelation.prototype.setIntradayAutocorrelation = function(data,historyopti
 				line_data.push([x, data[x] ]);
 				set.push(data[x]);
 			};
+		
+			let max = Math.max.apply(null, set );
+			let min = Math.min.apply(null, set);
+
 			let options = {
 						title: 'Price Autocorrelation',
 						fontFamily: 'Arial',
+						viewWindowMode:'explicit',
+						viewWindow:{
+								max: max,
+								min: min
+						},
 						titleTextStyle: {
 					        color: 'black',    // any HTML string color ('red', '#cc00cc')
 					        fontName: 'Arial', // i.e. 'Times New Roman'
@@ -98,7 +107,6 @@ Autocorrelation.prototype.setIntradayAutocorrelation = function(data,historyopti
 							title: "Correlation Coefficient",	
 							titleTextStyle: { color: 'black' },
 							baselineColor: 'transparent',
-				        	minValue: Math.min.apply(null,set),
 				        	textStyle: {
 				        		fontSize: 12,
 				        		fontName: 'Arial',
@@ -108,7 +116,7 @@ Autocorrelation.prototype.setIntradayAutocorrelation = function(data,historyopti
 				        	},
 				        	gridlines: {
 						    	count: 2,
-						    	color: 'transparent'
+						    	color: 'black'
 						   }	
 				        },
 					 	hAxis: {
