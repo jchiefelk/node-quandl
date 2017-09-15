@@ -138,6 +138,7 @@ app.post('/api', function(req,res){
     let market, autocorr;
     Quandl.getIntraDayTicket(req.body)
            .then(function(value) { 
+                
                 market = value;
                 let request = req.body;
                 request.startDate = 'start';
@@ -224,8 +225,15 @@ app.post('/stocklisting', function(req, res){
                 };
                 autocomplete();
             };
-
         };
+
+
+
+
+
+
+
+
         res.json({
           stocklisting: stocklisting
         });

@@ -56948,7 +56948,8 @@
 	};
 
 	StockData.prototype.updateIntradayTicket = function (item) {
-	  // console.log('Update Intraday Data in Store');
+	  console.log('Update Intraday Data in Store');
+
 	  this.IntraDay.data = [];
 	  this.IntraDay.name = item['Meta Data']['2. Symbol'];
 	  var timeSeries = 'Weekly Time Series';
@@ -75516,45 +75517,23 @@
 					weekly = "bitcoin_history_options_label_selected";
 				}
 
+				/**
+	   Real Time Data is Currently out of Commish at Alpha Vantage
+	   	<label className={intraday}>
+	   			 Intraday
+	   			 <select onChange={(e) => this.setDateRange('intraday', e.target.value)}>
+	   			 	<option>1min</option>
+	   			 	<option>5min</option>
+	   			 	<option>15min</option>
+	   			 	<option>30min</option>
+	   			 	<option>60min</option>
+	   			 </select>
+	   			</label>
+	   **/
+
 				return _react2.default.createElement(
 					'div',
 					{ className: 'stock_history_options' },
-					_react2.default.createElement(
-						'label',
-						{ className: intraday },
-						'Intraday',
-						_react2.default.createElement(
-							'select',
-							{ onChange: function onChange(e) {
-									return _this2.setDateRange('intraday', e.target.value);
-								} },
-							_react2.default.createElement(
-								'option',
-								null,
-								'1min'
-							),
-							_react2.default.createElement(
-								'option',
-								null,
-								'5min'
-							),
-							_react2.default.createElement(
-								'option',
-								null,
-								'15min'
-							),
-							_react2.default.createElement(
-								'option',
-								null,
-								'30min'
-							),
-							_react2.default.createElement(
-								'option',
-								null,
-								'60min'
-							)
-						)
-					),
 					_react2.default.createElement(
 						'label',
 						{ onClick: function onClick() {

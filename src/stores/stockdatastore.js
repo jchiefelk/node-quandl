@@ -110,7 +110,10 @@ StockData.prototype.updateStockHistoryOptions = function(item,timeSteps){
 };
 
 StockData.prototype.updateIntradayTicket = function(item){
-  // console.log('Update Intraday Data in Store');
+  console.log('Update Intraday Data in Store');
+  
+
+
   this.IntraDay.data=[];
   this.IntraDay.name = item['Meta Data']['2. Symbol'];
   let timeSeries = 'Weekly Time Series';

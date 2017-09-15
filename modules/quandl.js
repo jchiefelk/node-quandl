@@ -158,11 +158,14 @@ Quandl.prototype.getMarketData = function(){
 	});
 };
 Quandl.prototype.getIntraDayTicket = function(params){
+
 	let timeSteps=null;
 	let timeSeries =  'TIME_SERIES_WEEKLY';
 	let url; 
 	if(params.daterange){
 		if(params.daterange=='intraday') timeSeries = 'TIME_SERIES_INTRADAY';
+		
+
 		if(params.daterange=='daily') timeSeries = 'TIME_SERIES_DAILY';
 		if(params.daterange=='weekly') timeSeries = 'TIME_SERIES_WEEKLY';
 		if(params.daterange=='monthly') timeSeries = 'TIME_SERIES_MONTHLY';
@@ -188,7 +191,7 @@ Quandl.prototype.getIntraDayTicket = function(params){
 			})
 			.then((response) => typeof response == 'object' ? response.json() : {} )
 			.then( ( responseJson ) => {
-
+					console.log(responseJson);
 				   	return responseJson;
 			})
 };

@@ -351,9 +351,11 @@ class MarketGraph {
 				weekly = "bitcoin_history_options_label_selected";
 		   	}
 
-			return (
-					<div className="stock_history_options">
-								<label className={intraday}>
+
+
+		   	/**
+				Real Time Data is Currently out of Commish at Alpha Vantage
+							<label className={intraday}>
 									 Intraday
 									 <select onChange={(e) => this.setDateRange('intraday', e.target.value)}>
 									 	<option>1min</option>
@@ -364,6 +366,12 @@ class MarketGraph {
 									 </select>
 
 								</label>
+
+				**/
+
+			return (
+					<div className="stock_history_options">
+	
 								<label onClick={() => this.setDateRange('daily',null)} className={daily}>
 									Daily
 								</label> 
