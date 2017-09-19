@@ -21,17 +21,15 @@ CandleStickGraph.prototype.setIntraDayGraph = function(item){
 				let max = Math.max.apply(null, prices );
 				let min = Math.min.apply(null, prices);
 
+		console.log('intraday price min max');
+		console.log(min,max);
 
 
 	//
 	let	options = {
 		title: 'Intraday Price Variance',
 
-		viewWindowMode:'explicit',
-		 viewWindow:{
-				                max: max,
-				                min: min
-		},
+
 		titleTextStyle: {
 			color: 'black',    // any HTML string color ('red', '#cc00cc')
 			fontName: 'Arial', // i.e. 'Times New Roman'
@@ -68,7 +66,17 @@ CandleStickGraph.prototype.setIntraDayGraph = function(item){
 		   gridlines: {
 		    	count: 2,
 		    	color: 'black'
-		   }
+		   },
+		   /**
+			viewWindowMode:'explicit',
+			 viewWindow:{
+					                max: max,
+					                min: min
+			},
+			***/
+
+
+
         },
 		hAxis: {
 				title: "",	
@@ -145,11 +153,7 @@ CandleStickGraph.prototype.setBitcoinVarianceView = function(data, historyoption
 
 		let options = {
 					title: "Interday Price Vairence",
-				    viewWindowMode:'explicit',
-				    viewWindow:{
-				                max: max,
-				                min: min
-				    },
+
 					titleTextStyle: {
 						color: 'black',    // any HTML string color ('red', '#cc00cc')
 						fontName: 'Arial', // i.e. 'Times New Roman'
@@ -165,6 +169,11 @@ CandleStickGraph.prototype.setBitcoinVarianceView = function(data, historyoption
 			            risingColor: { strokeWidth: 0, fill: 'black' }   // back
 			        },
 			       	vAxis: {
+				        viewWindowMode:'explicit',
+					    viewWindow:{
+					                max: max,
+					                min: min
+					    },
 			       	   baselineColor: 'transparent',
 			       	   textStyle:{
 			       	   	color: 'black',

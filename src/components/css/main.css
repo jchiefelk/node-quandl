@@ -228,7 +228,7 @@
     background-color: Snow;
     width: 90%;
     flex-direction: column;
-    margin-top: 10em;
+    margin-top: 2em;
 }
 
 .graphViewChild {
@@ -244,6 +244,8 @@
 	font-weight: 500; 
 	color: black;
 	font-size: 2.5em;
+	position: relative;
+	top: 0em;
 }
 
 .background-video {

@@ -76,7 +76,6 @@ Quandl.prototype.getETFData = function(params){
 	var startDate, endDate;
 	startDate =  moment(new Date().setFullYear(2016)).format('YYYY-MM-DD'),
 	endDate =  moment().format('YYYY-MM-DD');
-
 	for(var k in ETF){
 					// url = quandl_url+ETF[k].db+'/'+ETF[k].market+'_'+ETF[k].code+'.json?start_date='+startDate+'&end_date='+endDate+'&api_key='+api_key;
 			url = quandl_url+ETF[k].db+'/'+ETF[k].market+'_'+ETF[k].code+'.json?api_key='+api_key;		
@@ -106,18 +105,15 @@ Quandl.prototype.fetchMarketData = function(){
 		};
 		return this.Marketrecursion()
 			.then( ( responseJson ) => {
-						
 					   	this.quandlMarketResults.push(responseJson);
 					 	if(this.marketiterator < this.marketpromiseArray.length){  
 					 		return this.fetchMarketData();
 					 	} else {
-					
 					 		return this.quandlMarketResults;
 					 	}
 			})
 			.then(function(value) {
                       for(var x=0;x <365;x++) {
-                  
                           results.data.push({
                               name:  value[0].dataset.name,
                               date:  value[0].dataset.data[x][0],
@@ -158,19 +154,15 @@ Quandl.prototype.getMarketData = function(){
 	});
 };
 Quandl.prototype.getIntraDayTicket = function(params){
-
 	let timeSteps=null;
 	let timeSeries =  'TIME_SERIES_WEEKLY';
 	let url; 
 	if(params.daterange){
 		if(params.daterange=='intraday') timeSeries = 'TIME_SERIES_INTRADAY';
-		
-
 		if(params.daterange=='daily') timeSeries = 'TIME_SERIES_DAILY';
 		if(params.daterange=='weekly') timeSeries = 'TIME_SERIES_WEEKLY';
 		if(params.daterange=='monthly') timeSeries = 'TIME_SERIES_MONTHLY';
 	}
-
 	if(params.timeSteps){
                   if(params.timeSteps=='1min') timeSteps = 'Time Series (1min)';
                   if(params.timeSteps=='5min') timeSteps = 'Time Series (5min)';
@@ -184,14 +176,13 @@ Quandl.prototype.getIntraDayTicket = function(params){
      } else {
      	url = 'https://www.alphavantage.co/query?function='+timeSeries+'&symbol='+params.code+'&apikey=JKH0X5U5HVN4DD1Y';
      }
-    console.log(url);
+
 	return fetch(url, {
 			  method: 'GET',
 			  mode: 'cors',
 			})
 			.then((response) => typeof response == 'object' ? response.json() : {} )
 			.then( ( responseJson ) => {
-					console.log(responseJson);
 				   	return responseJson;
 			})
 };

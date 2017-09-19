@@ -34,14 +34,9 @@ class MarketGraph {
 	}
 
 	renderBitcoinAPIOptions(historyoptions){
-
-
-
 		let daily = "bitcoin_history_options_label";
 	    let	monthly = "bitcoin_history_options_label"; 
 		let alltime = "bitcoin_history_options_label";
-
-		
 		if(historyoptions=='daily'){
 			daily = "bitcoin_history_options_label_selected";
 		}
@@ -51,8 +46,6 @@ class MarketGraph {
 	   	if(historyoptions=='alltime'){
 			alltime = "bitcoin_history_options_label_selected";
 	   	}
-	  
-
 		return(
 				<div className="bitcoin_history_options">
 								<div onClick={()=> this.changeBitcoinOptions('daily')} className={daily}>
@@ -76,21 +69,11 @@ class MarketGraph {
 				};
 				let volume = [];
 				for(let x=0; x<data.length; x++){
-					volume.push(data[x].close);
+					volume.push(data[x].volume);
 				};
-
 				let max = Math.max.apply(null, volume );
 				let min = Math.min.apply(null, volume );
-
 			    let options = {
-
-
-				        viewWindowMode:'explicit',
-				        viewWindow:{
-				                max: max,
-				                min: min
-				       },
-
 				    	title: "Volume",
 						titleTextStyle: {
 							color: 'black',    // any HTML string color ('red', '#cc00cc')
@@ -103,6 +86,11 @@ class MarketGraph {
 						fontFamily: 'Arial',
 						backgroundColor: 'transparent',
 						vAxis: {
+					        viewWindowMode:'explicit',
+					        viewWindow:{
+					                max: max,
+					                min: min
+					       },
 							baselineColor: 'transparent',
 				        	textStyle: {
 				        		fontSize: 12,
@@ -132,10 +120,7 @@ class MarketGraph {
 				        },
 				       legend: {position: 'none'}
 				   };
-
-			
-					options.format = 'MMM d, y'
-			
+				   options.format = 'MMM d, y';
 				   return(
 							<div className="bitcoinCandleStickPlot">
 											        <Chart
@@ -208,7 +193,7 @@ class MarketGraph {
 				       
 				        	},
 				        	gridlines: {
-						    	count: 2,
+						    	count: 5,
 						    	color: 'transparent'
 						   	},
 						   	format:	null
@@ -260,11 +245,7 @@ class MarketGraph {
 						},
 						***/
 
-            			viewWindowMode:'explicit',
-				            viewWindow:{
-				                max: max,
-				                min: min
-				              },
+           
 
 					    titleTextStyle: {
 					        color: 'black',    // any HTML string color ('red', '#cc00cc')
@@ -288,7 +269,13 @@ class MarketGraph {
 				        	gridlines: {
 						    	count: 2,
 						    	color: 'black'
-						   }	  
+						   },
+
+						   viewWindowMode:'explicit',
+				           viewWindow:{
+				                max: max,
+				                min: min
+				           }
 				        },
 					 	hAxis: {
 							title: "",	
@@ -350,9 +337,6 @@ class MarketGraph {
 		   	if(historyoptions.history=='weekly'){
 				weekly = "bitcoin_history_options_label_selected";
 		   	}
-
-
-
 		   	/**
 				Real Time Data is Currently out of Commish at Alpha Vantage
 							<label className={intraday}>
@@ -368,10 +352,8 @@ class MarketGraph {
 								</label>
 
 				**/
-
 			return (
 					<div className="stock_history_options">
-	
 								<label onClick={() => this.setDateRange('daily',null)} className={daily}>
 									Daily
 								</label> 
@@ -408,11 +390,6 @@ class MarketGraph {
 						    }
 						},
 						***/
-            			viewWindowMode:'explicit',
-				        viewWindow:{
-				                max: max,
-				                min: min
-				        },
 					    titleTextStyle: {
 					        color: 'black',    // any HTML string color ('red', '#cc00cc')
 					        fontName: 'Arial', // i.e. 'Times New Roman'
@@ -420,12 +397,15 @@ class MarketGraph {
 					        bold: false,    // true or false
 					        italic: false   // true of false
 					    },
-
-
 						isStacked:true,
 						fontFamily: 'Arial',
 						backgroundColor: 'transparent',
 						vAxis: {
+							viewWindowMode:'explicit',
+					        viewWindow:{
+					                max: max
+					                // min: min
+					        },
 							baselineColor: 'transparent',
 				        	textStyle: {
 				        		fontSize: 12,
@@ -454,7 +434,6 @@ class MarketGraph {
 				        },
 				       legend: {position: 'none'}
 				   };
-
 				   return(
 							<div  className="intradaylinegraph">
 											        <Chart
@@ -468,9 +447,7 @@ class MarketGraph {
 				   	);
 	}
 
-
 	setDatePicker(){
-
 		return (
 					<div className="market-date-picker-container">
 								<div className="date-input">
@@ -481,7 +458,6 @@ class MarketGraph {
 													dateFormat="YYYY-MM-DD" timeFormat={false}
 										/>
 								</div>
-
 								<div className="date-input">
 									<p className="date-text">End Date</p>
 												<Datetime
@@ -496,10 +472,7 @@ class MarketGraph {
 	}
 
 	sendRequest(){
-	
-		
 		let code = this.companyCode.split(' ');
-	
 		Actions.updateStockListings([]);
 		let params = {
 			code: code[0],
@@ -542,7 +515,6 @@ class MarketGraph {
 			</div>
 		);
 	}
-
 
 	setLoadingAnimation(){
 		return this.loadingAnimation;

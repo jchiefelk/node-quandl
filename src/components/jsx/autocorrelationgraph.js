@@ -81,11 +81,7 @@ Autocorrelation.prototype.setIntradayAutocorrelation = function(data,historyopti
 			let options = {
 						title: 'Price Autocorrelation',
 						fontFamily: 'Arial',
-						viewWindowMode:'explicit',
-						viewWindow:{
-								max: max,
-								min: min
-						},
+
 						titleTextStyle: {
 					        color: 'black',    // any HTML string color ('red', '#cc00cc')
 					        fontName: 'Arial', // i.e. 'Times New Roman'
@@ -117,7 +113,12 @@ Autocorrelation.prototype.setIntradayAutocorrelation = function(data,historyopti
 				        	gridlines: {
 						    	count: 2,
 						    	color: 'black'
-						   }	
+						   },
+							viewWindowMode:'explicit',
+							viewWindow:{
+									max: max,
+									min: min
+							}	
 				        },
 					 	hAxis: {
 					 	title: null,

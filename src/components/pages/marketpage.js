@@ -30,6 +30,7 @@ export default class MarketPage extends Component {
 
 
     render() {
+
           return(
             <div className="marketpage"> 
               <Header/>

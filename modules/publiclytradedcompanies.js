@@ -11,9 +11,7 @@ function PubliclyTradedCompanies(){
 };
 
 PubliclyTradedCompanies.prototype.symbolLookupNYSE = function(){
-
- let nyse =[];
-
+  let nyse =[];
   let promise = new Promise( function(resolve,reject){
 		fs.createReadStream(__dirname + '/data/nyse.csv')
 		.pipe(parse({delimiter: ','}))
@@ -34,7 +32,6 @@ PubliclyTradedCompanies.prototype.symbolLookupNYSE = function(){
 };
 
 PubliclyTradedCompanies.prototype.symbolLookupNASDAQ = function(){
-
   let nasdaq =[];
   let promise = new Promise( function(resolve,reject){
 		fs.createReadStream(__dirname + '/data/nasdaq.csv')
@@ -53,7 +50,6 @@ PubliclyTradedCompanies.prototype.symbolLookupNASDAQ = function(){
 		});
   });
   return promise;
-
 };
 
 module.exports = new PubliclyTradedCompanies();

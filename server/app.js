@@ -18,8 +18,6 @@ let etf=[];
 let market=[];
 let etf_autocorrelation=[];
 let market_autocorrelation=[];
-
-
 /**
   Quandl Calls that are made once per day
 **/
@@ -138,7 +136,6 @@ app.post('/api', function(req,res){
     let market, autocorr;
     Quandl.getIntraDayTicket(req.body)
            .then(function(value) { 
-                
                 market = value;
                 let request = req.body;
                 request.startDate = 'start';
@@ -149,17 +146,14 @@ app.post('/api', function(req,res){
                 // console.log(value['Monthly Time Series']);
                 let timeSeries = 'Weekly Time Series';
                 if(req.body.daterange){
-
                   if(req.body.daterange=='intraday' && req.body.timeSteps=='1min') timeSeries = 'Time Series (1min)';
                   if(req.body.daterange=='intraday' && req.body.timeSteps=='5min') timeSeries = 'Time Series (5min)';
                   if(req.body.daterange=='intraday' && req.body.timeSteps=='15min') timeSeries = 'Time Series (15min)';
                   if(req.body.daterange=='intraday' && req.body.timeSteps=='30min') timeSeries = 'Time Series (30min)';
                   if(req.body.daterange=='intraday' && req.body.timeSteps=='60min') timeSeries = 'Time Series (60min)';
-
                   if(req.body.daterange=='daily') timeSeries = 'Time Series (Daily)';
                   if(req.body.daterange=='weekly') timeSeries = 'Weekly Time Series';
                   if(req.body.daterange=='monthly') timeSeries = 'Monthly Time Series';
-
                 }
                 return Correlation.stockprice_autocorrelation(value[timeSeries]);
             })
@@ -202,12 +196,8 @@ app.post('/bitcoin', function(req,res){
 });
 
 app.post('/stocklisting', function(req, res){
-
-
         let stocklisting=[];
         let code = req.body.companycode.split('');
-
-
         for(let x=0; x<routine.stocklistings.length; x++){
             let index=0;
             for(let key in routine.stocklistings[x]){
@@ -226,13 +216,6 @@ app.post('/stocklisting', function(req, res){
                 autocomplete();
             };
         };
-
-
-
-
-
-
-
 
         res.json({
           stocklisting: stocklisting

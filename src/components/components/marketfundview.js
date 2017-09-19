@@ -79,7 +79,6 @@ export default class MarketFundView extends Component {
 			}
 
 			renderETFView(){
-
 				let etfGraph, marketAutocorrelation, etfCandleStick, etfAutocorrelation = null;
 				if(this.state.dailyetfData.xValues.length>0  && this.state.sendRequestStatus==false && this.state.viewMode=='markets'){
 					etfGraph = MarketGraph.setMarketGoogleGraph(this.state.dailyetfData);
@@ -122,7 +121,7 @@ export default class MarketFundView extends Component {
 				//
 				return (
 					<div className="marketgraph-view">
-						<h1 className="graph-page-title">Bitcoin</h1>
+						<h1 className="graph-page-title">Bitcoin - $BTC</h1>
 						{MarketGraph.renderBitcoinAPIOptions(this.state.bitcoinHistoryOptions)}
 						{this.renderBitCoinPriceView()}
 						{this.renderBitcoinVarianceView()}
