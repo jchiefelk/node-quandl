@@ -8,6 +8,14 @@ const fetch = require('node-fetch');
 const http = require('http');
 const https = require('https');
 const app = express();
+var mongoose = require('mongoose');
+var jwt = require('jsonwebtoken');
+var config =  require('./config'); 
+var User   = require('./models/user'); // get our mongoose model
+var morgan      = require('morgan');
+//
+// Server-side analysis sccchtuff
+//
 let Correlation = require('../modules/correlation');
 let PubliclyTradedCompanies = require('../modules/publiclytradedcompanies');
 let _store;
@@ -85,6 +93,8 @@ BackgroundProcesses.prototype.getNASDAQListings = function(){
           });
 
 };
+
+
 let routine = new BackgroundProcesses();
 routine.getNYSEListings()
 .then(function(value){
@@ -102,8 +112,50 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 // Set Port
 app.set('port', (process.env.PORT || 3000));
+// conncect to database
+// mongoose.connect(config.database)
+mongoose.connect(config.database, function(err,res){
+  if(err){
+    console.log('error connecting to: ' + config.database);
+  } else {
+    console.log('Succeeded connected to: '+ config.database);
+  }
+
+});
+// secret variable
+app.set('superSecret', config.secret); 
 // Static JavaScript Bundle
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
+
+// create user of our choosing
+app.get('/setup', function(req, res) {
+
+  // create a sample user
+  var nick = new User({ 
+    name: 'Nick Cerminara', 
+    password: 'password',
+    admin: false 
+  });
+  // save the sample user
+  nick.save(function(err) {
+    if (err) throw err;
+    console.log('User saved successfully');
+    res.json({ success: true });
+  });
+
+});
+//
+// Settup MongoDB routes
+app.get('/users',function(req,res){
+   
+    User.find({}, function(req,users){
+      res.json(users);
+    });
+
+});
+
+//
+app.use(morgan('dev'));
 //
 // Set RESTFUL Routes
 //

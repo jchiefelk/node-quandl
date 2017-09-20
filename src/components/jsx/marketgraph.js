@@ -2,7 +2,6 @@ import React from 'react';
 var Actions = require('../../actions/actions');
 var moment = require('moment');
 var Datetime = require('react-datetime');
-var Loading = require('react-loading');
 import MarketPicker from '../components/marketpicker';
 import { Router, Route, Link } from 'react-router';
 import { Chart } from 'react-google-charts';
@@ -19,13 +18,7 @@ class MarketGraph {
 				this.endDate = null;
 				this.companyCode = null;
 				this.test=(<div id="chart_div"/>);
-				this.loadingAnimation = (
-					<div className="intradaypage">
-						<div style={{display: 'flex',  justifyContent: 'center', marginTop: 100 }}>
-							<Loading type='bubbles' color='#909090' style={{height: 500, width:500}}/>
-						</div>
-					</div>
-				);
+
 	}
 
 	changeBitcoinOptions(range) {
