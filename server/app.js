@@ -8,11 +8,7 @@ const fetch = require('node-fetch');
 const http = require('http');
 const https = require('https');
 const app = express();
-var mongoose = require('mongoose');
-var jwt = require('jsonwebtoken');
-var config =  require('./config'); 
-var User   = require('./models/user'); // get our mongoose model
-var morgan      = require('morgan');
+var morgan = require('morgan');
 //
 // Server-side analysis sccchtuff
 //
@@ -26,141 +22,32 @@ let etf=[];
 let market=[];
 let etf_autocorrelation=[];
 let market_autocorrelation=[];
-/**
-  Quandl Calls that are made once per day
-**/
-function BackgroundProcesses(){
-  this.etfData = null;
-  this.marketData = null;
-  this.etf=[];
-  this.market=[];
-  this.stocklistings = [];
-};
-BackgroundProcesses.prototype.startInterval = function(){
-    Quandl.getMarketData()
-             .then(function(value) {
-                   //  console.log(value);
-                    marketData =  value.data;
-                    market_autocorrelation = value.correlation;
-                    // return Quandl.getETFData();
-                  })
-                  .catch(function(error){
-                      console.log(error);
-                  });
-                  /**
-                  .then((result) => {
-                      etfData = result.data;
-                      etf_autocorrelation = result.correlation;
-                  })
-                  .catch(function(error){
-                      console.log(error);
-                  });
-                  **/
-
-};
-
-BackgroundProcesses.prototype.getNYSEListings = function(){
-   
-    return PubliclyTradedCompanies.symbolLookupNYSE()
-          .then( ( data ) => {
-              for(let x=1;x<data.length;x++){
-                 let stocklisting = {};
-                 stocklisting[data[x].code] = data[x].name;
-                 this.stocklistings.push(stocklisting); 
-              };
-               
-              return this.stocklistings;
-          })
-          .catch((err) => {
-            console.log(err);   
-          });
-
-};
-
-BackgroundProcesses.prototype.getNASDAQListings = function(){
-
-    return PubliclyTradedCompanies.symbolLookupNASDAQ()
-          .then( ( data ) => {
-              for(let x=1;x<data.length;x++){
-                let stocklisting = {};
-                 stocklisting[data[x].code] = data[x].name;
-                 this.stocklistings.push(stocklisting); 
-              };
-              return this.stocklistings; 
-          })
-          .catch((err) => {
-            console.log(err);   
-          });
-
-};
-
-
-let routine = new BackgroundProcesses();
-routine.getNYSEListings()
+var BackgroundProcesses = require('./backgroundprocesses');
+BackgroundProcesses.getNYSEListings()
 .then(function(value){
-      // console.log(value);
-  return routine.getNASDAQListings();
+  return BackgroundProcesses.getNASDAQListings();
 })
 .then(function(value){
   // console.log(routine.stocklistings);
 });
 //
-// setInterval( routine.startInterval, 86400000 );
 //
 // Required for POST Requests
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 // Set Port
 app.set('port', (process.env.PORT || 3000));
-// conncect to database
-// mongoose.connect(config.database)
-mongoose.connect(config.database, function(err,res){
-  if(err){
-    console.log('error connecting to: ' + config.database);
-  } else {
-    console.log('Succeeded connected to: '+ config.database);
-  }
-
-});
-// secret variable
-app.set('superSecret', config.secret); 
-// Static JavaScript Bundle
-app.use(express.static(path.resolve(__dirname, '..', 'build')));
-
-// create user of our choosing
-app.get('/setup', function(req, res) {
-
-  // create a sample user
-  var nick = new User({ 
-    name: 'Nick Cerminara', 
-    password: 'password',
-    admin: false 
-  });
-  // save the sample user
-  nick.save(function(err) {
-    if (err) throw err;
-    console.log('User saved successfully');
-    res.json({ success: true });
-  });
-
-});
-//
-// Settup MongoDB routes
-app.get('/users',function(req,res){
-   
-    User.find({}, function(req,users){
-      res.json(users);
-    });
-
-});
-
 //
 app.use(morgan('dev'));
 //
 // Set RESTFUL Routes
 //
 var routes = require('./routes');
-app.use('/', routes);
+app.use('/api', routes);
+// secret variable
+app.set('superSecret', config.secret); 
+// Static JavaScript Bundle
+app.use(express.static(path.resolve(__dirname, '..', 'build')));
 app.get('/etf', function(req,res){
         Quandl.getETFData()
             .then(function(value) {
@@ -184,7 +71,7 @@ app.get('/markets', function(req,res){
             }); 
 
 });
-app.post('/api', function(req,res){
+app.post('/stockapi', function(req,res){
     let market, autocorr;
     Quandl.getIntraDayTicket(req.body)
            .then(function(value) { 
@@ -282,7 +169,6 @@ app.get('/frontenddata',function(req,res){
       market_autocorrelation: market_autocorrelation
     });
 });
-
 // 
 //
 // Always return the main index.html, so react-router render the route in the client

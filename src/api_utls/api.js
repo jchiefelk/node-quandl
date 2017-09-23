@@ -4,7 +4,7 @@ function API() {
 };
 API.prototype.getStockPrice = function(params){
     console.log(params);
-    return   fetch('/api', {
+    return   fetch('/stockapi', {
             method: 'post',
             headers: {
                   'Accept': 'application/json',
@@ -74,5 +74,30 @@ API.prototype.getStockistings = function(data){
           }); 
 
 };
+
+
+API.prototype.setNewUser = function(data){
+  console.log(data);
+
+    return fetch('/api/setup',{
+          method: 'post',
+          mode: 'cors',
+          headers:{
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+          }, 
+          body: JSON.stringify(data)
+    })
+    .then((response) => {return response.json() })
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+
+
+};
+
 
 module.exports = new API();

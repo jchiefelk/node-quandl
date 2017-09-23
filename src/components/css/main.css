@@ -327,15 +327,25 @@
     }
 }
 
+.auth_form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
 
+.auth_form input {
+		font-size: 1.9em;
+		width: 15em;
+		margin: 1.5em;
+}
 
+.auth_form button {
+	height: 2em;
+	width: 6em;
+	font-size: 1.5em;
+	font-family: 'Arial';
 
-
-
-
-
-
-
-
+}
 
 
