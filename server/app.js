@@ -45,7 +45,7 @@ app.use(morgan('dev'));
 var routes = require('./routes');
 app.use('/api', routes);
 // secret variable
-app.set('superSecret', config.secret); 
+// app.set('superSecret', config.secret); 
 // Static JavaScript Bundle
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
 app.get('/etf', function(req,res){

@@ -77,8 +77,6 @@ API.prototype.getStockistings = function(data){
 
 
 API.prototype.setNewUser = function(data){
-  console.log(data);
-
     return fetch('/api/setup',{
           method: 'post',
           mode: 'cors',
@@ -90,7 +88,30 @@ API.prototype.setNewUser = function(data){
     })
     .then((response) => {return response.json() })
     .then((data) => {
-      console.log(data);
+          console.log(data.success);
+          Actions.updateNewUserSaveStatus(data.success);
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+};
+
+
+API.prototype.checkExistingUser = function(data){
+
+    return fetch('/api/authenticate',{
+          method: 'post',
+          mode: 'cors',
+          headers:{
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+          }, 
+          body: JSON.stringify(data)
+    })
+    .then((response) => {return response.json() })
+    .then((data) => {
+          console.log(data);
+          // Actions.updateNewUserSaveStatus(data.success);
     })
     .catch((error) => {
         console.log(error);

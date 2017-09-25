@@ -19,54 +19,96 @@ mongoose.connect(config.database, function(err,res){
   }
 });
 //
+let secret = express();
+secret.set('superSecret', config.secret); 
+//
 // Settup Authentication
 router.post('/authenticate',function(req,res){
+  // 1) First Check to see if user name exsts
+  // 2) If user exists, check to see if passwords are correct (compare has of input password to that of stored hash)
+  // 3) Create token if passwords match, and return as JSON
+  // req.body structrure
+  // { userName: 'ddd', userPassword: 'ddd' }
   User.findOne({
-      name: req.body.name
+      name: req.body.userName
     },function(err,user){
         if(err) throw err;
-
         if(!user){
               res.json({
                   success: false,
                   message: 'Authentication failed. User not found.'
               });
         } else if(user){
-            // if user is found and password is right
-            // create token
-            var token = jwt.sign(user, app.get('superSecret'),{
-               expiresInMinutes: 1440 // expires in 24 hours
-            });
-            //
-            // return the information including token as JSON
-            res.json({
-                success: true,
-                message: 'Enjoy your token!',
-                token: token
-            });
+        
+              // if user is found, check password first
+              if(bcrypt.compareSync(req.body.userPassword,user.password)){
+                  console.log('Passwords Match');
+                  let token = jwt.sign({
+                    data: user
+                  }, config.secret, { expiresIn: '1h' });
+                    res.json({
+                        success: true,
+                        message: 'Enjoy your token!',
+                        token: token
+                    });
+            
+                } else {
+                    console.log('Passwords Dont Match');
+                    res.json({
+                        success: false,
+                        message: 'Password invalid'
+                    });
+                }
         }
-    });
+  });
+  //
+  //
 });
 //
 
 // create user of our choosing
 router.post('/setup', function(req, res) {
+  // 1) First check in username already exists in the DB
+  // 2) if User name doesn't exist, hash password and create and then
+  // 3) Insert in user into the DB
+  User.findOne({
+    name: req.body.userName
+  }, function(err, user){
+      if(err) throw err;
 
-  // create hash for password
-  // req.body.userPassword
-  bcrypt.hash(req.body.userPassword, 10, function(err,hash) {
-      // create a sample user
-      var nick = new User({ 
-        name: req.body.userName, 
-        password: hash,
-        admin: false 
-      });
-      // save the sample user
-      nick.save(function(err) {
-        if (err) throw err;
-        console.log('User saved successfully');
-        res.json({ success: true });
-      });
+      if(user){
+            console.log('User Already Exists!!!!!!');
+            //
+            res.json({
+                  success: false,
+                  message: 'User Name already exists'
+            });
+
+      } else if(!user){
+
+            bcrypt.hash(req.body.userPassword, 10, function(err,hash) {
+                // create a sample user
+                var nick = new User({ 
+                  name: req.body.userName, 
+                  password: hash,
+                  admin: false 
+                });
+                // save the sample user
+                nick.save(function(err) {
+                  if (err) throw err;
+                  console.log('User saved successfully');
+                  res.json({ success: true });
+                });
+            });
+      
+
+
+
+
+
+
+
+      }
   });
 
 });
@@ -76,16 +118,10 @@ router.get('/users',function(req,res){
       res.json(users);
     });
 });
-
-
 // route middleware to verify a token
 router.use(function(req,res){
-
-  //console.log(req)
-
 // check header or url parameters or post parameters for token
 var token = req.body.token || req.query.token || req.headers['x-access-token'];
-
 // decode token
     if(token){
         // verifies secret and checks exp
@@ -106,12 +142,6 @@ var token = req.body.token || req.query.token || req.headers['x-access-token'];
             message: 'No token provided'
         });
     }
-
 });
 //
-
-
-
-
-
 module.exports = router;

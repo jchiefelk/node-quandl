@@ -27994,7 +27994,7 @@
 
 
 	// module
-	exports.push([module.id, "#Title {\n\tfont-size: 4.7em;\n\tcolor: black;\n\tfont-weight: 900; \n\tfont-family: 'Arial';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n\talign-text: center;\n\tmargin: 50;\n}\n#About-Me {\n\tcolor: black;\n\tfont-size: 2.1em;\n\tfont-weight: 500; \n\tfont-family: 'Arial';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n}\n.app {\n\tdisplay: flex; \n\tflex-direction: column; \n\tbackground-color: transparent;\n\theight: 100%;\n}\n.enter_icons {\n\twidth: 2.3em; \n\theight: 2.3em; \n\tmargin-left: 1em;\n\tmargin-top: 0.05em; \n\tcursor: pointer;\n}\n\n.bitcoin_history_options {\n\tposition: relative;\n\tdisplay: flex;\n\tflex-direction: row;\n\tfont-size: 12;\n\tfont-family: 'Arial';\n\tjustify-content: center;\n\n}\n\n.bitcoin_history_options_label {\n\tdisplay: flex;\n\talign-items: center;\n\tcursor: pointer;\n\tmargin: 1.5em;\n}\n\n.bitcoin_history_options_label:hover{\n\tborder-bottom-style: solid;\n\tborder-bottom-width: 0.01em;\n\tborder-bottom-color: black;\n\topacity: 0.7;\n}\n\n.bitcoin_history_options_label_selected {\n\tmargin: 1.5em;\n\tdisplay: flex;\n\talign-items: center;\n\tcursor: pointer;\n\tborder-bottom-style: solid;\n\tborder-bottom-width: 0.01em;\n\tborder-bottom-color: black;\n}\n\n.stock_history_options {\n\tposition: relative;\n\tdisplay: flex;\n\tflex-direction: row;\n\tfont-size: 12;\n\tfont-family: 'Arial';\n\tjustify-content: center;\n}\n.stock_history_options label {\n\tdisplay: flex;\n\tflex-direction: column;\n\tmargin: 1em;\n\talign-items: center;\n\tcursor: pointer;\n}\n.stock_history_options select {\n\twidth: 7em;\n\theight: 2.5em;\n\tbackground: Snow;\n\tmargin: 0.3em;\n\tborder-width: 0;\n}\n.marketpage {\n\tdisplay: flex;\n\tflex-direction: column;\n\tbackground-color: transparent; \n\talign-items: center;\n}\n.marketgraph {\n\tbackground-color: transparent;\n\talign-items: center;\n\twidth: 50em;\n\theight: 40em;\n\tjustify-content: center;\n}\n.bitcoingraph {\n\tbackground-color: transparent;\n\talign-items: center;\n\twidth: 100%;\n\theight: 40vh;\n\tjustify-content: center;\n}\n.bitcoinoptions {\n\tposition: relative;\n\tright: 0;\n\twidth: 5vw;\n\tfont-size: 18px;\n\tborder-width: 0;\n}\n.bitcoinCandleStickPlot {\n\tbackground-color: transparent;\n\talign-items: center;\n\twidth: 100%;\n\theight: 40vh;\n\tjustify-content: center;\n}\n.paragraph {\n\tcolor: black;\n\tfont-size: 1.5em;\n\tfont-weight: 500;\n\tfont-family: 'Arial';\n\tmargin-top: 2em;\n\tmargin: 50;\n}\n.table_row_parent { \n\tborder-width: 2; \n\tborder-style: solid; \n\tdisplay: flex;\n\tflex-direction: column;\n}\n.section-title {\n\tmargin: 50;\n\tfont-size: 2em;\n\tfont-weight: 900;\n\tfont-family: 'Arial';\n\tmargin-top: 2em;\n}\n.code-image {\n\tmargin: 0;\n\twidth: 100;\n}\n.header {\n\tdisplay: flex;\n\tflex-direction: row;\n\twidth: 100%;\n\theight: 3em; \n\tbackground-color: black; \n\talign-items: center; \n}\n.header-link {\n\tfont-weight: 700;\n\tfont-family: 'Arial';\n\tfont-size: 18;\n\tcolor: white; \n\tposition: absolute;\n\ttop: 1em;\n\tleft: 2em;\n\tcursor: pointer; \n\ttext-decoration: none;  \n}\n.linegraph {\n\tdisplay: flex;\n\twidth: 25em;\n}\n.intradaypage {\n\tmargin-top: 3em;\n\tdisplay: flex;\n\tflex-direction: column; \n\tbackground-color: transparent;\n\twidth: 90%;\n\theight: 100%;\n}\n.intradaychild {\n\tdisplay: flex;\n\tflex-direction: row;\n}\n.intradaylinegraph {\n\twidth: 50em;\n\theight: 27em;\n\tbackground-color: Snow;\n\tmargin: 1.5em;\n}\n.intradaybargraph {\n\tdisplay: flex;\n\twidth: 50em;\n\theight: 15em; \n\tbackground-color: transparent;\n\tmargin-left: 5em;\n}\n.autocorrelationgraph {\n\tdisplay: flex;\n\tbackground-color: transparent;\n\twidth: 50em;\n\theight: 15em;\n}\n.autocorrelationgraph_intraday {\n\tdisplay: flex;\n\twidth: 45em;\n\theight: 20em;\n\tmargin-left: 6em;\n}\n.candleStickGraph_intraday {\n\tdisplay: flex;\n\twidth: 50em;\n\theight: 30em;\n\tmargin-top: 2em;\t\n}\n.candleStickGraph {\n\tdisplay: flex;\n\theight: 15em;\n\twidth: 41em;\n\tbackground-color: transparent;\n}\n\n.graphViews {\n\tdisplay: flex;\n\tbackground-color: Snow;\n\twidth: 90%;\n}\n\n.marketgraph-view {\n    background-color: Snow;\n    width: 90%;\n    flex-direction: column;\n    margin-top: 2em;\n}\n\n.graphViewChild {\n\tdisplay: flex;\n\tbackground-color: transparent;\n\tflex-direction: column; \n\theight: 40em;\n\twidth: 50em;\n}\n\n.graph-page-title {\n\tfont-family: 'Arial';\n\tfont-weight: 500; \n\tcolor: black;\n\tfont-size: 2.5em;\n\tposition: relative;\n\ttop: 0em;\n}\n\n.background-video {\n\tdisplay: flex;\n\twidth: 100%;\n\tbackground-color: transparent;\n}\n\n.videobanner {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n\theight: 70%;\n\twidth: 100%;\n\ttop: 0;\n\tposition: absolute;\n\tbackground-color: transparent;\n\tcolor: white;\n\tfont-family: 'Arial';\n}\n\n.bannerchild {\n\tfont-size: 4vh;\n\tmargin-left: 4em;\n\tmargin-top: 2.5em;\n}\n\n.bannerAd {\n\tposition: absolute;\n\ttop: 30%;\n\twidth: 90%;\n\theight: 30vh;\n\tdisplay: flex;\n\tfont-size: 4.5vh;\n\talign-text: center;\n\talign-items: center;\n\tjustify-content: center;\n\tbackground-color: transparent;\n\tcolor: black;\n\topacity: 0.6;\n}\n\n/**\n  responsive container\n**/\n.gridcontainer {\n  min-width: 100%;\n  align-items: center;\n}\n.gridwrapper {\n  overflow: hidden;\n  display: flex;\n  flex-direction: row;\n}\n.gridbox {\n    /*margin-left: 2.0242914979757085020242914979757%;*/\n    /* margin-right: 2.0242914979757085020242914979757%;*/\n}\n.gridmain {\n  /*width: 48.987854251012145748987854251012%;*/\n    width: 100%;\n}\n\n\n@media only screen and (max-width: 700px){\n\n\t.gridwrapper {\n\t\tdisplay: flex;\n\t\tflex-direction: column;\n\t}\n\n    .gridmain {\n      width: 100%;\n    }\n\n    .gridbox {\n      \n    }\n}\n\n.auth_form {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n}\n\n.auth_form input {\n\t\tfont-size: 1.9em;\n\t\twidth: 15em;\n\t\tmargin: 1.5em;\n}\n\n.auth_form button {\n\theight: 2em;\n\twidth: 6em;\n\tfont-size: 1.5em;\n\tfont-family: 'Arial';\n\n}\n\n\n", ""]);
+	exports.push([module.id, "#Title {\n\tfont-size: 4.7em;\n\tcolor: black;\n\tfont-weight: 900; \n\tfont-family: 'Arial';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n\talign-text: center;\n\tmargin: 50;\n}\n#About-Me {\n\tcolor: black;\n\tfont-size: 2.1em;\n\tfont-weight: 500; \n\tfont-family: 'Arial';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n}\n.app {\n\tdisplay: flex; \n\tflex-direction: column; \n\tbackground-color: transparent;\n\theight: 100%;\n}\n.enter_icons {\n\twidth: 2.3em; \n\theight: 2.3em; \n\tmargin-left: 1em;\n\tmargin-top: 0.05em; \n\tcursor: pointer;\n}\n\n.bitcoin_history_options {\n\tposition: relative;\n\tdisplay: flex;\n\tflex-direction: row;\n\tfont-size: 12;\n\tfont-family: 'Arial';\n\tjustify-content: center;\n\n}\n\n.bitcoin_history_options_label {\n\tdisplay: flex;\n\talign-items: center;\n\tcursor: pointer;\n\tmargin: 1.5em;\n}\n\n.bitcoin_history_options_label:hover{\n\tborder-bottom-style: solid;\n\tborder-bottom-width: 0.01em;\n\tborder-bottom-color: black;\n\topacity: 0.7;\n}\n\n.bitcoin_history_options_label_selected {\n\tmargin: 1.5em;\n\tdisplay: flex;\n\talign-items: center;\n\tcursor: pointer;\n\tborder-bottom-style: solid;\n\tborder-bottom-width: 0.01em;\n\tborder-bottom-color: black;\n}\n\n.stock_history_options {\n\tposition: relative;\n\tdisplay: flex;\n\tflex-direction: row;\n\tfont-size: 12;\n\tfont-family: 'Arial';\n\tjustify-content: center;\n}\n.stock_history_options label {\n\tdisplay: flex;\n\tflex-direction: column;\n\tmargin: 1em;\n\talign-items: center;\n\tcursor: pointer;\n}\n.stock_history_options select {\n\twidth: 7em;\n\theight: 2.5em;\n\tbackground: Snow;\n\tmargin: 0.3em;\n\tborder-width: 0;\n}\n.marketpage {\n\tdisplay: flex;\n\tflex-direction: column;\n\tbackground-color: transparent; \n\talign-items: center;\n}\n.marketgraph {\n\tbackground-color: transparent;\n\talign-items: center;\n\twidth: 50em;\n\theight: 40em;\n\tjustify-content: center;\n}\n.bitcoingraph {\n\tbackground-color: transparent;\n\talign-items: center;\n\twidth: 100%;\n\theight: 40vh;\n\tjustify-content: center;\n}\n.bitcoinoptions {\n\tposition: relative;\n\tright: 0;\n\twidth: 5vw;\n\tfont-size: 18px;\n\tborder-width: 0;\n}\n.bitcoinCandleStickPlot {\n\tbackground-color: transparent;\n\talign-items: center;\n\twidth: 100%;\n\theight: 40vh;\n\tjustify-content: center;\n}\n.paragraph {\n\tcolor: black;\n\tfont-size: 1.5em;\n\tfont-weight: 500;\n\tfont-family: 'Arial';\n\tmargin-top: 2em;\n\tmargin: 50;\n}\n.table_row_parent { \n\tborder-width: 2; \n\tborder-style: solid; \n\tdisplay: flex;\n\tflex-direction: column;\n}\n.section-title {\n\tmargin: 50;\n\tfont-size: 2em;\n\tfont-weight: 900;\n\tfont-family: 'Arial';\n\tmargin-top: 2em;\n}\n.code-image {\n\tmargin: 0;\n\twidth: 100;\n}\n.header {\n\tdisplay: flex;\n\tflex-direction: row;\n\twidth: 100%;\n\theight: 3em; \n\tbackground-color: black; \n\talign-items: center; \n}\n.header-link {\n\tfont-weight: 700;\n\tfont-family: 'Arial';\n\tfont-size: 18;\n\tcolor: white; \n\tposition: absolute;\n\ttop: 1em;\n\tleft: 2em;\n\tcursor: pointer; \n\ttext-decoration: none;  \n}\n.linegraph {\n\tdisplay: flex;\n\twidth: 25em;\n}\n.intradaypage {\n\tmargin-top: 3em;\n\tdisplay: flex;\n\tflex-direction: column; \n\tbackground-color: transparent;\n\twidth: 90%;\n\theight: 100%;\n}\n.intradaychild {\n\tdisplay: flex;\n\tflex-direction: row;\n}\n.intradaylinegraph {\n\twidth: 50em;\n\theight: 27em;\n\tbackground-color: Snow;\n\tmargin: 1.5em;\n}\n.intradaybargraph {\n\tdisplay: flex;\n\twidth: 50em;\n\theight: 15em; \n\tbackground-color: transparent;\n\tmargin-left: 5em;\n}\n.autocorrelationgraph {\n\tdisplay: flex;\n\tbackground-color: transparent;\n\twidth: 50em;\n\theight: 15em;\n}\n.autocorrelationgraph_intraday {\n\tdisplay: flex;\n\twidth: 45em;\n\theight: 20em;\n\tmargin-left: 6em;\n}\n.candleStickGraph_intraday {\n\tdisplay: flex;\n\twidth: 50em;\n\theight: 30em;\n\tmargin-top: 2em;\t\n}\n.candleStickGraph {\n\tdisplay: flex;\n\theight: 15em;\n\twidth: 41em;\n\tbackground-color: transparent;\n}\n\n.graphViews {\n\tdisplay: flex;\n\tbackground-color: Snow;\n\twidth: 90%;\n}\n\n.marketgraph-view {\n    background-color: Snow;\n    width: 90%;\n    flex-direction: column;\n    margin-top: 2em;\n}\n\n.graphViewChild {\n\tdisplay: flex;\n\tbackground-color: transparent;\n\tflex-direction: column; \n\theight: 40em;\n\twidth: 50em;\n}\n\n.graph-page-title {\n\tfont-family: 'Arial';\n\tfont-weight: 500; \n\tcolor: black;\n\tfont-size: 2.5em;\n\tposition: relative;\n\ttop: 0em;\n}\n\n.background-video {\n\tdisplay: flex;\n\twidth: 100%;\n\tbackground-color: transparent;\n}\n\n.videobanner {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n\theight: 70%;\n\twidth: 100%;\n\ttop: 0;\n\tposition: absolute;\n\tbackground-color: transparent;\n\tcolor: white;\n\tfont-family: 'Arial';\n}\n\n.bannerchild {\n\tfont-size: 4vh;\n\tmargin-left: 4em;\n\tmargin-top: 2.5em;\n}\n\n.bannerAd {\n\tposition: absolute;\n\ttop: 30%;\n\twidth: 90%;\n\theight: 30vh;\n\tdisplay: flex;\n\tfont-size: 4.5vh;\n\talign-text: center;\n\talign-items: center;\n\tjustify-content: center;\n\tbackground-color: transparent;\n\tcolor: black;\n\topacity: 0.6;\n}\n\n/**\n  responsive container\n**/\n.gridcontainer {\n  min-width: 100%;\n  align-items: center;\n}\n.gridwrapper {\n  overflow: hidden;\n  display: flex;\n  flex-direction: row;\n}\n.gridbox {\n    /*margin-left: 2.0242914979757085020242914979757%;*/\n    /* margin-right: 2.0242914979757085020242914979757%;*/\n}\n.gridmain {\n  /*width: 48.987854251012145748987854251012%;*/\n    width: 100%;\n}\n\n\n@media only screen and (max-width: 700px){\n\n\t.gridwrapper {\n\t\tdisplay: flex;\n\t\tflex-direction: column;\n\t}\n\n    .gridmain {\n      width: 100%;\n    }\n\n    .gridbox {\n      \n    }\n}\n\n.auth_form {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n}\n\n.auth_form input {\n\t\tfont-size: 1.9em;\n\t\twidth: 15em;\n\t\tmargin: 1.0em;\n}\n\n.auth_form button {\n\theight: 2em;\n\twidth: 6em;\n\tfont-size: 1.5em;\n\tfont-family: 'Arial';\n}\n\n.auth_form h2 {\n\tmargin-top: 3em;\n}\n\n.auth_form h4 {\n\tmargin-top: 4em;\n\tcursor: pointer;\n}\n\n.auth_form h4:hover{\n\tcolor: red;\n}\n\n.auth_form div {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n\n", ""]);
 
 	// exports
 
@@ -57440,7 +57440,8 @@
 	  BITCOIN_HISTORY_OPTIONS: "BITCOIN_HISTORY_OPTIONS",
 	  STOCK_LISTINGS: "STOCK_LISTINGS",
 	  USERNAME: "USERNAME",
-	  PASSWORD: "PASSWORD"
+	  PASSWORD: "PASSWORD",
+	  UPDATE_NEW_USER_SAVE_STATUS: "UPDATE_NEW_USER_SAVE_STATUS"
 	};
 	module.exports = appConstants;
 
@@ -57837,6 +57838,13 @@
 	};
 
 	var Actions = {
+
+	  updateNewUserSaveStatus: function updateNewUserSaveStatus(item) {
+	    AppDispatcher.handleAction({
+	      actionType: appConstants.UPDATE_NEW_USER_SAVE_STATUS,
+	      data: item
+	    });
+	  },
 
 	  updateStockListings: function updateStockListings(item) {
 	    AppDispatcher.handleAction({
@@ -75133,8 +75141,6 @@
 	};
 
 	API.prototype.setNewUser = function (data) {
-	    console.log(data);
-
 	    return fetch('/api/setup', {
 	        method: 'post',
 	        mode: 'cors',
@@ -75146,7 +75152,28 @@
 	    }).then(function (response) {
 	        return response.json();
 	    }).then(function (data) {
+	        console.log(data.success);
+	        Actions.updateNewUserSaveStatus(data.success);
+	    }).catch(function (error) {
+	        console.log(error);
+	    });
+	};
+
+	API.prototype.checkExistingUser = function (data) {
+
+	    return fetch('/api/authenticate', {
+	        method: 'post',
+	        mode: 'cors',
+	        headers: {
+	            'Accept': 'application/json',
+	            'Content-Type': 'application/json'
+	        },
+	        body: JSON.stringify(data)
+	    }).then(function (response) {
+	        return response.json();
+	    }).then(function (data) {
 	        console.log(data);
+	        // Actions.updateNewUserSaveStatus(data.success);
 	    }).catch(function (error) {
 	        console.log(error);
 	    });
@@ -79466,7 +79493,8 @@
 
 			_this.state = {
 				userName: null,
-				userPassword: null
+				userPassword: null,
+				type: 'existing_user'
 			};
 			return _this;
 		}
@@ -79474,14 +79502,12 @@
 		_createClass(AuthForm, [{
 			key: 'updateUserPassword',
 			value: function updateUserPassword(e) {
-
-				this.setState({ userName: e.target.value });
+				this.setState({ userPassword: e.target.value });
 			}
 		}, {
 			key: 'updateUserName',
 			value: function updateUserName(e) {
-
-				this.setState({ userPassword: e.target.value });
+				this.setState({ userName: e.target.value });
 			}
 		}, {
 			key: 'subitNewUser',
@@ -79492,13 +79518,35 @@
 				});
 			}
 		}, {
-			key: 'render',
-			value: function render() {
+			key: 'submitExistingUser',
+			value: function submitExistingUser() {
+
+				API.checkExistingUser({
+					userName: this.state.userName,
+					userPassword: this.state.userPassword
+				});
+			}
+		}, {
+			key: 'setViewType',
+			value: function setViewType(type) {
+
+				this.setState({
+					type: type
+				});
+			}
+		}, {
+			key: 'setNewUserFormView',
+			value: function setNewUserFormView() {
 				var _this2 = this;
 
 				return _react2.default.createElement(
 					'div',
-					{ className: 'auth_form' },
+					null,
+					_react2.default.createElement(
+						'h2',
+						null,
+						'Set your username and password'
+					),
 					_react2.default.createElement('input', { placeholder: 'Username', onChange: function onChange(e) {
 							return _this2.updateUserName(e);
 						} }),
@@ -79511,7 +79559,67 @@
 								return _this2.subitNewUser();
 							} },
 						'Submit'
+					),
+					_react2.default.createElement(
+						'h4',
+						{ onClick: function onClick() {
+								return _this2.setViewType('existing_user');
+							} },
+						'Existing User?'
 					)
+				);
+			}
+		}, {
+			key: 'setExistingUserForm',
+			value: function setExistingUserForm() {
+				var _this3 = this;
+
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(
+						'h2',
+						null,
+						'Existing User'
+					),
+					_react2.default.createElement('input', { placeholder: 'Username', onChange: function onChange(e) {
+							return _this3.updateUserName(e);
+						} }),
+					_react2.default.createElement('input', { placeholder: 'Password', onChange: function onChange(e) {
+							return _this3.updateUserPassword(e);
+						} }),
+					_react2.default.createElement(
+						'button',
+						{ type: 'submit', onClick: function onClick() {
+								return _this3.submitExistingUser();
+							} },
+						'Submit'
+					),
+					_react2.default.createElement(
+						'h4',
+						{ onClick: function onClick() {
+								return _this3.setViewType('new_user');
+							} },
+						'New User?'
+					)
+				);
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var view = null;
+				if (this.state.type == 'existing_user') {
+					view = this.setExistingUserForm();
+				}
+
+				if (this.state.type == 'new_user') {
+					view = this.setNewUserFormView();
+				}
+
+				return _react2.default.createElement(
+					'div',
+					{ className: 'auth_form' },
+					view
 				);
 			}
 		}]);

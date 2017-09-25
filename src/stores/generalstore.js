@@ -24,9 +24,13 @@ class UserInfo {
 	setPasswordStatus(item){
 		this.passwordStatus = item
 	}
+
+	setNewUserStatus(item){
+		console.log(item);
+	}
 };
 
-let User = new User();
+let User = new UserInfo();
 
 var GeneralStore = objectAssign({}, EventEmitter.prototype, {
   addChangeListener: function(cb){
@@ -51,6 +55,11 @@ AppDispatcher.register(function(payload){
       User.setPasswordStatus(action.data);
       GeneralStore.emitChange(CHANGE_EVENT);
       break;
+     case appConstants.UPDATE_NEW_USER_SAVE_STATUS:
+     	// console.log(action.data);
+     	User.setNewUserStatus(action.data);
+     	GeneralStore.emitChange(CHANGE_EVENT);
+     	break;
     default:
       return true;
   }
