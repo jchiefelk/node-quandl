@@ -87,9 +87,10 @@ var getFrontEndData = function(){
 
 var Actions = {
 
-  updateNewUserSaveStatus: function(item){
+  updateUserSubmitStatus: function(item){
+
       AppDispatcher.handleAction({
-        actionType: appConstants.UPDATE_NEW_USER_SAVE_STATUS,
+        actionType: appConstants.UPDATE_USER_SUBMIT_STATUS,
         data: item
       });
   },

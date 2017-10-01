@@ -88,8 +88,8 @@ API.prototype.setNewUser = function(data){
     })
     .then((response) => {return response.json() })
     .then((data) => {
-          console.log(data.success);
-          Actions.updateNewUserSaveStatus(data.success);
+   
+          Actions.updateUserSubmitStatus(data);
     })
     .catch((error) => {
         console.log(error);
@@ -110,8 +110,8 @@ API.prototype.checkExistingUser = function(data){
     })
     .then((response) => {return response.json() })
     .then((data) => {
-          console.log(data);
-          // Actions.updateNewUserSaveStatus(data.success);
+
+          Actions.updateUserSubmitStatus(data);
     })
     .catch((error) => {
         console.log(error);

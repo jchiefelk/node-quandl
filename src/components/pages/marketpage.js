@@ -5,10 +5,10 @@ import IntraDayTicket from '../components/intradayticket';
 import VideoBackground from '../components/videobackground';
 var StockDataStore = require('../../stores/stockdatastore');
 var MarketGraph = require('../jsx/marketgraph');
-import { Router, Route, Link } from 'react-router';
+import { Link } from 'react-router-dom';
 require('../css/main.css');
 
-export default class MarketPage extends Component {
+ class MarketPage extends Component {
 
     constructor(){
         super();
@@ -40,3 +40,5 @@ export default class MarketPage extends Component {
           );
      }
 }
+
+export default MarketPage;

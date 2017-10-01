@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 var API = require('../../api_utls/api');
+var GeneralStore = require('../../stores/generalstore');
+import { NavLink, withRouter, Link } from 'react-router-dom';
 
 
 class AuthForm extends Component {
@@ -9,9 +11,23 @@ class AuthForm extends Component {
 		this.state ={
 			userName:  null,
 			userPassword: null,
-			type: 'existing_user'
+			type: 'existing_user',
+			status: GeneralStore.getSubmitStatus()
 		};
 	}
+
+	componentDidMount(){
+		GeneralStore.addChangeListener(this._onChange.bind(this));
+	}
+	
+	componentWillUnmount(){
+		GeneralStore.removeChangeListener(this._onChange.bind(this));
+	}
+	
+	_onChange(){
+		this.setState({status: GeneralStore.getSubmitStatus()});
+	}
+
 
 	updateUserPassword(e){
 		this.setState({userPassword: e.target.value});
@@ -53,7 +69,7 @@ class AuthForm extends Component {
 					<input placeholder="Username" onChange={(e) => this.updateUserName(e)} />
 					<input placeholder="Password" onChange={(e) => this.updateUserPassword(e)} />
 					<button type="submit" onClick={()=> this.subitNewUser() }>Submit</button>
-					<h4 onClick={()=> this.setViewType('existing_user')}>Existing User?</h4>
+					<Link onClick={()=> this.setViewType('existing_user')} to="marketpage">Existing User?</Link>
 				</div>
 		);
 
@@ -62,14 +78,17 @@ class AuthForm extends Component {
 
 	setExistingUserForm(){
 
+		//
+		// onClick={()=> this.setViewType('new_user')}
+		//
 
 		return(
 				<div>
 					<h2>Existing User</h2>
 					<input placeholder="Username" onChange={(e) => this.updateUserName(e)} />
-					<input placeholder="Password" onChange={(e) => this.updateUserPassword(e)} />
+					<input type="password"  placeholder="Password" onChange={(e) => this.updateUserPassword(e)} />
 					<button type="submit" onClick={()=> this.submitExistingUser() }>Submit</button>
-					<h4 onClick={()=> this.setViewType('new_user')}>New User?</h4>
+					<Link  to="marketpage">New User?</Link>
 				</div>
 		);
 	}
@@ -77,18 +96,27 @@ class AuthForm extends Component {
 
 
 	render(){
+
+
 		let view=null;
-		if(this.state.type=='existing_user') {
+		if(this.state.status.message=="first load" && this.state.type=='existing_user') {
 			view = this.setExistingUserForm();
 		}
 
-		if(this.state.type=='new_user'){
+		if(this.state.status.message=="first load" && this.state.type=='new_user'){
 			view = this.setNewUserFormView();
+		}
+
+		if(this.state.status.message!="first load"){	
+				view = (
+						<div className="loader"></div>
+					);
+			
 		}
 
 		return(
 			<div className="auth_form">
-						{view}
+					{this.setExistingUserForm()}
 			</div>
 		);
 	}

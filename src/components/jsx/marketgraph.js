@@ -3,7 +3,7 @@ var Actions = require('../../actions/actions');
 var moment = require('moment');
 var Datetime = require('react-datetime');
 import MarketPicker from '../components/marketpicker';
-import { Router, Route, Link } from 'react-router';
+import {  Link } from 'react-router-dom';
 import { Chart } from 'react-google-charts';
 let API = require('../../api_utls/api');
 
@@ -510,7 +510,9 @@ class MarketGraph {
 	}
 
 	setLoadingAnimation(){
-		return this.loadingAnimation;
+		return (
+					<div class="loader"></div>
+			);
 	}
 
 	updatecompanyCode(e){

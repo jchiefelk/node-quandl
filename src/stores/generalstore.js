@@ -15,6 +15,7 @@ class UserInfo {
 	constructor(){
 		this.userName = ''
 		this.passwordStatus = null;
+    this.status = {success: false, message: "first load"};
 	}
 
 	setUserName(item){
@@ -25,8 +26,9 @@ class UserInfo {
 		this.passwordStatus = item
 	}
 
-	setNewUserStatus(item){
+	setSubmitStatus(item){
 		console.log(item);
+    this.status = item;
 	}
 };
 
@@ -41,7 +43,11 @@ var GeneralStore = objectAssign({}, EventEmitter.prototype, {
   },
   emitChange: function() {
     this.emit(CHANGE_EVENT);
+  },
+  getSubmitStatus: function(){
+    return User.status;
   }
+
 });
 
 AppDispatcher.register(function(payload){
@@ -55,12 +61,13 @@ AppDispatcher.register(function(payload){
       User.setPasswordStatus(action.data);
       GeneralStore.emitChange(CHANGE_EVENT);
       break;
-     case appConstants.UPDATE_NEW_USER_SAVE_STATUS:
-     	// console.log(action.data);
-     	User.setNewUserStatus(action.data);
+     case appConstants.UPDATE_USER_SUBMIT_STATUS:
+     	console.log(action.data);
+     	User.setSubmitStatus(action.data);
      	GeneralStore.emitChange(CHANGE_EVENT);
      	break;
     default:
       return true;
   }
 });
+module.exports = GeneralStore;

@@ -42,7 +42,7 @@ router.post('/authenticate',function(req,res){
         
               // if user is found, check password first
               if(bcrypt.compareSync(req.body.userPassword,user.password)){
-                  console.log('Passwords Match');
+
                   let token = jwt.sign({
                     data: user
                   }, config.secret, { expiresIn: '1h' });
@@ -53,7 +53,7 @@ router.post('/authenticate',function(req,res){
                     });
             
                 } else {
-                    console.log('Passwords Dont Match');
+
                     res.json({
                         success: false,
                         message: 'Password invalid'
@@ -77,7 +77,7 @@ router.post('/setup', function(req, res) {
       if(err) throw err;
 
       if(user){
-            console.log('User Already Exists!!!!!!');
+            
             //
             res.json({
                   success: false,
@@ -96,18 +96,14 @@ router.post('/setup', function(req, res) {
                 // save the sample user
                 nick.save(function(err) {
                   if (err) throw err;
-                  console.log('User saved successfully');
-                  res.json({ success: true });
+    
+                  res.json({ 
+                    success: true,
+                    message: 'User saved successfully' 
+                  });
                 });
             });
       
-
-
-
-
-
-
-
       }
   });
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Router, Route, Link } from 'react-router';
 import MarketPage from './pages/marketpage';
-import AuthForm from './components/authform'
+import AuthForm from './components/authform';
+import {  Link } from 'react-router-dom';
 require('./css/main.css');
 require('./css/react-datetime.css');
 require('./css/marketpicker.css');
