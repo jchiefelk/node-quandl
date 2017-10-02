@@ -27,7 +27,6 @@ class UserInfo {
 	}
 
 	setSubmitStatus(item){
-		console.log(item);
     this.status = item;
 	}
 };

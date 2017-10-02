@@ -9,7 +9,6 @@ import AuthForm from '../components/components/authform';
 
 
 const Routes = () => (
-
 	  		<div>
 	  			<Switch>
 				  	<Route exact path="/"  component={AuthForm} /> 
@@ -18,7 +17,6 @@ const Routes = () => (
 				    <Route eaxct path="/intradaypage" component={IntraDayPage}/>
 		 		</Switch>
 		    </div>
-
 );
 
 export default Routes;

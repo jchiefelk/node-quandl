@@ -58,9 +58,15 @@
 
 	var _routes2 = _interopRequireDefault(_routes);
 
+	var _reactRouterDom = __webpack_require__(183);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	_reactDom2.default.render(_react2.default.createElement(_routes2.default, null), document.getElementById('root'));
+	_reactDom2.default.render(_react2.default.createElement(
+		_reactRouterDom.BrowserRouter,
+		null,
+		_react2.default.createElement(_routes2.default, null)
+	), document.getElementById('root'));
 
 /***/ }),
 /* 1 */
@@ -21799,7 +21805,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+				value: true
 	});
 
 	var _react = __webpack_require__(1);
@@ -21831,18 +21837,18 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Routes = function Routes() {
-	  return _react2.default.createElement(
-	    _reactRouterDom.BrowserRouter,
-	    null,
-	    _react2.default.createElement(
-	      'div',
-	      null,
-	      _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _authform2.default }),
-	      _react2.default.createElement(_reactRouterDom.Route, { path: '/about', component: _aboutpage2.default }),
-	      _react2.default.createElement(_reactRouterDom.Route, { path: '/marketpage', component: _marketpage2.default }),
-	      _react2.default.createElement(_reactRouterDom.Route, { path: '/intradaypage', component: _intradaypage2.default })
-	    )
-	  );
+				return _react2.default.createElement(
+							'div',
+							null,
+							_react2.default.createElement(
+										_reactRouterDom.Switch,
+										null,
+										_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _authform2.default }),
+										_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/about', component: _aboutpage2.default }),
+										_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/marketpage', component: _marketpage2.default }),
+										_react2.default.createElement(_reactRouterDom.Route, { eaxct: true, path: '/intradaypage', component: _intradaypage2.default })
+							)
+				);
 	};
 	// import {Route} from 'react-router'
 	exports.default = Routes;
@@ -25460,8 +25466,6 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactRouterDom = __webpack_require__(183);
-
 	var _marketpage = __webpack_require__(224);
 
 	var _marketpage2 = _interopRequireDefault(_marketpage);
@@ -25469,6 +25473,8 @@
 	var _authform = __webpack_require__(431);
 
 	var _authform2 = _interopRequireDefault(_authform);
+
+	var _reactRouterDom = __webpack_require__(183);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25587,7 +25593,6 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      //  <Header/>
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'marketpage' },
@@ -25718,7 +25723,7 @@
 
 
 	// module
-	exports.push([module.id, "#Title {\n\tfont-size: 4.7em;\n\tcolor: black;\n\tfont-weight: 900; \n\tfont-family: 'Arial';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n\talign-text: center;\n\tmargin: 50;\n}\n#About-Me {\n\tcolor: black;\n\tfont-size: 2.1em;\n\tfont-weight: 500; \n\tfont-family: 'Arial';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n}\n.app {\n\tdisplay: flex; \n\tflex-direction: column; \n\tbackground-color: transparent;\n\theight: 100%;\n}\n.enter_icons {\n\twidth: 2.3em; \n\theight: 2.3em; \n\tmargin-left: 1em;\n\tmargin-top: 0.05em; \n\tcursor: pointer;\n}\n\n.bitcoin_history_options {\n\tposition: relative;\n\tdisplay: flex;\n\tflex-direction: row;\n\tfont-size: 12;\n\tfont-family: 'Arial';\n\tjustify-content: center;\n\n}\n\n.bitcoin_history_options_label {\n\tdisplay: flex;\n\talign-items: center;\n\tcursor: pointer;\n\tmargin: 1.5em;\n}\n\n.bitcoin_history_options_label:hover{\n\tborder-bottom-style: solid;\n\tborder-bottom-width: 0.01em;\n\tborder-bottom-color: black;\n\topacity: 0.7;\n}\n\n.bitcoin_history_options_label_selected {\n\tmargin: 1.5em;\n\tdisplay: flex;\n\talign-items: center;\n\tcursor: pointer;\n\tborder-bottom-style: solid;\n\tborder-bottom-width: 0.01em;\n\tborder-bottom-color: black;\n}\n\n.stock_history_options {\n\tposition: relative;\n\tdisplay: flex;\n\tflex-direction: row;\n\tfont-size: 12;\n\tfont-family: 'Arial';\n\tjustify-content: center;\n}\n.stock_history_options label {\n\tdisplay: flex;\n\tflex-direction: column;\n\tmargin: 1em;\n\talign-items: center;\n\tcursor: pointer;\n}\n.stock_history_options select {\n\twidth: 7em;\n\theight: 2.5em;\n\tbackground: Snow;\n\tmargin: 0.3em;\n\tborder-width: 0;\n}\n.marketpage {\n\tdisplay: flex;\n\tflex-direction: column;\n\tbackground-color: transparent; \n\talign-items: center;\n}\n.marketgraph {\n\tbackground-color: transparent;\n\talign-items: center;\n\twidth: 50em;\n\theight: 40em;\n\tjustify-content: center;\n}\n.bitcoingraph {\n\tbackground-color: transparent;\n\talign-items: center;\n\twidth: 100%;\n\theight: 40vh;\n\tjustify-content: center;\n}\n.bitcoinoptions {\n\tposition: relative;\n\tright: 0;\n\twidth: 5vw;\n\tfont-size: 18px;\n\tborder-width: 0;\n}\n.bitcoinCandleStickPlot {\n\tbackground-color: transparent;\n\talign-items: center;\n\twidth: 100%;\n\theight: 40vh;\n\tjustify-content: center;\n}\n.paragraph {\n\tcolor: black;\n\tfont-size: 1.5em;\n\tfont-weight: 500;\n\tfont-family: 'Arial';\n\tmargin-top: 2em;\n\tmargin: 50;\n}\n.table_row_parent { \n\tborder-width: 2; \n\tborder-style: solid; \n\tdisplay: flex;\n\tflex-direction: column;\n}\n.section-title {\n\tmargin: 50;\n\tfont-size: 2em;\n\tfont-weight: 900;\n\tfont-family: 'Arial';\n\tmargin-top: 2em;\n}\n.code-image {\n\tmargin: 0;\n\twidth: 100;\n}\n.header {\n\tdisplay: flex;\n\tflex-direction: row;\n\twidth: 100%;\n\theight: 3em; \n\tbackground-color: black; \n\talign-items: center; \n}\n.header-link {\n\tfont-weight: 700;\n\tfont-family: 'Arial';\n\tfont-size: 18;\n\tcolor: white; \n\tposition: absolute;\n\ttop: 1em;\n\tleft: 2em;\n\tcursor: pointer; \n\ttext-decoration: none;  \n}\n.linegraph {\n\tdisplay: flex;\n\twidth: 25em;\n}\n.intradaypage {\n\tmargin-top: 3em;\n\tdisplay: flex;\n\tflex-direction: column; \n\tbackground-color: transparent;\n\twidth: 90%;\n\theight: 100%;\n}\n.intradaychild {\n\tdisplay: flex;\n\tflex-direction: row;\n}\n.intradaylinegraph {\n\twidth: 50em;\n\theight: 27em;\n\tbackground-color: Snow;\n\tmargin: 1.5em;\n}\n.intradaybargraph {\n\tdisplay: flex;\n\twidth: 50em;\n\theight: 15em; \n\tbackground-color: transparent;\n\tmargin-left: 5em;\n}\n.autocorrelationgraph {\n\tdisplay: flex;\n\tbackground-color: transparent;\n\twidth: 50em;\n\theight: 15em;\n}\n.autocorrelationgraph_intraday {\n\tdisplay: flex;\n\twidth: 45em;\n\theight: 20em;\n\tmargin-left: 6em;\n}\n.candleStickGraph_intraday {\n\tdisplay: flex;\n\twidth: 50em;\n\theight: 30em;\n\tmargin-top: 2em;\t\n}\n.candleStickGraph {\n\tdisplay: flex;\n\theight: 15em;\n\twidth: 41em;\n\tbackground-color: transparent;\n}\n\n.graphViews {\n\tdisplay: flex;\n\tbackground-color: Snow;\n\twidth: 90%;\n}\n\n.marketgraph-view {\n    background-color: Snow;\n    width: 90%;\n    flex-direction: column;\n    margin-top: 2em;\n}\n\n.graphViewChild {\n\tdisplay: flex;\n\tbackground-color: transparent;\n\tflex-direction: column; \n\theight: 40em;\n\twidth: 50em;\n}\n\n.graph-page-title {\n\tfont-family: 'Arial';\n\tfont-weight: 500; \n\tcolor: black;\n\tfont-size: 2.5em;\n\tposition: relative;\n\ttop: 0em;\n}\n\n.background-video {\n\tdisplay: flex;\n\twidth: 100%;\n\tbackground-color: transparent;\n}\n\n.videobanner {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n\theight: 70%;\n\twidth: 100%;\n\ttop: 0;\n\tposition: absolute;\n\tbackground-color: transparent;\n\tcolor: white;\n\tfont-family: 'Arial';\n}\n\n.bannerchild {\n\tfont-size: 4vh;\n\tmargin-left: 4em;\n\tmargin-top: 2.5em;\n}\n\n.bannerAd {\n\tposition: absolute;\n\ttop: 30%;\n\twidth: 90%;\n\theight: 30vh;\n\tdisplay: flex;\n\tfont-size: 4.5vh;\n\talign-text: center;\n\talign-items: center;\n\tjustify-content: center;\n\tbackground-color: transparent;\n\tcolor: black;\n\topacity: 0.6;\n}\n\n/**\n  responsive container\n**/\n.gridcontainer {\n  min-width: 100%;\n  align-items: center;\n}\n.gridwrapper {\n  overflow: hidden;\n  display: flex;\n  flex-direction: row;\n}\n.gridbox {\n    /*margin-left: 2.0242914979757085020242914979757%;*/\n    /* margin-right: 2.0242914979757085020242914979757%;*/\n}\n.gridmain {\n  /*width: 48.987854251012145748987854251012%;*/\n    width: 100%;\n}\n\n\n@media only screen and (max-width: 700px){\n\n\t.gridwrapper {\n\t\tdisplay: flex;\n\t\tflex-direction: column;\n\t}\n\n    .gridmain {\n      width: 100%;\n    }\n\n    .gridbox {\n      \n    }\n}\n\n.auth_form {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n}\n\n.auth_form input {\n\t\tfont-size: 1.9em;\n\t\twidth: 15em;\n\t\tmargin: 1.0em;\n}\n\n.auth_form button {\n\theight: 2em;\n\twidth: 6em;\n\tfont-size: 1.5em;\n\tfont-family: 'Arial';\n}\n\n.auth_form h2 {\n\tmargin-top: 3em;\n}\n\n.auth_form a {\n\tmargin-top: 4em;\n\tcursor: pointer;\n}\n\n.auth_form h4:hover{\n\tcolor: red;\n}\n\n.auth_form div {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n.loader {\n    border: 16px solid #f3f3f3; /* Light grey */\n    border-top: 16px solid #3498db; /* Blue */\n    border-radius: 50%;\n    width: 120px;\n    height: 120px;\n    animation: spin 2s linear infinite;\n}\n\n@keyframes spin {\n    0% { transform: rotate(0deg); }\n    100% { transform: rotate(360deg); }\n}\n\n", ""]);
+	exports.push([module.id, "#Title {\n\tfont-size: 4.7em;\n\tcolor: black;\n\tfont-weight: 900; \n\tfont-family: 'Arial';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n\talign-text: center;\n\tmargin: 50;\n}\n#About-Me {\n\tcolor: black;\n\tfont-size: 2.1em;\n\tfont-weight: 500; \n\tfont-family: 'Arial';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n}\n.app {\n\tdisplay: flex; \n\tflex-direction: column; \n\tbackground-color: transparent;\n\theight: 100%;\n}\n.enter_icons {\n\twidth: 2.3em; \n\theight: 2.3em; \n\tmargin-left: 1em;\n\tmargin-top: 0.05em; \n\tcursor: pointer;\n}\n\n.bitcoin_history_options {\n\tposition: relative;\n\tdisplay: flex;\n\tflex-direction: row;\n\tfont-size: 12;\n\tfont-family: 'Arial';\n\tjustify-content: center;\n\n}\n\n.bitcoin_history_options_label {\n\tdisplay: flex;\n\talign-items: center;\n\tcursor: pointer;\n\tmargin: 1.5em;\n}\n\n.bitcoin_history_options_label:hover{\n\tborder-bottom-style: solid;\n\tborder-bottom-width: 0.01em;\n\tborder-bottom-color: black;\n\topacity: 0.7;\n}\n\n.bitcoin_history_options_label_selected {\n\tmargin: 1.5em;\n\tdisplay: flex;\n\talign-items: center;\n\tcursor: pointer;\n\tborder-bottom-style: solid;\n\tborder-bottom-width: 0.01em;\n\tborder-bottom-color: black;\n}\n\n.stock_history_options {\n\tposition: relative;\n\tdisplay: flex;\n\tflex-direction: row;\n\tfont-size: 12;\n\tfont-family: 'Arial';\n\tjustify-content: center;\n}\n.stock_history_options label {\n\tdisplay: flex;\n\tflex-direction: column;\n\tmargin: 1em;\n\talign-items: center;\n\tcursor: pointer;\n}\n.stock_history_options select {\n\twidth: 7em;\n\theight: 2.5em;\n\tbackground: Snow;\n\tmargin: 0.3em;\n\tborder-width: 0;\n}\n.marketpage {\n\tdisplay: flex;\n\tflex-direction: column;\n\tbackground-color: transparent; \n\talign-items: center;\n}\n.marketgraph {\n\tbackground-color: transparent;\n\talign-items: center;\n\twidth: 50em;\n\theight: 40em;\n\tjustify-content: center;\n}\n.bitcoingraph {\n\tbackground-color: transparent;\n\talign-items: center;\n\twidth: 100%;\n\theight: 40vh;\n\tjustify-content: center;\n}\n.bitcoinoptions {\n\tposition: relative;\n\tright: 0;\n\twidth: 5vw;\n\tfont-size: 18px;\n\tborder-width: 0;\n}\n.bitcoinCandleStickPlot {\n\tbackground-color: transparent;\n\talign-items: center;\n\twidth: 100%;\n\theight: 40vh;\n\tjustify-content: center;\n}\n.paragraph {\n\tcolor: black;\n\tfont-size: 1.5em;\n\tfont-weight: 500;\n\tfont-family: 'Arial';\n\tmargin-top: 2em;\n\tmargin: 50;\n}\n.table_row_parent { \n\tborder-width: 2; \n\tborder-style: solid; \n\tdisplay: flex;\n\tflex-direction: column;\n}\n.section-title {\n\tmargin: 50;\n\tfont-size: 2em;\n\tfont-weight: 900;\n\tfont-family: 'Arial';\n\tmargin-top: 2em;\n}\n.code-image {\n\tmargin: 0;\n\twidth: 100;\n}\n.header {\n\tdisplay: flex;\n\tflex-direction: row;\n\twidth: 100%;\n\theight: 3em; \n\tbackground-color: black; \n\talign-items: center; \n}\n.header-link {\n\tfont-weight: 700;\n\tfont-family: 'Arial';\n\tfont-size: 18;\n\tcolor: white; \n\tposition: absolute;\n\ttop: 1em;\n\tleft: 2em;\n\tcursor: pointer; \n\ttext-decoration: none;  \n}\n.linegraph {\n\tdisplay: flex;\n\twidth: 25em;\n}\n.intradaypage {\n\tmargin-top: 3em;\n\tdisplay: flex;\n\tflex-direction: column; \n\tbackground-color: transparent;\n\twidth: 90%;\n\theight: 100%;\n}\n.intradaychild {\n\tdisplay: flex;\n\tflex-direction: row;\n}\n.intradaylinegraph {\n\twidth: 50em;\n\theight: 27em;\n\tbackground-color: Snow;\n\tmargin: 1.5em;\n}\n.intradaybargraph {\n\tdisplay: flex;\n\twidth: 50em;\n\theight: 15em; \n\tbackground-color: transparent;\n\tmargin-left: 5em;\n}\n.autocorrelationgraph {\n\tdisplay: flex;\n\tbackground-color: transparent;\n\twidth: 50em;\n\theight: 15em;\n}\n.autocorrelationgraph_intraday {\n\tdisplay: flex;\n\twidth: 45em;\n\theight: 20em;\n\tmargin-left: 6em;\n}\n.candleStickGraph_intraday {\n\tdisplay: flex;\n\twidth: 50em;\n\theight: 30em;\n\tmargin-top: 2em;\t\n}\n.candleStickGraph {\n\tdisplay: flex;\n\theight: 15em;\n\twidth: 41em;\n\tbackground-color: transparent;\n}\n\n.graphViews {\n\tdisplay: flex;\n\tbackground-color: Snow;\n\twidth: 90%;\n}\n\n.marketgraph-view {\n    background-color: Snow;\n    width: 90%;\n    flex-direction: column;\n    margin-top: 2em;\n}\n\n.graphViewChild {\n\tdisplay: flex;\n\tbackground-color: transparent;\n\tflex-direction: column; \n\theight: 40em;\n\twidth: 50em;\n}\n\n.graph-page-title {\n\tfont-family: 'Arial';\n\tfont-weight: 500; \n\tcolor: black;\n\tfont-size: 2.5em;\n\tposition: relative;\n\ttop: 0em;\n}\n\n.background-video {\n\tdisplay: flex;\n\twidth: 100%;\n\tbackground-color: transparent;\n}\n\n.videobanner {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n\theight: 70%;\n\twidth: 100%;\n\ttop: 0;\n\tposition: absolute;\n\tbackground-color: transparent;\n\tcolor: white;\n\tfont-family: 'Arial';\n}\n\n.bannerchild {\n\tfont-size: 4vh;\n\tmargin-left: 4em;\n\tmargin-top: 2.5em;\n}\n\n.bannerAd {\n\tposition: absolute;\n\ttop: 30%;\n\twidth: 90%;\n\theight: 30vh;\n\tdisplay: flex;\n\tfont-size: 4.5vh;\n\talign-text: center;\n\talign-items: center;\n\tjustify-content: center;\n\tbackground-color: transparent;\n\tcolor: black;\n\topacity: 0.6;\n}\n\n/**\n  responsive container\n**/\n.gridcontainer {\n  min-width: 100%;\n  align-items: center;\n}\n.gridwrapper {\n  overflow: hidden;\n  display: flex;\n  flex-direction: row;\n}\n.gridbox {\n    /*margin-left: 2.0242914979757085020242914979757%;*/\n    /* margin-right: 2.0242914979757085020242914979757%;*/\n}\n.gridmain {\n  /*width: 48.987854251012145748987854251012%;*/\n    width: 100%;\n}\n\n\n@media only screen and (max-width: 700px){\n\n\t.gridwrapper {\n\t\tdisplay: flex;\n\t\tflex-direction: column;\n\t}\n\n    .gridmain {\n      width: 100%;\n    }\n\n    .gridbox {\n      \n    }\n}\n\n.auth_form {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n}\n\n.auth_form input {\n\t\tfont-size: 1.9em;\n\t\twidth: 15em;\n\t\tmargin: 1.0em;\n}\n\n.auth_form button {\n\theight: 2em;\n\twidth: 6em;\n\tfont-size: 1.5em;\n\tfont-family: 'Arial';\n}\n\n.auth_form h1 {\n\tcolor: red;\n}\n\n.auth_form h2 {\n\tmargin-top: 3em;\n}\n\n.auth_form a {\n\tmargin-top: 4em;\n\tcursor: pointer;\n}\n\n.auth_form h4 {\n\tcursor: pointer;\n}\n\n.auth_form h4:hover{\n\tcolor: red;\n}\n\n.auth_form div {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n.loader {\n    border: 16px solid #f3f3f3; /* Light grey */\n    border-top: 16px solid #3498db; /* Blue */\n    border-radius: 50%;\n    width: 120px;\n    height: 120px;\n    animation: spin 2s linear infinite;\n}\n\n@keyframes spin {\n    0% { transform: rotate(0deg); }\n    100% { transform: rotate(360deg); }\n}\n\n", ""]);
 
 	// exports
 
@@ -77971,19 +77976,21 @@
 	var API = __webpack_require__(405);
 	var GeneralStore = __webpack_require__(432);
 
+	var Actions = __webpack_require__(403);
+
 	var AuthForm = function (_Component) {
 		_inherits(AuthForm, _Component);
 
-		function AuthForm() {
+		function AuthForm(props) {
 			_classCallCheck(this, AuthForm);
 
-			var _this = _possibleConstructorReturn(this, (AuthForm.__proto__ || Object.getPrototypeOf(AuthForm)).call(this));
+			var _this = _possibleConstructorReturn(this, (AuthForm.__proto__ || Object.getPrototypeOf(AuthForm)).call(this, props));
 
 			_this.state = {
 				userName: null,
 				userPassword: null,
 				type: 'existing_user',
-				status: GeneralStore.getSubmitStatus()
+				status: { success: false, message: "first load" }
 			};
 			return _this;
 		}
@@ -77991,17 +77998,32 @@
 		_createClass(AuthForm, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {
+				// Actions.updateUserSubmitStatus({success: false, message: "first load"});
 				GeneralStore.addChangeListener(this._onChange.bind(this));
 			}
 		}, {
 			key: 'componentWillUnmount',
 			value: function componentWillUnmount() {
+
 				GeneralStore.removeChangeListener(this._onChange.bind(this));
+			}
+		}, {
+			key: 'componentWillUpdate',
+			value: function componentWillUpdate() {
+				console.log(this.state.status);
+				if (this.state.status.message == "Enjoy your token!") {
+					this.setState({
+						userName: null,
+						userPassword: null
+					});
+					this.props.history.push('marketpage');
+				}
 			}
 		}, {
 			key: '_onChange',
 			value: function _onChange() {
 				this.setState({ status: GeneralStore.getSubmitStatus() });
+				// 
 			}
 		}, {
 			key: 'updateUserPassword',
@@ -78033,7 +78055,6 @@
 		}, {
 			key: 'setViewType',
 			value: function setViewType(type) {
-
 				this.setState({
 					type: type
 				});
@@ -78051,10 +78072,10 @@
 						null,
 						'Set your username and password'
 					),
-					_react2.default.createElement('input', { placeholder: 'Username', onChange: function onChange(e) {
+					_react2.default.createElement('input', { value: this.state.userName, placeholder: 'Username', onChange: function onChange(e) {
 							return _this2.updateUserName(e);
 						} }),
-					_react2.default.createElement('input', { placeholder: 'Password', onChange: function onChange(e) {
+					_react2.default.createElement('input', { value: this.state.userPassword, type: 'password', placeholder: 'Password', onChange: function onChange(e) {
 							return _this2.updateUserPassword(e);
 						} }),
 					_react2.default.createElement(
@@ -78062,13 +78083,14 @@
 						{ type: 'submit', onClick: function onClick() {
 								return _this2.subitNewUser();
 							} },
-						'Submit'
+						' Submit '
 					),
 					_react2.default.createElement(
-						_reactRouterDom.Link,
+						'h4',
 						{ onClick: function onClick() {
-								return _this2.setViewType('existing_user');
-							}, to: 'marketpage' },
+								_this2.setViewType('existing_user');
+								Actions.updateUserSubmitStatus({ success: false, message: "first load" });
+							} },
 						'Existing User?'
 					)
 				);
@@ -78077,10 +78099,6 @@
 			key: 'setExistingUserForm',
 			value: function setExistingUserForm() {
 				var _this3 = this;
-
-				//
-				// onClick={()=> this.setViewType('new_user')}
-				//
 
 				return _react2.default.createElement(
 					'div',
@@ -78098,14 +78116,105 @@
 						} }),
 					_react2.default.createElement(
 						'button',
-						{ type: 'submit', onClick: function onClick() {
-								return _this3.submitExistingUser();
+						{
+							type: 'submit',
+							onClick: function onClick() {
+								_this3.submitExistingUser();
 							} },
-						'Submit'
+						'  Submit  '
 					),
 					_react2.default.createElement(
-						_reactRouterDom.Link,
-						{ to: 'marketpage' },
+						'h4',
+						{ onClick: function onClick() {
+								_this3.setViewType('new_user');
+								Actions.updateUserSubmitStatus({ success: false, message: "first load" });
+							} },
+						'New User?'
+					)
+				);
+			}
+		}, {
+			key: 'setWrongPasswordView',
+			value: function setWrongPasswordView() {
+				var _this4 = this;
+
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(
+						'h1',
+						null,
+						'Wrong Password!!!!'
+					),
+					_react2.default.createElement(
+						'h2',
+						null,
+						'Existing User'
+					),
+					_react2.default.createElement('input', { value: this.state.userName, placeholder: 'Username', onChange: function onChange(e) {
+							return _this4.updateUserName(e);
+						} }),
+					_react2.default.createElement('input', { value: this.state.userPassword, type: 'password', placeholder: 'Password', onChange: function onChange(e) {
+							return _this4.updateUserPassword(e);
+						} }),
+					_react2.default.createElement(
+						'button',
+						{
+							type: 'submit',
+							onClick: function onClick() {
+								_this4.submitExistingUser();
+							} },
+						'  Submit  '
+					),
+					_react2.default.createElement(
+						'h4',
+						{ onClick: function onClick() {
+								_this4.setViewType('new_user');
+								Actions.updateUserSubmitStatus({ success: false, message: "first load" });
+							} },
+						'New User?'
+					)
+				);
+			}
+		}, {
+			key: 'setUserDoesNotExistView',
+			value: function setUserDoesNotExistView() {
+				var _this5 = this;
+
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(
+						'h1',
+						null,
+						'User Name does not Exist!!!!'
+					),
+					_react2.default.createElement(
+						'h2',
+						null,
+						'Existing User'
+					),
+					_react2.default.createElement('input', { value: this.state.userName, placeholder: 'Username', onChange: function onChange(e) {
+							return _this5.updateUserName(e);
+						} }),
+					_react2.default.createElement('input', { value: this.state.userPassword, type: 'password', placeholder: 'Password', onChange: function onChange(e) {
+							return _this5.updateUserPassword(e);
+						} }),
+					_react2.default.createElement(
+						'button',
+						{
+							type: 'submit',
+							onClick: function onClick() {
+								_this5.submitExistingUser();
+							} },
+						'  Submit  '
+					),
+					_react2.default.createElement(
+						'h4',
+						{ onClick: function onClick() {
+								_this5.setViewType('new_user');
+								Actions.updateUserSubmitStatus({ success: false, message: "first load" });
+							} },
 						'New User?'
 					)
 				);
@@ -78123,8 +78232,19 @@
 					view = this.setNewUserFormView();
 				}
 
-				if (this.state.status.message != "first load") {
-					view = _react2.default.createElement('div', { className: 'loader' });
+				/*
+	   if(this.state.status.message!="first load"){	
+	   		view = (
+	   			<div className="loader"></div>
+	   			);
+	   }
+	   */
+				if (this.state.status.message == "Password invalid") {
+					view = this.setWrongPasswordView();
+				}
+
+				if (this.state.status.message == "Authentication failed. User not found.") {
+					view = this.setUserDoesNotExistView();
 				}
 
 				return _react2.default.createElement(
@@ -78184,7 +78304,6 @@
 	  }, {
 	    key: 'setSubmitStatus',
 	    value: function setSubmitStatus(item) {
-	      console.log(item);
 	      this.status = item;
 	    }
 	  }]);

@@ -2,30 +2,47 @@ import React, {Component} from 'react';
 var API = require('../../api_utls/api');
 var GeneralStore = require('../../stores/generalstore');
 import { NavLink, withRouter, Link } from 'react-router-dom';
+let Actions = require('../../actions/actions');
 
 
 class AuthForm extends Component {
 
-	constructor(){
-		super();
+	constructor(props){
+		super(props);
 		this.state ={
 			userName:  null,
 			userPassword: null,
 			type: 'existing_user',
-			status: GeneralStore.getSubmitStatus()
+			status: {success: false, message: "first load"}
 		};
 	}
 
 	componentDidMount(){
+		// Actions.updateUserSubmitStatus({success: false, message: "first load"});
 		GeneralStore.addChangeListener(this._onChange.bind(this));
 	}
 	
 	componentWillUnmount(){
+
+
 		GeneralStore.removeChangeListener(this._onChange.bind(this));
+
+	}
+
+	componentWillUpdate(){
+		console.log(this.state.status);
+		if(this.state.status.message=="Enjoy your token!"){
+			this.setState({
+				userName:  null,
+				userPassword: null,
+			});
+			this.props.history.push('marketpage');
+		}
 	}
 	
 	_onChange(){
 		this.setState({status: GeneralStore.getSubmitStatus()});
+		// 
 	}
 
 
@@ -53,7 +70,6 @@ class AuthForm extends Component {
 	}
 
 	setViewType(type) {
-
 			this.setState({
 				type: type 
 			});
@@ -61,15 +77,16 @@ class AuthForm extends Component {
 
 	setNewUserFormView(){
 
-
 		return(
-
 				<div>
 					<h2>Set your username and password</h2>
-					<input placeholder="Username" onChange={(e) => this.updateUserName(e)} />
-					<input placeholder="Password" onChange={(e) => this.updateUserPassword(e)} />
-					<button type="submit" onClick={()=> this.subitNewUser() }>Submit</button>
-					<Link onClick={()=> this.setViewType('existing_user')} to="marketpage">Existing User?</Link>
+					<input value={this.state.userName} placeholder="Username" onChange={(e) => this.updateUserName(e)} />
+					<input value={this.state.userPassword} type="password"  placeholder="Password" onChange={(e) => this.updateUserPassword(e)} />
+					<button type="submit" onClick={()=> this.subitNewUser() }>	Submit </button>
+					<h4 onClick={()=>{ 
+						this.setViewType('existing_user');
+						 Actions.updateUserSubmitStatus({success: false, message: "first load"});
+					}}>Existing User?</h4>
 				</div>
 		);
 
@@ -77,26 +94,77 @@ class AuthForm extends Component {
 
 
 	setExistingUserForm(){
-
-		//
-		// onClick={()=> this.setViewType('new_user')}
-		//
-
+		
 		return(
 				<div>
 					<h2>Existing User</h2>
 					<input placeholder="Username" onChange={(e) => this.updateUserName(e)} />
 					<input type="password"  placeholder="Password" onChange={(e) => this.updateUserPassword(e)} />
-					<button type="submit" onClick={()=> this.submitExistingUser() }>Submit</button>
-					<Link  to="marketpage">New User?</Link>
+					<button 
+						type="submit" 
+						onClick={()=> {
+							this.submitExistingUser(); 
+					}}>  Submit  </button>
+
+					<h4 onClick={()=> {
+						this.setViewType('new_user');
+						Actions.updateUserSubmitStatus({success: false, message: "first load"});
+					}}>New User?</h4>
 				</div>
 		);
 	}
 
+	setWrongPasswordView(){
 
+		return (
+				<div>
+					<h1>Wrong Password!!!!</h1>
+					<h2>Existing User</h2>
+
+					<input value={this.state.userName} placeholder="Username" onChange={(e) => this.updateUserName(e)} />
+					<input value={this.state.userPassword} type="password"  placeholder="Password" onChange={(e) => this.updateUserPassword(e)} />
+					
+					<button 
+						type="submit" 
+						onClick={()=> {
+							this.submitExistingUser();
+
+					}}>  Submit  </button>
+
+					<h4 onClick={()=> {
+						this.setViewType('new_user');
+						 Actions.updateUserSubmitStatus({success: false, message: "first load"});
+					}}>New User?</h4>
+				</div>
+			);
+	}
+
+	setUserDoesNotExistView(){
+
+		return (
+				<div>
+					<h1>User Name does not Exist!!!!</h1>
+					<h2>Existing User</h2>
+
+
+					<input value={this.state.userName} placeholder="Username" onChange={(e) => this.updateUserName(e)} />
+					<input value={this.state.userPassword} type="password"  placeholder="Password" onChange={(e) => this.updateUserPassword(e)} />
+					<button 
+						type="submit" 
+						onClick={()=> {
+							this.submitExistingUser(); 
+					}}>  Submit  </button>
+
+					<h4 onClick={()=> {
+						this.setViewType('new_user');
+						Actions.updateUserSubmitStatus({success: false, message: "first load"});
+					}}>New User?</h4>
+				</div>
+		);
+	}
 
 	render(){
-
+		
 
 		let view=null;
 		if(this.state.status.message=="first load" && this.state.type=='existing_user') {
@@ -107,16 +175,26 @@ class AuthForm extends Component {
 			view = this.setNewUserFormView();
 		}
 
+		/*
 		if(this.state.status.message!="first load"){	
 				view = (
-						<div className="loader"></div>
+					<div className="loader"></div>
 					);
-			
 		}
+		*/
+		if(this.state.status.message=="Password invalid"){
+			view = this.setWrongPasswordView();
+		}
+
+		if(this.state.status.message == "Authentication failed. User not found."){
+			view = this.setUserDoesNotExistView();
+		}
+
+
 
 		return(
 			<div className="auth_form">
-					{this.setExistingUserForm()}
+					{view}
 			</div>
 		);
 	}

@@ -27,10 +27,7 @@ require('../css/main.css');
           stocklistings: StockDataStore.getStockListings()
         });
       }
-
-
     render() {
-
           return(
             <div className="marketpage"> 
               <Header/>
