@@ -61,7 +61,6 @@ AppDispatcher.register(function(payload){
       GeneralStore.emitChange(CHANGE_EVENT);
       break;
      case appConstants.UPDATE_USER_SUBMIT_STATUS:
-     	console.log(action.data);
      	User.setSubmitStatus(action.data);
      	GeneralStore.emitChange(CHANGE_EVENT);
      	break;

@@ -21834,6 +21834,10 @@
 
 	var _authform2 = _interopRequireDefault(_authform);
 
+	var _userdashboard = __webpack_require__(440);
+
+	var _userdashboard2 = _interopRequireDefault(_userdashboard);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Routes = function Routes() {
@@ -21846,11 +21850,12 @@
 										_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _authform2.default }),
 										_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/about', component: _aboutpage2.default }),
 										_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/marketpage', component: _marketpage2.default }),
-										_react2.default.createElement(_reactRouterDom.Route, { eaxct: true, path: '/intradaypage', component: _intradaypage2.default })
+										_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/intradaypage', component: _intradaypage2.default }),
+										_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/userdashboard', component: _userdashboard2.default })
 							)
 				);
 	};
-	// import {Route} from 'react-router'
+
 	exports.default = Routes;
 
 /***/ }),
@@ -78004,26 +78009,27 @@
 		}, {
 			key: 'componentWillUnmount',
 			value: function componentWillUnmount() {
-
 				GeneralStore.removeChangeListener(this._onChange.bind(this));
 			}
 		}, {
-			key: 'componentWillUpdate',
-			value: function componentWillUpdate() {
-				console.log(this.state.status);
+			key: 'componentDidUpdate',
+			value: function componentDidUpdate() {
+
 				if (this.state.status.message == "Enjoy your token!") {
 					this.setState({
 						userName: null,
 						userPassword: null
 					});
-					this.props.history.push('marketpage');
+					console.log(this.state.status);
+					this.props.history.push('userdashboard');
 				}
 			}
 		}, {
 			key: '_onChange',
 			value: function _onChange() {
-				this.setState({ status: GeneralStore.getSubmitStatus() });
-				// 
+				this.setState({
+					status: GeneralStore.getSubmitStatus()
+				});
 			}
 		}, {
 			key: 'updateUserPassword',
@@ -78046,7 +78052,6 @@
 		}, {
 			key: 'submitExistingUser',
 			value: function submitExistingUser() {
-
 				API.checkExistingUser({
 					userName: this.state.userName,
 					userPassword: this.state.userPassword
@@ -78222,31 +78227,22 @@
 		}, {
 			key: 'render',
 			value: function render() {
-
+				//
+				// 	<div className="loader"></div>
+				//
 				var view = null;
 				if (this.state.status.message == "first load" && this.state.type == 'existing_user') {
 					view = this.setExistingUserForm();
 				}
-
 				if (this.state.status.message == "first load" && this.state.type == 'new_user') {
 					view = this.setNewUserFormView();
 				}
-
-				/*
-	   if(this.state.status.message!="first load"){	
-	   		view = (
-	   			<div className="loader"></div>
-	   			);
-	   }
-	   */
 				if (this.state.status.message == "Password invalid") {
 					view = this.setWrongPasswordView();
 				}
-
 				if (this.state.status.message == "Authentication failed. User not found.") {
 					view = this.setUserDoesNotExistView();
 				}
-
 				return _react2.default.createElement(
 					'div',
 					{ className: 'auth_form' },
@@ -78343,7 +78339,6 @@
 	      GeneralStore.emitChange(CHANGE_EVENT);
 	      break;
 	    case appConstants.UPDATE_USER_SUBMIT_STATUS:
-	      console.log(action.data);
 	      User.setSubmitStatus(action.data);
 	      GeneralStore.emitChange(CHANGE_EVENT);
 	      break;
@@ -78618,6 +78613,63 @@
 	exports.Switch = _Switch3.default;
 	exports.matchPath = _matchPath3.default;
 	exports.withRouter = _withRouter3.default;
+
+/***/ }),
+/* 440 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var UserDashboard = function (_Component) {
+		_inherits(UserDashboard, _Component);
+
+		function UserDashboard() {
+			_classCallCheck(this, UserDashboard);
+
+			return _possibleConstructorReturn(this, (UserDashboard.__proto__ || Object.getPrototypeOf(UserDashboard)).call(this));
+		}
+
+		_createClass(UserDashboard, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {}
+		}, {
+			key: 'render',
+			value: function render() {
+
+				return _react2.default.createElement(
+					'div',
+					{ style: { display: 'flex', justifyContent: 'center', alignItems: 'center' } },
+					_react2.default.createElement(
+						'p',
+						null,
+						'User Dashboard'
+					)
+				);
+			}
+		}]);
+
+		return UserDashboard;
+	}(_react.Component);
+
+	exports.default = UserDashboard;
 
 /***/ })
 /******/ ]);
