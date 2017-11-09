@@ -22,13 +22,6 @@
 	background-color: transparent;
 	height: 100%;
 }
-.enter_icons {
-	width: 2.3em; 
-	height: 2.3em; 
-	margin-left: 1em;
-	margin-top: 0.05em; 
-	cursor: pointer;
-}
 
 .bitcoin_history_options {
 	position: relative;
@@ -379,6 +372,7 @@
     border-radius: 50%;
     width: 120px;
     height: 120px;
+    margin-top: 20em;
     animation: spin 2s linear infinite;
 }
 

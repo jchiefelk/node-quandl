@@ -1,3 +1,5 @@
+
+
 .stockpickerinput {
 		font-size: 18; 
 		font-weight: 400;
@@ -8,41 +10,43 @@
 }
 
 .pickercontainer {
-	display: flex;
-	justify-content: center;
     background-color: transparent;
     position: relative;
     top: 0.3em;
 }
 
 .stockpicker {
-	flex-direction: column;
+
 }
 
 .stockchoices {
-	position: absolute;
-	top: 4em;
-	width: 25em; 
-	overflow-y: scroll; 
-	height: 8em;
+	position: relative;
+	overflow-y: scroll;  
+	width: 20em;
+	height: 10em; 
 }
 
 .stockcompany {
-	display: flex;
-	justify-content: center;
-	align-text: center;
+	margin: 0.2em;
 	height: 2.5em; 
 	font-size: 1em; 
 	font-weight: 400;
 	cursor: pointer;
-	display: flex; 
-	border-bottom-width: 0.001em;
+	border-bottom-width: 0.1em;
 	border-bottom-style: solid;
 	font-family: 'Arial';
 }
 
 .stockcompany:hover{
 	background-color: yellow;
+}
+
+.enter_icons {
+	width: 2.3em; 
+	height: 2.3em; 
+	margin-left: 1em;
+	margin-top: 0.05em; 
+	cursor: pointer;
 }
 
 .picker-instructions {

@@ -485,9 +485,10 @@ class MarketGraph {
 		let stockchoices=[];
 		if(stocklistings.stocklisting!=undefined){
 				for(let x=0; x<stocklistings.stocklisting.length; x++){
+					
 					let choice = (
 						<div key={Math.random(x)} onClick={() => this.pickCode(stocklistings.stocklisting[x].companycode)} className="stockcompany">
-							<p>{stocklistings.stocklisting[x].companycode} - {stocklistings.stocklisting[x].name}</p>
+							{stocklistings.stocklisting[x].companycode} - {stocklistings.stocklisting[x].name}
 						</div>
 					);
 					stockchoices.push(choice);
@@ -506,13 +507,15 @@ class MarketGraph {
 							{stockchoices}
 						</div>
 			</div>
+
+
+
+
 		);
 	}
 
 	setLoadingAnimation(){
-		return (
-					<div class="loader"></div>
-			);
+		return (<div className="loader"></div>);
 	}
 
 	updatecompanyCode(e){

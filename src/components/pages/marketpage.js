@@ -6,7 +6,8 @@ import VideoBackground from '../components/videobackground';
 var StockDataStore = require('../../stores/stockdatastore');
 var MarketGraph = require('../jsx/marketgraph');
 import { Link } from 'react-router-dom';
-require('../css/main.css');
+
+
 
  class MarketPage extends Component {
 

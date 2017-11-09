@@ -22,13 +22,21 @@ let etf=[];
 let market=[];
 let etf_autocorrelation=[];
 let market_autocorrelation=[];
+
+let routine = {
+
+  stocklistings: []
+
+};
+
 var BackgroundProcesses = require('./backgroundprocesses');
 BackgroundProcesses.getNYSEListings()
 .then(function(value){
   return BackgroundProcesses.getNASDAQListings();
 })
 .then(function(value){
-  // console.log(routine.stocklistings);
+  console.log(value);
+  routine.stocklistings = value;
 });
 //
 //
@@ -137,6 +145,7 @@ app.post('/bitcoin', function(req,res){
 app.post('/stocklisting', function(req, res){
         let stocklisting=[];
         let code = req.body.companycode.split('');
+        
         for(let x=0; x<routine.stocklistings.length; x++){
             let index=0;
             for(let key in routine.stocklistings[x]){
@@ -159,6 +168,7 @@ app.post('/stocklisting', function(req, res){
         res.json({
           stocklisting: stocklisting
         });
+        
 });
 
 app.get('/frontenddata',function(req,res){

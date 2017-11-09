@@ -46,50 +46,16 @@ export default class IntraDayTicket extends Component {
 				if(this.state.marketData.autocorr.length > 0) {
 				  autocorr = Autocorrelation.setIntradayAutocorrelation(this.state.marketData.autocorr, this.state.stockHistoryOptions);
 				}
-				/**
-			<div className="gridcontainer">
- 				<CuratedActivitiesEditNewHeader curatedActivityDBID={ this.state.curatedActivityDBID } />
-			    <div className="gridwrapper">
-			        	<div className="gridbox gridmenu">
-			       			<CuratedActivity/>
-			        	</div>
-					    <div className="gridbox gridmain">
-					        <CuratedActivityInstancesContainer />
-						</div>
-			   </div>
-			</div>    
-
-
-					<div className="intradaypage">
-							
-						<div className="intradaychild">
-							{MarketGraph.setIntradayGraphGoogleView(this.state.marketData.data, this.state.marketData.name)}	
-							{CandleStickGraph.setIntraDayGraph(this.state.marketData, this.state.stockHistoryOptions)}
-						</div>
-	
-						<div className="intradaychild">
-							{MarketGraph.setIntraDayBarGraph(this.state.marketData.data, this.state.marketData.name)}
-							{autocorr}
-						</div>
-					</div>
-
-				**/
 
 				return (
-
 					<div className="gridcontainer">
-
 					    {MarketGraph.setCompanyPicker(this.state.stocklistings)}
-		 				
 		 				{MarketGraph.setHistoryRangePicker(this.state.stockHistoryOptions)}
-					    
 					    <div className="gridwrapper">
-
 					        	<div className="gridbox gridmain">
 								      	{MarketGraph.setIntradayGraphGoogleView(this.state.marketData.data, this.state.marketData.name)}	
 										{MarketGraph.setIntraDayBarGraph(this.state.marketData.data, this.state.marketData.name)}
 					        	</div>
-
 							    <div className="gridbox gridmain">
 							    		{CandleStickGraph.setIntraDayGraph(this.state.marketData, this.state.stockHistoryOptions)}
 										{autocorr}
@@ -101,7 +67,8 @@ export default class IntraDayTicket extends Component {
 			}
 			render(){
 				let view; 
-				if(this.state.marketData.data==0) {
+
+				if(this.state.marketData.data.length==0) {
 					view = this.setLoadingView();
 				} 
 				if(this.state.marketData.data.length>0){
