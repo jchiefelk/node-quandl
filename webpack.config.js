@@ -1,3 +1,4 @@
+var path = require('path');
 
  module.exports = {
   context: __dirname + "/src",
@@ -11,14 +12,26 @@
   module: {
     loaders: [
       { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
-      { test: /\.css$/, loader: 'style!css' },
-      { test: /\.(png|jpg)$/, loader: 'url?limit=25000'}
+      { test: /\.css$/, loader: 'style-loader!css-loader' },
+      { test: /\.(png|jpg)$/, loader: 'url-loader?limit=25000'},
+      {
+        test: /\.(png|gif|jpg)$/,
+        include: [
+          path.join(__dirname, 'static')
+        ],
+        loader: 'file-loader',
+      }
+
+
+
     ]
   },
 
   resolve: {
-    extensions: ['', '.js', '.jsx','.css'],
+    extensions: ['.js', '.jsx', '.css']
   }
 
 };
+
+
 

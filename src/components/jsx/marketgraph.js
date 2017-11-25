@@ -23,7 +23,109 @@ class MarketGraph {
 
 	changeBitcoinOptions(range) {
 		Actions.updateBitcoinHistoryOptions(range);
+		Actions.updateCryptoCurrencyHistoryOption(range);
 		API.getBitcoinData(range);
+		API.getCryptoCurrencyExchangeData(range);
+	}
+
+	renderCryptoCurrencyExchangeView(data, historyoption){
+			let dollar_data = [["DATE","Price"]];
+			let yuan_data = [["DATE","Price"]];
+			let history = 'daily';
+			/**
+			let dollar_prices, yuan_prices =[];
+			for(let key in data){
+				dollar_prices.push(data['close (USD)']);
+				yuan_prices.push(data['close (CNY)']);
+			};
+			**/
+			console.log(data);
+			for(let key in data){
+				//console.log(parseFloat(data[key]['1b. price (USD)']));
+				//	console.log(new Date(key));
+			 	//	console.log(data[key]['1a. price (CNY)']);
+			 	//  console.log(data[key]['1b. price (USD)']);
+			 	yuan_data.push([new Date(key), parseFloat(data[key]['1a. price (CNY)']) ])
+				dollar_data.push([new Date(key), parseFloat(data[key]['1b. price (USD)']) ]);
+			};
+			
+
+			let dollar_options = {
+				    	title: "Price",
+						titleTextStyle: {
+							color: 'black',    // any HTML string color ('red', '#cc00cc')
+							fontName: 'Arial', // i.e. 'Times New Roman'
+							fontSize: 18, // 12, 18 whatever you want (don't specify px)
+							bold: false,    // true or false
+							italic: false   // true of false
+						},
+						legend: "none",
+						backgroundColor: 'transparent',
+						vAxis: {
+							title: "JapaneseYuan",	
+							titleTextStyle: { color: 'black' },     
+				            viewWindowMode:'explicit',
+							baselineColor: 'transparent',
+				        	textStyle: {
+				        		fontSize: 12,
+				        		fontName: 'Arial',
+				        		color: 'black',
+				        		fontWeight: 700,
+				       
+				        	},
+				        	gridlines: {
+						    	count: 2,
+						    	color: 'black'
+						   	}
+				        },
+					 	hAxis: {
+							title: "",	
+							titleTextStyle: { color: 'black' },
+							baselineColor: 'transparent',
+				        	textStyle: {
+				        		fontSize: 12,
+				        		fontName: 'Arial',
+				        		color: 'black',
+				        		fontWeight: 700,
+				       
+				        	},
+				        	gridlines: {
+						    	count: 5,
+						    	color: 'transparent'
+						   	},
+						   	format:	null
+					 	}
+		};
+
+
+		let yuan_options = dollar_options;
+
+
+
+
+
+		return(
+			<div className="cryptoexchangeview">
+					
+					<Chart
+						chartType="LineChart"
+						data={dollar_data}
+						width="100%"
+						height="100%"
+						options={dollar_options}
+					/>
+
+					<Chart
+						chartType="LineChart"
+						data={yuan_data}
+						width="100%"
+						height="100%"
+						options={yuan_options}
+					/>
+
+
+			</div>
+		);
 	}
 
 	renderBitcoinAPIOptions(historyoptions){
@@ -237,9 +339,6 @@ class MarketGraph {
 						    }
 						},
 						***/
-
-           
-
 					    titleTextStyle: {
 					        color: 'black',    // any HTML string color ('red', '#cc00cc')
 					        fontName: 'Arial', // i.e. 'Times New Roman'

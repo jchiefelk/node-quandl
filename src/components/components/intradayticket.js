@@ -62,8 +62,9 @@ export default class IntraDayTicket extends Component {
 								</div>
 					   </div>
 					</div>    
-
 				);
+
+
 			}
 			render(){
 				let view; 

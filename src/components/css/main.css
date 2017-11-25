@@ -99,6 +99,16 @@
 	height: 40vh;
 	justify-content: center;
 }
+
+.cryptoexchangeview {
+	display: flex;
+	background-color: transparent;
+	align-items: center;
+	width: 100%;
+	height: 40vh;
+	justify-content: center;
+}
+
 .bitcoinoptions {
 	position: relative;
 	right: 0;

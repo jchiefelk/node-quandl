@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../components/header';
-import MarketFundView from '../components/marketfundview';
+import BitcoinView from '../components/bitcoinview';
 import IntraDayTicket from '../components/intradayticket';
 import VideoBackground from '../components/videobackground';
 var StockDataStore = require('../../stores/stockdatastore');
@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 
 
 
- class MarketPage extends Component {
+ class BitcoinPage extends Component {
 
     constructor(){
         super();
@@ -33,10 +33,10 @@ import { Link } from 'react-router-dom';
             <div className="marketpage"> 
               <Header/>
               {MarketGraph.setCompanyPicker(this.state.stocklistings)}
-              <MarketFundView/>
+              <BitcoinView/>
             </div>
           );
      }
 }
 
-export default MarketPage;
+export default BitcoinPage;

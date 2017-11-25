@@ -182,6 +182,35 @@ BitcoinData.prototype.updateBitcoinHistoryOptions = function(item){
 
 let Bitcoin =  new BitcoinData();
 
+
+function CryptoCurrencyExchangeData(){
+  this.description = "Cryptocurrency/USD/JPY/EUR/CNY/RUB"; // "Dollar, Japanese Yen, Euro, Chinese Yuan, Russian Ruble"
+  this.data = null;
+  this.historyOption = 'daily';
+};
+
+
+CryptoCurrencyExchangeData.prototype.updateExchangeData = function(data){
+    if(this.historyOption=='alltime'){
+      this.data = data.data['Time Series (Digital Currency Monthly)'];
+    } 
+    if(this.historyOption=='daily'){
+      this.data = data.data['Time Series (Digital Currency Intraday)'];
+    }
+    if(this.historyOption=='monthly'){
+      this.data = data.data['Time Series (Digital Currency Weekly)'];
+    }
+    
+};
+
+CryptoCurrencyExchangeData.prototype.updateHistoryOptions = function(data){
+
+  this.historyOption = data;
+};
+
+let CryptoExchange = new CryptoCurrencyExchangeData();
+
+
 var StockDataStore = objectAssign({}, EventEmitter.prototype, {
   addChangeListener: function(cb){
     this.on(CHANGE_EVENT, cb);
@@ -230,6 +259,9 @@ var StockDataStore = objectAssign({}, EventEmitter.prototype, {
   },
   getStockListings: function(){
     return Stocks.IntraDay.stocklistings;
+  },
+  getCryptoCurrencyExchange: function(){
+    return CryptoExchange.data;
   }
 
 });
@@ -290,6 +322,14 @@ AppDispatcher.register(function(payload){
         break;
     case appConstants.STOCK_LISTINGS:
         Stocks.updateStockListing(action.data);
+        StockDataStore.emitChange(CHANGE_EVENT);
+        break;
+    case appConstants.UPDATE_CRYPTOEXCHANGE_DATA:
+        CryptoExchange.updateExchangeData(action.data);
+        StockDataStore.emitChange(CHANGE_EVENT);
+        break;
+    case appConstants.UPDATE_CRYPTOEXCHANGE_HISTORY_OPTION:
+        CryptoExchange.updateHistoryOptions(action.data);
         StockDataStore.emitChange(CHANGE_EVENT);
         break;
     default:

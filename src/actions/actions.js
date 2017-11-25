@@ -87,6 +87,20 @@ var getFrontEndData = function(){
 
 var Actions = {
 
+  updateCryptoCurrencycExchangeData: function(item) {
+      AppDispatcher.handleAction({
+           actionType:  appConstants.UPDATE_CRYPTOEXCHANGE_DATA,
+           data: item
+      });
+  },
+
+  updateCryptoCurrencyHistoryOption: function(item){
+      AppDispatcher.handleAction({
+          actionType: appConstants.UPDATE_CRYPTOEXCHANGE_HISTORY_OPTION,
+          data: item
+      });
+  },
+
   updateUserSubmitStatus: function(item){
 
       AppDispatcher.handleAction({

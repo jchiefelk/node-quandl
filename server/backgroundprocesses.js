@@ -10,6 +10,7 @@ function BackgroundProcesses(){
   this.market=[];
   this.stocklistings = [];
 };
+
 BackgroundProcesses.prototype.startInterval = function(){
     Quandl.getMarketData()
              .then(function(value) {
@@ -21,15 +22,6 @@ BackgroundProcesses.prototype.startInterval = function(){
                   .catch(function(error){
                       console.log(error);
                   });
-                  /**
-                  .then((result) => {
-                      etfData = result.data;
-                      etf_autocorrelation = result.correlation;
-                  })
-                  .catch(function(error){
-                      console.log(error);
-                  });
-                  **/
 
 };
 
@@ -42,22 +34,21 @@ BackgroundProcesses.prototype.getNYSEListings = function(){
                  stocklisting[data[x].code] = data[x].name;
                  this.stocklistings.push(stocklisting); 
               };
-               
               return this.stocklistings;
           })
           .catch((err) => {
             console.log(err);   
           });
-
 };
 
 BackgroundProcesses.prototype.getNASDAQListings = function(){
+  
     return PubliclyTradedCompanies.symbolLookupNASDAQ()
           .then( ( data ) => {
               for(let x=1;x<data.length;x++){
                 let stocklisting = {};
-                 stocklisting[data[x].code] = data[x].name;
-                 this.stocklistings.push(stocklisting); 
+                stocklisting[data[x].code] = data[x].name;
+                this.stocklistings.push(stocklisting); 
               };
               return this.stocklistings; 
           })

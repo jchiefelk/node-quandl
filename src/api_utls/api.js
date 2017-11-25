@@ -19,7 +19,6 @@ API.prototype.getStockPrice = function(params){
           }).then(function(data) {
              Actions.updateIntradDayData(data.general);
              Actions.updateAutocorrelation(data.autocorr);
-         
           }).catch(function(error) {
               console.log(error);
           }); 
@@ -47,11 +46,34 @@ API.prototype.getBitcoinData = function(daterange){
             return response.json();
           })
          .then(function(data) {
-              console.log(data);
               Actions.updateBitcoinData(data.data);
           }).catch(function(error) {
               console.log(error);
           }); 
+};
+
+API.prototype.getCryptoCurrencyExchangeData = function(daterange){
+      let data = {
+        daterange: daterange
+      };
+      return fetch('/cryptocurrencyexchange', {
+            method: 'post',
+            headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+      })
+      .then(function(response){
+        return response.json();
+      })
+      .then(function(data){
+        // console.log(data);
+        Actions.updateCryptoCurrencycExchangeData(data);
+      })
+      .catch(function(error){
+        console.log(error);
+      });
 };
 
 API.prototype.getStockistings = function(data){

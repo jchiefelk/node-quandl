@@ -24,9 +24,9 @@ let etf_autocorrelation=[];
 let market_autocorrelation=[];
 
 let routine = {
-
-  stocklistings: []
-
+  stocklistings: null,
+  companycodes: [],
+  companynames: []
 };
 
 var BackgroundProcesses = require('./backgroundprocesses');
@@ -35,8 +35,13 @@ BackgroundProcesses.getNYSEListings()
   return BackgroundProcesses.getNASDAQListings();
 })
 .then(function(value){
-  console.log(value);
   routine.stocklistings = value;
+  for(let x=0; x<value.length; x++ ){
+      for(var key in value[x]){
+        routine.companycodes.push(key);
+        routine.companynames.push( value[x][key]  );
+      };
+  };
 });
 //
 //
@@ -70,10 +75,10 @@ app.get('/etf', function(req,res){
 app.get('/markets', function(req,res){
   Quandl.getMarketData()
        .then(function(value) {
-                 res.json({market: value});  
+                res.json({market: value});  
             })
             .catch(function(error){
-              console.log(error);
+                console.log(error);
                 res.json({error: error});
                 next(error);
             }); 
@@ -142,12 +147,124 @@ app.post('/bitcoin', function(req,res){
 
 });
 
+
+app.post('/cryptocurrencyexchange', function(req,res){
+
+    let apiKey = 'JKH0X5U5HVN4DD1Y';
+    // let url = 'https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_INTRADAY&symbol=BTC&market=CNY&apikey=demo';
+    let url = null;
+    if(req.body.daterange.toUpperCase()=='ALLTIME'){
+        url = 'https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_MONTHLY&symbol=BTC&market=CNY&apikey='+apiKey;
+    } 
+    if(req.body.daterange.toUpperCase()=='DAILY'){
+        url = 'https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_INTRADAY&symbol=BTC&market=CNY&apikey='+apiKey;
+    }
+    if(req.body.daterange.toUpperCase()=='MONTHLY'){
+        url = 'https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_WEEKLY&symbol=BTC&market=CNY&apikey='+apiKey;
+    }
+   // let url = 'https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_'+req.body.daterange.toUpperCase()+'&symbol=BTC&market=CNY&apikey='+apiKey;
+    return fetch(url,{
+        method: 'get',
+        mode: 'cors'
+    })
+    .then((response) => typeof response == 'object' ? response.json() : {} )
+    .then((responseJson)=>{
+     // console.log(responseJson);
+     //  res.json({data: responseJson});
+        if(req.body.daterange.toUpperCase()=='ALLTIME'){
+            url = 'https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_MONTHLY&symbol=BTC&market=JPY&apikey='+apiKey;
+        } 
+        if(req.body.daterange.toUpperCase()=='DAILY'){
+            url = 'https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_INTRADAY&symbol=BTC&market=JPY&apikey='+apiKey;
+        }
+        if(req.body.daterange.toUpperCase()=='MONTHLY'){
+            url = 'https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_WEEKLY&symbol=BTC&market=JPY&apikey='+apiKey;
+        }
+
+        return fetch(url,{method: 'get',mode: 'cors'})
+    })
+    .then((response) => typeof response == 'object' ? response.json() : {} )
+    .then((responseJson) => {
+  
+        if(req.body.daterange.toUpperCase()=='ALLTIME'){
+            url = 'https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_MONTHLY&symbol=BTC&market=EUR&apikey='+apiKey;
+        } 
+        if(req.body.daterange.toUpperCase()=='DAILY'){
+            url = 'https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_INTRADAY&symbol=BTC&market=EUR&apikey='+apiKey;
+        }
+        if(req.body.daterange.toUpperCase()=='MONTHLY'){
+            url = 'https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_WEEKLY&symbol=BTC&market=EUR&apikey='+apiKey;
+        }
+        return fetch(url,{method: 'get',mode: 'cors'})
+    })
+    .then((response) => typeof response == 'object' ? response.json() : {} )
+    .then((responseJson) => {
+        
+        if(req.body.daterange.toUpperCase()=='ALLTIME'){
+            url = 'https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_MONTHLY&symbol=BTC&market=RUB&apikey='+apiKey;
+        } 
+        if(req.body.daterange.toUpperCase()=='DAILY'){
+            url = 'https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_INTRADAY&symbol=BTC&market=RUB&apikey='+apiKey;
+        }
+        if(req.body.daterange.toUpperCase()=='MONTHLY'){
+            url = 'https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_WEEKLY&symbol=BTC&market=RUB&apikey='+apiKey;
+        }
+        return fetch(url,{method: 'get',mode: 'cors'})
+    })
+    .then((response) => typeof response == 'object' ? response.json() : {} )
+    .then((responseJson) => {
+        if(req.body.daterange.toUpperCase()=='ALLTIME'){
+            url = 'https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_MONTHLY&symbol=BTC&market=AUD&apikey='+apiKey;
+        } 
+        if(req.body.daterange.toUpperCase()=='DAILY'){
+            url = 'https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_INTRADAY&symbol=BTC&market=AUD&apikey='+apiKey;
+        }
+        if(req.body.daterange.toUpperCase()=='MONTHLY'){
+            url = 'https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_WEEKLY&symbol=BTC&market=AUD&apikey='+apiKey;
+        }
+        return fetch(url,{method: 'get',mode: 'cors'})
+    })
+    .then((response) => typeof response == 'object' ? response.json() : {} )
+    .then((responseJson) => {
+        if(req.body.daterange.toUpperCase()=='ALLTIME'){
+            url = 'https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_MONTHLY&symbol=BTC&market=CHF&apikey='+apiKey;
+        } 
+        if(req.body.daterange.toUpperCase()=='DAILY'){
+            url = 'https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_INTRADAY&symbol=BTC&market=CHF&apikey='+apiKey;
+        }
+        if(req.body.daterange.toUpperCase()=='MONTHLY'){
+            url = 'https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_WEEKLY&symbol=BTC&market=CHF&apikey='+apiKey;
+        }
+        return fetch(url,{method: 'get',mode: 'cors'})
+    })
+    .catch((err)=>{
+        console.log(err);
+        res.json({error: err});
+    });
+
+});
+
 app.post('/stocklisting', function(req, res){
         let stocklisting=[];
         let code = req.body.companycode.split('');
         
+        console.log( req.body.companycode     );
+        console.log( code );
+        // console.log( routine.companycodes );
+        // console.log( routine.companynames );
+        //
+        // Autocomplete with a using Binary Search
+        //
+        for(let x=0; x<req.body.companycodes; x++){
+
+
+
+        };
+
         for(let x=0; x<routine.stocklistings.length; x++){
             let index=0;
+
+
             for(let key in routine.stocklistings[x]){
                 let stockcode = routine.stocklistings[x][key]; 
                 let autocomplete = function(){
@@ -163,7 +280,21 @@ app.post('/stocklisting', function(req, res){
                 };
                 autocomplete();
             };
+
+
+
+
         };
+
+
+
+
+
+
+
+
+
+
 
         res.json({
           stocklisting: stocklisting

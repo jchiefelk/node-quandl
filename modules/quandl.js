@@ -164,7 +164,7 @@ Quandl.prototype.getIntraDayTicket = function(params){
 		if(params.daterange=='monthly') timeSeries = 'TIME_SERIES_MONTHLY';
 	}
 	if(params.timeSteps){
-                  if(params.timeSteps=='1min') timeSteps = 'Time Series (1min)';
+             	  if(params.timeSteps=='1min') timeSteps = 'Time Series (1min)';
                   if(params.timeSteps=='5min') timeSteps = 'Time Series (5min)';
                   if(params.timeSteps=='15min') timeSteps = 'Time Series (15min)';
                   if(params.timeSteps=='30min') timeSteps = 'Time Series (30min)';
