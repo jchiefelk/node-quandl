@@ -191,6 +191,7 @@ function CryptoCurrencyExchangeData(){
 
 
 CryptoCurrencyExchangeData.prototype.updateExchangeData = function(data){
+
     if(this.historyOption=='alltime'){
       this.data = data.data['Time Series (Digital Currency Monthly)'];
     } 
@@ -208,6 +209,20 @@ CryptoCurrencyExchangeData.prototype.updateHistoryOptions = function(data){
   this.historyOption = data;
 };
 
+
+
+function CurrencyExchangeData(){
+  this.description = "Currency Exchange Data";
+  this.data = null;
+};
+
+CurrencyExchangeData.prototype.updateData = function(data){
+
+    this.data = data;
+};
+
+
+let CurrencyExchange = new CurrencyExchangeData();
 let CryptoExchange = new CryptoCurrencyExchangeData();
 
 
@@ -262,6 +277,9 @@ var StockDataStore = objectAssign({}, EventEmitter.prototype, {
   },
   getCryptoCurrencyExchange: function(){
     return CryptoExchange.data;
+  },
+  getCurrencyExchange: function(){
+    return CurrencyExchange.data;
   }
 
 });
@@ -330,6 +348,10 @@ AppDispatcher.register(function(payload){
         break;
     case appConstants.UPDATE_CRYPTOEXCHANGE_HISTORY_OPTION:
         CryptoExchange.updateHistoryOptions(action.data);
+        StockDataStore.emitChange(CHANGE_EVENT);
+        break;
+    case appConstants.CURRENCY_EXCHANGE_RATES:
+        CurrencyExchange.updateData(action.data);
         StockDataStore.emitChange(CHANGE_EVENT);
         break;
     default:

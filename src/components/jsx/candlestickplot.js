@@ -75,8 +75,6 @@ CandleStickGraph.prototype.setIntraDayGraph = function(item){
 			},
 			***/
 
-
-
         },
 		hAxis: {
 				title: "",	
@@ -96,11 +94,6 @@ CandleStickGraph.prototype.setIntraDayGraph = function(item){
 
 		}
 	};
-
-
-
-
-
 	//
 	//	
 	if(item.data.length>=60){
@@ -131,8 +124,6 @@ CandleStickGraph.prototype.setIntraDayGraph = function(item){
 
 CandleStickGraph.prototype.setBitcoinVarianceView = function(data, historyoptions){
 
-
-
 		let vardata = [["DATE","low-high & open-close", "open", "close", "average"]];
 		console.log('setting bit variance plot');
 		for(let x=data.length-1; x>=0;x--){
@@ -140,20 +131,16 @@ CandleStickGraph.prototype.setBitcoinVarianceView = function(data, historyoption
 				vardata.push(d);
 		};
 
-
 				let prices = [];
-
 				for(let x=0; x<data.length; x++){
 					prices.push(data[x].average);
 				};
-
 				let max = Math.max.apply(null, prices );
 				let min = Math.min.apply(null, prices);
 
 
 		let options = {
-					title: "Interday Price Vairence",
-
+					title: "Dollar Price Variance",
 					titleTextStyle: {
 						color: 'black',    // any HTML string color ('red', '#cc00cc')
 						fontName: 'Arial', // i.e. 'Times New Roman'
@@ -207,7 +194,6 @@ CandleStickGraph.prototype.setBitcoinVarianceView = function(data, historyoption
 							format: null
 					}
 	};
-
 
 /**
 	if(historyoptions=='monthly' || historyoptions=='alltime'){

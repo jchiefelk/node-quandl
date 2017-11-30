@@ -11867,6 +11867,14 @@ var getFrontEndData = function getFrontEndData() {
 
 var Actions = {
 
+  updateCurrencyExchaneData: function updateCurrencyExchaneData(item) {
+
+    AppDispatcher.handleAction({
+      actionType: appConstants.CURRENCY_EXCHANGE_RATES,
+      data: item
+    });
+  },
+
   updateCryptoCurrencycExchangeData: function updateCryptoCurrencycExchangeData(item) {
     AppDispatcher.handleAction({
       actionType: appConstants.UPDATE_CRYPTOEXCHANGE_DATA,
@@ -13673,6 +13681,7 @@ function CryptoCurrencyExchangeData() {
 };
 
 CryptoCurrencyExchangeData.prototype.updateExchangeData = function (data) {
+
   if (this.historyOption == 'alltime') {
     this.data = data.data['Time Series (Digital Currency Monthly)'];
   }
@@ -13689,6 +13698,17 @@ CryptoCurrencyExchangeData.prototype.updateHistoryOptions = function (data) {
   this.historyOption = data;
 };
 
+function CurrencyExchangeData() {
+  this.description = "Currency Exchange Data";
+  this.data = null;
+};
+
+CurrencyExchangeData.prototype.updateData = function (data) {
+
+  this.data = data;
+};
+
+var CurrencyExchange = new CurrencyExchangeData();
 var CryptoExchange = new CryptoCurrencyExchangeData();
 
 var StockDataStore = objectAssign({}, EventEmitter.prototype, {
@@ -13742,6 +13762,9 @@ var StockDataStore = objectAssign({}, EventEmitter.prototype, {
   },
   getCryptoCurrencyExchange: function getCryptoCurrencyExchange() {
     return CryptoExchange.data;
+  },
+  getCurrencyExchange: function getCurrencyExchange() {
+    return CurrencyExchange.data;
   }
 
 });
@@ -13810,6 +13833,10 @@ AppDispatcher.register(function (payload) {
       break;
     case appConstants.UPDATE_CRYPTOEXCHANGE_HISTORY_OPTION:
       CryptoExchange.updateHistoryOptions(action.data);
+      StockDataStore.emitChange(CHANGE_EVENT);
+      break;
+    case appConstants.CURRENCY_EXCHANGE_RATES:
+      CurrencyExchange.updateData(action.data);
       StockDataStore.emitChange(CHANGE_EVENT);
       break;
     default:
@@ -15660,6 +15687,8 @@ API.prototype.getBitcoinData = function (daterange) {
             }
             return response.json();
       }).then(function (data) {
+
+            Actions.updateCurrencyExchaneData(data.currencyExchangeData);
             Actions.updateBitcoinData(data.data);
       }).catch(function (error) {
             console.log(error);
@@ -15680,7 +15709,7 @@ API.prototype.getCryptoCurrencyExchangeData = function (daterange) {
       }).then(function (response) {
             return response.json();
       }).then(function (data) {
-            // console.log(data);
+
             Actions.updateCryptoCurrencycExchangeData(data);
       }).catch(function (error) {
             console.log(error);
@@ -18856,7 +18885,8 @@ var appConstants = {
   PASSWORD: "PASSWORD",
   UPDATE_USER_SUBMIT_STATUS: "UPDATE_USER_SUBMIT_STATUS",
   UPDATE_CRYPTOEXCHANGE_DATA: "UPDATE_CRYPTOEXCHANGE_DATA",
-  UPDATE_CRYPTOEXCHANGE_HISTORY_OPTION: "UPDATE_CRYPTOEXCHANGE_HISTORY_OPTION"
+  UPDATE_CRYPTOEXCHANGE_HISTORY_OPTION: "UPDATE_CRYPTOEXCHANGE_HISTORY_OPTION",
+  CURRENCY_EXCHANGE_RATES: "CURRENCY_EXCHANGE_RATES"
 };
 module.exports = appConstants;
 
@@ -18913,8 +18943,83 @@ var MarketGraph = function () {
 			API.getCryptoCurrencyExchangeData(range);
 		}
 	}, {
+		key: 'renderCurrencyExchangeView',
+		value: function renderCurrencyExchangeView(data) {
+
+			var dollar_data = [["DATE", "Price"]];
+
+			var history = 'daily';
+			console.log(data.dataset.data);
+			for (var x = data.dataset.data.length - 1; x >= 0; x--) {
+				dollar_data.push([new Date(data.dataset.data[x][0]), data.dataset.data[x][1]]);
+			};
+
+			var dollar_options = {
+				title: "USD/CNY Dollar vs Chinese Yuan",
+				titleTextStyle: {
+					color: 'black', // any HTML string color ('red', '#cc00cc')
+					fontName: 'Arial', // i.e. 'Times New Roman'
+					fontSize: 18, // 12, 18 whatever you want (don't specify px)
+					bold: false, // true or false
+					italic: false // true of false
+				},
+				legend: "none",
+				backgroundColor: 'transparent',
+				vAxis: {
+					title: "",
+					titleTextStyle: { color: 'black' },
+
+					baselineColor: 'transparent',
+					textStyle: {
+						fontSize: 12,
+						fontName: 'Arial',
+						color: 'black',
+						fontWeight: 700
+
+					},
+					gridlines: {
+						count: 5,
+						color: 'black'
+					}
+				},
+				hAxis: {
+					title: "",
+					titleTextStyle: { color: 'black' },
+					baselineColor: 'silver',
+					textStyle: {
+						fontSize: 12,
+						fontName: 'Arial',
+						color: 'black',
+						fontWeight: 700
+
+					},
+					gridlines: {
+						count: 5,
+						color: 'transparent',
+						opacity: '0.6'
+					},
+					format: null
+				}
+			};
+
+			return _react2.default.createElement(
+				'div',
+				{ className: 'cryptoexchangeview' },
+				_react2.default.createElement(_reactGoogleCharts.Chart, {
+					chartType: 'LineChart',
+					data: dollar_data,
+					width: '100%',
+					height: '100%',
+					options: dollar_options
+				})
+			);
+		}
+	}, {
 		key: 'renderCryptoCurrencyExchangeView',
 		value: function renderCryptoCurrencyExchangeView(data, historyoption) {
+
+			console.log(data);
+
 			var dollar_data = [["DATE", "Price"]];
 			var yuan_data = [["DATE", "Price"]];
 			var history = 'daily';
@@ -18931,12 +19036,13 @@ var MarketGraph = function () {
 				//	console.log(new Date(key));
 				//	console.log(data[key]['1a. price (CNY)']);
 				//  console.log(data[key]['1b. price (USD)']);
-				yuan_data.push([new Date(key), parseFloat(data[key]['1a. price (CNY)'])]);
-				dollar_data.push([new Date(key), parseFloat(data[key]['1b. price (USD)'])]);
+				yuan_data.push([new Date(key), parseFloat(data[key]['4a. close (CNY)'])]);
+				dollar_data.push([new Date(key), parseFloat(data[key]['4b. close (USD)'])]);
 			};
 
 			var dollar_options = {
-				title: "Price",
+				title: "Dollar Price",
+
 				titleTextStyle: {
 					color: 'black', // any HTML string color ('red', '#cc00cc')
 					fontName: 'Arial', // i.e. 'Times New Roman'
@@ -18947,9 +19053,9 @@ var MarketGraph = function () {
 				legend: "none",
 				backgroundColor: 'transparent',
 				vAxis: {
-					title: "JapaneseYuan",
+					title: "",
 					titleTextStyle: { color: 'black' },
-					viewWindowMode: 'explicit',
+
 					baselineColor: 'transparent',
 					textStyle: {
 						fontSize: 12,
@@ -18959,14 +19065,14 @@ var MarketGraph = function () {
 
 					},
 					gridlines: {
-						count: 2,
+						count: 5,
 						color: 'black'
 					}
 				},
 				hAxis: {
 					title: "",
 					titleTextStyle: { color: 'black' },
-					baselineColor: 'transparent',
+					baselineColor: 'black',
 					textStyle: {
 						fontSize: 12,
 						fontName: 'Arial',
@@ -18982,25 +19088,81 @@ var MarketGraph = function () {
 				}
 			};
 
-			var yuan_options = dollar_options;
+			var yuan_options = {
+				title: "Yuan Price",
 
+				titleTextStyle: {
+					color: 'black', // any HTML string color ('red', '#cc00cc')
+					fontName: 'Arial', // i.e. 'Times New Roman'
+					fontSize: 18, // 12, 18 whatever you want (don't specify px)
+					bold: false, // true or false
+					italic: false // true of false
+				},
+				legend: "none",
+				backgroundColor: 'transparent',
+				vAxis: {
+					title: "",
+					titleTextStyle: { color: 'black' },
+
+					baselineColor: 'transparent',
+					textStyle: {
+						fontSize: 12,
+						fontName: 'Arial',
+						color: 'black',
+						fontWeight: 700
+
+					},
+					gridlines: {
+						count: 5,
+						color: 'black'
+					}
+				},
+				hAxis: {
+					title: "",
+					titleTextStyle: { color: 'black' },
+					baselineColor: 'black',
+					textStyle: {
+						fontSize: 12,
+						fontName: 'Arial',
+						color: 'black',
+						fontWeight: 700
+
+					},
+					gridlines: {
+						count: 5,
+						color: 'transparent'
+					},
+					format: null
+				}
+			};
+
+			/*****
+   		****/
 			return _react2.default.createElement(
 				'div',
-				{ className: 'cryptoexchangeview' },
-				_react2.default.createElement(_reactGoogleCharts.Chart, {
-					chartType: 'LineChart',
-					data: dollar_data,
-					width: '100%',
-					height: '100%',
-					options: dollar_options
-				}),
-				_react2.default.createElement(_reactGoogleCharts.Chart, {
-					chartType: 'LineChart',
-					data: yuan_data,
-					width: '100%',
-					height: '100%',
-					options: yuan_options
-				})
+				null,
+				_react2.default.createElement(
+					'div',
+					{ className: 'cryptoexchangeview' },
+					_react2.default.createElement(_reactGoogleCharts.Chart, {
+						chartType: 'LineChart',
+						data: dollar_data,
+						width: '100%',
+						height: '100%',
+						options: dollar_options
+					})
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'cryptoexchangeview' },
+					_react2.default.createElement(_reactGoogleCharts.Chart, {
+						chartType: 'LineChart',
+						data: yuan_data,
+						width: '100%',
+						height: '100%',
+						options: yuan_options
+					})
+				)
 			);
 		}
 	}, {
@@ -19123,6 +19285,7 @@ var MarketGraph = function () {
 	}, {
 		key: 'setBitcoinGraph',
 		value: function setBitcoinGraph(data, historyoptions) {
+
 			var line_data = [["DATE", "Price"]];
 			var prices = [];
 			for (var _x2 = 0; _x2 < data.length; _x2++) {
@@ -19135,7 +19298,7 @@ var MarketGraph = function () {
 			};
 
 			var options = {
-				title: "Price",
+				title: "Dollar Price",
 
 				titleTextStyle: {
 					color: 'black', // any HTML string color ('red', '#cc00cc')
@@ -49157,7 +49320,6 @@ CandleStickGraph.prototype.setIntraDayGraph = function (item) {
 
 		}
 	};
-
 	//
 	//	
 	if (item.data.length >= 60) {
@@ -49195,17 +49357,14 @@ CandleStickGraph.prototype.setBitcoinVarianceView = function (data, historyoptio
 	};
 
 	var prices = [];
-
 	for (var _x3 = 0; _x3 < data.length; _x3++) {
 		prices.push(data[_x3].average);
 	};
-
 	var max = Math.max.apply(null, prices);
 	var min = Math.min.apply(null, prices);
 
 	var options = {
-		title: "Interday Price Vairence",
-
+		title: "Dollar Price Variance",
 		titleTextStyle: {
 			color: 'black', // any HTML string color ('red', '#cc00cc')
 			fontName: 'Arial', // i.e. 'Times New Roman'
@@ -63290,7 +63449,7 @@ exports = module.exports = __webpack_require__(80)();
 
 
 // module
-exports.push([module.i, "#Title {\n\tfont-size: 4.7em;\n\tcolor: black;\n\tfont-weight: 900; \n\tfont-family: 'Arial';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n\talign-text: center;\n\tmargin: 50;\n}\n#About-Me {\n\tcolor: black;\n\tfont-size: 2.1em;\n\tfont-weight: 500; \n\tfont-family: 'Arial';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n}\n.app {\n\tdisplay: flex; \n\tflex-direction: column; \n\tbackground-color: transparent;\n\theight: 100%;\n}\n\n.bitcoin_history_options {\n\tposition: relative;\n\tdisplay: flex;\n\tflex-direction: row;\n\tfont-size: 12;\n\tfont-family: 'Arial';\n\tjustify-content: center;\n\n}\n\n.bitcoin_history_options_label {\n\tdisplay: flex;\n\talign-items: center;\n\tcursor: pointer;\n\tmargin: 1.5em;\n}\n\n.bitcoin_history_options_label:hover{\n\tborder-bottom-style: solid;\n\tborder-bottom-width: 0.01em;\n\tborder-bottom-color: black;\n\topacity: 0.7;\n}\n\n.bitcoin_history_options_label_selected {\n\tmargin: 1.5em;\n\tdisplay: flex;\n\talign-items: center;\n\tcursor: pointer;\n\tborder-bottom-style: solid;\n\tborder-bottom-width: 0.01em;\n\tborder-bottom-color: black;\n}\n\n.stock_history_options {\n\tposition: relative;\n\tdisplay: flex;\n\tflex-direction: row;\n\tfont-size: 12;\n\tfont-family: 'Arial';\n\tjustify-content: center;\n}\n.stock_history_options label {\n\tdisplay: flex;\n\tflex-direction: column;\n\tmargin: 1em;\n\talign-items: center;\n\tcursor: pointer;\n}\n.stock_history_options select {\n\twidth: 7em;\n\theight: 2.5em;\n\tbackground: Snow;\n\tmargin: 0.3em;\n\tborder-width: 0;\n}\n.marketpage {\n\tdisplay: flex;\n\tflex-direction: column;\n\tbackground-color: transparent; \n\talign-items: center;\n}\n.marketgraph {\n\tbackground-color: transparent;\n\talign-items: center;\n\twidth: 50em;\n\theight: 40em;\n\tjustify-content: center;\n}\n.bitcoingraph {\n\tbackground-color: transparent;\n\talign-items: center;\n\twidth: 100%;\n\theight: 40vh;\n\tjustify-content: center;\n}\n\n.cryptoexchangeview {\n\tdisplay: flex;\n\tbackground-color: transparent;\n\talign-items: center;\n\twidth: 100%;\n\theight: 40vh;\n\tjustify-content: center;\n}\n\n.bitcoinoptions {\n\tposition: relative;\n\tright: 0;\n\twidth: 5vw;\n\tfont-size: 18px;\n\tborder-width: 0;\n}\n.bitcoinCandleStickPlot {\n\tbackground-color: transparent;\n\talign-items: center;\n\twidth: 100%;\n\theight: 40vh;\n\tjustify-content: center;\n}\n.paragraph {\n\tcolor: black;\n\tfont-size: 1.5em;\n\tfont-weight: 500;\n\tfont-family: 'Arial';\n\tmargin-top: 2em;\n\tmargin: 50;\n}\n.table_row_parent { \n\tborder-width: 2; \n\tborder-style: solid; \n\tdisplay: flex;\n\tflex-direction: column;\n}\n.section-title {\n\tmargin: 50;\n\tfont-size: 2em;\n\tfont-weight: 900;\n\tfont-family: 'Arial';\n\tmargin-top: 2em;\n}\n.code-image {\n\tmargin: 0;\n\twidth: 100;\n}\n.header {\n\tdisplay: flex;\n\tflex-direction: row;\n\twidth: 100%;\n\theight: 3em; \n\tbackground-color: black; \n\talign-items: center; \n}\n.header-link {\n\tfont-weight: 700;\n\tfont-family: 'Arial';\n\tfont-size: 18;\n\tcolor: white; \n\tposition: absolute;\n\ttop: 1em;\n\tleft: 2em;\n\tcursor: pointer; \n\ttext-decoration: none;  \n}\n.linegraph {\n\tdisplay: flex;\n\twidth: 25em;\n}\n.intradaypage {\n\tmargin-top: 3em;\n\tdisplay: flex;\n\tflex-direction: column; \n\tbackground-color: transparent;\n\twidth: 90%;\n\theight: 100%;\n}\n.intradaychild {\n\tdisplay: flex;\n\tflex-direction: row;\n}\n.intradaylinegraph {\n\twidth: 50em;\n\theight: 27em;\n\tbackground-color: Snow;\n\tmargin: 1.5em;\n}\n.intradaybargraph {\n\tdisplay: flex;\n\twidth: 50em;\n\theight: 15em; \n\tbackground-color: transparent;\n\tmargin-left: 5em;\n}\n.autocorrelationgraph {\n\tdisplay: flex;\n\tbackground-color: transparent;\n\twidth: 50em;\n\theight: 15em;\n}\n.autocorrelationgraph_intraday {\n\tdisplay: flex;\n\twidth: 45em;\n\theight: 20em;\n\tmargin-left: 6em;\n}\n.candleStickGraph_intraday {\n\tdisplay: flex;\n\twidth: 50em;\n\theight: 30em;\n\tmargin-top: 2em;\t\n}\n.candleStickGraph {\n\tdisplay: flex;\n\theight: 15em;\n\twidth: 41em;\n\tbackground-color: transparent;\n}\n\n.graphViews {\n\tdisplay: flex;\n\tbackground-color: Snow;\n\twidth: 90%;\n}\n\n.marketgraph-view {\n    background-color: Snow;\n    width: 90%;\n    flex-direction: column;\n    margin-top: 2em;\n}\n\n.graphViewChild {\n\tdisplay: flex;\n\tbackground-color: transparent;\n\tflex-direction: column; \n\theight: 40em;\n\twidth: 50em;\n}\n\n.graph-page-title {\n\tfont-family: 'Arial';\n\tfont-weight: 500; \n\tcolor: black;\n\tfont-size: 2.5em;\n\tposition: relative;\n\ttop: 0em;\n}\n\n.background-video {\n\tdisplay: flex;\n\twidth: 100%;\n\tbackground-color: transparent;\n}\n\n.videobanner {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n\theight: 70%;\n\twidth: 100%;\n\ttop: 0;\n\tposition: absolute;\n\tbackground-color: transparent;\n\tcolor: white;\n\tfont-family: 'Arial';\n}\n\n.bannerchild {\n\tfont-size: 4vh;\n\tmargin-left: 4em;\n\tmargin-top: 2.5em;\n}\n\n.bannerAd {\n\tposition: absolute;\n\ttop: 30%;\n\twidth: 90%;\n\theight: 30vh;\n\tdisplay: flex;\n\tfont-size: 4.5vh;\n\talign-text: center;\n\talign-items: center;\n\tjustify-content: center;\n\tbackground-color: transparent;\n\tcolor: black;\n\topacity: 0.6;\n}\n\n/**\n  responsive container\n**/\n.gridcontainer {\n  min-width: 100%;\n  align-items: center;\n}\n.gridwrapper {\n  overflow: hidden;\n  display: flex;\n  flex-direction: row;\n}\n.gridbox {\n    /*margin-left: 2.0242914979757085020242914979757%;*/\n    /* margin-right: 2.0242914979757085020242914979757%;*/\n}\n.gridmain {\n  /*width: 48.987854251012145748987854251012%;*/\n    width: 100%;\n}\n\n\n@media only screen and (max-width: 700px){\n\n\t.gridwrapper {\n\t\tdisplay: flex;\n\t\tflex-direction: column;\n\t}\n\n    .gridmain {\n      width: 100%;\n    }\n\n    .gridbox {\n      \n    }\n}\n\n.auth_form {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n}\n\n.auth_form input {\n\t\tfont-size: 1.9em;\n\t\twidth: 15em;\n\t\tmargin: 1.0em;\n}\n\n.auth_form button {\n\theight: 2em;\n\twidth: 6em;\n\tfont-size: 1.5em;\n\tfont-family: 'Arial';\n}\n\n.auth_form h1 {\n\tcolor: red;\n}\n\n.auth_form h2 {\n\tmargin-top: 3em;\n}\n\n.auth_form a {\n\tmargin-top: 4em;\n\tcursor: pointer;\n}\n\n.auth_form h4 {\n\tcursor: pointer;\n}\n\n.auth_form h4:hover{\n\tcolor: red;\n}\n\n.auth_form div {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n.loader {\n    border: 16px solid #f3f3f3; /* Light grey */\n    border-top: 16px solid #3498db; /* Blue */\n    border-radius: 50%;\n    width: 120px;\n    height: 120px;\n    margin-top: 20em;\n    animation: spin 2s linear infinite;\n}\n\n@keyframes spin {\n    0% { transform: rotate(0deg); }\n    100% { transform: rotate(360deg); }\n}\n\n", ""]);
+exports.push([module.i, "#Title {\n\tfont-size: 4.7em;\n\tcolor: black;\n\tfont-weight: 900; \n\tfont-family: 'Arial';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n\talign-text: center;\n\tmargin: 50;\n}\n#About-Me {\n\tcolor: black;\n\tfont-size: 2.1em;\n\tfont-weight: 500; \n\tfont-family: 'Arial';\n\ttext-decoration: 'none';\n\tmargin-top: 5;\n}\n.app {\n\tdisplay: flex; \n\tflex-direction: column; \n\tbackground-color: transparent;\n\theight: 100%;\n}\n\n.bitcoin_history_options {\n\tposition: relative;\n\tdisplay: flex;\n\tflex-direction: row;\n\tfont-size: 12;\n\tfont-family: 'Arial';\n\tjustify-content: center;\n\n}\n\n.bitcoin_history_options_label {\n\tdisplay: flex;\n\talign-items: center;\n\tcursor: pointer;\n\tmargin: 1.5em;\n}\n\n.bitcoin_history_options_label:hover{\n\tborder-bottom-style: solid;\n\tborder-bottom-width: 0.01em;\n\tborder-bottom-color: black;\n\topacity: 0.7;\n}\n\n.bitcoin_history_options_label_selected {\n\tmargin: 1.5em;\n\tdisplay: flex;\n\talign-items: center;\n\tcursor: pointer;\n\tborder-bottom-style: solid;\n\tborder-bottom-width: 0.01em;\n\tborder-bottom-color: black;\n}\n\n.stock_history_options {\n\tposition: relative;\n\tdisplay: flex;\n\tflex-direction: row;\n\tfont-size: 12;\n\tfont-family: 'Arial';\n\tjustify-content: center;\n}\n.stock_history_options label {\n\tdisplay: flex;\n\tflex-direction: column;\n\tmargin: 1em;\n\talign-items: center;\n\tcursor: pointer;\n}\n.stock_history_options select {\n\twidth: 7em;\n\theight: 2.5em;\n\tbackground: Snow;\n\tmargin: 0.3em;\n\tborder-width: 0;\n}\n.marketpage {\n\tdisplay: flex;\n\tflex-direction: column;\n\tbackground-color: transparent; \n\talign-items: center;\n}\n.marketgraph {\n\tbackground-color: transparent;\n\talign-items: center;\n\twidth: 50em;\n\theight: 40em;\n\tjustify-content: center;\n}\n.bitcoingraph {\n\tbackground-color: transparent;\n\talign-items: center;\n\twidth: 100%;\n\theight: 40vh;\n\tjustify-content: center;\n}\n\n\n.cryptoexchangeview {\n\n\tdisplay: flex;\n\tbackground-color: transparent;\n\talign-items: center;\n\twidth: 100%;\n\theight: 40vh;\n\tjustify-content: center;\n}\n\n\n\n\n\n\n\n\n\n.bitcoinoptions {\n\tposition: relative;\n\tright: 0;\n\twidth: 5vw;\n\tfont-size: 18px;\n\tborder-width: 0;\n}\n.bitcoinCandleStickPlot {\n\tbackground-color: transparent;\n\talign-items: center;\n\twidth: 100%;\n\theight: 40vh;\n\tjustify-content: center;\n}\n.paragraph {\n\tcolor: black;\n\tfont-size: 1.5em;\n\tfont-weight: 500;\n\tfont-family: 'Arial';\n\tmargin-top: 2em;\n\tmargin: 50;\n}\n.table_row_parent { \n\tborder-width: 2; \n\tborder-style: solid; \n\tdisplay: flex;\n\tflex-direction: column;\n}\n.section-title {\n\tmargin: 50;\n\tfont-size: 2em;\n\tfont-weight: 900;\n\tfont-family: 'Arial';\n\tmargin-top: 2em;\n}\n.code-image {\n\tmargin: 0;\n\twidth: 100;\n}\n.header {\n\tdisplay: flex;\n\tflex-direction: row;\n\twidth: 100%;\n\theight: 3em; \n\tbackground-color: black; \n\talign-items: center; \n}\n.header-link {\n\tfont-weight: 700;\n\tfont-family: 'Arial';\n\tfont-size: 18;\n\tcolor: white; \n\tposition: absolute;\n\ttop: 1em;\n\tleft: 2em;\n\tcursor: pointer; \n\ttext-decoration: none;  \n}\n.linegraph {\n\tdisplay: flex;\n\twidth: 25em;\n}\n.intradaypage {\n\tmargin-top: 3em;\n\tdisplay: flex;\n\tflex-direction: column; \n\tbackground-color: transparent;\n\twidth: 90%;\n\theight: 100%;\n}\n.intradaychild {\n\tdisplay: flex;\n\tflex-direction: row;\n}\n.intradaylinegraph {\n\twidth: 50em;\n\theight: 27em;\n\tbackground-color: Snow;\n\tmargin: 1.5em;\n}\n.intradaybargraph {\n\tdisplay: flex;\n\twidth: 50em;\n\theight: 15em; \n\tbackground-color: transparent;\n\tmargin-left: 5em;\n}\n.autocorrelationgraph {\n\tdisplay: flex;\n\tbackground-color: transparent;\n\twidth: 50em;\n\theight: 15em;\n}\n.autocorrelationgraph_intraday {\n\tdisplay: flex;\n\twidth: 45em;\n\theight: 20em;\n\tmargin-left: 6em;\n}\n.candleStickGraph_intraday {\n\tdisplay: flex;\n\twidth: 50em;\n\theight: 30em;\n\tmargin-top: 2em;\t\n}\n.candleStickGraph {\n\tdisplay: flex;\n\theight: 15em;\n\twidth: 41em;\n\tbackground-color: transparent;\n}\n\n.graphViews {\n\tdisplay: flex;\n\tbackground-color: Snow;\n\twidth: 90%;\n}\n\n.marketgraph-view {\n    background-color: Snow;\n    width: 90%;\n    flex-direction: column;\n    margin-top: 2em;\n}\n\n.graphViewChild {\n\tdisplay: flex;\n\tbackground-color: transparent;\n\tflex-direction: column; \n\theight: 40em;\n\twidth: 50em;\n}\n\n.graph-page-title {\n\tfont-family: 'Arial';\n\tfont-weight: 500; \n\tcolor: black;\n\tfont-size: 2.5em;\n\tposition: relative;\n\ttop: 0em;\n}\n\n.background-video {\n\tdisplay: flex;\n\twidth: 100%;\n\tbackground-color: transparent;\n}\n\n.videobanner {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n\theight: 70%;\n\twidth: 100%;\n\ttop: 0;\n\tposition: absolute;\n\tbackground-color: transparent;\n\tcolor: white;\n\tfont-family: 'Arial';\n}\n\n.bannerchild {\n\tfont-size: 4vh;\n\tmargin-left: 4em;\n\tmargin-top: 2.5em;\n}\n\n.bannerAd {\n\tposition: absolute;\n\ttop: 30%;\n\twidth: 90%;\n\theight: 30vh;\n\tdisplay: flex;\n\tfont-size: 4.5vh;\n\talign-text: center;\n\talign-items: center;\n\tjustify-content: center;\n\tbackground-color: transparent;\n\tcolor: black;\n\topacity: 0.6;\n}\n\n/**\n  responsive container\n**/\n.gridcontainer {\n  min-width: 100%;\n  align-items: center;\n}\n.gridwrapper {\n  overflow: hidden;\n  display: flex;\n  flex-direction: row;\n}\n.gridbox {\n    /*margin-left: 2.0242914979757085020242914979757%;*/\n    /* margin-right: 2.0242914979757085020242914979757%;*/\n}\n.gridmain {\n  /*width: 48.987854251012145748987854251012%;*/\n    width: 100%;\n}\n\n\n@media only screen and (max-width: 700px){\n\n\t.gridwrapper {\n\t\tdisplay: flex;\n\t\tflex-direction: column;\n\t}\n\n    .gridmain {\n      width: 100%;\n    }\n\n    .gridbox {\n      \n    }\n}\n\n.auth_form {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n}\n\n.auth_form input {\n\t\tfont-size: 1.9em;\n\t\twidth: 15em;\n\t\tmargin: 1.0em;\n}\n\n.auth_form button {\n\theight: 2em;\n\twidth: 6em;\n\tfont-size: 1.5em;\n\tfont-family: 'Arial';\n}\n\n.auth_form h1 {\n\tcolor: red;\n}\n\n.auth_form h2 {\n\tmargin-top: 3em;\n}\n\n.auth_form a {\n\tmargin-top: 4em;\n\tcursor: pointer;\n}\n\n.auth_form h4 {\n\tcursor: pointer;\n}\n\n.auth_form h4:hover{\n\tcolor: red;\n}\n\n.auth_form div {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n.loader {\n    border: 16px solid #f3f3f3; /* Light grey */\n    border-top: 16px solid #3498db; /* Blue */\n    border-radius: 50%;\n    width: 120px;\n    height: 120px;\n    margin-top: 20em;\n    animation: spin 2s linear infinite;\n}\n\n@keyframes spin {\n    0% { transform: rotate(0deg); }\n    100% { transform: rotate(360deg); }\n}\n\n", ""]);
 
 // exports
 
@@ -63459,7 +63618,8 @@ var BitcoinView = function (_Component) {
 			bitcoinData: null,
 			daterange: 'daily',
 			bitcoinHistoryOptions: StockDataStore.getBitcoinHistoryOption(),
-			cryptoexchangedata: null
+			cryptoexchangedata: null,
+			currencyexchangedata: null
 		};
 		return _this;
 	}
@@ -63469,7 +63629,7 @@ var BitcoinView = function (_Component) {
 		value: function componentDidMount() {
 			StockDataStore.addChangeListener(this._onChange.bind(this));
 			API.getBitcoinData("daily");
-			API.getCryptoCurrencyExchangeData("daily");
+			//	API.getCryptoCurrencyExchangeData("daily");
 		}
 	}, {
 		key: 'componentWillUnmount',
@@ -63486,7 +63646,8 @@ var BitcoinView = function (_Component) {
 				bitcoinData: StockDataStore.getBitcoinHistory(),
 				storeupdated: true,
 				bitcoinHistoryOptions: StockDataStore.getBitcoinHistoryOption(),
-				cryptoexchangedata: StockDataStore.getCryptoCurrencyExchange()
+				cryptoexchangedata: StockDataStore.getCryptoCurrencyExchange(),
+				currencyexchangedata: StockDataStore.getCurrencyExchange()
 			});
 		}
 	}, {
@@ -63562,9 +63723,27 @@ var BitcoinView = function (_Component) {
 			//
 			// MarketGraph.renderCryptoCurrencyExchangeView(this.state.cryptoexchangedata, this.state.bitcoinHistoryOptions)
 			//
+
 			var view = null;
 			if (this.state.cryptoexchangedata != null) {
 				view = MarketGraph.renderCryptoCurrencyExchangeView(this.state.cryptoexchangedata, this.state.bitcoinHistoryOptions);
+			} else {
+				view = _react2.default.createElement('div', null);
+			}
+			return view;
+		}
+	}, {
+		key: 'renderCurrencyExchange',
+		value: function renderCurrencyExchange() {
+			//
+			// MarketGraph.renderCryptoCurrencyExchangeView(this.state.cryptoexchangedata, this.state.bitcoinHistoryOptions)
+			//
+
+
+			var view = null;
+			if (this.state.currencyexchangedata != null) {
+
+				view = MarketGraph.renderCurrencyExchangeView(this.state.currencyexchangedata);
 			} else {
 				view = _react2.default.createElement('div', null);
 			}
@@ -63586,8 +63765,7 @@ var BitcoinView = function (_Component) {
 				),
 				MarketGraph.renderBitcoinAPIOptions(this.state.bitcoinHistoryOptions),
 				this.renderBitCoinPriceView(),
-				this.renderBitcoinVarianceView(),
-				this.renderCryptoCurrencyExchangeView()
+				this.renderCurrencyExchange()
 			);
 		}
 	}]);

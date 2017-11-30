@@ -28,7 +28,89 @@ class MarketGraph {
 		API.getCryptoCurrencyExchangeData(range);
 	}
 
+
+
+	renderCurrencyExchangeView(data){
+
+
+
+			let dollar_data = [["DATE","Price"]];
+
+			let history = 'daily';
+			console.log(data.dataset.data);
+			for(let x=data.dataset.data.length-1;x>=0;x--){
+				dollar_data.push([new Date(data.dataset.data[x][0]), data.dataset.data[x][1]  ]);
+			};
+		
+			let dollar_options = {
+				    	title: "USD/CNY Dollar vs Chinese Yuan",
+						titleTextStyle: {
+							color: 'black',    // any HTML string color ('red', '#cc00cc')
+							fontName: 'Arial', // i.e. 'Times New Roman'
+							fontSize: 18, // 12, 18 whatever you want (don't specify px)
+							bold: false,    // true or false
+							italic: false   // true of false
+						},
+						legend: "none",
+						backgroundColor: 'transparent',
+						vAxis: {
+							title: "",	
+							titleTextStyle: { color: 'black' },
+				            
+							baselineColor: 'transparent',
+				        	textStyle: {
+				        		fontSize: 12,
+				        		fontName: 'Arial',
+				        		color: 'black',
+				        		fontWeight: 700,
+				       
+				        	},
+				        	gridlines: {
+						    	count: 5,
+						    	color: 'black'
+						   	}
+				        },
+					 	hAxis: {
+							title: "",	
+							titleTextStyle: { color: 'black' },
+							baselineColor: 'silver',
+				        	textStyle: {
+				        		fontSize: 12,
+				        		fontName: 'Arial',
+				        		color: 'black',
+				        		fontWeight: 700,
+				       
+				        	},
+				        	gridlines: {
+						    	count: 5,
+						    	color: 'transparent',
+						    	opacity: '0.6'
+						   	},
+						   	format:	null
+					 	}
+			};
+
+
+
+		return(
+
+				<div className="cryptoexchangeview">
+						<Chart
+							chartType="LineChart"
+							data={dollar_data}
+							width="100%"
+							height="100%"
+							options={dollar_options}
+						/>
+				</div>
+		
+		);
+	}
+
 	renderCryptoCurrencyExchangeView(data, historyoption){
+
+			console.log(data);
+
 			let dollar_data = [["DATE","Price"]];
 			let yuan_data = [["DATE","Price"]];
 			let history = 'daily';
@@ -45,13 +127,13 @@ class MarketGraph {
 				//	console.log(new Date(key));
 			 	//	console.log(data[key]['1a. price (CNY)']);
 			 	//  console.log(data[key]['1b. price (USD)']);
-			 	yuan_data.push([new Date(key), parseFloat(data[key]['1a. price (CNY)']) ])
-				dollar_data.push([new Date(key), parseFloat(data[key]['1b. price (USD)']) ]);
+			 	yuan_data.push([new Date(key), parseFloat(data[key]['4a. close (CNY)']) ])
+				dollar_data.push([new Date(key), parseFloat(data[key]['4b. close (USD)']) ]);
 			};
 			
-
 			let dollar_options = {
-				    	title: "Price",
+				    	title: "Dollar Price",
+
 						titleTextStyle: {
 							color: 'black',    // any HTML string color ('red', '#cc00cc')
 							fontName: 'Arial', // i.e. 'Times New Roman'
@@ -62,9 +144,9 @@ class MarketGraph {
 						legend: "none",
 						backgroundColor: 'transparent',
 						vAxis: {
-							title: "JapaneseYuan",	
-							titleTextStyle: { color: 'black' },     
-				            viewWindowMode:'explicit',
+							title: "",	
+							titleTextStyle: { color: 'black' },
+				            
 							baselineColor: 'transparent',
 				        	textStyle: {
 				        		fontSize: 12,
@@ -74,14 +156,14 @@ class MarketGraph {
 				       
 				        	},
 				        	gridlines: {
-						    	count: 2,
+						    	count: 5,
 						    	color: 'black'
 						   	}
 				        },
 					 	hAxis: {
 							title: "",	
 							titleTextStyle: { color: 'black' },
-							baselineColor: 'transparent',
+							baselineColor: 'black',
 				        	textStyle: {
 				        		fontSize: 12,
 				        		fontName: 'Arial',
@@ -95,36 +177,88 @@ class MarketGraph {
 						   	},
 						   	format:	null
 					 	}
-		};
+			};
 
 
-		let yuan_options = dollar_options;
+			let yuan_options = {
+				    	title: "Yuan Price",
+
+						titleTextStyle: {
+							color: 'black',    // any HTML string color ('red', '#cc00cc')
+							fontName: 'Arial', // i.e. 'Times New Roman'
+							fontSize: 18, // 12, 18 whatever you want (don't specify px)
+							bold: false,    // true or false
+							italic: false   // true of false
+						},
+						legend: "none",
+						backgroundColor: 'transparent',
+						vAxis: {
+							title: "",	
+							titleTextStyle: { color: 'black' },
+				            
+							baselineColor: 'transparent',
+				        	textStyle: {
+				        		fontSize: 12,
+				        		fontName: 'Arial',
+				        		color: 'black',
+				        		fontWeight: 700,
+				       
+				        	},
+				        	gridlines: {
+						    	count: 5,
+						    	color: 'black'
+						   	}
+				        },
+					 	hAxis: {
+							title: "",	
+							titleTextStyle: { color: 'black' },
+							baselineColor: 'black',
+				        	textStyle: {
+				        		fontSize: 12,
+				        		fontName: 'Arial',
+				        		color: 'black',
+				        		fontWeight: 700,
+				       
+				        	},
+				        	gridlines: {
+						    	count: 5,
+						    	color: 'transparent'
+						   	},
+						   	format:	null
+					 	}
+			};
+
+		/*****
 
 
-
-
-
+		****/
 		return(
-			<div className="cryptoexchangeview">
-					
-					<Chart
-						chartType="LineChart"
-						data={dollar_data}
-						width="100%"
-						height="100%"
-						options={dollar_options}
-					/>
-
-					<Chart
-						chartType="LineChart"
-						data={yuan_data}
-						width="100%"
-						height="100%"
-						options={yuan_options}
-					/>
+			<div>
+				<div className="cryptoexchangeview">
+						<Chart
+							chartType="LineChart"
+							data={dollar_data}
+							width="100%"
+							height="100%"
+							options={dollar_options}
+						/>
+				</div>
 
 
-			</div>
+				<div className="cryptoexchangeview">
+						<Chart
+							chartType="LineChart"
+							data={yuan_data}
+							width="100%"
+							height="100%"
+							options={yuan_options}
+						/>
+				</div>
+
+
+			</div>		
+
+
 		);
 	}
 
@@ -157,6 +291,7 @@ class MarketGraph {
 	}
 
 	setBitcoinVolumeGraph(data,historyoptions){
+
 
 	      		let volume_data = [["DATE", 'Volume']];
 			    for(var x =data.length-1; x>=0;x--){
@@ -230,6 +365,8 @@ class MarketGraph {
 	}
 
 	setBitcoinGraph(data,historyoptions){
+
+
 			let line_data = [["DATE","Price"]];
 			let prices=[];
 			for(let x =0;x<data.length;x++){
@@ -242,7 +379,7 @@ class MarketGraph {
 			};
 
 			let options = {
-				    	title: "Price",
+				    	title: "Dollar Price",
 
 						titleTextStyle: {
 							color: 'black',    // any HTML string color ('red', '#cc00cc')

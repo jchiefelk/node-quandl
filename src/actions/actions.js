@@ -87,6 +87,16 @@ var getFrontEndData = function(){
 
 var Actions = {
 
+
+  updateCurrencyExchaneData: function(item){
+   
+    AppDispatcher.handleAction({
+        actionType: appConstants.CURRENCY_EXCHANGE_RATES,
+        data: item
+    });
+
+  },
+
   updateCryptoCurrencycExchangeData: function(item) {
       AppDispatcher.handleAction({
            actionType:  appConstants.UPDATE_CRYPTOEXCHANGE_DATA,

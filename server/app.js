@@ -124,17 +124,40 @@ app.post('/stockapi', function(req,res){
 });
 
 
+
 app.post('/bitcoin', function(req,res){
 
-  let url = 'https://apiv2.bitcoinaverage.com/indices/global/history/BTCUSD?period='+req.body.daterange+'&?format=json';
+   let url = 'https://apiv2.bitcoinaverage.com/indices/global/history/BTCUSD?period='+req.body.daterange+'&?format=json';  
+   var bitcoin_price = null;
    return fetch(url, {
             method: 'get',
             mode: 'cors'
       })
       .then((response) => typeof response == 'object' ? response.json() : {} )
       .then( ( responseJson ) => {
+        bitcoin_price = responseJson;
+        let api_key = 'oaWPkjrfz_aQmyPmE-WT';
+       // console.log(responseJson);
+        console.log(responseJson[0].time.split(' '));
+        let starting_date = responseJson[responseJson.length-1].time.split(' ');
+        let start=  null;
+        // console.log(starting_date[0]);
+       // console.log(req.body.daterange);
+        if(req.body.daterange=='daily'){
+            start = "2017-11-17";
+        } else {
+          start = starting_date[0];
+        }
+        console.log('https://www.quandl.com/api/v3/datasets/CURRFX/USDCNY.json?api_key='+api_key+'&start_date='+start);
+
+        return fetch('https://www.quandl.com/api/v3/datasets/CURRFX/USDCNY.json?api_key='+api_key+'&start_date='+start,{method: 'get', mode: 'cors'})      
+      })
+      .then((response) => typeof response =='object' ? response.json() : {})
+      .then((responseJson) =>{
+
             res.json({
-              data: responseJson
+              data: bitcoin_price,
+              currencyExchangeData: responseJson
             });
       })
       .catch((err) => {
@@ -142,16 +165,14 @@ app.post('/bitcoin', function(req,res){
             res.json({
               error: err
             });
-
       });
-
 });
-
 
 app.post('/cryptocurrencyexchange', function(req,res){
 
     let apiKey = 'JKH0X5U5HVN4DD1Y';
     // let url = 'https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_INTRADAY&symbol=BTC&market=CNY&apikey=demo';
+    
     let url = null;
     if(req.body.daterange.toUpperCase()=='ALLTIME'){
         url = 'https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_MONTHLY&symbol=BTC&market=CNY&apikey='+apiKey;
@@ -162,15 +183,18 @@ app.post('/cryptocurrencyexchange', function(req,res){
     if(req.body.daterange.toUpperCase()=='MONTHLY'){
         url = 'https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_WEEKLY&symbol=BTC&market=CNY&apikey='+apiKey;
     }
+
    // let url = 'https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_'+req.body.daterange.toUpperCase()+'&symbol=BTC&market=CNY&apikey='+apiKey;
+  
     return fetch(url,{
         method: 'get',
         mode: 'cors'
     })
     .then((response) => typeof response == 'object' ? response.json() : {} )
     .then((responseJson)=>{
-     // console.log(responseJson);
+       // console.log(responseJson);
      //  res.json({data: responseJson});
+       /**
         if(req.body.daterange.toUpperCase()=='ALLTIME'){
             url = 'https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_MONTHLY&symbol=BTC&market=JPY&apikey='+apiKey;
         } 
@@ -180,9 +204,17 @@ app.post('/cryptocurrencyexchange', function(req,res){
         if(req.body.daterange.toUpperCase()=='MONTHLY'){
             url = 'https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_WEEKLY&symbol=BTC&market=JPY&apikey='+apiKey;
         }
-
-        return fetch(url,{method: 'get',mode: 'cors'})
+        **/
+       res.json({data: responseJson});
     })
+    .catch((err) => {
+            console.log(err);
+            res.json({
+              error: err
+            });
+
+    });
+    /**
     .then((response) => typeof response == 'object' ? response.json() : {} )
     .then((responseJson) => {
   
@@ -237,10 +269,7 @@ app.post('/cryptocurrencyexchange', function(req,res){
         }
         return fetch(url,{method: 'get',mode: 'cors'})
     })
-    .catch((err)=>{
-        console.log(err);
-        res.json({error: err});
-    });
+    ***/
 
 });
 

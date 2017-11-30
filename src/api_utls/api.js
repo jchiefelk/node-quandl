@@ -46,11 +46,14 @@ API.prototype.getBitcoinData = function(daterange){
             return response.json();
           })
          .then(function(data) {
+
+              Actions.updateCurrencyExchaneData(data.currencyExchangeData);
               Actions.updateBitcoinData(data.data);
           }).catch(function(error) {
               console.log(error);
           }); 
 };
+
 
 API.prototype.getCryptoCurrencyExchangeData = function(daterange){
       let data = {
@@ -68,7 +71,8 @@ API.prototype.getCryptoCurrencyExchangeData = function(daterange){
         return response.json();
       })
       .then(function(data){
-        // console.log(data);
+
+     
         Actions.updateCryptoCurrencycExchangeData(data);
       })
       .catch(function(error){

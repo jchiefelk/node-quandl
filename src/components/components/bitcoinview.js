@@ -37,14 +37,15 @@ export default class BitcoinView extends Component {
 					bitcoinData: null,
 					daterange: 'daily',
 					bitcoinHistoryOptions:	StockDataStore.getBitcoinHistoryOption(),
-					cryptoexchangedata: null
+					cryptoexchangedata: null,
+					currencyexchangedata: null
 				};
 			}
 
 			componentDidMount(){
 				StockDataStore.addChangeListener(this._onChange.bind(this));
 				API.getBitcoinData("daily");
-				API.getCryptoCurrencyExchangeData("daily");
+			//	API.getCryptoCurrencyExchangeData("daily");
 			}
 
 			componentWillUnmount(){
@@ -59,10 +60,9 @@ export default class BitcoinView extends Component {
 					bitcoinData: StockDataStore.getBitcoinHistory(),
 					storeupdated: true,
 					bitcoinHistoryOptions:	StockDataStore.getBitcoinHistoryOption(),
-					cryptoexchangedata: StockDataStore.getCryptoCurrencyExchange()
+					cryptoexchangedata: StockDataStore.getCryptoCurrencyExchange(),
+					currencyexchangedata:  StockDataStore.getCurrencyExchange()
 				});
-
-
 
 			}
 
@@ -125,9 +125,27 @@ export default class BitcoinView extends Component {
 					//
 					// MarketGraph.renderCryptoCurrencyExchangeView(this.state.cryptoexchangedata, this.state.bitcoinHistoryOptions)
 					//
+			
 					let view = null;
 					if(this.state.cryptoexchangedata!=null){
 						view = MarketGraph.renderCryptoCurrencyExchangeView(this.state.cryptoexchangedata, this.state.bitcoinHistoryOptions);
+					} else {
+						view = (<div/>);
+					}
+					return view;
+			}
+
+				renderCurrencyExchange(){
+					//
+					// MarketGraph.renderCryptoCurrencyExchangeView(this.state.cryptoexchangedata, this.state.bitcoinHistoryOptions)
+					//
+				
+
+
+					let view = null;
+					if(this.state.currencyexchangedata!=null){
+						
+						view = MarketGraph.renderCurrencyExchangeView(this.state.currencyexchangedata);
 					} else {
 						view = (<div/>);
 					}
@@ -143,8 +161,7 @@ export default class BitcoinView extends Component {
 						<h1 className="graph-page-title">Bitcoin - $BTC</h1>
 						{MarketGraph.renderBitcoinAPIOptions(this.state.bitcoinHistoryOptions)}
 						{this.renderBitCoinPriceView()}
-						{this.renderBitcoinVarianceView()}
-						{this.renderCryptoCurrencyExchangeView()}
+						{this.renderCurrencyExchange()}
 					</div>
 				);
 			}
