@@ -1,6 +1,7 @@
 let Promise = require('bluebird');
 const correlation = require('../build/Release/correlation');
 const autocorrelation = require('../build/Release/autocorrelation');
+
 function Correlation(){
 	this.data = {
 		date: null,
@@ -8,6 +9,7 @@ function Correlation(){
 		volume: null
 	};
 }; 
+
 Correlation.prototype.stockprice_autocorrelation = function(obj) {
 	/***
 		Return Structure
@@ -32,16 +34,40 @@ Correlation.prototype.stockprice_autocorrelation = function(obj) {
 		this.data.close.push(obj[key]['4. close']); 		
 		this.data.volume.push(obj[key]['5. volume']);
 	};
-	var obj = {
+	var object = {
 		'close': this.data.close
 	};
 	return new Promise(function(resolve,reject){
-			autocorrelation(obj, function(results) {
+			autocorrelation(object, function(results) {
 	              resolve(results); 
 			});	
 	});
 };
+
+
+Correlation.prototype.bitcoin_autocorrelation = function(obj){
+
+	this.data={
+		close: []
+	};
+
+	for(let key in obj){
+		this.data.close.push(obj[key].average);
+	};
+
+	let object = {	
+		'close': this.data.close
+	};
+	//console.log(this.data.close.length);
+	return new Promise(function(resolve,reject){
+		autocorrelation(object,function(results){
+			resolve(results);
+		});
+	});
+};
+
 Correlation.prototype.market_fund_autocorrelatation = function(correlate){
+	
 	this.data = {
 		name: "Stockprice Autocorrelation",
 		date: [],
@@ -59,4 +85,5 @@ Correlation.prototype.market_fund_autocorrelatation = function(correlate){
 
 	});
 };
+
 module.exports = new Correlation();

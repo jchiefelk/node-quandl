@@ -88,6 +88,18 @@ var getFrontEndData = function(){
 var Actions = {
 
 
+  updateBitcoinAutocorrlation: function(item){
+
+      AppDispatcher.handleAction({
+
+        actionType: appConstants.BITCOIN_AUTOCORRELATION,
+        data: item
+      });
+
+
+  },
+
+
   updateDollarIndex: function(item){
 
       AppDispatcher.handleAction({

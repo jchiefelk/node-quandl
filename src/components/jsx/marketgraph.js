@@ -29,6 +29,77 @@ class MarketGraph {
 	}
 
 
+
+	renderBitcoinCorrelationView(data){
+
+			let cor_data = [["AutoCorrelation","Lag Times"]];
+			let history = 'daily';
+			for(let x=0;x<data.length;x++){
+				cor_data.push([x, data[x]]);
+			};
+			let options = {
+				    	title: "Bitcoin Price Autocorrelation",
+						titleTextStyle: {
+							color: 'black',    // any HTML string color ('red', '#cc00cc')
+							fontName: 'Arial', // i.e. 'Times New Roman'
+							fontSize: 18, // 12, 18 whatever you want (don't specify px)
+							bold: false,    // true or false
+							italic: false   // true of false
+						},
+						legend: "none",
+						backgroundColor: 'transparent',
+						vAxis: {
+							title: "",	
+							titleTextStyle: { color: 'black' },
+				            
+							baselineColor: 'transparent',
+				        	textStyle: {
+				        		fontSize: 12,
+				        		fontName: 'Arial',
+				        		color: 'black',
+				        		fontWeight: 700,
+				       
+				        	},
+				        	gridlines: {
+						    	count: 5,
+						    	color: 'silver'
+						   	}
+				        },
+					 	hAxis: {
+							title: "",	
+							titleTextStyle: { color: 'black' },
+							baselineColor: 'silver',
+				        	textStyle: {
+				        		fontSize: 12,
+				        		fontName: 'Arial',
+				        		color: 'black',
+				        		fontWeight: 700,
+				       
+				        	},
+				        	gridlines: {
+						    	count: 5,
+						    	color: 'transparent',
+						    	opacity: '0.6'
+						   	},
+						   	format:	null
+					 	}
+		};
+
+		return(
+
+				<div className="cryptoexchangeview">
+						<Chart
+							chartType="LineChart"
+							data={cor_data}
+							width="100%"
+							height="100%"
+							options={options}
+						/>
+				</div>
+		
+		);
+	}
+
 	renderDollarIndexView(data){
 
 			let dollar_data = [["DATE","Price"]];

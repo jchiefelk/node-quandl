@@ -11867,6 +11867,15 @@ var getFrontEndData = function getFrontEndData() {
 
 var Actions = {
 
+  updateBitcoinAutocorrlation: function updateBitcoinAutocorrlation(item) {
+
+    AppDispatcher.handleAction({
+
+      actionType: appConstants.BITCOIN_AUTOCORRELATION,
+      data: item
+    });
+  },
+
   updateDollarIndex: function updateDollarIndex(item) {
 
     AppDispatcher.handleAction({
@@ -13670,6 +13679,7 @@ function BitcoinData() {
   this.description = "Bitcoin Data Avg Object";
   this.data = null;
   this.historyOption = 'daily';
+  this.autocorrelation = null;
 };
 
 BitcoinData.prototype.updateBitcoinData = function (item) {
@@ -13678,6 +13688,12 @@ BitcoinData.prototype.updateBitcoinData = function (item) {
 
 BitcoinData.prototype.updateBitcoinHistoryOptions = function (item) {
   this.historyOption = item;
+};
+
+BitcoinData.prototype.updateAutoCorrelation = function (item) {
+
+  this.autocorrelation = item;
+  console.log(this.autocorrelation);
 };
 
 var Bitcoin = new BitcoinData();
@@ -13734,6 +13750,10 @@ var StockDataStore = objectAssign({}, EventEmitter.prototype, {
   },
   emitChange: function emitChange() {
     this.emit(CHANGE_EVENT);
+  },
+
+  getBitcoinAutocorrelation: function getBitcoinAutocorrelation() {
+    return Bitcoin.autocorrelation;
   },
 
   getDollarIndex: function getDollarIndex() {
@@ -13859,8 +13879,11 @@ AppDispatcher.register(function (payload) {
       StockDataStore.emitChange(CHANGE_EVENT);
       break;
     case appConstants.DOLLAR_INDEX:
-
       CurrencyExchange.dollarIndex(action.data);
+      StockDataStore.emitChange(CHANGE_EVENT);
+      break;
+    case appConstants.BITCOIN_AUTOCORRELATION:
+      Bitcoin.updateAutoCorrelation(action.data);
       StockDataStore.emitChange(CHANGE_EVENT);
       break;
     default:
@@ -15670,7 +15693,7 @@ function API() {
       this.value = null;
 };
 API.prototype.getStockPrice = function (params) {
-      console.log(params);
+
       return fetch('/stockapi', {
             method: 'post',
             headers: {
@@ -15710,6 +15733,8 @@ API.prototype.getBitcoinData = function (daterange) {
             }
             return response.json();
       }).then(function (data) {
+
+            Actions.updateBitcoinAutocorrlation(data.bitcoin_autocorrelation);
             Actions.updateDollarIndex(data.dollarIndexData);
             Actions.updateCurrencyExchaneData(data.currencyExchangeData);
             Actions.updateBitcoinData(data.data);
@@ -18910,7 +18935,8 @@ var appConstants = {
   UPDATE_CRYPTOEXCHANGE_DATA: "UPDATE_CRYPTOEXCHANGE_DATA",
   UPDATE_CRYPTOEXCHANGE_HISTORY_OPTION: "UPDATE_CRYPTOEXCHANGE_HISTORY_OPTION",
   CURRENCY_EXCHANGE_RATES: "CURRENCY_EXCHANGE_RATES",
-  DOLLAR_INDEX: "DOLLAR_INDEX"
+  DOLLAR_INDEX: "DOLLAR_INDEX",
+  BITCOIN_AUTOCORRELATION: "BITCOIN_AUTOCORRELATION"
 };
 module.exports = appConstants;
 
@@ -18965,6 +18991,75 @@ var MarketGraph = function () {
 			Actions.updateCryptoCurrencyHistoryOption(range);
 			API.getBitcoinData(range);
 			API.getCryptoCurrencyExchangeData(range);
+		}
+	}, {
+		key: 'renderBitcoinCorrelationView',
+		value: function renderBitcoinCorrelationView(data) {
+
+			var cor_data = [["AutoCorrelation", "Lag Times"]];
+			var history = 'daily';
+			for (var x = 0; x < data.length; x++) {
+				cor_data.push([x, data[x]]);
+			};
+			var options = {
+				title: "Bitcoin Price Autocorrelation",
+				titleTextStyle: {
+					color: 'black', // any HTML string color ('red', '#cc00cc')
+					fontName: 'Arial', // i.e. 'Times New Roman'
+					fontSize: 18, // 12, 18 whatever you want (don't specify px)
+					bold: false, // true or false
+					italic: false // true of false
+				},
+				legend: "none",
+				backgroundColor: 'transparent',
+				vAxis: {
+					title: "",
+					titleTextStyle: { color: 'black' },
+
+					baselineColor: 'transparent',
+					textStyle: {
+						fontSize: 12,
+						fontName: 'Arial',
+						color: 'black',
+						fontWeight: 700
+
+					},
+					gridlines: {
+						count: 5,
+						color: 'silver'
+					}
+				},
+				hAxis: {
+					title: "",
+					titleTextStyle: { color: 'black' },
+					baselineColor: 'silver',
+					textStyle: {
+						fontSize: 12,
+						fontName: 'Arial',
+						color: 'black',
+						fontWeight: 700
+
+					},
+					gridlines: {
+						count: 5,
+						color: 'transparent',
+						opacity: '0.6'
+					},
+					format: null
+				}
+			};
+
+			return _react2.default.createElement(
+				'div',
+				{ className: 'cryptoexchangeview' },
+				_react2.default.createElement(_reactGoogleCharts.Chart, {
+					chartType: 'LineChart',
+					data: cor_data,
+					width: '100%',
+					height: '100%',
+					options: options
+				})
+			);
 		}
 	}, {
 		key: 'renderDollarIndexView',
@@ -63714,7 +63809,8 @@ var BitcoinView = function (_Component) {
 			bitcoinHistoryOptions: StockDataStore.getBitcoinHistoryOption(),
 			cryptoexchangedata: null,
 			currencyexchangedata: null,
-			dollarIndex: null
+			dollarIndex: null,
+			bitcoin_autocorrelation: null
 		};
 		return _this;
 	}
@@ -63743,7 +63839,8 @@ var BitcoinView = function (_Component) {
 				bitcoinHistoryOptions: StockDataStore.getBitcoinHistoryOption(),
 				cryptoexchangedata: StockDataStore.getCryptoCurrencyExchange(),
 				currencyexchangedata: StockDataStore.getCurrencyExchange(),
-				dollarIndex: StockDataStore.getDollarIndex()
+				dollarIndex: StockDataStore.getDollarIndex(),
+				bitcoin_autocorrelation: StockDataStore.getBitcoinAutocorrelation()
 			});
 		}
 	}, {
@@ -63847,7 +63944,7 @@ var BitcoinView = function (_Component) {
 		key: 'renderDollarIndexView',
 		value: function renderDollarIndexView() {
 			//
-			console.log(this.state.dollarIndex);
+
 			//
 			var view = null;
 			if (this.state.dollarIndex != null) {
@@ -63855,6 +63952,19 @@ var BitcoinView = function (_Component) {
 			} else {
 				view = _react2.default.createElement('div', null);
 			}
+			return view;
+		}
+	}, {
+		key: 'renderBitcoinAutocorrelation',
+		value: function renderBitcoinAutocorrelation() {
+
+			var view = null;
+			if (this.state.bitcoin_autocorrelation != null) {
+				view = MarketGraph.renderBitcoinCorrelationView(this.state.bitcoin_autocorrelation);
+			} else {
+				view = _react2.default.createElement('div', null);
+			}
+
 			return view;
 		}
 	}, {
@@ -63873,6 +63983,7 @@ var BitcoinView = function (_Component) {
 				),
 				MarketGraph.renderBitcoinAPIOptions(this.state.bitcoinHistoryOptions),
 				this.renderBitCoinPriceView(),
+				this.renderBitcoinAutocorrelation(),
 				this.renderCurrencyExchange(),
 				this.renderDollarIndexView()
 			);

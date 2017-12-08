@@ -170,6 +170,7 @@ function BitcoinData(){
   this.description = "Bitcoin Data Avg Object";
   this.data = null;
   this.historyOption = 'daily';
+  this.autocorrelation = null;
 };
 
 BitcoinData.prototype.updateBitcoinData = function(item){
@@ -178,6 +179,13 @@ BitcoinData.prototype.updateBitcoinData = function(item){
 
 BitcoinData.prototype.updateBitcoinHistoryOptions = function(item){
   this.historyOption = item;
+};
+
+
+BitcoinData.prototype.updateAutoCorrelation = function(item){
+    
+        this.autocorrelation = item;
+        console.log(this.autocorrelation);
 };
 
 let Bitcoin =  new BitcoinData();
@@ -242,6 +250,10 @@ var StockDataStore = objectAssign({}, EventEmitter.prototype, {
   },
   emitChange: function() {
     this.emit(CHANGE_EVENT);
+  },
+
+  getBitcoinAutocorrelation: function(){
+    return Bitcoin.autocorrelation;
   },
 
   getDollarIndex: function(){
@@ -367,8 +379,11 @@ AppDispatcher.register(function(payload){
         StockDataStore.emitChange(CHANGE_EVENT);
         break;
     case appConstants.DOLLAR_INDEX:
-
         CurrencyExchange.dollarIndex(action.data);
+        StockDataStore.emitChange(CHANGE_EVENT);
+        break;
+    case appConstants.BITCOIN_AUTOCORRELATION:
+        Bitcoin.updateAutoCorrelation(action.data);
         StockDataStore.emitChange(CHANGE_EVENT);
         break;
     default:

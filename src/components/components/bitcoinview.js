@@ -39,7 +39,8 @@ export default class BitcoinView extends Component {
 					bitcoinHistoryOptions:	StockDataStore.getBitcoinHistoryOption(),
 					cryptoexchangedata: null,
 					currencyexchangedata: null,
-					dollarIndex: null
+					dollarIndex: null,
+					bitcoin_autocorrelation: null
 				};
 			}
 
@@ -63,7 +64,8 @@ export default class BitcoinView extends Component {
 					bitcoinHistoryOptions:	StockDataStore.getBitcoinHistoryOption(),
 					cryptoexchangedata: StockDataStore.getCryptoCurrencyExchange(),
 					currencyexchangedata:  StockDataStore.getCurrencyExchange(),
-					dollarIndex: StockDataStore.getDollarIndex()
+					dollarIndex: StockDataStore.getDollarIndex(),
+					bitcoin_autocorrelation: StockDataStore.getBitcoinAutocorrelation()
 				});
 
 				
@@ -156,7 +158,7 @@ export default class BitcoinView extends Component {
 
 			renderDollarIndexView() {
 					//
-					console.log(this.state.dollarIndex);
+			
 					//
 					let view = null;
 					if(this.state.dollarIndex!=null){
@@ -165,6 +167,19 @@ export default class BitcoinView extends Component {
 						view = (<div/>);
 					}
 					return view;
+			}
+
+
+			renderBitcoinAutocorrelation(){
+
+				let view = null;
+				if(this.state.bitcoin_autocorrelation!=null){
+					view = MarketGraph.renderBitcoinCorrelationView(this.state.bitcoin_autocorrelation);
+				} else {
+					view = (<div/>);
+				}
+
+				return view;
 			}
 
 			render(){
@@ -176,6 +191,7 @@ export default class BitcoinView extends Component {
 						<h1 className="graph-page-title">Bitcoin - $BTC</h1>
 						{MarketGraph.renderBitcoinAPIOptions(this.state.bitcoinHistoryOptions)}
 						{this.renderBitCoinPriceView()}
+						{this.renderBitcoinAutocorrelation()}
 						{this.renderCurrencyExchange()}
 						{this.renderDollarIndexView()}
 					</div>

@@ -147,8 +147,6 @@ app.post('/bitcoin', function(req,res){
         } else {
           start = starting_date[0];
         }
-
-
         return fetch('https://www.quandl.com/api/v3/datasets/CURRFX/USDCNY.json?api_key='+api_key+'&start_date='+start,{method: 'get', mode: 'cors'})      
       })
       .then((response) => typeof response =='object' ? response.json() : {})
@@ -166,11 +164,16 @@ app.post('/bitcoin', function(req,res){
       })
       .then((response) => typeof response =='object' ? response.json() : {})
       .then((responseJson) =>{
-
-            res.json({
+            dollarIndexData = responseJson;
+          
+            return Correlation.bitcoin_autocorrelation(bitcoin_price);
+      })
+      .then((results)=>{
+             res.json({
               data: bitcoin_price,
               currencyExchangeData: currencyExchangeData,
-              dollarIndexData: responseJson
+              dollarIndexData: dollarIndexData,
+              bitcoin_autocorrelation: results
             });
       })
       .catch((err) => {
@@ -185,7 +188,6 @@ app.post('/cryptocurrencyexchange', function(req,res){
 
     let apiKey = 'JKH0X5U5HVN4DD1Y';
     // let url = 'https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_INTRADAY&symbol=BTC&market=CNY&apikey=demo';
-    
     let url = null;
     if(req.body.daterange.toUpperCase()=='ALLTIME'){
         url = 'https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_MONTHLY&symbol=BTC&market=CNY&apikey='+apiKey;
@@ -196,9 +198,7 @@ app.post('/cryptocurrencyexchange', function(req,res){
     if(req.body.daterange.toUpperCase()=='MONTHLY'){
         url = 'https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_WEEKLY&symbol=BTC&market=CNY&apikey='+apiKey;
     }
-
    // let url = 'https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_'+req.body.daterange.toUpperCase()+'&symbol=BTC&market=CNY&apikey='+apiKey;
-  
     return fetch(url,{
         method: 'get',
         mode: 'cors'

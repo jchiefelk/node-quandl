@@ -3,7 +3,7 @@ function API() {
 	this.value = null;	
 };
 API.prototype.getStockPrice = function(params){
-    console.log(params);
+
     return   fetch('/stockapi', {
             method: 'post',
             headers: {
@@ -45,6 +45,8 @@ API.prototype.getBitcoinData = function(daterange){
             return response.json();
           })
          .then(function(data) {
+          
+              Actions.updateBitcoinAutocorrlation(data.bitcoin_autocorrelation);
               Actions.updateDollarIndex(data.dollarIndexData);
               Actions.updateCurrencyExchaneData(data.currencyExchangeData);
               Actions.updateBitcoinData(data.data);
