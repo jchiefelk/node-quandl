@@ -11867,6 +11867,14 @@ var getFrontEndData = function getFrontEndData() {
 
 var Actions = {
 
+  updateDollarIndex: function updateDollarIndex(item) {
+
+    AppDispatcher.handleAction({
+      actionType: appConstants.DOLLAR_INDEX,
+      data: item
+    });
+  },
+
   updateCurrencyExchaneData: function updateCurrencyExchaneData(item) {
 
     AppDispatcher.handleAction({
@@ -13701,11 +13709,17 @@ CryptoCurrencyExchangeData.prototype.updateHistoryOptions = function (data) {
 function CurrencyExchangeData() {
   this.description = "Currency Exchange Data";
   this.data = null;
+  this.dollarindex = null;
 };
 
 CurrencyExchangeData.prototype.updateData = function (data) {
 
   this.data = data;
+};
+
+CurrencyExchangeData.prototype.dollarIndex = function (data) {
+  // console.log(data);
+  this.dollarindex = data;
 };
 
 var CurrencyExchange = new CurrencyExchangeData();
@@ -13721,6 +13735,11 @@ var StockDataStore = objectAssign({}, EventEmitter.prototype, {
   emitChange: function emitChange() {
     this.emit(CHANGE_EVENT);
   },
+
+  getDollarIndex: function getDollarIndex() {
+    return CurrencyExchange.dollarindex;
+  },
+
   getInradayTicketData: function getInradayTicketData() {
     return Stocks.IntraDay;
   },
@@ -13837,6 +13856,11 @@ AppDispatcher.register(function (payload) {
       break;
     case appConstants.CURRENCY_EXCHANGE_RATES:
       CurrencyExchange.updateData(action.data);
+      StockDataStore.emitChange(CHANGE_EVENT);
+      break;
+    case appConstants.DOLLAR_INDEX:
+
+      CurrencyExchange.dollarIndex(action.data);
       StockDataStore.emitChange(CHANGE_EVENT);
       break;
     default:
@@ -15672,7 +15696,6 @@ API.prototype.getBitcoinData = function (daterange) {
       var data = {
             daterange: daterange
       };
-
       //  
       return fetch('/bitcoin', {
             method: 'post',
@@ -15687,7 +15710,7 @@ API.prototype.getBitcoinData = function (daterange) {
             }
             return response.json();
       }).then(function (data) {
-
+            Actions.updateDollarIndex(data.dollarIndexData);
             Actions.updateCurrencyExchaneData(data.currencyExchangeData);
             Actions.updateBitcoinData(data.data);
       }).catch(function (error) {
@@ -18886,7 +18909,8 @@ var appConstants = {
   UPDATE_USER_SUBMIT_STATUS: "UPDATE_USER_SUBMIT_STATUS",
   UPDATE_CRYPTOEXCHANGE_DATA: "UPDATE_CRYPTOEXCHANGE_DATA",
   UPDATE_CRYPTOEXCHANGE_HISTORY_OPTION: "UPDATE_CRYPTOEXCHANGE_HISTORY_OPTION",
-  CURRENCY_EXCHANGE_RATES: "CURRENCY_EXCHANGE_RATES"
+  CURRENCY_EXCHANGE_RATES: "CURRENCY_EXCHANGE_RATES",
+  DOLLAR_INDEX: "DOLLAR_INDEX"
 };
 module.exports = appConstants;
 
@@ -18943,13 +18967,83 @@ var MarketGraph = function () {
 			API.getCryptoCurrencyExchangeData(range);
 		}
 	}, {
+		key: 'renderDollarIndexView',
+		value: function renderDollarIndexView(data) {
+
+			var dollar_data = [["DATE", "Price"]];
+			var history = 'daily';
+			for (var x = data.dataset.data.length - 1; x >= 0; x--) {
+				dollar_data.push([new Date(data.dataset.data[x][0]), data.dataset.data[x][1]]);
+			};
+
+			var dollar_options = {
+				title: "Dolar Index",
+				titleTextStyle: {
+					color: 'black', // any HTML string color ('red', '#cc00cc')
+					fontName: 'Arial', // i.e. 'Times New Roman'
+					fontSize: 18, // 12, 18 whatever you want (don't specify px)
+					bold: false, // true or false
+					italic: false // true of false
+				},
+				legend: "none",
+				backgroundColor: 'transparent',
+				vAxis: {
+					title: "",
+					titleTextStyle: { color: 'black' },
+
+					baselineColor: 'transparent',
+					textStyle: {
+						fontSize: 12,
+						fontName: 'Arial',
+						color: 'black',
+						fontWeight: 700
+
+					},
+					gridlines: {
+						count: 5,
+						color: 'silver'
+					}
+				},
+				hAxis: {
+					title: "",
+					titleTextStyle: { color: 'black' },
+					baselineColor: 'silver',
+					textStyle: {
+						fontSize: 12,
+						fontName: 'Arial',
+						color: 'black',
+						fontWeight: 700
+
+					},
+					gridlines: {
+						count: 5,
+						color: 'transparent',
+						opacity: '0.6'
+					},
+					format: null
+				}
+			};
+
+			return _react2.default.createElement(
+				'div',
+				{ className: 'cryptoexchangeview' },
+				_react2.default.createElement(_reactGoogleCharts.Chart, {
+					chartType: 'LineChart',
+					data: dollar_data,
+					width: '100%',
+					height: '100%',
+					options: dollar_options
+				})
+			);
+		}
+	}, {
 		key: 'renderCurrencyExchangeView',
 		value: function renderCurrencyExchangeView(data) {
 
 			var dollar_data = [["DATE", "Price"]];
 
 			var history = 'daily';
-			console.log(data.dataset.data);
+
 			for (var x = data.dataset.data.length - 1; x >= 0; x--) {
 				dollar_data.push([new Date(data.dataset.data[x][0]), data.dataset.data[x][1]]);
 			};
@@ -18979,7 +19073,7 @@ var MarketGraph = function () {
 					},
 					gridlines: {
 						count: 5,
-						color: 'black'
+						color: 'silver'
 					}
 				},
 				hAxis: {
@@ -19066,7 +19160,7 @@ var MarketGraph = function () {
 					},
 					gridlines: {
 						count: 5,
-						color: 'black'
+						color: 'silver'
 					}
 				},
 				hAxis: {
@@ -19329,7 +19423,7 @@ var MarketGraph = function () {
 					},
 					gridlines: {
 						count: 2,
-						color: 'black'
+						color: 'silver'
 					}
 				},
 				hAxis: {
@@ -63619,7 +63713,8 @@ var BitcoinView = function (_Component) {
 			daterange: 'daily',
 			bitcoinHistoryOptions: StockDataStore.getBitcoinHistoryOption(),
 			cryptoexchangedata: null,
-			currencyexchangedata: null
+			currencyexchangedata: null,
+			dollarIndex: null
 		};
 		return _this;
 	}
@@ -63647,7 +63742,8 @@ var BitcoinView = function (_Component) {
 				storeupdated: true,
 				bitcoinHistoryOptions: StockDataStore.getBitcoinHistoryOption(),
 				cryptoexchangedata: StockDataStore.getCryptoCurrencyExchange(),
-				currencyexchangedata: StockDataStore.getCurrencyExchange()
+				currencyexchangedata: StockDataStore.getCurrencyExchange(),
+				dollarIndex: StockDataStore.getDollarIndex()
 			});
 		}
 	}, {
@@ -63738,12 +63834,24 @@ var BitcoinView = function (_Component) {
 			//
 			// MarketGraph.renderCryptoCurrencyExchangeView(this.state.cryptoexchangedata, this.state.bitcoinHistoryOptions)
 			//
-
-
 			var view = null;
 			if (this.state.currencyexchangedata != null) {
 
 				view = MarketGraph.renderCurrencyExchangeView(this.state.currencyexchangedata);
+			} else {
+				view = _react2.default.createElement('div', null);
+			}
+			return view;
+		}
+	}, {
+		key: 'renderDollarIndexView',
+		value: function renderDollarIndexView() {
+			//
+			console.log(this.state.dollarIndex);
+			//
+			var view = null;
+			if (this.state.dollarIndex != null) {
+				view = MarketGraph.renderDollarIndexView(this.state.dollarIndex);
 			} else {
 				view = _react2.default.createElement('div', null);
 			}
@@ -63765,7 +63873,8 @@ var BitcoinView = function (_Component) {
 				),
 				MarketGraph.renderBitcoinAPIOptions(this.state.bitcoinHistoryOptions),
 				this.renderBitCoinPriceView(),
-				this.renderCurrencyExchange()
+				this.renderCurrencyExchange(),
+				this.renderDollarIndexView()
 			);
 		}
 	}]);

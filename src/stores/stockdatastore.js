@@ -214,11 +214,18 @@ CryptoCurrencyExchangeData.prototype.updateHistoryOptions = function(data){
 function CurrencyExchangeData(){
   this.description = "Currency Exchange Data";
   this.data = null;
+  this.dollarindex = null;
 };
 
 CurrencyExchangeData.prototype.updateData = function(data){
 
     this.data = data;
+};
+
+
+CurrencyExchangeData.prototype.dollarIndex = function(data){
+    // console.log(data);
+    this.dollarindex = data
 };
 
 
@@ -236,6 +243,11 @@ var StockDataStore = objectAssign({}, EventEmitter.prototype, {
   emitChange: function() {
     this.emit(CHANGE_EVENT);
   },
+
+  getDollarIndex: function(){
+    return CurrencyExchange.dollarindex;
+  },
+
   getInradayTicketData: function() {
     return Stocks.IntraDay;
   },
@@ -352,6 +364,11 @@ AppDispatcher.register(function(payload){
         break;
     case appConstants.CURRENCY_EXCHANGE_RATES:
         CurrencyExchange.updateData(action.data);
+        StockDataStore.emitChange(CHANGE_EVENT);
+        break;
+    case appConstants.DOLLAR_INDEX:
+
+        CurrencyExchange.dollarIndex(action.data);
         StockDataStore.emitChange(CHANGE_EVENT);
         break;
     default:

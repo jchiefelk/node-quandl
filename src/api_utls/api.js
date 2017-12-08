@@ -29,7 +29,6 @@ API.prototype.getBitcoinData = function(daterange){
    let data={
       daterange: daterange
    };
-
    //  
    return fetch('/bitcoin', {
             method: 'post',
@@ -46,7 +45,7 @@ API.prototype.getBitcoinData = function(daterange){
             return response.json();
           })
          .then(function(data) {
-
+              Actions.updateDollarIndex(data.dollarIndexData);
               Actions.updateCurrencyExchaneData(data.currencyExchangeData);
               Actions.updateBitcoinData(data.data);
           }).catch(function(error) {

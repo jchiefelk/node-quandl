@@ -29,6 +29,81 @@ class MarketGraph {
 	}
 
 
+	renderDollarIndexView(data){
+
+			let dollar_data = [["DATE","Price"]];
+			let history = 'daily';
+			for(let x=data.dataset.data.length-1;x>=0;x--){
+				dollar_data.push([new Date(data.dataset.data[x][0]), data.dataset.data[x][1]  ]);
+			};
+		
+			let dollar_options = {
+				    	title: "Dolar Index",
+						titleTextStyle: {
+							color: 'black',    // any HTML string color ('red', '#cc00cc')
+							fontName: 'Arial', // i.e. 'Times New Roman'
+							fontSize: 18, // 12, 18 whatever you want (don't specify px)
+							bold: false,    // true or false
+							italic: false   // true of false
+						},
+						legend: "none",
+						backgroundColor: 'transparent',
+						vAxis: {
+							title: "",	
+							titleTextStyle: { color: 'black' },
+				            
+							baselineColor: 'transparent',
+				        	textStyle: {
+				        		fontSize: 12,
+				        		fontName: 'Arial',
+				        		color: 'black',
+				        		fontWeight: 700,
+				       
+				        	},
+				        	gridlines: {
+						    	count: 5,
+						    	color: 'silver'
+						   	}
+				        },
+					 	hAxis: {
+							title: "",	
+							titleTextStyle: { color: 'black' },
+							baselineColor: 'silver',
+				        	textStyle: {
+				        		fontSize: 12,
+				        		fontName: 'Arial',
+				        		color: 'black',
+				        		fontWeight: 700,
+				       
+				        	},
+				        	gridlines: {
+						    	count: 5,
+						    	color: 'transparent',
+						    	opacity: '0.6'
+						   	},
+						   	format:	null
+					 	}
+		};
+
+		return(
+
+				<div className="cryptoexchangeview">
+						<Chart
+							chartType="LineChart"
+							data={dollar_data}
+							width="100%"
+							height="100%"
+							options={dollar_options}
+						/>
+				</div>
+		
+		);
+
+
+
+	}
+
+
 
 	renderCurrencyExchangeView(data){
 
@@ -37,7 +112,7 @@ class MarketGraph {
 			let dollar_data = [["DATE","Price"]];
 
 			let history = 'daily';
-			console.log(data.dataset.data);
+
 			for(let x=data.dataset.data.length-1;x>=0;x--){
 				dollar_data.push([new Date(data.dataset.data[x][0]), data.dataset.data[x][1]  ]);
 			};
@@ -67,7 +142,7 @@ class MarketGraph {
 				        	},
 				        	gridlines: {
 						    	count: 5,
-						    	color: 'black'
+						    	color: 'silver'
 						   	}
 				        },
 					 	hAxis: {
@@ -157,7 +232,7 @@ class MarketGraph {
 				        	},
 				        	gridlines: {
 						    	count: 5,
-						    	color: 'black'
+						    	color: 'silver'
 						   	}
 				        },
 					 	hAxis: {
@@ -410,7 +485,7 @@ class MarketGraph {
 				        	},
 				        	gridlines: {
 						    	count: 2,
-						    	color: 'black'
+						    	color: 'silver'
 						   	}
 				        },
 					 	hAxis: {

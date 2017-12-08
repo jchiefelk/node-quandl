@@ -38,7 +38,8 @@ export default class BitcoinView extends Component {
 					daterange: 'daily',
 					bitcoinHistoryOptions:	StockDataStore.getBitcoinHistoryOption(),
 					cryptoexchangedata: null,
-					currencyexchangedata: null
+					currencyexchangedata: null,
+					dollarIndex: null
 				};
 			}
 
@@ -61,8 +62,11 @@ export default class BitcoinView extends Component {
 					storeupdated: true,
 					bitcoinHistoryOptions:	StockDataStore.getBitcoinHistoryOption(),
 					cryptoexchangedata: StockDataStore.getCryptoCurrencyExchange(),
-					currencyexchangedata:  StockDataStore.getCurrencyExchange()
+					currencyexchangedata:  StockDataStore.getCurrencyExchange(),
+					dollarIndex: StockDataStore.getDollarIndex()
 				});
+
+				
 
 			}
 
@@ -135,17 +139,28 @@ export default class BitcoinView extends Component {
 					return view;
 			}
 
-				renderCurrencyExchange(){
+			renderCurrencyExchange(){
 					//
 					// MarketGraph.renderCryptoCurrencyExchangeView(this.state.cryptoexchangedata, this.state.bitcoinHistoryOptions)
 					//
-				
-
-
 					let view = null;
 					if(this.state.currencyexchangedata!=null){
 						
 						view = MarketGraph.renderCurrencyExchangeView(this.state.currencyexchangedata);
+					} else {
+						view = (<div/>);
+					}
+					return view;
+			}
+
+
+			renderDollarIndexView() {
+					//
+					console.log(this.state.dollarIndex);
+					//
+					let view = null;
+					if(this.state.dollarIndex!=null){
+						view = MarketGraph.renderDollarIndexView(this.state.dollarIndex);
 					} else {
 						view = (<div/>);
 					}
@@ -162,7 +177,9 @@ export default class BitcoinView extends Component {
 						{MarketGraph.renderBitcoinAPIOptions(this.state.bitcoinHistoryOptions)}
 						{this.renderBitCoinPriceView()}
 						{this.renderCurrencyExchange()}
+						{this.renderDollarIndexView()}
 					</div>
 				);
+			
 			}
 }

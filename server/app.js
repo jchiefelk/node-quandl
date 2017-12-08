@@ -126,9 +126,8 @@ app.post('/stockapi', function(req,res){
 
 
 app.post('/bitcoin', function(req,res){
-
    let url = 'https://apiv2.bitcoinaverage.com/indices/global/history/BTCUSD?period='+req.body.daterange+'&?format=json';  
-   var bitcoin_price = null;
+   var bitcoin_price, currencyExchangeData, dollarIndexData = null;
    return fetch(url, {
             method: 'get',
             mode: 'cors'
@@ -138,7 +137,7 @@ app.post('/bitcoin', function(req,res){
         bitcoin_price = responseJson;
         let api_key = 'oaWPkjrfz_aQmyPmE-WT';
        // console.log(responseJson);
-        console.log(responseJson[0].time.split(' '));
+      //  console.log(responseJson[0].time.split(' '));
         let starting_date = responseJson[responseJson.length-1].time.split(' ');
         let start=  null;
         // console.log(starting_date[0]);
@@ -148,16 +147,30 @@ app.post('/bitcoin', function(req,res){
         } else {
           start = starting_date[0];
         }
-        console.log('https://www.quandl.com/api/v3/datasets/CURRFX/USDCNY.json?api_key='+api_key+'&start_date='+start);
+
 
         return fetch('https://www.quandl.com/api/v3/datasets/CURRFX/USDCNY.json?api_key='+api_key+'&start_date='+start,{method: 'get', mode: 'cors'})      
+      })
+      .then((response) => typeof response =='object' ? response.json() : {})
+      .then((responseJson) => {
+            currencyExchangeData = responseJson;
+            let start= null;
+            if(req.body.daterange=='daily'){
+                start = "2017-11-17";
+            } else {
+              start = currencyExchangeData.dataset.start_date;
+            }
+            let key = 'oaWPkjrfz_aQmyPmE-WT';
+            let url = 'https://www.quandl.com/api/v3/datasets/CHRIS/ICE_DX1.json?api_key='+key+'&start_date='+start;
+            return fetch(url,{method: 'get', mode: 'cors'})
       })
       .then((response) => typeof response =='object' ? response.json() : {})
       .then((responseJson) =>{
 
             res.json({
               data: bitcoin_price,
-              currencyExchangeData: responseJson
+              currencyExchangeData: currencyExchangeData,
+              dollarIndexData: responseJson
             });
       })
       .catch((err) => {
@@ -284,16 +297,10 @@ app.post('/stocklisting', function(req, res){
         //
         // Autocomplete with a using Binary Search
         //
-        for(let x=0; x<req.body.companycodes; x++){
 
-
-
-        };
 
         for(let x=0; x<routine.stocklistings.length; x++){
             let index=0;
-
-
             for(let key in routine.stocklistings[x]){
                 let stockcode = routine.stocklistings[x][key]; 
                 let autocomplete = function(){
@@ -309,20 +316,7 @@ app.post('/stocklisting', function(req, res){
                 };
                 autocomplete();
             };
-
-
-
-
         };
-
-
-
-
-
-
-
-
-
 
 
         res.json({

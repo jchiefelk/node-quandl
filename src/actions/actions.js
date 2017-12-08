@@ -88,6 +88,15 @@ var getFrontEndData = function(){
 var Actions = {
 
 
+  updateDollarIndex: function(item){
+
+      AppDispatcher.handleAction({
+          actionType: appConstants.DOLLAR_INDEX,
+          data: item      
+      });
+  },
+
+
   updateCurrencyExchaneData: function(item){
    
     AppDispatcher.handleAction({
