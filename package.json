@@ -20,7 +20,7 @@
     "chart.js": "^2.5.0",
     "coinbase": "^2.0.6",
     "cors": "^2.8.1",
-    "csv-parse": "^1.2.0",
+    "csv-parse": "^4.4.6",
     "express": "^4.14.0",
     "flux": "^3.1.2",
     "jsonwebtoken": "^8.0.1",
