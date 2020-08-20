@@ -14,7 +14,7 @@
     "babel": "^6.5.2",
     "babel-core": "^6.26.0",
     "babel-loader": "^6.2.10",
-    "bcrypt": "^1.0.3",
+    "bcrypt": "^5.0.0",
     "bluebird": "^3.4.7",
     "body-parser": "^1.17.1",
     "chart.js": "^2.5.0",
