@@ -30,7 +30,7 @@
     "morgan": "^1.7.0",
     "node-fetch": "^1.6.3",
     "object-assign": "^4.1.0",
-    "papaparse": "^4.1.4",
+    "papaparse": "^5.2.0",
     "react": "^15.4.1",
     "react-datetime": "^2.8.6",
     "react-dom": "^15.4.1",
